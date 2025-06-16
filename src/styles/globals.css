@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Russo One";
+  src: url("/fonts/RussoOne.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -22,5 +30,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Russo One", sans-serif;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 103%;
 }
