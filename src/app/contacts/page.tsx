@@ -4,8 +4,8 @@ import "./contacts.scss";
 export default function Contacts() {
   return (
     <div className="Contacts">
-      <div className="Bg_contacts" />
-      <div className="right-blur-overlay" />
+      <img src="/images/contacts_green_car.jpg" alt="bg" className="bg-image" />
+      <div className="right-blur-overlay"></div>
       <div className="ContactFormSection">
         <h2>
           Запишитесь на диагностику, <br />
@@ -53,7 +53,7 @@ export default function Contacts() {
           </div>
 
           <div className="form-row">
-            <label htmlFor="date" className="form-label">
+            <label htmlFor="date" className="form-label-1">
               Дата
             </label>
             <div className="form-datetime">
@@ -70,7 +70,7 @@ export default function Contacts() {
         {/* Контактная информация */}
         <div className="contacts-info">
           <div className="contacts-info-block">
-            <h2 className="title-contacts-info">Москва</h2>
+            <h2 className="title-contacts-info">Адрес</h2>
             <p>
               г.Москва <br />
               Высоковольтный проезд, дом 1 стр. 29

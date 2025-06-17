@@ -18,7 +18,6 @@ input {
   }
 }
 
-// contacts.scss
 .Contacts {
   position: relative;
   width: 100%;
@@ -26,13 +25,34 @@ input {
   overflow: hidden;
 }
 
-.Contacts::before {
-  content: "";
+@media screen and (max-width: 1050px) {
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .right-blur-overlay {
+    position: absolute;
+    width: 100% !important;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+    pointer-events: none;
+  }
+}
+
+.bg-image {
   position: absolute;
   inset: 0;
-  background-image: url("/images/contacts_green_car.jpg");
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
@@ -42,25 +62,42 @@ input {
   right: 0;
   width: 405px;
   height: 100%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
+  transform: translateZ(0);
+  will-change: backdrop-filter;
   pointer-events: none;
-}
-
-.right-blur-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .ContactFormSection {
   position: relative;
   z-index: 2;
-  padding: 120px 0px 0px 120px;
-  max-width: 800px;
-  color: white;
+  padding: 120px 0 0 120px;
+}
+
+@media screen and (max-width: 740px) {
+  .ContactFormSection {
+    margin: 80px auto;
+    padding: 15px;
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ContactFormSection {
+    margin: 80px auto;
+    padding: 15px;
+    max-width: 470px;
+  }
+  .form-label-1 {
+    display: none;
+  }
+  .form-label {
+    font-size: 12px;
+  }
+  .form-datetime {
+    width: 100% !important;
+  }
 }
 
 .form {
@@ -79,6 +116,14 @@ input {
 }
 
 .form-label {
+  width: 183px;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 15px;
+}
+
+.form-label-1 {
   width: 183px;
   color: white;
   font-size: 14px;
