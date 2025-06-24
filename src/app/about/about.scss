@@ -1,0 +1,225 @@
+.Startscreen {
+  background-image: url("/images/black_car_about.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+}
+.about_title {
+  font-size: 96px;
+  padding: 120px;
+}
+.block_title {
+  padding-left: 30px;
+  border-left: 2px solid rgb(255, 255, 255);
+  height: 100%;
+  padding-right: 120px;
+}
+.title {
+  font-size: 24px;
+}
+.subtitle {
+  font-family: Helvetica;
+  font-size: 20px;
+}
+.startscreen_text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.citation_block_about {
+  border-left: 1px solid #c0c0c0;
+  display: flex;
+  align-items: center; /* по вертикали */
+  justify-content: flex-start; /* по горизонтали */
+  height: 43px;
+  text-align: center; /* чтобы текст был по центру внутри */
+  padding-left: 20px;
+}
+.description_block_about {
+  font-family: Helvetica;
+  font-size: 16px;
+  padding: 20px 0 20px 0;
+}
+.block_about {
+  margin: auto;
+  padding: 120px 120px 80px 120px;
+}
+.title_block_about {
+  font-size: 36px;
+  text-transform: uppercase;
+  line-height: 103%;
+  padding-bottom: 40px;
+}
+.text_block_about {
+  width: 620px;
+}
+.citation_block_about {
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: italic;
+}
+.block_about_photo_text {
+  display: flex;
+  justify-content: space-between;
+}
+.asset {
+  font-family: Helvetica;
+  font-size: 16px;
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+.block_assets_about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 120px 20px 120px;
+}
+.block_title_assets_about {
+  padding-left: 30px;
+  border-left: 2px solid rgb(255, 255, 255);
+  width: 50%;
+}
+.title_block2 {
+  font-size: 24px;
+  line-height: 103%;
+  padding-bottom: 20px;
+}
+.subtitle_block2 {
+  font-family: Helvetica;
+  font-size: 16px;
+  line-height: 130%;
+}
+.block_box_citation {
+  display: flex;
+  justify-content: end;
+  padding: 90px 120px 120px 0px;
+}
+.hero_title {
+  font-size: 48px;
+  line-height: 103%;
+  text-align: center;
+  color: black;
+  padding-top: 120px;
+  text-transform: uppercase;
+}
+.hero_title_small {
+  font-size: 24px;
+  color: black;
+  text-transform: uppercase;
+}
+.block_about_from_founder {
+  background-color: #d0d0d0;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  position: relative;
+}
+.description_about_block_founder {
+  font-family: Helvetica;
+  font-size: 20px;
+  color: black;
+  line-height: 130%;
+  max-width: 660px;
+  font-weight: 400;
+}
+.row_1_description_photo {
+  display: flex;
+  justify-content: space-between;
+  padding: 70px 120px 70px 120px;
+  gap: 30px;
+}
+.row_2_description_photo {
+  display: flex;
+  justify-content: flex-start;
+  padding: 70px 120px 70px 120px;
+  gap: 30px;
+}
+.signature {
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: italic;
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 120px;
+  z-index: 2;
+  padding-bottom: 120px;
+  margin-top: -100px;
+}
+.team {
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  height: auto;
+  position: relative;
+}
+.team_title {
+  font-size: 36px;
+  padding: 120px 0px 60px 120px;
+}
+.team_container {
+  display: flex;
+  align-items: flex-start;
+  padding: 0px 0px 120px 120px;
+  gap: 20px;
+}
+.team_arrows {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.team_arrow {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+}
+.team_slider {
+  overflow: hidden;
+  flex: 1;
+}
+.team_track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.team_slide {
+  min-width: 250px;
+  margin-right: 20px;
+  text-align: center;
+}
+.team_photo {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 10px;
+}
+.team_name {
+  font-size: 18px;
+  margin: 0;
+}
+.team_position {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.8;
+}
+.yandex_map {
+  width: 100%;
+  height: 400px;
+  background-color: #d0d0d0;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+}
+.map_title {
+  color: black;
+}
