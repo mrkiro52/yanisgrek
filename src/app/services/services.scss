@@ -1,0 +1,237 @@
+.Startscreen {
+  background-image: url("/images/bg_startscreen_services.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 120px;
+}
+.title {
+  font-size: 96px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 120px;
+}
+.calculate_cost {
+  font-size: 16px;
+  font-family: Helvetica;
+  color: black;
+  background-color: white;
+  width: 230px;
+  height: 45px;
+}
+.calculate_cost:hover {
+  color: white;
+  background-color: #242424;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.send_request {
+  font-size: 16px;
+  font-family: Helvetica;
+  color: white;
+  width: 230px;
+  height: 45px;
+  border: 1px solid white;
+  opacity: 60%;
+}
+.send_request:hover {
+  opacity: 100%;
+}
+.button_menu {
+  font-size: 20px;
+  color: #808080;
+  background-color: #242424;
+  padding: 14px 32px;
+  text-transform: uppercase;
+}
+.button_menu_active {
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  padding: 14px 32px;
+  text-transform: uppercase;
+}
+.buttons_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 120px 120px 30px 120px;
+  width: auto;
+  gap: 10px;
+}
+.services_container {
+  display: flex;
+  flex-wrap: wrap; /* разрешаем перенос */
+  justify-content: center; /* центрируем ряды */
+  gap: 20px; /* расстояние между карточками */
+  padding: 0 120px 30px; /* боковые отступы по 120px */
+  box-sizing: border-box; /* чтобы padding не ломал расчёт */
+}
+
+.service {
+  min-width: 380px; /* не уже этого */
+  flex: 1 1 380px; /* базовая ширина 387px, может расти и ужиматься */
+  height: 200px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: black;
+  box-sizing: border-box;
+}
+.more_container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 120px;
+}
+.button_more {
+  font-size: 16px;
+  font-family: Helvetica;
+  color: white;
+  width: 230px;
+  height: 45px;
+  border: 1px solid white;
+  opacity: 60%;
+}
+.hero_title {
+  font-size: 48px;
+  line-height: 103%;
+  text-align: center;
+  color: black;
+  padding-top: 120px;
+  text-transform: uppercase;
+}
+.hero_title_small {
+  font-size: 24px;
+  color: black;
+  text-transform: uppercase;
+}
+.block_about_services {
+  background-color: #d0d0d0;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  position: relative;
+}
+.description_about_block_founder {
+  font-family: Helvetica;
+  font-size: 20px;
+  color: black;
+  line-height: 130%;
+  max-width: 660px;
+  font-weight: 400;
+}
+.row_1_description_photo {
+  display: flex;
+  justify-content: space-between;
+  padding: 70px 120px 70px 120px;
+  gap: 30px;
+  gap: 2rem; /* небольшой промежуток между текстом и картинкой */
+  flex-wrap: wrap;
+}
+.row_2_description_photo {
+  display: flex;
+  justify-content: flex-start;
+  padding: 70px 120px 70px 120px;
+  gap: 30px;
+  gap: 2rem; /* небольшой промежуток между текстом и картинкой */
+  flex-wrap: wrap;
+}
+@media (max-width: 1170px) {
+  .buttons_container {
+    padding: 120px 60px 30px;
+  }
+  .services_container {
+    padding: 0 60px 30px;
+  }
+  .startscreen_text {
+    padding-top: 60px;
+  }
+  .about_title {
+    padding: 0px 0px 0px 60px;
+  }
+  .block_title {
+    margin-left: 60px;
+  }
+  .slider {
+    padding: 120px 0 60px 60px;
+  }
+  .block_about {
+    padding: 120px 60px 80px;
+  }
+  .block_assets_about {
+    flex-wrap: wrap;
+    padding: 20px 60px;
+  }
+  .row_1_description_photo {
+    padding: 70px 60px;
+  }
+  .row_2_description_photo {
+    padding: 70px 60px;
+    flex-direction: column-reverse;
+  }
+  .slider2 {
+    padding: 0 0 120px 60px;
+  }
+  .team_title {
+    padding: 120px 0 60px 60px;
+  }
+  .photo_worker {
+    width: 50%;
+  }
+  .signature {
+    margin-top: 0;
+  }
+}
+@media (max-width: 1047px) {
+  .startscreen_text {
+    row-gap: 20px;
+  }
+}
+@media (max-width: 930px) {
+  .block_about_photo_text {
+    flex-direction: column;
+    /* justify-content больше не нужен */
+  }
+  .text_block_about,
+  .block_about_photo_text img {
+    width: 100%; /* оба элемента по ширине 100% */
+  }
+}
+@media (max-width: 480px) {
+  .block_about_services {
+    display: block;
+    padding-right: 15px;
+    width: auto;
+  }
+  .hero_title {
+    font-size: 20px;
+  }
+  .hero_title_small {
+    font-size: 13px;
+  }
+  .row_1_description_photo {
+    padding: 60px 15px;
+    flex-direction: column-reverse;
+  }
+  .description_about_block_founder {
+    font-size: 16px;
+  }
+  .row_2_description_photo {
+    padding: 0px 15px 60px 15px;
+  }
+}
