@@ -1,9 +1,17 @@
-"use client"; // обязательно, чтобы код исполнялся на клиенте
-
+"use client";
 import "./about.scss";
-import "./team-slider";
+import EmblaCarousel from "@/components/embla/EmblaCarousel";
 
-export default function About() {
+const images: string[] = [
+  "/images/alexandr_director.jpg",
+  "/images/alexandr_master.jpg",
+  "/images/maksim_master.jpg",
+  "/images/vitaly.jpg",
+  "/images/murad.jpg",
+  "/images/dmitry.jpg",
+];
+
+export default function AboutPage() {
   return (
     <div className="About">
       <div className="Startscreen">
@@ -108,7 +116,16 @@ export default function About() {
       </div>
       <div className="team">
         <h2 className="team_title">Наша команда</h2>
-        <div className="team_container">
+        <div className="slider">
+          <EmblaCarousel
+            slides={images}
+            options={{
+              loop: true,
+              align: "start",
+            }}
+          />
+        </div>
+        {/* <div className="team_container">
           <div className="team_arrows">
             <img src="/images/team_arrow_left.svg" alt="" />
             <img src="/images/team_arrow_right.svg" alt="" />
@@ -147,9 +164,15 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="yandex_map">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?um=constructor%3A9cd8128f022d9c52582359f6749d3206589822ddbb5c480e49a54483a2093b0d&amp;source=constructor"
+          width="1023"
+          height="400"
+          frameBorder="0"
+        ></iframe>
         <h1 className="map_title">ЗДЕСЬ БУДЕТ КАРТА</h1>
       </div>
     </div>
