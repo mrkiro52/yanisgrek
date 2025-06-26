@@ -10,6 +10,13 @@ const images: string[] = [
   "/images/murad.jpg",
   "/images/dmitry.jpg",
 ];
+const projectImages = [
+  "/images/car_slide_1.jpg",
+  "/images/car_slide_1.jpg",
+  "/images/car_slide_1.jpg",
+  "/images/car_slide_1.jpg",
+  "/images/car_slide_1.jpg",
+];
 
 export default function AboutPage() {
   return (
@@ -22,6 +29,15 @@ export default function AboutPage() {
             <p className="subtitle">
               8 лет вместе: история сервиса, который понимает
             </p>
+          </div>
+          <div className="slider">
+            <EmblaCarousel
+              slides={projectImages}
+              options={{
+                loop: true,
+                align: "start",
+              }}
+            />
           </div>
         </div>
       </div>
@@ -99,7 +115,11 @@ export default function AboutPage() {
             <img src="/images/photo_office.jpg" alt="" />
           </div>
           <div className="row_2_description_photo">
-            <img src="/images/photo_worker.jpg" alt="" />
+            <img
+              src="/images/photo_worker.jpg"
+              alt=""
+              className="photo_worker"
+            />
             <p className="description_about_block_founder">
               Мы не позеры и не «супер-мастера», которые, подключив ноутбук с
               кабелем за 1500₽, начинают говорить с потолка. Нас самих такие
@@ -116,7 +136,7 @@ export default function AboutPage() {
       </div>
       <div className="team">
         <h2 className="team_title">Наша команда</h2>
-        <div className="slider">
+        <div className="slider2">
           <EmblaCarousel
             slides={images}
             options={{
@@ -166,14 +186,16 @@ export default function AboutPage() {
           </div>
         </div> */}
       </div>
-      <div className="yandex_map">
+      <div
+        style={{ filter: "invert(0.9) hue-rotate(180deg)" }}
+        className="yandex_map"
+      >
         <iframe
           src="https://yandex.ru/map-widget/v1/?um=constructor%3A9cd8128f022d9c52582359f6749d3206589822ddbb5c480e49a54483a2093b0d&amp;source=constructor"
-          width="1023"
-          height="400"
+          width="100%"
+          height="100%"
           frameBorder="0"
         ></iframe>
-        <h1 className="map_title">ЗДЕСЬ БУДЕТ КАРТА</h1>
       </div>
     </div>
   );
