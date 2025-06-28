@@ -1,0 +1,92 @@
+.Startscreen {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  padding: 120px 0 30px 120px;
+  overflow: hidden;
+  background: #000; /* фон, чтобы белый текст читался */
+}
+
+/* Заголовок */
+.title_startscreen {
+  font-size: 96px;
+  line-height: 1.1;
+  color: #fff;
+  z-index: 3;
+}
+.title_small {
+  font-size: 40px;
+  margin-left: 8px;
+}
+
+/* Контейнер для фото + подзаголовка */
+.images-wrapper {
+  position: relative;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+}
+
+/* Общие стили для фотографий */
+.images-wrapper__img {
+  position: absolute;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Маленькая фотка «лево-верх» */
+.images-wrapper__img--small {
+  top: 20%;
+  left: 15%;
+  width: 350px; /* подгоняйте по макету */
+  z-index: 2;
+  border: 11px solid black;
+}
+
+/* Большая «право-низ» */
+.images-wrapper__img--large {
+  bottom: 5%;
+  right: 30%;
+  width: 480px; /* подгоняйте по макету */
+  z-index: 1;
+}
+
+/* Новый блок с подзаголовком */
+.images-wrapper__subtitle {
+  position: absolute;
+  top: 25%; /* настройте высоту, чтобы текст стоял рядом с фото */
+  right: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 3;
+}
+
+/* Стили текста подзаголовка */
+.subtitle-top {
+  font-size: 24px;
+  color: #c0c0c0;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: right;
+  background-color: black;
+}
+.subtitle-bottom {
+  font-size: 24px;
+  color: #c0c0c0;
+  text-transform: uppercase;
+  margin: 4px 0 0;
+  background-color: black;
+}
+@media (max-width: 1170px) {
+  .images-wrapper__img--small {
+    left: 8%;
+  }
+  .images-wrapper__img--large {
+    right: 20%;
+  }
+  .Startscreen {
+    padding: 120px 0 30px 60px;
+  }
+}
