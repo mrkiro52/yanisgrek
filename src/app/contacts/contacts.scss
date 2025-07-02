@@ -199,3 +199,7 @@ input {
 .contacts-info-block p {
   margin: 0;
 }
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+}

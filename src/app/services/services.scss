@@ -165,10 +165,10 @@
 }
 @media (max-width: 1170px) {
   .buttons_container {
-    padding: 120px 15px 30px;
+    padding: 60px 24px 30px;
   }
   .services_container {
-    padding: 0 60px 30px;
+    padding: 0 24px 30px;
   }
   .startscreen_text {
     padding-top: 60px;
@@ -245,18 +245,23 @@
   }
   .title {
     font-size: 32px;
+    width: 100%;
+    padding-left: 15px;
+    display: flex;
+    justify-content: flex-start;
   }
   .services_container {
     padding: 0 15px 30px;
   }
   .button_menu {
-    padding: 14px 24px;
-    font-size: 16px;
+    padding: 9px 15px;
+    font-size: 14px;
   }
   .buttons_container {
-    padding: 80px 15px 30px;
+    padding: 45px 15px 30px;
   }
   .Startscreen {
-    padding-bottom: 80px;
+    padding-bottom: 45px;
+    height: 75vh;
   }
 }
