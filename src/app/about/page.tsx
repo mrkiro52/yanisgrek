@@ -1,4 +1,6 @@
 "use client";
+import Header from "../../components/Header/Header";
+import Contacts from "../contacts/page";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 
@@ -21,6 +23,7 @@ const projectImages = [
 export default function AboutPage() {
   return (
     <div className="About">
+      <Header/>
       <div className="Startscreen">
         <div className="startscreen_text">
           <h1 className="about_title">О НАС</h1>
@@ -197,6 +200,7 @@ export default function AboutPage() {
           frameBorder="0"
         ></iframe>
       </div>
+      <Contacts/>
     </div>
   );
 }

@@ -21,10 +21,22 @@
   color: #c0c0c0;
   font-size: 24px;
 }
+.problems_block_top {
+  display: flex;
+  align-items: center;
+  padding: 120px 0px 0px 120px;
+  & > h2 {
+    font-size: 96px;
+    margin-bottom: 0px;
+    color: rgba(192, 192, 192, 1);
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+  }
+}
 .title_problem {
   font-size: 36px;
   line-height: 103%;
-  padding: 120px 0px 0px 120px;
   text-transform: uppercase;
 }
 .title {

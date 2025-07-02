@@ -13,6 +13,7 @@
   justify-content: space-between;
   padding-bottom: 120px;
 }
+
 .title {
   font-size: 96px;
   display: flex;
@@ -26,6 +27,8 @@
   background-color: white;
   width: 230px;
   height: 45px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 .calculate_cost:hover {
   color: white;
@@ -46,6 +49,8 @@
   height: 45px;
   border: 1px solid white;
   opacity: 60%;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 .send_request:hover {
   opacity: 100%;
@@ -56,6 +61,8 @@
   background-color: #242424;
   padding: 14px 32px;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 .button_menu_active {
   font-size: 20px;
@@ -106,6 +113,11 @@
   height: 45px;
   border: 1px solid white;
   opacity: 60%;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 1;
+  }
 }
 .hero_title {
   font-size: 48px;

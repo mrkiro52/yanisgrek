@@ -1,6 +1,8 @@
 "use client";
 import "./services.scss";
 import { useState } from "react";
+import Contacts from "../contacts/page";
+import Header from "@/components/Header/Header";
 
 export default function ServicesPage() {
   const services: string[] = [
@@ -17,6 +19,7 @@ export default function ServicesPage() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   return (
     <div className="Services">
+      <Header/>
       <div className="Startscreen">
         <h2 className="title">Услуги</h2>
         <div className="buttons">
@@ -60,7 +63,7 @@ export default function ServicesPage() {
           <span className="hero_title_small">
             BMW <br /> в
           </span>{" "}
-          Москве лишних<span className="hero_title_small">— без</span> слов
+          Москве лишних<span className="hero_title_small"> — без</span> слов
         </h1>
         <div>
           <div className="row_1_description_photo">
@@ -92,6 +95,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      <Contacts/>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import "./service.scss";
+import Header from '../../../components/Header/Header';
 
 export default function Service() {
   return (
     <div className="Service">
+      <Header/>
       <div className="Startscreen">
         <h2 className="title_startscreen">
           Замена масла
