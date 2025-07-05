@@ -67,6 +67,10 @@
             font-size: 24px;
             color: rgba(192, 192, 192, 1);
             font-family: "Russo One";
+            transition: all 0.2s;
+            &:hover {
+              color: white;
+            }
           }
         }
       }

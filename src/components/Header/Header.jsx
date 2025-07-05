@@ -34,32 +34,32 @@ export default function Header() {
                             <Link className='linkSmall' href="/contacts">
                                 Контакты
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-m5-f90">
-                                BMW M5 F90
+                            <Link className='linkSmall' href="/cars/bmw-m5">
+                                Ремонт BMW M5
                             </Link>
-                            <Link className='linkSmall' href="/cars/rolls-royce">
-                                Rolls Royce
+                            <Link className='linkSmall' href="/cars/bmw-x6">
+                                Ремонт BMW X6
                             </Link>
-                            <Link className='linkSmall' href="/cars/mini-cooper">
-                                Mini Cooper
+                            <Link className='linkSmall' href="/cars/bmw-z4">
+                                Ремонт BMW Z4
                             </Link>
                         </div>
                         <div className="linksCol">
                             <Link className='linkTitle' href='/services'>УСЛУГИ YANIS GREK</Link>
-                            <Link className='linkSmall' href="/services/zamena-masla-dvs-filtra-maslyanogo">
-                                Замена масла ДВС/ фильтра масляного
+                            <Link className='linkSmall' href="/services/zamena-masla-dvs">
+                                Замена масла ДВС
                             </Link>
-                            <Link className='linkSmall' href="/services/zamena-vozdushnogo-filtra">
-                                Замена воздушного фильтра
+                            <Link className='linkSmall' href="/services/kompyuternaya-diagnostika">
+                                Компьютерная диагностика
                             </Link>
-                            <Link className='linkSmall' href="/services/zamena-toplivnogo-filtra">
-                                Замена топливного фильтра
+                            <Link className='linkSmall' href="/services/zamena-perednih-tormoznyh-diskov">
+                                Замена передних тормозных дисков
+                            </Link>
+                            <Link className='linkSmall' href="/services/diagnostika-akpp">
+                                Диагностика АКПП
                             </Link>
                             <Link className='linkSmall' href="/services/zamena-salonnogo-filtra">
                                 Замена салонного фильтра
-                            </Link>
-                            <Link className='linkSmall' href="/services/prokachka-toplivnoy-sistemy">
-                                Прокачка топливной системы
                             </Link>
                         </div>
                     </div>

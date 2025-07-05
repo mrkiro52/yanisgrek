@@ -1,14 +1,27 @@
 import "./service.scss";
 import Header from "../../../components/Header/Header";
+import fs from "fs";
+import path from "path";
+import Contacts from "../../contacts/page";
 
-export default function Service() {
+export default function Service({ params }) {
+
+  const filePath = path.join(
+    process.cwd(),
+    "src",
+    "data",
+    "services",
+    `${params.slug}.json`
+  );
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const serviceData = JSON.parse(raw);
+  
   return (
     <div className="Service">
       <Header />
       <div className="Startscreen">
         <h2 className="title_startscreen">
-          Замена масла
-          <br /> в двигателе
+          {serviceData.title}
           <span className="title_small"> BMW</span>
         </h2>
 
@@ -29,12 +42,11 @@ export default function Service() {
 
           {/* подзаголовок справа от фото */}
           <div className="images-wrapper__subtitle">
-            <p className="subtitle-top">ИСПОЛЬЗУЕМ ОРИГИНАЛЬНОЕ МАСЛО</p>
-            <p className="subtitle-bottom">BMW LL04</p>
+            <p className="subtitle-top">{serviceData.subtitle}</p>
           </div>
           <div className="images-wrapper__subtitle_mobile">
             <p className="subtitle_mobile">
-              ИСПОЛЬЗУЕМ ОРИГИНАЛЬНОЕ МАСЛО BMW LL04
+              {serviceData.subtitle}
             </p>
           </div>
         </div>
@@ -50,13 +62,7 @@ export default function Service() {
         <div>
           <div className="row_1_description_photo">
             <p className="description_about_block_founder">
-              Для нас самое важное — это не машины. Это люди. Вы — те, кто к нам
-              приезжает. Те, кому мы чиним авто, с кем разговариваем на
-              ресепшене, кому объясняем, что и зачем меняем. Наша главная цель —
-              чтобы человек уехал довольный. И работой, и отношением. Это,
-              честно говоря, не так просто. Все мы разные, у всех своё
-              настроение, свои взгляды, своё понимание сервиса. Но мы стараемся.
-              Каждый день.
+              {serviceData.text1}
             </p>
             <img src="/images/photo_office.jpg" alt="" />
           </div>
@@ -67,16 +73,12 @@ export default function Service() {
               className="photo_worker"
             />
             <p className="description_about_block_founder">
-              Мы не позеры и не «супер-мастера», которые, подключив ноутбук с
-              кабелем за 1500₽, начинают говорить с потолка. Нас самих такие
-              бесят. Мы работаем руками и головой. Смотрим, разбираемся, чиним.
-              И не косим под звёзд. Мы держим уровень: читаем, учимся, следим за
-              новыми технологиями, чтобы быть в теме. Но при этом остаёмся
-              собой. Живыми людьми, а не робо-механиками.
+              {serviceData.text2}
             </p>
           </div>
         </div>
       </div>
+      <Contacts/>
     </div>
   );
 }

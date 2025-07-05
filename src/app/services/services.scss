@@ -62,12 +62,12 @@
   padding: 14px 32px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.5s;
 }
 .button_menu_active {
   font-size: 20px;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: rgba(43, 110, 255, 1);
   padding: 14px 32px;
   text-transform: uppercase;
 }
@@ -77,48 +77,58 @@
   flex-wrap: wrap;
   padding: 120px 120px 30px 120px;
   width: auto;
-  gap: 10px;
-}
-.services_container {
-  display: flex;
-  flex-wrap: wrap; /* разрешаем перенос */
-  justify-content: center; /* центрируем ряды */
-  gap: 20px; /* расстояние между карточками */
-  padding: 0 120px 30px; /* боковые отступы по 120px */
-  box-sizing: border-box; /* чтобы padding не ломал расчёт */
+  gap: 16px;
 }
 
-.service {
-  min-width: 380px; /* не уже этого */
-  flex: 1 1 380px; /* базовая ширина 387px, может расти и ужиматься */
-  height: 200px;
-  background-color: white;
+.services_container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: 24px;
-  color: black;
+  gap: 20px;
+  padding: 0 120px 120px;
   box-sizing: border-box;
-}
-.more_container {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 120px;
-}
-.button_more {
-  font-size: 16px;
-  font-family: Helvetica;
-  color: white;
-  width: 230px;
-  height: 45px;
-  border: 1px solid white;
-  opacity: 60%;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    opacity: 1;
+
+  & > .service {
+    position: relative; // нужно для псевдоэлемента
+    min-width: 380px;
+    flex: 1 1 380px;
+    height: 200px;
+    background-color: rgb(45, 45, 45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 24px;
+    cursor: pointer;
+    overflow: hidden; // прячем вылезающий before
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.4); // белый overlay с 50% прозрачностью
+      transition: width 0.3s ease;
+      z-index: 0;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+
+    & > span {
+      position: relative; // поверх before
+      z-index: 1;
+      font-size: 24px;
+      color: white;
+      text-align: center;
+    }
   }
 }
+
+
 .hero_title {
   font-size: 48px;
   line-height: 103%;

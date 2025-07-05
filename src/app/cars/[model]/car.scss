@@ -1,24 +1,38 @@
-.Startscreen {
-  background-image: url("/images/bmw_m5_f90.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  position: relative;
-  background-repeat: no-repeat;
-  width: 100%;
+.Car {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  flex-direction: column;
+  & > .Startscreen {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 110px calc((100% - 1200px) / 2);
+    & > h1 {
+      font-size: 96px;
+      font-family: Russo One, sans-serif;
+      color: white;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
 }
+
+
 .startscreen_title {
   display: flex;
   justify-content: flex-end;
-  padding: 0px 120px 120px 0px;
   text-align: right;
   width: 50%;
   line-height: 103%;
   text-transform: uppercase;
-  color: #c0c0c0;
+  color: #ffffff;
   font-size: 24px;
 }
 .problems_block_top {
@@ -63,14 +77,7 @@
 .slider {
   padding: 0px 0px 120px 120px;
 }
-.calculator {
-  background-color: #d0d0d0;
-  padding: 120px;
-}
-.title_calculator {
-  font-size: 24px;
-  color: black;
-}
+
 .title_car {
   font-size: 20px;
   color: black;
@@ -83,134 +90,13 @@
   width: 50%;
 }
 
-/* CSS */
-.model-select {
-  display: flex;
-  width: 100%;
-  max-width: none; /* при необходимости меняйте ширину */
-  height: 56px; /* высота селекта */
-  background: #e7e7e7; /* фон правой части */
-  overflow: hidden;
-  font-family: sans-serif;
-}
 
-.model-select__label {
-  flex: 0 0 200px; /* фиксированная ширина лейбла */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #bababa; /* фон левой части */
-  color: #000;
-  font-size: 24px;
-  text-transform: uppercase;
-  font-family: Russo One, sans-serif;
-}
-
-.model-select__control {
-  position: relative;
-  flex: 1;
-}
-
-.model-select__dropdown {
-  width: 100%;
-  height: 100%;
-  padding: 0 48px 0 24px; /* отступ слева для текста и справа под стрелку */
-  border: none;
-  background: transparent;
-  font-size: 16px;
-  color: #6e6e6e;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-}
-
-.model-select__dropdown:focus {
-  outline: none;
-}
-
-.model-select__icon {
-  position: absolute;
-  top: 50%;
-  right: 16px; /* позиция стрелки */
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: #000;
-}
-/* CSS */
-.mileage-input {
-  display: flex;
-  width: 100%;
-  max-width: none; /* при необходимости можно изменить */
-  height: 56px; /* та же высота, что и у селекта */
-  font-family: sans-serif;
-}
-
-.mileage-input__label {
-  flex: 0 0 200px; /* фиксированная ширина лейбла */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #bababa; /* фон левой секции */
-  color: #000;
-  font-size: 24px;
-  text-transform: uppercase;
-  font-family: Russo One, sans-serif;
-}
-
-.mileage-input__control {
-  position: relative;
-  flex: 1;
-  background: #e6e6e6; /* фон правой секции */
-}
-
-.mileage-input__field {
-  width: 100%;
-  height: 100%;
-  padding: 0 48px 0 24px; /* отступ слева для текста и справа под единицу измерения */
-  border: none;
-  background: transparent;
-  font-size: 16px;
-  color: #6e6e6e;
-  /* отключаем спиннеры в number-поле, если оно вдруг станет type="number" */
-  -moz-appearance: textfield;
-  appearance: none;
-  cursor: text;
-}
-
-.mileage-input__field:focus {
-  outline: none;
-}
-
-.mileage-input__unit {
-  position: absolute;
-  top: 50%;
-  right: 16px; /* подгоните под ваши отступы */
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: #6e6e6e;
-  pointer-events: none;
-}
-.inputs {
-  display: flex;
-  gap: 30px;
-  flex-direction: column;
-  flex: 1 1 0;
-  min-width: 0;
-}
-.container_model_distance {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 @media (max-width: 1170px) {
   .startscreen_title {
     width: 70%;
   }
-  .calculator {
-    display: none;
-  }
 }
+
 @media (max-width: 480px) {
   .title_problem {
     padding: 120px 15px 0px 15px;
