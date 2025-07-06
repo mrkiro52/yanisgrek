@@ -4,26 +4,42 @@ import Contacts from "../contacts/page";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 
-const images: string[] = [
-  "/images/alexandr_director.jpg",
-  "/images/alexandr_master.jpg",
-  "/images/maksim_master.jpg",
-  "/images/vitaly.jpg",
-  "/images/murad.jpg",
-  "/images/dmitry.jpg",
+// const images: string[] = [
+//   "/images/alexandr_director.jpg",
+//   "/images/alexandr_master.jpg",
+//   "/images/maksim_master.jpg",
+//   "/images/vitaly.jpg",
+//   "/images/murad.jpg",
+//   "/images/dmitry.jpg",
+// ];
+const images = [
+  { src: "/images/alexandr_director.jpg", caption: "Александр — директор" },
+  { src: "/images/alexandr_master.jpg", caption: "Александр — мастер" },
+  { src: "/images/maksim_master.jpg", caption: "Максим — мастер" },
+  { src: "/images/vitaly.jpg", caption: "Виталий — специалист" },
+  { src: "/images/murad.jpg", caption: "Мурад — механик" },
+  { src: "/images/dmitry.jpg", caption: "Дмитрий — инженер" },
 ];
+// const projectImages = [
+//   "/images/car_slide_1.jpg",
+//   "/images/car_slide_1.jpg",
+//   "/images/car_slide_1.jpg",
+//   "/images/car_slide_1.jpg",
+//   "/images/car_slide_1.jpg",
+// ];
 const projectImages = [
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
+  { src: "/images/car_slide_1.jpg" },
+  { src: "/images/car_slide_2.jpg" },
+  { src: "/images/car_slide_3.jpg" },
+  { src: "/images/car_slide_4.jpg" },
+  { src: "/images/car_slide_5.jpg" },
+  { src: "/images/car_slide_6.jpg" },
 ];
 
 export default function AboutPage() {
   return (
     <div className="About">
-      <Header/>
+      <Header />
       <div className="Startscreen">
         <div className="startscreen_text">
           <h1 className="about_title">О НАС</h1>
@@ -33,7 +49,14 @@ export default function AboutPage() {
               8 лет вместе: история сервиса, который понимает
             </p>
           </div>
-          <div className="slider">
+          <div className="slider_hover">
+            {/* <EmblaCarousel
+              slides={projectImages}
+              options={{
+                loop: true,
+                align: "start",
+              }}
+            /> */}
             <EmblaCarousel
               slides={projectImages}
               options={{
@@ -200,7 +223,7 @@ export default function AboutPage() {
           frameBorder="0"
         ></iframe>
       </div>
-      <Contacts/>
+      <Contacts />
     </div>
   );
 }

@@ -10,8 +10,18 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./embla.module.scss";
 
+// type EmblaCarouselProps = {
+//   slides: string[];
+//   options?: EmblaOptionsType;
+// };
+
+type Slide = {
+  src: string;
+  caption?: string;
+};
+
 type EmblaCarouselProps = {
-  slides: string[];
+  slides: Slide[];
   options?: EmblaOptionsType;
 };
 
@@ -33,7 +43,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
     <section className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-          {slides.map((src, idx) => (
+          {/* {slides.map((src, idx) => (
             <div className={styles.embla__slide} key={idx}>
               <img
                 className={styles.embla__slide__number}
@@ -41,6 +51,19 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
                 alt={`slide-${idx}`}
                 style={{ width: "auto", display: "block" }}
               />
+            </div>
+          ))} */}
+          {slides.map((slide, idx) => (
+            <div className={styles.embla__slide} key={idx}>
+              <img
+                className={styles.embla__slide__number}
+                src={slide.src}
+                alt={`slide-${idx}`}
+                style={{ width: "auto", display: "block" }}
+              />
+              {slide.caption && (
+                <p className={styles.embla__caption}>{slide.caption}</p>
+              )}
             </div>
           ))}
         </div>
