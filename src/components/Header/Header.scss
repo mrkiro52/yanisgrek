@@ -58,9 +58,13 @@
           min-width: 300px;
           gap: 16px;
           & > a.linkSmall {
+            transition: all 0.2s;
             font-weight: 500;
             font-size: 16px;
             color: rgba(255, 255, 255, 1);
+            &:hover {
+              opacity: 0.5;
+            }
           }
           & > a.linkTitle {
             font-weight: 400;

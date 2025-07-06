@@ -75,7 +75,7 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 120px 120px 30px 120px;
+  padding: 80px 120px 30px 120px;
   width: auto;
   gap: 16px;
 }
@@ -89,19 +89,31 @@
   box-sizing: border-box;
 
   & > .service {
-    position: relative; // нужно для псевдоэлемента
+    position: relative;
     min-width: 380px;
     flex: 1 1 380px;
     height: 200px;
-    background-color: rgb(45, 45, 45);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     padding: 24px;
     cursor: pointer;
-    overflow: hidden; // прячем вылезающий before
-
+    overflow: hidden;
+  
+    // 🔧 постоянное затемнение (чёрный слой под текстом)
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6); // 50% затемнение
+      z-index: 0;
+    }
+  
+    // 🔥 hover overlay (белый)
     &::before {
       content: '';
       position: absolute;
@@ -109,23 +121,24 @@
       left: 0;
       width: 0%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.4); // белый overlay с 50% прозрачностью
+      background: rgba(255, 255, 255, 0.4);
       transition: width 0.3s ease;
-      z-index: 0;
+      z-index: 1;
     }
-
+  
     &:hover::before {
       width: 100%;
     }
-
+  
     & > span {
-      position: relative; // поверх before
-      z-index: 1;
+      position: relative;
+      z-index: 2; // поверх обоих слоёв
       font-size: 24px;
       color: white;
       text-align: center;
     }
   }
+  
 }
 
 
@@ -136,11 +149,17 @@
   color: black;
   padding-top: 120px;
   text-transform: uppercase;
+  &.white {
+    color: white!important;
+  }
 }
 .hero_title_small {
   font-size: 24px;
   color: black;
   text-transform: uppercase;
+  &.white {
+    color: white!important;
+  }
 }
 .block_about_services {
   background-color: #d0d0d0;

@@ -6,7 +6,9 @@ import Header from "@/components/Header/Header";
 import servicesData from '@/data/servicesPage/data.json'; // путь под себя
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-
+import BtnGoCalc from '../../components/BtnGoCalc/BtnGoCalc';
+import BtnGoForm from '../../components/BtnGoForm/BtnGoForm';
+ 
 export default function ServicesPage() {
   const router = useRouter();
 
@@ -37,11 +39,18 @@ export default function ServicesPage() {
       <div className="Startscreen">
         <h2 className="title">Услуги</h2>
         <div className="buttons">
-          <button className="calculate_cost">Рассчитать стоимость</button>
-          <button className="send_request" onClick={scrollToForm}>Оставить заявку</button>
+          <BtnGoCalc/>
+          <BtnGoForm/>
         </div>
       </div>
-      <div className="buttons_container">
+      <h1 className="hero_title white">
+          Расчёты стоимости{" "}
+          <span className="hero_title_small white">
+            услуги<br />
+          </span>{" "}
+          находятся<span className="hero_title_small white"> — на</span> странице услуги
+        </h1>
+      <div className="buttons_container" id="Calculator">
         {categoryKeys.map((key, index) => (
           <button
             key={key}
@@ -58,11 +67,21 @@ export default function ServicesPage() {
         ))}
       </div>
       <div className="services_container">
-        {servicesOfActiveCategory.map(service => (
-          <div key={service.slug} className="service" onClick={() => router.push(`/services/${service.slug}`)}>
-            <span>{service.name}</span>
-          </div>
-        ))}
+      {servicesOfActiveCategory.map(service => (
+        <div
+          key={service.slug}
+          className="service"
+          onClick={() => router.push(`/services/${service.slug}`)}
+          style={{
+            backgroundImage: `url(/images/servicesImages/${service.slug}.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <span>{service.name}</span>
+        </div>
+      ))}
       </div>
       <div className="block_about_services">
         <h1 className="hero_title">

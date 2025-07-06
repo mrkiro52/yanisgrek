@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import { forwardRef } from 'react';
 
 const Contacts = forwardRef((props, ref) => (
-  <div className="Contacts" ref={ref}>
+  <div className="Contacts" ref={ref} id="Form">
     <Header/>
     <img src="/images/contacts_green_car.jpg" alt="bg" className="bg-image" />
     <div className="right-blur-overlay"></div>

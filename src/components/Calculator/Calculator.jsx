@@ -2,7 +2,6 @@
 
 import './Calculator.scss';
 import { useEffect, useMemo, useState } from 'react';
-import { useRef } from 'react';
 import Link from 'next/link';
 
 export default function Calculator({data, services}) {
@@ -72,7 +71,7 @@ export default function Calculator({data, services}) {
     };
 
     return (
-        <div className="Calculator">
+        <div className="Calculator" id="Calculator">
             <div className="choose_model">
                 <div className="title_row">
                     <h2>Рассчитайте стоимость <span>ТО</span>, не выходя из дома</h2>
@@ -88,7 +87,6 @@ export default function Calculator({data, services}) {
                             onClick={() => {
                                 setModelId(m.id);
                                 setSubId(null);
-                                setSeriesId(''); // сохраняем существующий вызов, чтобы не ломать логику сверху
                                 setSeriesName('');
                             }}
                         >

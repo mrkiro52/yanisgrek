@@ -8,14 +8,24 @@ import path from 'path'
 import Calculator from '../../../components/Calculator/Calculator';
 
 
-const problemsImages = [
-  "/images/problems_slide1.jpg",
-  "/images/problems_slide1.jpg",
-  "/images/problems_slide1.jpg",
-  "/images/problems_slide1.jpg",
-  "/images/problems_slide1.jpg",
-  "/images/problems_slide1.jpg",
-];
+
+// рандомные 6 уникальных картинок из car_slide_1-16
+const problemsImages = (() => {
+  // создаём массив всех 16 путей
+  const all = Array.from({ length: 16 }, (_, i) =>
+    `/images/car_slides/car_slide_${i + 1}.jpg`
+  );
+
+  // перемешиваем Фишером–Йетсом
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+
+  // берём первые 6
+  return all.slice(0, 6);
+})();
+
 
 export default async function Car({ params }) {
 

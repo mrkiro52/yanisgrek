@@ -105,6 +105,7 @@
                         color: white;
                         font-size: 24px;
                         text-transform: uppercase;
+                        line-height: 103%;
                     }
                     & > p {
                         font-size: 20px;
@@ -163,6 +164,12 @@
                         text-wrap: nowrap;
                         color: black;
                         font-size: 20;
+                        & > a {
+                            transition: all 0.2s;
+                            &:hover {
+                                color: #2b6eff;
+                            }
+                        }
                     }
                 }
             }
@@ -226,67 +233,112 @@
                     font-family: Helvetica;
                     line-height: 130%;
                     width: 488px;
+                    & > a {
+                        color: #ffffff;
+                        opacity: 1;
+                        font-weight: 700;
+                        transition: all 0.2s;
+                        background-color: #2b6eff;
+                        padding: 2px 6px;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
                 }
             }
             & > .rows {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
+              
                 & > .row {
-                    display: flex;
-                    padding: 0px 60px;
-                    height: 192px;
-                    justify-content: space-between;
-                    align-items: center;
-                    & > span.num {
-                        font-family: 'Russo One';
-                        font-size: 24px;
-                        text-transform: uppercase;
-                        color: #707070;
-                        width: 30px;
-                        flex-shrink: 0;
-                        flex-grow: 0;
-                    }
-                    & > span.name {
-                        font-size: 24px;
-                        color: white;
-                        font-family: 'Russo One';
-                        text-transform: uppercase;
-                        text-align: start;
-                        width: 320px;
-                        line-height: 103%;
-                    }
-                    & > p {
-                        width: 430px;
-                        font-size: 16;
-                        color: white;
-                        font-family: Helvetica;
-                    }
-                    & > img {
-                        flex-shrink: 0;
-                        flex-grow: 0;
-                        cursor: pointer;
-                    }
+                  position: relative; // нужно для ::before
+                  overflow: hidden;
+              
+                  display: flex;
+                  padding: 0px 60px;
+                  height: 192px;
+                  justify-content: space-between;
+                  align-items: center;
+                  transition: all 0.3s;
+              
+                  // 🧩 overlay
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 0%;
+                    background: rgba(255, 255, 255, 0.2);
+                    transition: width 0.3s ease;
+                    z-index: 0;
+                  }
+              
+                  // 🧩 анимация при наведении
+                  &:hover::before {
+                    width: 100%;
+                  }
+              
+                  // 🧩 текст и всё остальное поверх оверлея
+                  & > * {
+                    position: relative;
+                    z-index: 1;
+                  }
+              
+                  & > span.num {
+                    font-family: 'Russo One';
+                    font-size: 24px;
+                    text-transform: uppercase;
+                    color: #707070;
+                    width: 30px;
+                    flex-shrink: 0;
+                  }
+              
+                  & > span.name {
+                    font-size: 24px;
+                    color: white;
+                    font-family: 'Russo One';
+                    text-transform: uppercase;
+                    text-align: start;
+                    width: 320px;
+                    line-height: 103%;
+                  }
+              
+                  & > p {
+                    width: 430px;
+                    font-size: 16px;
+                    color: white;
+                    font-family: Helvetica;
+                  }
+              
+                  & > img {
+                    flex-shrink: 0;
+                    cursor: pointer;
+                  }
                 }
+              
                 & > .row1 {
-                    background-image: url(../../public/images/serviceBG1.png);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
+                  background-image: url(../../public/images/serviceBG1.png);
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
                 }
+              
                 & > .row2 {
-                    background-image: url(../../public/images/serviceBG2.png);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
+                  background-image: url(../../public/images/serviceBG2.png);
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
                 }
+              
                 & > .row3 {
-                    background-image: url(../../public/images/serviceBG3.png);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
+                  background-image: url(../../public/images/serviceBG3.png);
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
                 }
-            }
+              }              
         }
     }
 }

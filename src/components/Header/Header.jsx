@@ -61,6 +61,9 @@ export default function Header() {
                             <Link className='linkSmall' href="/services/zamena-salonnogo-filtra">
                                 Замена салонного фильтра
                             </Link>
+                            <Link className='linkSmall' href="/services">
+                                Все услуги автосервиса YanisGrek...
+                            </Link>
                         </div>
                     </div>
                     <div className="buttons">
