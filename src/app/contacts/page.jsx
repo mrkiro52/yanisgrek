@@ -89,6 +89,7 @@ const Contacts = forwardRef((props, ref) => (
         <div className="contacts-info-block">
           <h2 className="title-contacts-info">Телефоны:</h2>
           <p>+7 (495) 76-76-500</p>
+          <p>Запишитесь по телефону</p>
         </div>
       </div>
     </div>

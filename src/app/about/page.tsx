@@ -4,20 +4,23 @@ import Contacts from "../contacts/page";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 
-const images: string[] = [
-  "/images/alexandr_director.jpg",
-  "/images/alexandr_master.jpg",
-  "/images/maksim_master.jpg",
-  "/images/vitaly.jpg",
-  "/images/murad.jpg",
-  "/images/dmitry.jpg",
+
+const problemsImages = [
+  { src: "/images/car_slides/car_slide_7.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_8.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_9.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_10.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_11.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_12.jpg", caption: "" },
 ];
-const projectImages = [
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
-  "/images/car_slide_1.jpg",
+
+const images = [
+  { src: "/images/alexandr_director.jpg", caption: "Александр — директор" },
+  { src: "/images/alexandr_master.jpg", caption: "Александр — мастер" },
+  { src: "/images/maksim_master.jpg", caption: "Максим — мастер" },
+  { src: "/images/vitaly.jpg", caption: "Виталий — специалист" },
+  { src: "/images/murad.jpg", caption: "Мурад — механик" },
+  { src: "/images/dmitry.jpg", caption: "Дмитрий — инженер" },
 ];
 
 export default function AboutPage() {
@@ -35,7 +38,7 @@ export default function AboutPage() {
           </div>
           <div className="slider">
             <EmblaCarousel
-              slides={projectImages}
+              slides={problemsImages}
               options={{
                 loop: true,
                 align: "start",
@@ -70,19 +73,19 @@ export default function AboutPage() {
       </div>
       <div className="block_assets_about">
         <div className="asset">
-          <img src="/images/photo1.jpg" alt="" />
+          <img src="/images/preim3.jpg" alt="" />
           <p>8 лет стабильной работы одной и той же командой.</p>
         </div>
         <div className="asset">
-          <img src="/images/photo1.jpg" alt="" />
+          <img src="/images/preim1.jpg" alt="" />
           <p>Честная диагностика, прозрачные цены, никаких скрытых услуг.</p>
         </div>
         <div className="asset">
-          <img src="/images/photo1.jpg" alt="" />
+          <img src="/images/preim2.jpg" alt="" />
           <p>Всегда на связи, всегда готовы объяснить и пойти навстречу.</p>
         </div>
         <div className="asset">
-          <img src="/images/photo1.jpg" alt="" />
+          <img src="/images/preim4.jpg" alt="" />
           <p>Уважение к каждому клиенту, даже в форс-мажорных ситуациях.</p>
         </div>
       </div>
@@ -93,9 +96,7 @@ export default function AboutPage() {
             <br /> а отношения с клиентом
           </h1>
           <p className="subtitle_block2">
-            Мы не просто ремонтируем автомобили — мы строим долгосрочные
-            отношения с клиентами. Да, мы не идеальны. Но мы открыты к обратной
-            связи, умеем признавать ошибки и всегда стремимся их исправить.
+          Мы не просто ремонтируем автомобили — мы строим долгосрочные отношения с каждым клиентом. Нам важна обратная связь, ведь именно она помогает нам становиться лучше и развивать сервис, которому действительно доверяют.
           </p>
         </div>
       </div>
@@ -148,46 +149,6 @@ export default function AboutPage() {
             }}
           />
         </div>
-        {/* <div className="team_container">
-          <div className="team_arrows">
-            <img src="/images/team_arrow_left.svg" alt="" />
-            <img src="/images/team_arrow_right.svg" alt="" />
-          </div>
-          <div className="team_slider">
-            <div className="team_track">
-              <div className="team_slide">
-                <img src="/images/alexandr_director.jpg" alt="" />
-                <p className="team_name">Александр</p>
-                <p className="team_position">Директор</p>
-              </div>
-              <div className="team_slide">
-                <img src="/images/alexandr_master.jpg" alt="" />
-                <p className="team_name">Александр</p>
-                <p className="team_position">Мастер-приемщик</p>
-              </div>
-              <div className="team_slide">
-                <img src="/images/maksim_master.jpg" alt="" />
-                <p className="team_name">Максим</p>
-                <p className="team_position">Мастер-приемщик</p>
-              </div>
-              <div className="team_slide">
-                <img src="/images/maksim_master.jpg" alt="" />
-                <p className="team_name">Максим</p>
-                <p className="team_position">Мастер-приемщик</p>
-              </div>
-              <div className="team_slide">
-                <img src="/images/maksim_master.jpg" alt="" />
-                <p className="team_name">Максим</p>
-                <p className="team_position">Мастер-приемщик</p>
-              </div>
-              <div className="team_slide">
-                <img src="/images/maksim_master.jpg" alt="" />
-                <p className="team_name">Максим</p>
-                <p className="team_position">Мастер-приемщик</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
       <div
         style={{ filter: "invert(0.9) hue-rotate(180deg)" }}
