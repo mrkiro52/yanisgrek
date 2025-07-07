@@ -67,8 +67,7 @@ export default function Header() {
                         </div>
                     </div>
                     <div className="buttons">
-                        <Link href="/" className='calcButton'>Рассчитать стоимость</Link>
-                        <Link href="/" className='formButton'>Оставить заявку</Link>
+                        <Link href="/contacts" className='calcButton'>Оставить заявку</Link>
                     </div>
                     <img src="/logo.svg" alt="logo" className='logo'/>
                 </div>

@@ -347,6 +347,10 @@
   .asset {
     gap: 15px;
     width: auto;
+    & > p {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
   }
   .title_block2 {
     font-size: 20px;

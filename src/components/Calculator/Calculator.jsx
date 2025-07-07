@@ -244,6 +244,36 @@ export default function Calculator({ data, services }) {
           </div>
         </div>
       </div>
+      <div className="calculator_table__mobile">
+        {filteredServices.map((s, index) => {
+          const total = Number(s.part_price) + Number(s.labor_price);
+          return (
+            <div className="card" key={index} onClick={() => toggleRow(index)}>
+              <div className="top">
+                <div
+                  className={`sq ${selectedRows[index] ? "selected" : ""}`}
+                ></div>
+                <span className="title">{s.name}</span>
+                <span className="price">{total}</span>
+              </div>
+              <div className="bottom">
+                <div className="left">
+                  <span className="title">Стоимость запчастей</span>
+                  <span className="price">{Number(s.part_price).toLocaleString()}</span>
+                </div>
+                <div className="right">
+                  <span className="title">Стоимость работы</span>
+                  <span className="price">{Number(s.labor_price).toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+        <div className="totalRow">
+          <div className="textBlock">итоговая стоимость</div>
+          <div className="sumBlock">{totalSum.toLocaleString()}</div>
+        </div>
+      </div>
     </div>
   );
 }

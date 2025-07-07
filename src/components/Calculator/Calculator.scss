@@ -27,7 +27,6 @@
                 }
             }
             & > a, span {
-                opacity: 0.5;
                 font-size: 24px;
                 font-family: 'Russo One';
                 text-transform: uppercase;
@@ -41,6 +40,9 @@
                         opacity: 1;
                     }
                 }
+            }
+            & > a {
+                opacity: 0.5;
             }
         }
         & > .buttons {
@@ -291,6 +293,7 @@
                 }
                 & > span {
                     font-size: 20px;
+                    line-height: 103%;
                     color: black;
                 }
             }
@@ -330,6 +333,192 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                }
+            }
+        }
+    }
+    & > .calculator_table__mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .Calculator {
+        padding: 24px;
+        & > .choose_model {
+            width: 100%;
+            & > .title_row {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            & > .buttons {
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+        & > .choose_car_block {
+            margin-bottom: 32px;
+        }
+        & > .choose_special_model {
+            width: 100%;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+            & > .model-select {
+                width: 100%;
+                & > .model-select__label {
+                    width: 40%;
+                }
+                & > .model-select__control {
+                    flex: 1;
+                }
+            }
+            & > .mileage-input {
+                width: 100%;
+                & > .mileage-input__label {
+                    width: 40%;
+                }
+                & > .mileage-input__control {
+                    flex: 1;
+                }
+            }
+            & > .buttons {
+                width: 100%;
+                & > button {
+                    flex: 1;
+                }
+            }
+        }
+        & > .calculator_table {
+            display: none;
+        }
+        & > .calculator_table__mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            & > .card {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                padding: 24px;
+                background-color: rgba(255, 255, 255, 1);
+                border: 1px solid rgba(154, 154, 154, 1);
+                & > .top {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 16px;
+                    & > .sq {
+                        width: 20px;
+                        height: 20px;
+                        min-width: 20px;
+                        height: 20px;
+                        border: 1px solid rgba(186, 186, 186, 1);
+                        background-color: transparent;
+                        cursor: pointer;
+                        transition: all 0.1s;
+                        &.selected {
+                            background-color: #2B6EFF;
+                            border: 1px solid transparent;
+                        }
+                    }
+                    & > .title {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: rgba(0, 0, 0, 1);
+                        font-family: 'Helvetica';
+                        flex: 1;
+                        line-height: 103%;
+                    }
+                    & > .price {
+                        font-size: 20px;
+                        font-weight: 700;
+                        font-family: 'Russo One';
+                        color: black;
+                    }
+                }
+                & > .bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    & > .left {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 2px;
+                        & > .title {
+                            font-weight: 400;
+                            color: rgba(138, 138, 138, 1);
+                            font-size: 14px;
+                            margin: 0;
+                            font-family: 'Helvetica';
+                        }
+                        & > .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            color: black;
+                            margin: 0;
+                        }
+                    }
+                    & > .right {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 2px;
+                        & > .title {
+                            font-weight: 400;
+                            color: rgba(138, 138, 138, 1);
+                            font-size: 14px;
+                            margin: 0;
+                            font-family: 'Helvetica';
+                        }
+                        & > .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            color: black;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            & > .totalRow {
+                display: flex;
+                flex-direction: row;
+                height: 48px;
+                & > .textBlock {
+                    height: 48px;
+                    background-color: rgba(43, 110, 255, 1);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: 700;
+                    font-family: 'Russo One';
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    flex: 1;
+                }
+                & > .sumBlock {
+                    padding: 0px 32px;
+                    height: 48px;
+                    background-color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    color: black;
+                    font-size: 20px;
+                    font-weight: 700;
+                    font-family: 'Russo One';
+                    font-weight: 700;
+                    text-transform: uppercase;
                 }
             }
         }

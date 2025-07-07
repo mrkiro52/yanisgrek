@@ -36,7 +36,7 @@ export default function AboutPage() {
               8 лет вместе: история сервиса, который понимает
             </p>
           </div>
-          <div className="slider">
+          <div className="slider_hover">
             <EmblaCarousel
               slides={problemsImages}
               options={{
