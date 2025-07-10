@@ -6,12 +6,12 @@ import EmblaCarousel from "@/components/embla/EmblaCarousel";
 
 
 const problemsImages = [
-  { src: "/images/car_slides/car_slide_7.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_8.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_9.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_10.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_11.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_12.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_17.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_18.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_19.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_20.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_21.jpg", caption: "" },
+  { src: "/images/car_slides/car_slide_22.jpg", caption: "" },
 ];
 
 const images = [
