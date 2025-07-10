@@ -4,7 +4,7 @@
     & > .startscreen {
       height: 100vh;
       position: relative;
-      background-image: url("/images/mainBG.png");
+      position: relative;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -14,12 +14,23 @@
       justify-content: flex-end;
       gap: 32px;
       padding-bottom: 100px;
+      overflow: hidden;
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("/images/mainBG.png") center/contain no-repeat;
+        opacity: 0;
+        animation: bgFade 5s ease forwards;
+        z-index: -1;
+      }    
       & > .firstRow {
         display: flex;
         flex-direction: column;
         gap: 16px;
         align-items: flex-start;
         width: 1200px;
+        animation: showMainButtons 2s ease forwards;
         & > .buttons {
           display: flex;
           justify-content: center;
@@ -60,6 +71,7 @@
         display: flex;
         width: 1200px;
         justify-content: flex-end;
+        animation: showMainText 2s ease forwards;
         & > p {
           max-width: 534px;
           text-align: right;
@@ -1214,3 +1226,34 @@
     }
   }
   
+  @keyframes showMainButtons {
+    0% {
+      transform: translateX(-300px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0px);
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes showMainText {
+    0% {
+      transform: translateX(300px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0px);
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bgFade {
+    to { opacity: 1; }
+  }

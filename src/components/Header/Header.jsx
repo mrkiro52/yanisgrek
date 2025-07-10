@@ -80,11 +80,7 @@ export default function Header() {
                     alt="burger"
                 />
                 <img src="/logo.svg" className="logo" alt="logo" />
-                <img
-                    src="/burger.svg"
-                    style={{ opacity: 0, userSelect: 'none' }}
-                    alt="burger"
-                />
+                <a href="https://wa.me/79852707575" target="_blank">+7 495 76-76-500</a>
             </div>
         </div>
     );

@@ -3,6 +3,8 @@ import Header from "../../../components/Header/Header";
 import fs from "fs";
 import path from "path";
 import Contacts from "../../contacts/page";
+import ButtonGoForm from '../../../components/BtnGoForm/BtnGoForm';
+import ImageBlock from './ImageBlock';
 
 export default function Service({ params }) {
 
@@ -10,7 +12,7 @@ export default function Service({ params }) {
     process.cwd(),
     "src",
     "data",
-    "services",
+    "services", 
     `${params.slug}.json`
   );
   const raw = fs.readFileSync(filePath, "utf-8");
@@ -19,52 +21,37 @@ export default function Service({ params }) {
   return (
     <div className="Service">
       <Header />
-      <div className="Startscreen">
-        <h2 className="title_startscreen">
-          {serviceData.title}
-          <span className="title_small"> BMW</span>
-        </h2>
-
-        <div className="images-wrapper">
-          {/* небольшой «лево-верх» кадр */}
-          <img
-            src="/images/oil-pour.jpg"
-            alt=""
-            className="images-wrapper__img images-wrapper__img--small"
-          />
-
-          {/* большой «право-низ» кадр */}
-          <img
-            src="/images/mechanic.jpg"
-            alt=""
-            className="images-wrapper__img images-wrapper__img--large"
-          />
-
-          {/* подзаголовок справа от фото */}
-          <div className="images-wrapper__subtitle">
-            <p className="subtitle-top">{serviceData.subtitle}</p>
+      <div className="Startscreen"> 
+        <div className="content">
+          <div className="left">
+            <div className="info">
+              <h1>{serviceData.title}</h1>
+              <p>{serviceData.subtitle}</p>
+            </div>
+            <ButtonGoForm/>
           </div>
-          <div className="images-wrapper__subtitle_mobile">
-            <p className="subtitle_mobile">
-              {serviceData.subtitle}
-            </p>
+          <div className="right">
+            <ImageBlock/>
           </div>
         </div>
       </div>
       <div className="calculator">
-        <h1 className="title_calculator">Здесь будет калькулятор</h1>
+        <div className="content">
+          <h2>Стоимость услуги {serviceData.title}</h2>
+          <h3>от {serviceData.price} рублей</h3>
+          <ButtonGoForm/>
+        </div>
       </div>
       <div className="block_about_from_founder">
         <h1 className="hero_title">
-          Сервис <span className="hero_title_small">без</span> понтов. <br />{" "}
-          Просто по-человечески
+          Работа без излишнего пафоса, исключительно человеческий подход.
         </h1>
         <div>
           <div className="row_1_description_photo">
             <p className="description_about_block_founder">
               {serviceData.text1}
             </p>
-            <img src="/images/photo_office.jpg" alt="" />
+            <img src="/images/photo_office.jpg" alt="office" />
           </div>
           <div className="row_2_description_photo">
             <img

@@ -87,6 +87,19 @@ input {
     max-width: 500px;
   }
 }
+
+.yandex_map {
+  width: 100%;
+  height: 400px;
+  background-color: #d0d0d0;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @media screen and (max-width: 500px) {
   .ContactFormSection {
     margin: 80px auto;

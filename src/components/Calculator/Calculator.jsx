@@ -7,7 +7,9 @@ import Link from "next/link";
 
 export default function Calculator({ data, services }) {
   /* -------- выбор машины -------- */
-  const [modelId, setModelId] = useState(data[0]?.id ?? null);
+  const [modelId, setModelId] = useState(
+    data?.length ? data[data.length - 1].id : null
+  );
   const [subId, setSubId] = useState(null);
   const [seriesName, setSeriesName] = useState(""); // имя серии
   const [mileage, setMileage] = useState(0);
@@ -25,15 +27,18 @@ export default function Calculator({ data, services }) {
   /* -------- фильтрация услуг -------- */
   const filteredServices = useMemo(() => {
     if (!seriesName || !mileage) return [];
-
+  
     const apiPartType =
       partType.toLowerCase() === "оригинал" ? "original" : "analog";
-
+  
+    const mileageNum = Number(mileage);
+    const targetMileage = mileageNum < 60000 ? 10 : 60;
+  
     return services
       .filter(
         (s) =>
           s.car_series.name === seriesName &&
-          s.mileage <= Number(mileage) &&
+          s.mileage === targetMileage &&
           s.part_type === apiPartType
       )
       .map((s) => ({
@@ -42,6 +47,7 @@ export default function Calculator({ data, services }) {
         labor_price: s.labor_price,
       }));
   }, [seriesName, mileage, partType, services]);
+  
 
   /* -------- всегда выбираем все строки при изменении списка услуг -------- */
   useEffect(() => {
