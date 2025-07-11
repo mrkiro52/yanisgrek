@@ -1,0 +1,526 @@
+.Calculator {
+    background-color: rgba(208, 208, 208, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    & > .choose_model {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 1200px;
+        border-bottom: 1px solid white;
+        padding-bottom: 12px;
+        & > .title_row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            & > h2 {
+                color: #262626;
+                font-size: 24px;
+                font-family: 'Russo One';
+                text-transform: uppercase;
+                margin-bottom: 0;
+                & > span {
+                    color: #2B6EFF;
+                }
+            }
+            & > a, span {
+                font-size: 24px;
+                font-family: 'Russo One';
+                text-transform: uppercase;
+                &.red {
+                    color: #BD001F;
+                }
+                &.black {
+                    color: black;
+                    transition: all 0.3s;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+            & > a {
+                opacity: 0.5;
+            }
+        }
+        & > .buttons {
+            display: flex;
+            gap: 10px;
+            & > button {
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Russo One';
+                font-size: 24;
+                color: #262626;
+                padding: 0px 32px;
+                height: 50px;
+                cursor: pointer;
+                transition: all 0.2s;
+                &.selected {
+                    background-color: #2B6EFF;
+                    color: white;
+                }
+            }
+        }
+    }
+    & > .choose_car_block {
+        width: 100%;
+        height: 287px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 80px;
+        padding-left: calc((100% - 1200px)/2);
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        & > .block {
+            cursor: pointer;
+            height: 175px;
+            width: 275px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            flex-grow: 0;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            & > span {
+                font-size: 20px;
+                color: rgba(38, 38, 38, 1);
+            }
+            &.selected {
+                width: 473px;
+                height: 287px;
+            }
+        }
+    }
+    & > .choose_special_model {
+        display: flex;
+        width: 1200px;
+        margin-bottom: 80px;
+        justify-content: space-between;
+        & > .model-select {
+            display: flex;
+            width: 100%;
+            max-width: none; /* при необходимости меняйте ширину */
+            height: 56px; /* высота селекта */
+            background: transparent; /* фон правой части */
+            overflow: hidden;
+            font-family: sans-serif;
+            & > .model-select__label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #bababa; /* фон левой части */
+                color: #000;
+                font-size: 24px;
+                text-transform: uppercase;
+                font-family: Russo One, sans-serif;
+                padding: 0px 20px;
+            }
+            & > .model-select__control {
+                width: 210px;
+                background-color: #e7e7e7;
+                position: relative;
+                & > .model-select__dropdown {
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 48px 0 24px; /* отступ слева для текста и справа под стрелку */
+                    border: none;
+                    background: transparent;
+                    font-size: 16px;
+                    color: #6e6e6e;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    cursor: pointer;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                & > .model-select__icon {
+                    position: absolute;
+                    top: 50%;
+                    right: 16px; /* позиция стрелки */
+                    transform: translateY(-50%);
+                    pointer-events: none;
+                    color: #000;
+                }
+            }
+        }
+        & > .mileage-input {
+            display: flex;
+            width: 100%;
+            max-width: none; /* при необходимости можно изменить */
+            height: 56px; /* та же высота, что и у селекта */
+            font-family: sans-serif;
+            & > .mileage-input__label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #bababa; /* фон левой секции */
+                color: #000;
+                font-size: 24px;
+                text-transform: uppercase;
+                font-family: Russo One, sans-serif;
+                padding: 0px 20px;
+            }
+            & > .mileage-input__control {
+                position: relative;
+                background: #e6e6e6; /* фон правой секции */
+                & > .mileage-input__field {
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 48px 0 24px; /* отступ слева для текста и справа под единицу измерения */
+                    border: none;
+                    background: transparent;
+                    font-size: 16px;
+                    color: #6e6e6e;
+                    /* отключаем спиннеры в number-поле, если оно вдруг станет type="number" */
+                    -moz-appearance: textfield;
+                    appearance: none;
+                    cursor: text;
+                    &:focus {
+                        outline: none;
+                    }
+                    &::placeholder {
+                        color: #6e6e6e70;
+                    }
+                }
+                & > .mileage-input__unit {
+                    position: absolute;
+                    top: 50%;
+                    right: 16px; /* подгоните под ваши отступы */
+                    transform: translateY(-50%);
+                    font-size: 16px;
+                    color: #6e6e6e;
+                    pointer-events: none;
+                }
+            }
+        }
+        & > .buttons {
+            display: flex;
+            gap: 16px;
+            & > button {
+                padding: 0px 32px;
+                height: 56px;
+                background-color: white;
+                color: black;
+                font-family: Russo One, sans-serif;
+                font-size: 24px;
+                cursor: pointer;
+                &.selected {
+                    background-color: #2B6EFF;
+                    color: white;
+                }
+            }
+        }
+    }
+    & > .calculator_table {
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+        & > .calculator_table__row--header {
+            background-color: transparent;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            & > .calculator_table__cell--first {
+                width: 45%;
+                padding: 0px 30px;
+                color: #262626;
+                font-size: 16px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                font-family: Helvetica;
+            }
+            & > .calculator_table__cell {
+                flex: 1;
+                color: #262626;
+                font-size: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+                font-family: Helvetica;
+            }
+        }
+        & > .calculator_table__row {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            & > .calculator_table__cell--first-summ {
+                width: 45%;
+                padding: 0px 30px 0px 0px;
+                background-color: transparent;
+                height: 60px;
+                display: flex;
+                align-items: flex-end;
+                gap: 10px;
+                justify-content: flex-start;
+                & > span {
+                    color: black;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+            & > .calculator_table__cell--first {
+                width: 45%;
+                padding: 0px 30px;
+                background-color: #BABABA;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                & > .sq {
+                    width: 20px;
+                    height: 20px;
+                    min-width: 20px;
+                    height: 20px;
+                    border: 1px solid white;
+                    background-color: transparent;
+                    cursor: pointer;
+                    transition: all 0.1s;
+                    &.selected {
+                        background-color: #2B6EFF;
+                    }
+                }
+                & > span {
+                    font-size: 20px;
+                    line-height: 103%;
+                    color: black;
+                }
+            }
+            & > .calculator_table__cell {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                background-color: white;
+                font-size: 16px;
+                color: black;
+                align-items: center;
+                height: 60px;
+                font-family: Helvetica;
+            }
+            & > .calculator_table__cell--second {
+                width: 55%;
+                display: flex;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                & > .calculator_table__cell--second-left {
+                    height: 60px;
+                    background-color: #2B6EFF;
+                    color: white;
+                    font-size: 24;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                }
+                & > .calculator_table__cell--second-right {
+                    height: 60px;
+                    flex: 1;
+                    background-color: white;
+                    color: black;
+                    font-size: 24;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+    & > .calculator_table__mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .Calculator {
+        padding: 24px;
+        & > .choose_model {
+            width: 100%;
+            & > .title_row {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            & > .buttons {
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+        & > .choose_car_block {
+            margin-bottom: 32px;
+        }
+        & > .choose_special_model {
+            width: 100%;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+            & > .model-select {
+                width: 100%;
+                & > .model-select__label {
+                    width: 40%;
+                }
+                & > .model-select__control {
+                    flex: 1;
+                }
+            }
+            & > .mileage-input {
+                width: 100%;
+                & > .mileage-input__label {
+                    width: 40%;
+                }
+                & > .mileage-input__control {
+                    flex: 1;
+                }
+            }
+            & > .buttons {
+                width: 100%;
+                & > button {
+                    flex: 1;
+                }
+            }
+        }
+        & > .calculator_table {
+            display: none;
+        }
+        & > .calculator_table__mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            & > .card {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                padding: 24px;
+                background-color: rgba(255, 255, 255, 1);
+                border: 1px solid rgba(154, 154, 154, 1);
+                & > .top {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 16px;
+                    & > .sq {
+                        width: 20px;
+                        height: 20px;
+                        min-width: 20px;
+                        height: 20px;
+                        border: 1px solid rgba(186, 186, 186, 1);
+                        background-color: transparent;
+                        cursor: pointer;
+                        transition: all 0.1s;
+                        &.selected {
+                            background-color: #2B6EFF;
+                            border: 1px solid transparent;
+                        }
+                    }
+                    & > .title {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: rgba(0, 0, 0, 1);
+                        font-family: 'Helvetica';
+                        flex: 1;
+                        line-height: 103%;
+                    }
+                    & > .price {
+                        font-size: 20px;
+                        font-weight: 700;
+                        font-family: 'Russo One';
+                        color: black;
+                    }
+                }
+                & > .bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    & > .left {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 2px;
+                        & > .title {
+                            font-weight: 400;
+                            color: rgba(138, 138, 138, 1);
+                            font-size: 14px;
+                            margin: 0;
+                            font-family: 'Helvetica';
+                        }
+                        & > .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            color: black;
+                            margin: 0;
+                        }
+                    }
+                    & > .right {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 2px;
+                        & > .title {
+                            font-weight: 400;
+                            color: rgba(138, 138, 138, 1);
+                            font-size: 14px;
+                            margin: 0;
+                            font-family: 'Helvetica';
+                        }
+                        & > .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            color: black;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            & > .totalRow {
+                display: flex;
+                flex-direction: row;
+                height: 48px;
+                & > .textBlock {
+                    height: 48px;
+                    background-color: rgba(43, 110, 255, 1);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: 700;
+                    font-family: 'Russo One';
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    flex: 1;
+                }
+                & > .sumBlock {
+                    padding: 0px 32px;
+                    height: 48px;
+                    background-color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    color: black;
+                    font-size: 20px;
+                    font-weight: 700;
+                    font-family: 'Russo One';
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

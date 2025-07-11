@@ -1,0 +1,162 @@
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  & > .content {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    & > .burger {
+      cursor: pointer;
+    }
+    & > .logo {
+      cursor: pointer;
+    }
+  }
+  & > .menu {
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1000;
+    width: 100%;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+    &.opened {
+      transform: translateX(0);
+      height: 100vh;
+    }
+    &.closed {
+      transform: translateX(-100%);
+    }
+    & > .content {
+      width: 1200px;
+      padding-top: 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      & > img.cross {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+      }
+      & > .links {
+        display: flex;
+        gap: 64px;
+        & > .linksCol {
+          display: flex;
+          flex-direction: column;
+          min-width: 300px;
+          gap: 16px;
+          & > a.linkSmall {
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 1);
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+          & > a.linkTitle {
+            font-weight: 400;
+            font-size: 24px;
+            color: rgba(192, 192, 192, 1);
+            font-family: "Russo One";
+            transition: all 0.2s;
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+      & > .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        & > a {
+          width: 300px;
+          height: 45px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &.calcButton {
+            border: 1px solid rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 1);
+            color: rgba(0, 0, 0, 1);
+            font-size: 16px;
+            font-weight: 500;
+          }
+          &.formButton {
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+      }
+      & > img.logo {
+        width: 183px;
+        height: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Header {
+    & > .content {
+      width: 100%;
+      padding: 0px 24px;
+    }
+    & > .menu {
+      & > .content {
+        width: 100%;
+        padding: 34px 24px 0px 24px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 664px) {
+  .Header {
+    & > .menu {
+      & > .content {
+        gap: 0px;
+        justify-content: space-between;
+        & > img.logo {
+          margin-bottom: 24px;
+        }
+        & > .links {
+          flex-direction: column;
+          gap: 24px;
+          & > .linksCol {
+            width: 100%;
+            gap: 12px;
+            & > a.linkTitle {
+              font-size: 20px !important;
+            }
+            & > a.linkSmall {
+              font-size: 15px !important;
+            }
+          }
+        }
+        & > .buttons {
+          & > a {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

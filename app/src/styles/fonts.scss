@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Russo One";
+  src: url("/fonts/RussoOne.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url("/fonts/Unbounded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Применим по умолчанию */
+body {
+  font-family: "Russo One", sans-serif;
+}
