@@ -1,45 +1,61 @@
-# Используем официальный образ Node.js
-FROM node:18-alpine AS builder
+ Multi-stage build for Next.js application
+FROM node:18-alpine AS base
 
-# Устанавливаем зависимости
+# Install dependencies only when needed
+FROM base AS deps
 RUN apk add --no-cache libc6-compat git
-
-# Рабочая директория
 WORKDIR /app
 
-# Копируем только package.json сначала
+# Копируем только файлы зависимостей
 COPY package.json package-lock.json ./
+RUN npm install
 
-# Устанавливаем зависимости с правильными правами
-RUN npm install --unsafe-perm
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 
-# Копируем остальные файлы
+# 1. Копируем только package.json для установки TypeScript
+COPY package.json .
+RUN npm install -D typescript @types/node
+# 2. Копируем все остальные файлы
 COPY . .
 
-# Создаем CommonJS конфиг из TypeScript
-RUN echo "module.exports = $(cat next.config.ts | sed 's/export default //')" > next.config.js
+# 3. Явно создаем CommonJS конфиг из TypeScript
+RUN echo "const nextConfig = $(cat next.config.ts | grep -v 'import' | sed 's/e>
+    echo "module.exports = nextConfig;" >> next.config.js
 
-# Сборка приложения
+# 4. Устанавливаем остальные devDependencies
+RUN npm install -D tailwindcss postcss autoprefixer @tailwindcss/postcss
+
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV production
+
+RUN npm run build
+
+# Production image
+FROM base AS runner
+WORKDIR /app
+
 ENV NODE_ENV production
 RUN npm run build
 
-# Финальный образ
-FROM node:18-alpine
+# Production image
+FROM base AS runner
 WORKDIR /app
 
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S -u 1001 nextjs && \
-    mkdir -p /app/.next/cache && \
-    chown -R nextjs:nodejs /app
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 USER nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
 EXPOSE 3000
 ENV PORT 3000
 CMD ["node", "server.js"]
+
