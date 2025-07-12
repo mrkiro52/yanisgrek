@@ -60,7 +60,7 @@ export default async function Car({ params }) {
   const model = params.model;
 
   const filePath = path.join(
-    process.cwd(),      // корень проекта
+    process.cwd(),
     'src',
     'data',
     'cars',
