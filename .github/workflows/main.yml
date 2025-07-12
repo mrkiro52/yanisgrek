@@ -25,6 +25,6 @@ jobs:
           git -C ./app pull --force origin main
 
           # Перезапускаем контейнеры
-          docker compose down
+          docker compose down -v
           docker compose up -d --build
           EOF
