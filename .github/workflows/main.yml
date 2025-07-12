@@ -20,11 +20,21 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ./yanisgrek-main
-
-          # Обновляем только папку app (остальные файлы игнорируем)
-          git -C ./app pull --force origin main
-
-          # Перезапускаем контейнеры
+          
+          # Очистка предыдущих сборок
           docker compose down -v
-          docker compose up -d --build
+          docker builder prune -af
+          docker system prune -af
+          
+          # Полная пересборка с очисткой кэша
+          git pull origin main
+          docker compose build --no-cache
+          
+          # Запуск с новой стратегией
+          docker compose run --rm app sh -c "\
+            npm install -D typescript @types/node && \
+            sed 's/export default/module.exports =/' app/next.config.ts > app/next.config.js && \
+            npm run build"
+            
+          docker compose up -d
           EOF
