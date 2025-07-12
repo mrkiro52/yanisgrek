@@ -21,19 +21,21 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ./yanisgrek-main
           
-          # Очистка предыдущих сборок
+          # Полная очистка
           docker compose down -v
           docker builder prune -af
           docker system prune -af
           
-          # Полная пересборка с очисткой кэша
+          # Обновление кода
+          git reset --hard
+          git clean -fd
           git pull origin main
-          docker compose build --no-cache
           
-          # Запуск с новой стратегией
+          # Пересборка с правильными правами
+          docker compose build --no-cache
           docker compose run --rm app sh -c "\
-            npm install -D typescript @types/node && \
-            sed 's/export default/module.exports =/' app/next.config.ts > app/next.config.js && \
+            chown -R node:node /app && \
+            npm install --unsafe-perm && \
             npm run build"
             
           docker compose up -d
