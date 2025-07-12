@@ -1,40 +1,32 @@
-# Multi-stage build for Next.js application
-FROM node:18-alpine AS base
+# Используем официальный образ Node.js
+FROM node:18-alpine AS builder
 
-# Install dependencies only when needed
-FROM base AS deps
+# Устанавливаем зависимости
 RUN apk add --no-cache libc6-compat git
+
+# Рабочая директория
 WORKDIR /app
 
-# Сначала копируем только package.json
+# Копируем только package.json сначала
 COPY package.json package-lock.json ./
 
 # Устанавливаем зависимости с правильными правами
-RUN npm install --unsafe-perm && \
-    chown -R node:node /app/node_modules
+RUN npm install --unsafe-perm
 
-# Rebuild the source code only when needed
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Копируем остальные файлы
 COPY . .
 
 # Создаем CommonJS конфиг из TypeScript
 RUN echo "module.exports = $(cat next.config.ts | sed 's/export default //')" > next.config.js
 
+# Сборка приложения
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
+RUN npm run build
 
-# Устанавливаем остальные зависимости с правами
-RUN npm install --unsafe-perm -D tailwindcss postcss autoprefixer @tailwindcss/postcss && \
-    npm run build
-
-# Production image
-FROM base AS runner
+# Финальный образ
+FROM node:18-alpine
 WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S -u 1001 nextjs && \
