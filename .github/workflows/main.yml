@@ -19,12 +19,12 @@ jobs:
       - name: Deploy via SSH
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd /project
+          cd ./yanisgrek-main
 
           # Обновляем только папку app (остальные файлы игнорируем)
           git -C ./app pull origin main
 
           # Перезапускаем контейнеры
-          docker-compose down
-          docker-compose up -d --build
+          docker compose down
+          docker compose up -d --build
           EOF
