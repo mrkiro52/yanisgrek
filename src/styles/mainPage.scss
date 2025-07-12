@@ -1257,3 +1257,16 @@
   @keyframes bgFade {
     to { opacity: 1; }
   }
+
+
+
+
+  @media screen and (max-width: 500px) {
+    .Home {
+      & > .startscreen {
+        &:before {
+          background: url("/images/mainBG.png") top / 200% no-repeat;
+        }    
+      }
+    }
+  }

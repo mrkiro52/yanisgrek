@@ -20,3 +20,9 @@
     pointer-events: none;
   }
   
+
+  @media screen and (max-width: 1000px) {
+    .ImageBlock {
+      display: none;
+    }
+  }
