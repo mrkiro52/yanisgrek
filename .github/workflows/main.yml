@@ -21,22 +21,15 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ./yanisgrek-main
           
-          # Полная очистка
-          docker compose down -v
-          docker builder prune -af
-          docker system prune -af
+          # Обновляем только папку app
+          git -C ./app pull origin main
           
-          # Обновление кода
-          git reset --hard
-          git clean -fd
-          git pull origin main
+          # Пересобираем только сервис app
+          docker compose build app --no-cache
           
-          # Пересборка с правильными правами
-          docker compose build --no-cache
-          docker compose run --rm app sh -c "\
-            chown -R node:node /app && \
-            npm install --unsafe-perm && \
-            npm run build"
-            
-          docker compose up -d
+          # Перезапускаем только app, nginx продолжает работать
+          docker compose up -d --no-deps app
+          
+          # Проверяем статус
+          docker compose ps
           EOF
