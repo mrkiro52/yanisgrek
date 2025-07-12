@@ -22,7 +22,7 @@ jobs:
           cd ./yanisgrek-main
 
           # Обновляем только папку app (остальные файлы игнорируем)
-          git -C ./app pull origin main
+          git -C ./app pull --force origin main
 
           # Перезапускаем контейнеры
           docker compose down
