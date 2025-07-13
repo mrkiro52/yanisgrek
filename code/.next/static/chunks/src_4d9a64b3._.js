@@ -669,19 +669,38 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
-// src/app/contacts/page.tsx
 __turbopack_context__.s({
     "default": (()=>ContactsPage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2f$Header$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Header/Header.jsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
 ;
-;
 function ContactsPage() {
+    _s();
+    const [defaultDate, setDefaultDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [defaultTime, setDefaultTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ContactsPage.useEffect": ()=>{
+            const now = new Date();
+            // Завтрашняя дата
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
+            const dd = String(tomorrow.getDate()).padStart(2, "0");
+            setDefaultDate(`${yyyy}-${mm}-${dd}`);
+            // Текущее время в формате HH:MM
+            const hours = String(now.getHours()).padStart(2, "0");
+            const minutes = String(now.getMinutes()).padStart(2, "0");
+            setDefaultTime(`${hours}:${minutes}`);
+        }
+    }["ContactsPage.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -690,8 +709,8 @@ function ContactsPage() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2f$Header$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/app/contacts/page.jsx",
-                        lineNumber: 12,
-                        columnNumber: 7
+                        lineNumber: 31,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                         src: "/images/contacts_green_car.jpg",
@@ -699,15 +718,15 @@ function ContactsPage() {
                         className: "bg-image"
                     }, void 0, false, {
                         fileName: "[project]/src/app/contacts/page.jsx",
-                        lineNumber: 14,
-                        columnNumber: 7
+                        lineNumber: 33,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "right-blur-overlay"
                     }, void 0, false, {
                         fileName: "[project]/src/app/contacts/page.jsx",
-                        lineNumber: 19,
-                        columnNumber: 7
+                        lineNumber: 38,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "ContactFormSection",
@@ -717,15 +736,15 @@ function ContactsPage() {
                                     "Запишитесь на диагностику, ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 23,
-                                        columnNumber: 38
+                                        lineNumber: 42,
+                                        columnNumber: 40
                                     }, this),
                                     "выбрав день и время"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                lineNumber: 22,
-                                columnNumber: 9
+                                lineNumber: 41,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                 className: "form",
@@ -739,8 +758,8 @@ function ContactsPage() {
                                                 children: "Ваше имя"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 29,
-                                                columnNumber: 13
+                                                lineNumber: 48,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "text",
@@ -750,14 +769,14 @@ function ContactsPage() {
                                                 placeholder: "Иванов Иван"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 32,
-                                                columnNumber: 13
+                                                lineNumber: 51,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 28,
-                                        columnNumber: 11
+                                        lineNumber: 47,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "form-row",
@@ -768,8 +787,8 @@ function ContactsPage() {
                                                 children: "Ваш телефон"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 42,
-                                                columnNumber: 13
+                                                lineNumber: 61,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "tel",
@@ -779,14 +798,14 @@ function ContactsPage() {
                                                 placeholder: "+7 (9xx) xxx-xx-xx"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 45,
-                                                columnNumber: 13
+                                                lineNumber: 64,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 41,
-                                        columnNumber: 11
+                                        lineNumber: 60,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "form-row",
@@ -797,8 +816,8 @@ function ContactsPage() {
                                                 children: "Ваша почта"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 55,
-                                                columnNumber: 13
+                                                lineNumber: 74,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "email",
@@ -808,14 +827,14 @@ function ContactsPage() {
                                                 placeholder: "yanis_grek@gmail.com"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 58,
-                                                columnNumber: 13
+                                                lineNumber: 77,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 54,
-                                        columnNumber: 11
+                                        lineNumber: 73,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "form-row",
@@ -826,8 +845,8 @@ function ContactsPage() {
                                                 children: "Дата"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 68,
-                                                columnNumber: 13
+                                                lineNumber: 87,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "form-datetime",
@@ -836,33 +855,37 @@ function ContactsPage() {
                                                         type: "date",
                                                         id: "date",
                                                         name: "date",
-                                                        className: "form-input"
+                                                        className: "form-input",
+                                                        value: defaultDate,
+                                                        readOnly: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                                        lineNumber: 72,
-                                                        columnNumber: 15
+                                                        lineNumber: 91,
+                                                        columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "time",
                                                         id: "time",
                                                         name: "time",
-                                                        className: "form-input"
+                                                        className: "form-input",
+                                                        value: defaultTime,
+                                                        readOnly: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                                        lineNumber: 78,
-                                                        columnNumber: 15
+                                                        lineNumber: 99,
+                                                        columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 71,
-                                                columnNumber: 13
+                                                lineNumber: 90,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 67,
-                                        columnNumber: 11
+                                        lineNumber: 86,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "submit",
@@ -870,14 +893,14 @@ function ContactsPage() {
                                         children: "Записаться"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 87,
-                                        columnNumber: 11
+                                        lineNumber: 110,
+                                        columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                lineNumber: 27,
-                                columnNumber: 9
+                                lineNumber: 46,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "contacts-info",
@@ -890,8 +913,8 @@ function ContactsPage() {
                                                 children: "Адрес"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 95,
-                                                columnNumber: 13
+                                                lineNumber: 117,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                 href: "https://yandex.ru/profile/1175654222?lang=ru",
@@ -900,21 +923,21 @@ function ContactsPage() {
                                                     "г. Москва",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                                        lineNumber: 98,
-                                                        columnNumber: 15
+                                                        lineNumber: 123,
+                                                        columnNumber: 17
                                                     }, this),
                                                     "Высоковольтный проезд, д. 1, стр. 29"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 96,
-                                                columnNumber: 13
+                                                lineNumber: 118,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 94,
-                                        columnNumber: 11
+                                        lineNumber: 116,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "contacts-info-block",
@@ -924,35 +947,35 @@ function ContactsPage() {
                                                 children: "Режим работы"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 103,
-                                                columnNumber: 13
+                                                lineNumber: 128,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: [
                                                     "Пн–Пт: 10:00–20:00",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                                        lineNumber: 106,
-                                                        columnNumber: 15
+                                                        lineNumber: 131,
+                                                        columnNumber: 17
                                                     }, this),
                                                     "Сб: 11:00–20:00",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                                        lineNumber: 108,
-                                                        columnNumber: 15
+                                                        lineNumber: 133,
+                                                        columnNumber: 17
                                                     }, this),
                                                     "Вс: 11:00–18:00"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 104,
-                                                columnNumber: 13
+                                                lineNumber: 129,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 102,
-                                        columnNumber: 11
+                                        lineNumber: 127,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "contacts-info-block",
@@ -962,8 +985,8 @@ function ContactsPage() {
                                                 children: "Телефоны"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 113,
-                                                columnNumber: 13
+                                                lineNumber: 138,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                 href: "https://wa.me/79852707575",
@@ -971,39 +994,39 @@ function ContactsPage() {
                                                 children: "+7 (495) 76-76-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 114,
-                                                columnNumber: 13
+                                                lineNumber: 139,
+                                                columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: "Запишитесь по телефону"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                                lineNumber: 115,
-                                                columnNumber: 13
+                                                lineNumber: 142,
+                                                columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/contacts/page.jsx",
-                                        lineNumber: 112,
-                                        columnNumber: 11
+                                        lineNumber: 137,
+                                        columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/contacts/page.jsx",
-                                lineNumber: 93,
-                                columnNumber: 9
+                                lineNumber: 115,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/contacts/page.jsx",
-                        lineNumber: 21,
-                        columnNumber: 7
+                        lineNumber: 40,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/contacts/page.jsx",
-                lineNumber: 11,
-                columnNumber: 5
+                lineNumber: 30,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
@@ -1017,17 +1040,18 @@ function ContactsPage() {
                     frameBorder: "0"
                 }, void 0, false, {
                     fileName: "[project]/src/app/contacts/page.jsx",
-                    lineNumber: 124,
-                    columnNumber: 7
+                    lineNumber: 152,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/contacts/page.jsx",
-                lineNumber: 120,
+                lineNumber: 148,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
+_s(ContactsPage, "Ivc8VdyMTuCPHIs8M+n1IkrZifo=");
 _c = ContactsPage;
 var _c;
 __turbopack_context__.k.register(_c, "ContactsPage");
@@ -1162,7 +1186,7 @@ function Calculator({ data, services }) {
                                 href: `/cars/bmw-${sub.name.toLowerCase()}`,
                                 className: "black",
                                 children: [
-                                    "Страница BMW ",
+                                    "> Страница BMW ",
                                     sub.name
                                 ]
                             }, void 0, true, {
@@ -1174,6 +1198,14 @@ function Calculator({ data, services }) {
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
                         lineNumber: 84,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "stepTitle",
+                        children: "1. Выбери модель"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1188,18 +1220,26 @@ function Calculator({ data, services }) {
                                 children: m.name
                             }, m.id, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 101,
+                                lineNumber: 103,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 99,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
                 lineNumber: 83,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                className: "stepTitle",
+                children: "2. Уточни модель"
+            }, void 0, false, {
+                fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                lineNumber: 117,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1223,18 +1263,26 @@ function Calculator({ data, services }) {
                             children: `BMW ${sm.name}`
                         }, void 0, false, {
                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                            lineNumber: 135,
+                            lineNumber: 138,
                             columnNumber: 15
                         }, this)
                     }, sm.id, false, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 121,
+                        lineNumber: 124,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                lineNumber: 115,
+                lineNumber: 118,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                className: "stepTitle",
+                children: "3. Выбери серию"
+            }, void 0, false, {
+                fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                lineNumber: 143,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1249,7 +1297,7 @@ function Calculator({ data, services }) {
                                 children: "СЕРИЯ"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 142,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1267,7 +1315,7 @@ function Calculator({ data, services }) {
                                                 children: "Выберите серию"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                                lineNumber: 153,
+                                                lineNumber: 157,
                                                 columnNumber: 15
                                             }, this),
                                             seriesList.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1275,13 +1323,13 @@ function Calculator({ data, services }) {
                                                     children: s.name
                                                 }, s.id, false, {
                                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                                    lineNumber: 155,
+                                                    lineNumber: 159,
                                                     columnNumber: 17
                                                 }, this))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 146,
+                                        lineNumber: 150,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1294,24 +1342,24 @@ function Calculator({ data, services }) {
                                             fill: "currentColor"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 166,
+                                            lineNumber: 170,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 160,
+                                        lineNumber: 164,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 145,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 141,
+                        lineNumber: 145,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1323,7 +1371,7 @@ function Calculator({ data, services }) {
                                 children: "ПРОБЕГ"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 171,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1344,7 +1392,7 @@ function Calculator({ data, services }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 175,
+                                        lineNumber: 179,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1352,19 +1400,19 @@ function Calculator({ data, services }) {
                                         children: "км"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 189,
+                                        lineNumber: 193,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 174,
+                                lineNumber: 178,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 170,
+                        lineNumber: 174,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1378,18 +1426,18 @@ function Calculator({ data, services }) {
                                 children: type
                             }, type, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 194,
+                                lineNumber: 198,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 192,
+                        lineNumber: 196,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                lineNumber: 140,
+                lineNumber: 144,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1403,7 +1451,7 @@ function Calculator({ data, services }) {
                                 children: "Услуга"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 207,
+                                lineNumber: 211,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1411,7 +1459,7 @@ function Calculator({ data, services }) {
                                 children: "Стоимость услуги"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 208,
+                                lineNumber: 212,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1419,7 +1467,7 @@ function Calculator({ data, services }) {
                                 children: "Стоимость работ"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 209,
+                                lineNumber: 213,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1427,13 +1475,13 @@ function Calculator({ data, services }) {
                                 children: "Общая стоимость"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 210,
+                                lineNumber: 214,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 206,
+                        lineNumber: 210,
                         columnNumber: 9
                     }, this),
                     filteredServices.map((s, index)=>{
@@ -1449,20 +1497,20 @@ function Calculator({ data, services }) {
                                             onClick: ()=>toggleRow(index)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 219,
+                                            lineNumber: 223,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: s.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 223,
+                                            lineNumber: 227,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 218,
+                                    lineNumber: 222,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1470,7 +1518,7 @@ function Calculator({ data, services }) {
                                     children: Number(s.part_price).toLocaleString()
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 225,
+                                    lineNumber: 229,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1478,7 +1526,7 @@ function Calculator({ data, services }) {
                                     children: Number(s.labor_price).toLocaleString()
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 228,
+                                    lineNumber: 232,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1486,13 +1534,13 @@ function Calculator({ data, services }) {
                                     children: total.toLocaleString()
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 231,
+                                    lineNumber: 235,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                            lineNumber: 217,
+                            lineNumber: 221,
                             columnNumber: 13
                         }, this);
                     }),
@@ -1506,12 +1554,12 @@ function Calculator({ data, services }) {
                                     children: "Записаться через форму"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 241,
+                                    lineNumber: 245,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 240,
+                                lineNumber: 244,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1522,7 +1570,7 @@ function Calculator({ data, services }) {
                                         children: "итоговая стоимость"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 244,
+                                        lineNumber: 248,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1530,25 +1578,25 @@ function Calculator({ data, services }) {
                                         children: totalSum.toLocaleString()
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                        lineNumber: 247,
+                                        lineNumber: 251,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 243,
+                                lineNumber: 247,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 239,
+                        lineNumber: 243,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                lineNumber: 204,
+                lineNumber: 208,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1567,7 +1615,7 @@ function Calculator({ data, services }) {
                                             className: `sq ${selectedRows[index] ? "selected" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 259,
+                                            lineNumber: 263,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1575,7 +1623,7 @@ function Calculator({ data, services }) {
                                             children: s.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 262,
+                                            lineNumber: 266,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1583,13 +1631,13 @@ function Calculator({ data, services }) {
                                             children: total
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 263,
+                                            lineNumber: 267,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 258,
+                                    lineNumber: 262,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1603,37 +1651,12 @@ function Calculator({ data, services }) {
                                                     children: "Стоимость запчастей"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                                    lineNumber: 267,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "price",
-                                                    children: Number(s.part_price).toLocaleString()
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                                    lineNumber: 268,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                            lineNumber: 266,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "right",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "title",
-                                                    children: "Стоимость работы"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/Calculator/Calculator.jsx",
                                                     lineNumber: 271,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "price",
-                                                    children: Number(s.labor_price).toLocaleString()
+                                                    children: Number(s.part_price).toLocaleString()
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
                                                     lineNumber: 272,
@@ -1644,17 +1667,42 @@ function Calculator({ data, services }) {
                                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
                                             lineNumber: 270,
                                             columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "right",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "title",
+                                                    children: "Стоимость работы"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                                                    lineNumber: 275,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "price",
+                                                    children: Number(s.labor_price).toLocaleString()
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                                                    lineNumber: 276,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/Calculator/Calculator.jsx",
+                                            lineNumber: 274,
+                                            columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                    lineNumber: 265,
+                                    lineNumber: 269,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                            lineNumber: 257,
+                            lineNumber: 261,
                             columnNumber: 13
                         }, this);
                     }),
@@ -1666,7 +1714,7 @@ function Calculator({ data, services }) {
                                 children: "итоговая стоимость"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 279,
+                                lineNumber: 283,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1674,19 +1722,19 @@ function Calculator({ data, services }) {
                                 children: totalSum.toLocaleString()
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                                lineNumber: 280,
+                                lineNumber: 284,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                        lineNumber: 278,
+                        lineNumber: 282,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Calculator/Calculator.jsx",
-                lineNumber: 253,
+                lineNumber: 257,
                 columnNumber: 7
             }, this)
         ]
