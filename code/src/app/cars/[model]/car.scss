@@ -1,0 +1,161 @@
+.Car {
+  display: flex;
+  flex-direction: column;
+  & > .Startscreen {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 110px calc((100% - 1200px) / 2);
+    & > h1 {
+      font-size: 96px;
+      font-family: Russo One, sans-serif;
+      color: white;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+}
+
+
+.startscreen_title {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  width: 50%;
+  line-height: 103%;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: 24px;
+}
+.problems_block_top {
+  display: flex;
+  align-items: center;
+  padding: 120px 0px 0px 120px;
+  & > h2 {
+    font-size: 96px;
+    margin-bottom: 0px;
+    color: rgba(192, 192, 192, 1);
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+  }
+}
+.title_problem {
+  font-size: 36px;
+  line-height: 103%;
+  text-transform: uppercase;
+}
+.title {
+  font-size: 24px;
+}
+.subtitle {
+  font-family: Helvetica;
+  font-size: 20px;
+}
+.block_title {
+  padding-left: 30px;
+  border-left: 2px solid rgb(255, 255, 255);
+  height: 100%;
+  padding-right: 120px;
+  max-width: 560px;
+}
+.container_problems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 90px 120px 90px 120px;
+  gap: 60px;
+}
+.slider {
+  padding: 0px 0px 120px 120px;
+}
+
+.title_car {
+  font-size: 20px;
+  color: black;
+}
+.car_title {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+
+@media (max-width: 1170px) {
+  .startscreen_title {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title_problem {
+    padding: 120px 15px 0px 15px;
+    font-size: 20px;
+  }
+  .container_problems {
+    padding: 50px 15px 50px 15px;
+    gap: 50px;
+  }
+  .block_title {
+    padding-right: 15px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .slider {
+    padding: 0 0 120px 15px;
+  }
+  .startscreen_title {
+    padding: 0 15px 120px 15px;
+    width: auto;
+  }
+  .Startscreen {
+    background-position: right;
+  }
+}
+
+
+@media screen and (max-width: 1400px) {
+  .Car {
+    & > .Startscreen {
+      padding: 100px 24px 24px 24px;
+      & > h1 {
+        font-size: 64px;
+      }
+      & > .startscreen_title {
+        padding: 0;
+      }
+    }
+  }
+  .problems_block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    & > .problems_block_top {
+      padding: 80px 24px 0px 24px;
+      & > h2 {
+        display: none;
+      }
+    }
+    & > .container_problems {
+      padding: 0px 24px;
+    }
+  }
+  .slider {
+    padding: 80px 24px;
+  }
+}
