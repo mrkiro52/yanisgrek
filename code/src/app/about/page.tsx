@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="block_about_photo_text">
           <div className="text_block_about">
             <h1 className="title_block_about">
-              О нас — автосервис YANIS GREK в Москве
+              О нас — автосервис в Москве
               <br /> с человеческим подходом
             </h1>
             <p className="description_block_about">
