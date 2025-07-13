@@ -22,7 +22,7 @@ jobs:
           cd ./yanisgrek-main
           
           # Обновляем только папку app
-          git -C ./app pull origin main
+          git -C ./prila pull --force origin main
           
           # Пересобираем только сервис app
           docker compose build app --no-cache
