@@ -127,3 +127,35 @@
     background-position: right;
   }
 }
+
+
+@media screen and (max-width: 1400px) {
+  .Car {
+    & > .Startscreen {
+      padding: 100px 24px 24px 24px;
+      & > h1 {
+        font-size: 64px;
+      }
+      & > .startscreen_title {
+        padding: 0;
+      }
+    }
+  }
+  .problems_block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    & > .problems_block_top {
+      padding: 80px 24px 0px 24px;
+      & > h2 {
+        display: none;
+      }
+    }
+    & > .container_problems {
+      padding: 0px 24px;
+    }
+  }
+  .slider {
+    padding: 80px 24px;
+  }
+}
