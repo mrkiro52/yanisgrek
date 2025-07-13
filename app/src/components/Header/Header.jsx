@@ -67,6 +67,7 @@ export default function Header() {
                         </div>
                     </div>
                     <div className="buttons">
+                        <a href="https://wa.me/79852707575" target="_blank">+7 495 76-76-500</a>
                         <Link href="/contacts" className='calcButton'>Оставить заявку</Link>
                     </div>
                     <img src="/logo.svg" alt="logo" className='logo'/>
