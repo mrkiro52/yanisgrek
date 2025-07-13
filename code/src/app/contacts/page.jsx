@@ -74,12 +74,14 @@ export default function ContactsPage() {
                 id="date"
                 name="date"
                 className="form-input"
+                placeholder="дд.мм.гггг"
               />
               <input
                 type="time"
                 id="time"
                 name="time"
                 className="form-input"
+                placeholder="--:--"
               />
             </div>
           </div>
