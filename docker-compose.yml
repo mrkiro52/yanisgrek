@@ -1,15 +1,14 @@
 services:
   app:
     build:
-      context: .
+      context: ./code
       dockerfile: Dockerfile
     container_name: yanisgrek-app
     restart: unless-stopped
-    expose:
-      - "3000"
     networks:
       - app-network
-
+    ports:
+      - "3000:3000"
   nginx:
     image: nginx:alpine
     container_name: yanisgrek-nginx
