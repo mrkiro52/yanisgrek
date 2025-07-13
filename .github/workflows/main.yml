@@ -21,6 +21,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ./yanisgrek-main
           
+          git -C ./code reset --hard
+          git -C ./code clean -fd
           git -C ./code pull --force origin main
           
           docker compose build app --no-cache
