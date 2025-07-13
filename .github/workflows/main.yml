@@ -21,15 +21,10 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ./yanisgrek-main
           
-          # Обновляем только папку app
-          git -C ./prila pull --force origin main
+          git -C ./code pull --force origin main
           
-          # Пересобираем только сервис app
           docker compose build app --no-cache
-          
-          # Перезапускаем только app, nginx продолжает работать
           docker compose up -d --no-deps app
           
-          # Проверяем статус
           docker compose ps
           EOF
