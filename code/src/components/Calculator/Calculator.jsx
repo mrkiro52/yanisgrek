@@ -92,10 +92,12 @@ export default function Calculator({ data, services }) {
               href={`/cars/bmw-${sub.name.toLowerCase()}`}
               className="black"
             >
+              &gt;
               Страница BMW {sub.name}
             </Link>
           )}
         </div>
+        <h3 className="stepTitle">1. Выбери модель</h3>
         <div className="buttons">
           {data.map((m) => (
             <button
@@ -112,6 +114,7 @@ export default function Calculator({ data, services }) {
           ))}
         </div>
       </div>
+      <h3 className="stepTitle">2. Уточни модель</h3>
       <div className="choose_car_block">
         {subsList.map((sm) => {
           const fileName = `bmw-${sm.name}`.toLowerCase();
@@ -137,6 +140,7 @@ export default function Calculator({ data, services }) {
           );
         })}
       </div>
+      <h3 className="stepTitle">3. Выбери серию</h3>
       <div className="choose_special_model">
         <div className="model-select">
           <label form="model" className="model-select__label">
