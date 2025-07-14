@@ -326,6 +326,11 @@
     width: 100%;
     font-size: 36px;
   }
+
+  .Service > .Startscreen > .content > .left > .info > p {
+    font-size: 20px;
+    line-height: 105%;
+  }
 }
 
 

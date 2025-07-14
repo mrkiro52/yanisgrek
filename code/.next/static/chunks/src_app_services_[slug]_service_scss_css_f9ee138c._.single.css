@@ -326,6 +326,11 @@
     width: 100%;
     font-size: 36px;
   }
+
+  .Service > .Startscreen > .content > .left > .info > p {
+    font-size: 20px;
+    line-height: 105%;
+  }
 }
 
 /*# sourceMappingURL=src_app_services_%5Bslug%5D_service_scss_css_f9ee138c._.single.css.map*/

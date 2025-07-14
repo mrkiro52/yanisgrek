@@ -1430,7 +1430,7 @@
 
 @media screen and (width <= 500px) {
   .Home > .startscreen:before {
-    background: url("/images/mainBG.png") top / 200% no-repeat;
+    background: url("/images/mainBG.png") top / 190% no-repeat;
   }
 }
 
@@ -2063,6 +2063,7 @@ input[type="date"], input[type="time"] {
   }
 
   .Calculator > .choose_model > .buttons {
+    padding: 0 24px;
     overflow-x: scroll;
   }
 
