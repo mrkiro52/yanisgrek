@@ -50,10 +50,10 @@ export default async function Home() {
     seriesRes,
     servicesRes,
   ] = await Promise.all([
-    fetch('http://89.104.65.124/api/models/',          { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/submodels/',       { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/series/',          { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/maintenance-services/', { next: { revalidate: 60 } }),
+    fetch('http://89.104.65.124/api/models/',          { cache: "no-store" }),
+    fetch('http://89.104.65.124/api/submodels/',       { cache: "no-store" }),
+    fetch('http://89.104.65.124/api/series/',          { cache: "no-store" }),
+    fetch('http://89.104.65.124/api/maintenance-services/', { cache: "no-store" }),
   ]);
 
   if (![modelsRes, submodelsRes, seriesRes, servicesRes].every(r => r.ok)) {
