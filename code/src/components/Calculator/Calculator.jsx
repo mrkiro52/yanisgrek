@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Calculator({ data, services }) {
   /* -------- выбор машины -------- */
   const [modelId, setModelId] = useState(
-    data?.length ? data[data.length - 1].id : null
+    data?.length ? data[data.length - 2].id : null
   );
   const [subId, setSubId] = useState(null);
   const [seriesName, setSeriesName] = useState(""); // имя серии

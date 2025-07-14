@@ -1248,7 +1248,7 @@
 
 @media screen and (width <= 500px) {
   .Home > .startscreen:before {
-    background: url("/images/mainBG.png") top / 200% no-repeat;
+    background: url("/images/mainBG.png") top / 190% no-repeat;
   }
 }
 
