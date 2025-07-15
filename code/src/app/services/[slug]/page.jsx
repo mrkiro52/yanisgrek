@@ -6,14 +6,16 @@ import Contacts from "../../contacts/page";
 import ButtonGoForm from '../../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from './ImageBlock';
 
-export default function Service({ params }) {
+export default async function Service({ params }) {
+
+  const { slug } = await params; 
 
   const filePath = path.join(
     process.cwd(),
     "src",
     "data",
     "services", 
-    `${params.slug}.json`
+    `${slug}.json`
   );
   const raw = fs.readFileSync(filePath, "utf-8");
   const serviceData = JSON.parse(raw);

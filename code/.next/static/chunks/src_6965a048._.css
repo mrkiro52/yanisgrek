@@ -1180,6 +1180,7 @@ input[type="date"], input[type="time"] {
   }
 
   .Calculator > .choose_model > .buttons {
+    padding: 0 24px;
     overflow-x: scroll;
   }
 

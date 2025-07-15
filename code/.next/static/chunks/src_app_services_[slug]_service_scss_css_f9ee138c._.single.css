@@ -50,6 +50,7 @@
 
 .Startscreen > .content > .left > button {
   color: #fff;
+  cursor: pointer;
   background-color: #2b6eff;
   justify-content: center;
   align-items: center;

@@ -445,6 +445,30 @@
   display: flex;
 }
 
+.Home > .topServices > .content > .remont {
+  gap: 24px;
+  display: flex;
+}
+
+.Home > .topServices > .content > .remont > .block {
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #2e2e2e;
+  width: 50%;
+  min-height: 150px;
+  padding: 24px;
+  transition: all .3s;
+}
+
+.Home > .topServices > .content > .remont > .block:hover {
+  background-color: #656565;
+}
+
+.Home > .topServices > .content > .remont > .block > h3 {
+  color: #fff;
+  font-size: 24px;
+}
+
 .Home > .topServices > .content > h2 {
   color: #656565;
   text-align: center;
@@ -681,6 +705,10 @@
     width: 100%;
     padding: 120px 0;
     display: flex;
+  }
+
+  .Home > .topServices > .content > .remont {
+    padding: 0 24px;
   }
 
   .Home > .topServices > .content > h2 {
@@ -931,6 +959,14 @@
     width: 100%;
     padding: 120px 0;
     display: flex;
+  }
+
+  .Home > .topServices > .content > .remont {
+    flex-direction: column;
+  }
+
+  .Home > .topServices > .content > .remont > .block {
+    width: 100%;
   }
 
   .Home > .topServices > .content > h2 {

@@ -70,7 +70,7 @@ export default function Header() {
                         <a href="https://wa.me/79852707575" target="_blank">+7 495 76-76-500</a>
                         <Link href="/contacts" className='calcButton'>Оставить заявку</Link>
                     </div>
-                    <img src="/logo.svg" alt="logo" className='logo'/>
+                    <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
                 </div>
             </div>
             <div className="content">
@@ -80,7 +80,7 @@ export default function Header() {
                     onClick={() => setMenuOpened(true)}
                     alt="burger"
                 />
-                <img src="/logo.svg" className="logo" alt="logo" />
+                <Link href="/"><img src="/logo.svg" className="logo" alt="logo" /></Link>
                 <a href="https://wa.me/79852707575" target="_blank">+7 495 76-76-500</a>
             </div>
         </div>
