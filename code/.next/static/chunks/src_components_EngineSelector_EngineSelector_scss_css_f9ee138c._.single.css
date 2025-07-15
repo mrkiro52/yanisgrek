@@ -1,0 +1,81 @@
+/* [project]/src/components/EngineSelector/EngineSelector.scss.css [app-client] (css) */
+.engine-selector {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.engine-selector .tabs {
+  gap: 16px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.engine-selector .tabs .tab {
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  flex: 1;
+  padding: 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color .2s;
+}
+
+.engine-selector .tabs .tab.active {
+  color: #fff;
+  background-color: #06f;
+  border-color: #06f;
+}
+
+.engine-selector .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.engine-selector .table th, .engine-selector .table td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+}
+
+.engine-selector .table th {
+  text-align: left;
+  font-weight: 700;
+}
+
+.engine-selector .table th.first-col {
+  background-color: #b3b3b3;
+}
+
+.engine-selector .table th.second-col {
+  background-color: #fff;
+}
+
+.engine-selector .table td {
+  vertical-align: top;
+}
+
+.engine-selector .table td:first-child {
+  background-color: #b3b3b3;
+}
+
+.engine-selector .table td:nth-child(2) {
+  background-color: #fff;
+}
+
+.engine-selector .note {
+  color: #333;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+@media screen and (width <= 1200px) {
+  .engine-selector {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+/*# sourceMappingURL=src_components_EngineSelector_EngineSelector_scss_css_f9ee138c._.single.css.map*/

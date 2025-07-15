@@ -63,21 +63,33 @@ export default function ServicesPage() {
         ))}
       </div>
       <div className="services_container">
-      {servicesOfActiveCategory.map(service => (
-        <div
-          key={service.slug}
-          className="service"
-          onClick={() => router.push(`/services/${service.slug}`)}
-          style={{
-            backgroundImage: `url(/images/servicesImages/${service.slug}.jpg)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <span>{service.name}</span>
-        </div>
-      ))}
+      {servicesOfActiveCategory.map(service => {
+        const handleClick = () => {
+          if (service.slug === 'remont-kpp') {
+            router.push('/remontAkpp');
+          } else if (service.slug === 'remont-dvs') {
+            router.push('/remontDvs');
+          } else {
+            router.push(`/services/${service.slug}`);
+          }
+        };
+
+        return (
+          <div
+            key={service.slug}
+            className="service"
+            onClick={handleClick}
+            style={{
+              backgroundImage: `url(/images/servicesImages/${service.slug}.jpg)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            <span>{service.name}</span>
+          </div>
+        );
+      })}
       </div>
       <div className="block_about_services">
         <h1 className="hero_title">

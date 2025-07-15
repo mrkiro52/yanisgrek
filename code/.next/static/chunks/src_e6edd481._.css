@@ -1,0 +1,281 @@
+/* [project]/src/app/remontAkpp/remontAkpp.scss.css [app-client] (css) */
+.RemontAkpp .Startscreen {
+  background-color: #1d1d1d;
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 250px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content {
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  height: 590px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 590px;
+  padding-top: 100px;
+  padding-left: calc(50% - 600px);
+  padding-right: 24px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info {
+  flex-direction: column;
+  gap: 24px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info > h1 {
+  color: #fff;
+  font-family: Russo One;
+  font-size: 64px;
+  line-height: 100%;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info > p {
+  color: silver;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-family: Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.RemontAkpp .Startscreen > .content > .left > button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #2b6eff;
+  justify-content: center;
+  align-items: center;
+  width: 273px;
+  height: 50px;
+  font-size: 16px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .right {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 50%;
+  height: 590px;
+}
+
+
+/* [project]/src/app/services/[slug]/ImageBlock.scss.css [app-client] (css) */
+.ImageBlock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ImageBlock.placeholder {
+  background: #f0f0f0;
+}
+
+.ImageBlock__overlay {
+  pointer-events: none;
+  width: 345px;
+  height: 233px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+@media screen and (width <= 1000px) {
+  .ImageBlock {
+    display: none;
+  }
+}
+
+
+/* [project]/src/components/Header/Header.scss.css [app-client] (css) */
+.Header {
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  background-color: #000000a6;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  position: fixed;
+}
+
+.Header > .content {
+  justify-content: space-between;
+  width: 1200px;
+  display: flex;
+}
+
+.Header > .content > .burger, .Header > .content > .logo {
+  cursor: pointer;
+}
+
+.Header > .menu {
+  -webkit-overflow-scrolling: touch;
+  z-index: 1000;
+  background-color: #000;
+  justify-content: center;
+  width: 100%;
+  transition: all .3s;
+  display: flex;
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+}
+
+.Header > .menu.opened {
+  height: 100vh;
+  transform: translateX(0);
+}
+
+.Header > .menu.closed {
+  transform: translateX(-100%);
+}
+
+.Header > .menu > .content {
+  flex-direction: column;
+  gap: 64px;
+  width: 1200px;
+  padding-top: 34px;
+  display: flex;
+}
+
+.Header > .menu > .content > img.cross {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+
+.Header > .menu > .content > .links {
+  gap: 64px;
+  display: flex;
+}
+
+.Header > .menu > .content > .links > .linksCol {
+  flex-direction: column;
+  gap: 16px;
+  min-width: 300px;
+  display: flex;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkSmall {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkSmall:hover {
+  opacity: .5;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkTitle {
+  color: silver;
+  font-family: Russo One;
+  font-size: 24px;
+  font-weight: 400;
+  transition: all .2s;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkTitle:hover {
+  color: #fff;
+}
+
+.Header > .menu > .content > .buttons {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  display: flex;
+}
+
+.Header > .menu > .content > .buttons > a {
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 45px;
+  display: flex;
+}
+
+.Header > .menu > .content > .buttons > a.calcButton {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Header > .menu > .content > .buttons > a.formButton {
+  color: #fff9;
+  background-color: #0000;
+  border: 1px solid #fff9;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Header > .menu > .content > img.logo {
+  width: 183px;
+  height: 25px;
+}
+
+@media screen and (width <= 1200px) {
+  .Header > .content {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .Header > .menu > .content {
+    width: 100%;
+    padding: 34px 24px 0;
+  }
+}
+
+@media screen and (width <= 664px) {
+  .Header > .menu > .content {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .Header > .menu > .content > img.logo {
+    margin-bottom: 24px;
+  }
+
+  .Header > .menu > .content > .links {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .Header > .menu > .content > .links > .linksCol {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .Header > .menu > .content > .links > .linksCol > a.linkTitle {
+    font-size: 20px !important;
+  }
+
+  .Header > .menu > .content > .links > .linksCol > a.linkSmall {
+    font-size: 15px !important;
+  }
+
+  .Header > .menu > .content > .buttons > a {
+    width: 100%;
+  }
+}
+
+@media screen and (width <= 450px) {
+  .Header > .content > a {
+    display: none;
+  }
+}
+
+
+/*# sourceMappingURL=src_e6edd481._.css.map*/

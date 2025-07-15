@@ -46,11 +46,11 @@ export default function Header() {
                         </div>
                         <div className="linksCol">
                             <Link className='linkTitle' href='/services'>УСЛУГИ YANIS GREK</Link>
-                            <Link className='linkSmall' href="/services/zamena-masla-dvs">
-                                Замена масла ДВС
+                            <Link className='linkSmall' href="/remontAkpp">
+                                Ремонт КПП (АКПП МКПП и др.)
                             </Link>
-                            <Link className='linkSmall' href="/services/kompyuternaya-diagnostika">
-                                Компьютерная диагностика
+                            <Link className='linkSmall' href="/remontDvs">
+                                Ремонт ДВС
                             </Link>
                             <Link className='linkSmall' href="/services/zamena-perednih-tormoznyh-diskov">
                                 Замена передних тормозных дисков
