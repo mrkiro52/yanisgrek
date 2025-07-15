@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import Header from '@/components/Header/Header';
 import EmblaCarousel from '@/components/embla/EmblaCarousel';
-import CalculatorServer from '@/components/Calculator/Calculator';
+import CalculatorServer from '@/components/Calculator/CalculatorServer';
 import Contacts from '@/app/contacts/page';
 import './car.scss';
 
@@ -73,6 +73,8 @@ export default async function CarPage({ params }) {
       <div className="slider">
         <EmblaCarousel slides={problemsImages} options={{ loop: true, align: 'start' }} />
       </div>
+
+      <CalculatorServer />
       <Contacts />
     </div>
   );

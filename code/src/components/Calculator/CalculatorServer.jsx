@@ -1,32 +1,31 @@
-// components/Calculator/CalculatorServer.jsx
+// src/components/Calculator/CalculatorServer.jsx
 import React from 'react';
 import Calculator from './Calculator';   // ваш существующий client-компонент
+import servicesData from '../../data/servicesTo/data.json';  // локальные данные услуг из JSON
+
 export const revalidate = 60;            // ISR: обновляем раз в минуту
 
 export default async function CalculatorServer() {
-  // 1) Сервисы API
+  // 1) Подгружаем модели, субмодели и серию из API
   const [
     modelsRes,
     submodelsRes,
     seriesRes,
-    servicesRes,
   ] = await Promise.all([
-    fetch('http://89.104.65.124/api/models/',          { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/submodels/',       { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/series/',          { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/maintenance-services/', { next: { revalidate: 60 } }),
-  ]); 
-  if (![modelsRes, submodelsRes, seriesRes, servicesRes].every(r => r.ok)) {
-    throw new Error('Не удалось загрузить данные с API');
+    fetch('http://89.104.65.124/api/models/',    { next: { revalidate: 60 } }),
+    fetch('http://89.104.65.124/api/submodels/', { next: { revalidate: 60 } }),
+    fetch('http://89.104.65.124/api/series/',    { next: { revalidate: 60 } }),
+  ]);
+  if (![modelsRes, submodelsRes, seriesRes].every(r => r.ok)) {
+    throw new Error('Не удалось загрузить данные моделей из API');
   }
-  const [models, submodels, series, services] = await Promise.all([
+  const [models, submodels, series] = await Promise.all([
     modelsRes.json(),
     submodelsRes.json(),
     seriesRes.json(),
-    servicesRes.json(),
   ]);
 
-  // 2) Формируем структуру data
+  // 2) Собираем структуру data из API-ответов
   const data = models.map(m => ({
     ...m,
     submodels: submodels
@@ -37,6 +36,9 @@ export default async function CalculatorServer() {
       })),
   }));
 
-  // 3) Передаём в чистый клиент-компонент
+  // 3) Используем локальные данные услуг вместо запроса к API
+  const services = servicesData;
+
+  // 4) Передаем данные в клиент-компонент
   return <Calculator data={data} services={services} />;
 }
