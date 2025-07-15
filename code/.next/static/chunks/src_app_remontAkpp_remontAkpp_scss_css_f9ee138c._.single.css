@@ -67,6 +67,26 @@
   height: 590px;
 }
 
+@media screen and (width <= 1000px) {
+  .RemontAkpp > .Startscreen {
+    padding: 80px 24px;
+  }
+
+  .RemontAkpp > .Startscreen > .content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .RemontAkpp > .Startscreen > .content > .left {
+    gap: 24px;
+    height: auto;
+  }
+
+  .RemontAkpp > .Startscreen > .content > .right {
+    display: none;
+  }
+}
+
 .problems_block_top {
   align-items: center;
   padding: 120px 0 0 120px;
@@ -153,7 +173,7 @@
   }
 
   .problems_block > .container_problems {
-    padding: 0 24px;
+    padding: 0 24px 80px;
   }
 }
 

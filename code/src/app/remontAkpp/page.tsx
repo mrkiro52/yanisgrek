@@ -9,28 +9,47 @@ export default function RemontAkpp() {
 
     const categories = [
         {
-          title: 'Бензиновый',
+          title: 'МКПП',
           items: [
-            { name: 'N13B16', models: 'F20, F21 (116i, 118i)' },
-            { name: 'N20B16/N20B20', models: 'F10, F30, F32, F25, F26 (520i, 328i, X3 20i)' },
-            // …и т.д.
+            { name: 'Getrag GS6-17BG', models: 'F20, F21, F22, F30, F31 (1, 2, 3 серии)' },
+            { name: 'Getrag GS6-45BZ', models: 'F30, F32, F36 (3, 4 серии)' },
+            { name: 'ZF GS6-53DZ', models: 'F80 M3, F82 M4' },
+            { name: 'ZF GS6-45DZ', models: 'G20, G21, G42, G87 (M2, 3 серии)' },
           ],
-          note: '*Стоимость услуг зависит от заправочного объема масла в двигателе',
+          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
         },
         {
-          title: 'Гибрид/Электро',
+          title: 'АКПП',
           items: [
-            { name: 'E-Series 1', models: 'i3, i8' },
-            // …
+            { name: 'ZF 8HP45', models: 'F30, F32, F36, F10, F11 (3, 4, 5 серии)' },
+            { name: 'ZF 8HP50', models: 'G20, G30, G11 (3, 5, 7 серии)' },
+            { name: 'ZF 8HP51', models: 'G01, G02, G05 (X3, X4, X5)' },
+            { name: 'ZF 8HP70', models: 'F15, F16, F01, F02 (X5, X6, 7 серия)' },
+            { name: 'ZF 8HP75', models: 'G11, G12, G30 (7, 5 серии)' },
+            { name: 'ZF 8HP76', models: 'G05, G06, G07 (X5, X6, X7)' },
+            { name: 'ZF 8HP90', models: 'F90 M5, F92 M8, G80 M3, G82 M4' },
           ],
+          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
         },
         {
-          title: 'Дизельный',
+          title: 'DCT',
           items: [
-            { name: 'N47D20', models: 'E90, F10 (320d, 520d)' },
-            // …
+            { name: 'Getrag 7DCT300', models: 'F39, F44, F48 (X2, 2 серии Gran Coupe)' },
+            { name: 'Getrag 7DCT500', models: 'F87 M2 Competition' },
+            { name: 'Getrag 7DCT600', models: 'F80 M3, F82 M4, F10 M5, F13 M6' },
+            { name: 'Getrag 7DCT700', models: 'F90 M5, F92 M8' },
           ],
+          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
         },
+        {
+            title: 'Электро',
+            items: [
+              { name: 'BMW iX 1AT', models: 'iX, iX3' },
+              { name: 'BMW i4 1AT', models: 'i4' },
+              { name: 'BMW i7 1AT', models: 'i7' },
+            ],
+            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
+          },
       ];
 
     return (

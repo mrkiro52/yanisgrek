@@ -61,6 +61,25 @@
       }
 }
 
+@media screen and (max-width: 1000px) {
+    .RemontAkpp {
+      & > .Startscreen {
+        padding: 80px 24px 80px 24px;
+        & > .content {
+          flex-direction: column;
+          height: auto;
+          & > .left {
+            height: auto;
+            gap: 24px;
+          }
+          & > .right {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
 .problems_block_top {
     display: flex;
     align-items: center;
@@ -137,7 +156,7 @@
         }
       }
       & > .container_problems {
-        padding: 0px 24px;
+        padding: 0px 24px 80px 24px;
       }
     }
   }
