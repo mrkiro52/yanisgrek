@@ -297,7 +297,7 @@
   }
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <= 1200px) {
   .Service > .Startscreen {
     padding: 80px 24px;
   }

@@ -1,5 +1,5 @@
-/* [project]/src/app/services/[slug]/service.scss.css [app-client] (css) */
-.Startscreen {
+/* [project]/src/app/remontDvs/remontDvs.scss.css [app-client] (css) */
+.RemontDvs .Startscreen {
   background-color: #1d1d1d;
   width: 100%;
   padding-top: 90px;
@@ -7,7 +7,7 @@
   display: flex;
 }
 
-.Startscreen > .content {
+.RemontDvs .Startscreen > .content {
   justify-content: center;
   gap: 24px;
   width: 100%;
@@ -15,7 +15,7 @@
   display: flex;
 }
 
-.Startscreen > .content > .left {
+.RemontDvs .Startscreen > .content > .left {
   flex-direction: column;
   justify-content: space-between;
   height: 590px;
@@ -25,20 +25,20 @@
   display: flex;
 }
 
-.Startscreen > .content > .left > .info {
+.RemontDvs .Startscreen > .content > .left > .info {
   flex-direction: column;
   gap: 24px;
   display: flex;
 }
 
-.Startscreen > .content > .left > .info > h1 {
+.RemontDvs .Startscreen > .content > .left > .info > h1 {
   color: #fff;
   font-family: Russo One;
   font-size: 64px;
   line-height: 100%;
 }
 
-.Startscreen > .content > .left > .info > p {
+.RemontDvs .Startscreen > .content > .left > .info > p {
   color: silver;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -48,7 +48,7 @@
   font-weight: 400;
 }
 
-.Startscreen > .content > .left > button {
+.RemontDvs .Startscreen > .content > .left > button {
   color: #fff;
   cursor: pointer;
   background-color: #2b6eff;
@@ -60,277 +60,148 @@
   display: flex;
 }
 
-.Startscreen > .content > .right {
+.RemontDvs .Startscreen > .content > .right {
   flex-grow: 0;
   flex-shrink: 0;
   width: 50%;
   height: 590px;
 }
 
-.Service > .calculator {
-  background-color: #d0d0d0;
-  justify-content: center;
-  padding: 80px 0;
+.problems_block_top {
+  align-items: center;
+  padding: 120px 0 0 120px;
   display: flex;
 }
 
-.Service > .calculator > .content {
-  flex-direction: column;
-  gap: 16px;
-  width: 1200px;
-  display: flex;
-}
-
-.Service > .calculator > .content > h2 {
-  color: #000;
+.problems_block_top > h2 {
+  color: silver;
+  opacity: .1;
   margin-bottom: 0;
-  font-family: Russo One;
+  font-size: 96px;
+  position: absolute;
+  right: 0;
+}
+
+.title_problem {
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 103%;
+}
+
+.container_problems {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 90px 120px;
+  display: flex;
+}
+
+.block_title {
+  border-left: 2px solid #fff;
+  max-width: 560px;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 120px;
+}
+
+.title {
   font-size: 24px;
 }
 
-.Service > .calculator > .content > h3 {
-  color: #000;
-  margin-bottom: 16px;
-  font-family: Russo One;
-  font-size: 16px;
+.subtitle {
+  font-family: Helvetica;
+  font-size: 20px;
 }
 
-.Service > .calculator > .content > .send_request {
-  color: #fff;
-  cursor: pointer;
-  background-color: #2b6eff;
-  width: 230px;
-  height: 45px;
-  font-size: 16px;
-  transition: all .2s;
+@media (width <= 480px) {
+  .title_problem {
+    padding: 120px 15px 0;
+    font-size: 20px;
+  }
+
+  .container_problems {
+    gap: 50px;
+    padding: 50px 15px;
+  }
+
+  .block_title {
+    padding-right: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
 }
 
-.Service > .calculator > .content > .send_request:hover {
-  opacity: 1;
+@media screen and (width <= 1000px) {
+  .RemontDvs > .Startscreen {
+    padding: 80px 24px;
+  }
+
+  .RemontDvs > .Startscreen > .content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .RemontDvs > .Startscreen > .content > .left {
+    gap: 24px;
+    height: auto;
+  }
+
+  .RemontDvs > .Startscreen > .content > .right {
+    display: none;
+  }
 }
 
-.title_small {
-  margin-left: 8px;
-  font-size: 40px;
+@media screen and (width <= 1400px) {
+  .problems_block {
+    flex-direction: column;
+    gap: 24px;
+    display: flex;
+  }
+
+  .problems_block > .problems_block_top {
+    padding: 80px 24px 0;
+  }
+
+  .problems_block > .problems_block_top > h2 {
+    display: none;
+  }
+
+  .problems_block > .container_problems {
+    padding: 0 24px 80px;
+  }
 }
 
-.images-wrapper {
-  grid-row: 2;
+
+/* [project]/src/app/services/[slug]/ImageBlock.scss.css [app-client] (css) */
+.ImageBlock {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.images-wrapper__img {
-  object-fit: cover;
+.ImageBlock.placeholder {
+  background: #f0f0f0;
+}
+
+.ImageBlock__overlay {
+  pointer-events: none;
+  width: 345px;
+  height: 233px;
   position: absolute;
-  box-shadow: 0 4px 12px #0000004d;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
 }
 
-.images-wrapper__img--small {
-  z-index: 2;
-  border: 11px solid #000;
-  width: 350px;
-  top: 20%;
-  left: 15%;
-}
-
-.images-wrapper__img--large {
-  z-index: 1;
-  width: 480px;
-  top: 35%;
-  right: 30%;
-}
-
-.images-wrapper__subtitle {
-  z-index: 3;
-  flex-direction: column;
-  align-items: flex-end;
-  display: flex;
-  position: absolute;
-  top: 25%;
-  right: 120px;
-}
-
-.subtitle-top {
-  color: silver;
-  text-transform: uppercase;
-  text-align: right;
-  background-color: #000;
-  margin: 0;
-  font-size: 24px;
-}
-
-.subtitle-bottom {
-  color: silver;
-  text-transform: uppercase;
-  background-color: #000;
-  margin: 4px 0 0;
-  font-size: 24px;
-}
-
-@media (width <= 1170px) {
-  .images-wrapper__img--small {
-    left: 8%;
-  }
-
-  .images-wrapper__img--large {
-    right: 20%;
-  }
-}
-
-.block_about_from_founder {
-  background-color: #000;
-  background-position: center;
-  background-size: cover;
-  height: auto;
-  position: relative;
-}
-
-.description_about_block_founder {
-  color: #fff;
-  max-width: 660px;
-  font-family: Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 130%;
-}
-
-.row_1_description_photo {
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 70px 120px;
-  display: flex;
-}
-
-.row_2_description_photo {
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 2rem;
-  padding: 70px 120px;
-  display: flex;
-}
-
-.hero_title {
-  text-align: center;
-  color: #fff;
-  text-transform: uppercase;
-  padding-top: 120px;
-  font-size: 48px;
-  line-height: 103%;
-}
-
-.hero_title_small {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 24px;
-}
-
-@media (width <= 750px) {
-  .images-wrapper__subtitle {
+@media screen and (width <= 1000px) {
+  .ImageBlock {
     display: none;
-  }
-
-  .images-wrapper__subtitle_mobile {
-    color: silver;
-    align-items: flex-end;
-    height: 100%;
-    font-size: 20px;
-    display: flex;
-  }
-
-  .images-wrapper__img--small {
-    width: 50%;
-    margin-left: -11px;
-    top: 10%;
-    left: 0;
-  }
-
-  .images-wrapper__img--large {
-    width: 80%;
-    top: 30%;
-    right: 15px;
-  }
-
-  .title_small, .hero_title {
-    font-size: 20px;
-  }
-
-  .hero_title_small {
-    font-size: 13px;
-  }
-
-  .row_1_description_photo {
-    flex-direction: column-reverse;
-    padding: 60px 15px;
-  }
-
-  .description_about_block_founder {
-    font-size: 16px;
-  }
-
-  .row_2_description_photo {
-    padding: 0 15px 80px;
-  }
-}
-
-@media (width >= 1440px) {
-  .images-wrapper__subtitle {
-    right: 0;
-  }
-}
-
-@media (width >= 750px) and (width <= 950px) {
-  .images-wrapper__subtitle, .images-wrapper__img--large {
-    right: 60px;
-  }
-
-  .images-wrapper__img--small {
-    left: 0;
-  }
-}
-
-@media (width >= 750px) {
-  .images-wrapper__subtitle_mobile {
-    display: none;
-  }
-}
-
-@media screen and (width <= 1200px) {
-  .Service > .Startscreen {
-    padding: 80px 24px;
-  }
-
-  .Service > .Startscreen > .content {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .Service > .Startscreen > .content > .left {
-    gap: 24px;
-    height: auto;
-  }
-
-  .Service > .Startscreen > .content > .right {
-    display: none;
-  }
-
-  .Service > .calculator {
-    padding: 24px;
-  }
-}
-
-@media screen and (width <= 800px) {
-  .Service > .Startscreen > .content > .left > .info > h1 {
-    word-wrap: break-word;
-    width: 100%;
-    font-size: 36px;
-  }
-
-  .Service > .Startscreen > .content > .left > .info > p {
-    font-size: 20px;
-    line-height: 105%;
   }
 }
 
@@ -736,32 +607,115 @@ input[type="date"], input[type="time"] {
 }
 
 
-/* [project]/src/app/services/[slug]/ImageBlock.scss.css [app-client] (css) */
-.ImageBlock {
+/* [project]/src/components/EngineSelector/EngineSelector.scss.css [app-client] (css) */
+.EngineSelector {
+  background-color: #d0d0d0;
+  padding: 100px 0;
+}
+
+.EngineSelector > h2 {
+  color: #262626;
+  width: 1200px;
+  margin: 0 auto 32px;
+  font-size: 24px;
+}
+
+.EngineSelector > .engine-selector {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.EngineSelector > .engine-selector .tabs {
+  gap: 16px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.EngineSelector > .engine-selector .tabs .tab {
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #fff;
+  width: 25%;
+  padding: 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color .2s;
+}
+
+.EngineSelector > .engine-selector .tabs .tab.active {
+  color: #fff;
+  background-color: #06f;
+  border-color: #06f;
+}
+
+.EngineSelector > .engine-selector .table {
+  border-collapse: collapse;
   width: 100%;
-  height: 100%;
-  position: relative;
 }
 
-.ImageBlock.placeholder {
-  background: #f0f0f0;
+.EngineSelector > .engine-selector .table th, .EngineSelector > .engine-selector .table td {
+  color: #000;
+  width: 50%;
+  padding: 12px 16px;
 }
 
-.ImageBlock__overlay {
-  pointer-events: none;
-  width: 345px;
-  height: 233px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translate(-50%, 50%);
+.EngineSelector > .engine-selector .table th {
+  text-align: left;
+  font-weight: 700;
 }
 
-@media screen and (width <= 1000px) {
-  .ImageBlock {
-    display: none;
+.EngineSelector > .engine-selector .table th.first-col {
+  background-color: #b3b3b3;
+}
+
+.EngineSelector > .engine-selector .table th.second-col {
+  background-color: #fff;
+}
+
+.EngineSelector > .engine-selector .table td {
+  vertical-align: top;
+}
+
+.EngineSelector > .engine-selector .table td:first-child {
+  background-color: #b3b3b3;
+}
+
+.EngineSelector > .engine-selector .table td:nth-child(2) {
+  background-color: #fff;
+}
+
+.EngineSelector > .engine-selector .note {
+  color: #8c8c8c;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+@media screen and (width <= 1200px) {
+  .EngineSelector {
+    width: 100%;
+  }
+
+  .EngineSelector > h2 {
+    width: 100%;
+    padding: 0 0 0 24px;
+  }
+
+  .EngineSelector > .engine-selector {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .EngineSelector > .engine-selector > .tabs {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .EngineSelector > .engine-selector > .tabs > .tab {
+    flex: 1;
   }
 }
 
 
-/*# sourceMappingURL=src_cf545365._.css.map*/
+/*# sourceMappingURL=src_037c6b5d._.css.map*/

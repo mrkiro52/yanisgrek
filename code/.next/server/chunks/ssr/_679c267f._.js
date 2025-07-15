@@ -237,36 +237,100 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$EngineS
 function RemontAkpp() {
     const categories = [
         {
-            title: 'Бензиновый',
+            title: 'МКПП',
             items: [
                 {
-                    name: 'N13B16',
-                    models: 'F20, F21 (116i, 118i)'
+                    name: 'Getrag GS6-17BG',
+                    models: 'F20, F21, F22, F30, F31 (1, 2, 3 серии)'
                 },
                 {
-                    name: 'N20B16/N20B20',
-                    models: 'F10, F30, F32, F25, F26 (520i, 328i, X3 20i)'
+                    name: 'Getrag GS6-45BZ',
+                    models: 'F30, F32, F36 (3, 4 серии)'
+                },
+                {
+                    name: 'ZF GS6-53DZ',
+                    models: 'F80 M3, F82 M4'
+                },
+                {
+                    name: 'ZF GS6-45DZ',
+                    models: 'G20, G21, G42, G87 (M2, 3 серии)'
                 }
             ],
-            note: '*Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
         },
         {
-            title: 'Гибрид/Электро',
+            title: 'АКПП',
             items: [
                 {
-                    name: 'E-Series 1',
-                    models: 'i3, i8'
+                    name: 'ZF 8HP45',
+                    models: 'F30, F32, F36, F10, F11 (3, 4, 5 серии)'
+                },
+                {
+                    name: 'ZF 8HP50',
+                    models: 'G20, G30, G11 (3, 5, 7 серии)'
+                },
+                {
+                    name: 'ZF 8HP51',
+                    models: 'G01, G02, G05 (X3, X4, X5)'
+                },
+                {
+                    name: 'ZF 8HP70',
+                    models: 'F15, F16, F01, F02 (X5, X6, 7 серия)'
+                },
+                {
+                    name: 'ZF 8HP75',
+                    models: 'G11, G12, G30 (7, 5 серии)'
+                },
+                {
+                    name: 'ZF 8HP76',
+                    models: 'G05, G06, G07 (X5, X6, X7)'
+                },
+                {
+                    name: 'ZF 8HP90',
+                    models: 'F90 M5, F92 M8, G80 M3, G82 M4'
                 }
-            ]
+            ],
+            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
         },
         {
-            title: 'Дизельный',
+            title: 'DCT',
             items: [
                 {
-                    name: 'N47D20',
-                    models: 'E90, F10 (320d, 520d)'
+                    name: 'Getrag 7DCT300',
+                    models: 'F39, F44, F48 (X2, 2 серии Gran Coupe)'
+                },
+                {
+                    name: 'Getrag 7DCT500',
+                    models: 'F87 M2 Competition'
+                },
+                {
+                    name: 'Getrag 7DCT600',
+                    models: 'F80 M3, F82 M4, F10 M5, F13 M6'
+                },
+                {
+                    name: 'Getrag 7DCT700',
+                    models: 'F90 M5, F92 M8'
                 }
-            ]
+            ],
+            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+        },
+        {
+            title: 'Электро',
+            items: [
+                {
+                    name: 'BMW iX 1AT',
+                    models: 'iX, iX3'
+                },
+                {
+                    name: 'BMW i4 1AT',
+                    models: 'i4'
+                },
+                {
+                    name: 'BMW i7 1AT',
+                    models: 'i7'
+                }
+            ],
+            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -274,7 +338,7 @@ function RemontAkpp() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2f$Header$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                lineNumber: 38,
+                lineNumber: 57,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -292,31 +356,31 @@ function RemontAkpp() {
                                             children: "Ремонт КПП"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                            lineNumber: 43,
+                                            lineNumber: 62,
                                             columnNumber: 25
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "При ремонте коробки передач мы используем оригинальные компоненты и строгие допуски: гарантия плавного переключения, герметичности и долговечности узла."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                            lineNumber: 44,
+                                            lineNumber: 63,
                                             columnNumber: 25
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                    lineNumber: 42,
+                                    lineNumber: 61,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$BtnGoForm$2f$BtnGoForm$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                    lineNumber: 46,
+                                    lineNumber: 65,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/remontAkpp/page.tsx",
-                            lineNumber: 41,
+                            lineNumber: 60,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -325,23 +389,23 @@ function RemontAkpp() {
                                 image: 'remont-kpp'
                             }, void 0, false, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 49,
+                                lineNumber: 68,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/remontAkpp/page.tsx",
-                            lineNumber: 48,
+                            lineNumber: 67,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/remontAkpp/page.tsx",
-                    lineNumber: 40,
+                    lineNumber: 59,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                lineNumber: 39,
+                lineNumber: 58,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -356,27 +420,27 @@ function RemontAkpp() {
                                     "Даже самая отлаженная",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 56,
+                                        lineNumber: 75,
                                         columnNumber: 46
                                     }, this),
                                     "коробка может дать сбой"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 55,
+                                lineNumber: 74,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "YANIS GREK"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 58,
+                                lineNumber: 77,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                        lineNumber: 54,
+                        lineNumber: 73,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -390,7 +454,7 @@ function RemontAkpp() {
                                         children: "Гидромеханическая АКПП"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 62,
+                                        lineNumber: 81,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -398,13 +462,13 @@ function RemontAkpp() {
                                         children: "Износ фрикционных дисков и стальных пакетов приводит к пробуксовкам и задержкам при переключении."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 63,
+                                        lineNumber: 82,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 61,
+                                lineNumber: 80,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -415,7 +479,7 @@ function RemontAkpp() {
                                         children: "Электронный блок управления"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 66,
+                                        lineNumber: 85,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -423,13 +487,13 @@ function RemontAkpp() {
                                         children: "Неисправности соленоидов и датчиков давления вызывают некорректное переключение и аварийный режим."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 86,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 65,
+                                lineNumber: 84,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -440,7 +504,7 @@ function RemontAkpp() {
                                         children: "Роботизированная КПП (DST)"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 89,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -448,13 +512,13 @@ function RemontAkpp() {
                                         children: "Сбои мехатроника и износ муфт сцепления вызывают дергания и ошибки адаптации."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 90,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 69,
+                                lineNumber: 88,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -465,7 +529,7 @@ function RemontAkpp() {
                                         children: "Вариатор (EV)"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 74,
+                                        lineNumber: 93,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -473,25 +537,25 @@ function RemontAkpp() {
                                         children: "Растяжение ремня или цепи и загрязнение масла приводят к шуму, перегреву и потере тяги."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                        lineNumber: 75,
+                                        lineNumber: 94,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                                lineNumber: 73,
+                                lineNumber: 92,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/remontAkpp/page.tsx",
-                        lineNumber: 60,
+                        lineNumber: 79,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                lineNumber: 53,
+                lineNumber: 72,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$EngineSelector$2f$EngineSelector$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -500,18 +564,18 @@ function RemontAkpp() {
                 secondColumnHeader: "Модели BMW"
             }, void 0, false, {
                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                lineNumber: 79,
+                lineNumber: 98,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$contacts$2f$page$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/remontAkpp/page.tsx",
-                lineNumber: 84,
+                lineNumber: 103,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/remontAkpp/page.tsx",
-        lineNumber: 37,
+        lineNumber: 56,
         columnNumber: 9
     }, this);
 }

@@ -29,37 +29,40 @@ const EngineSelector = ({
   const activeCategory = categories[activeIndex];
 
   return (
-    <div className="engine-selector">
-      <div className="tabs">
-        {categories.map((cat, idx) => (
-          <button
-            key={cat.title}
-            className={idx === activeIndex ? 'tab active' : 'tab'}
-            onClick={() => setActiveIndex(idx)}
-          >
-            {cat.title}
-          </button>
-        ))}
-      </div>
+    <div className="EngineSelector">
+        <h2>Выберите тип коробки переключения передач </h2>
+        <div className="engine-selector">
+            <div className="tabs">
+                {categories.map((cat, idx) => (
+                <button
+                    key={cat.title}
+                    className={idx === activeIndex ? 'tab active' : 'tab'}
+                    onClick={() => setActiveIndex(idx)}
+                >
+                    {cat.title}
+                </button>
+                ))}
+            </div>
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>{firstColumnHeader}</th>
-            <th>{secondColumnHeader}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {activeCategory.items.map(item => (
-            <tr key={item.name}>
-              <td>{item.name}</td>
-              <td>{item.models}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <table className="table">
+                <thead>
+                <tr>
+                    <th>{firstColumnHeader}</th>
+                    <th>{secondColumnHeader}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {activeCategory.items.map(item => (
+                    <tr key={item.name}>
+                    <td>{item.name}</td>
+                    <td>{item.models}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
 
-      {activeCategory.note && <p className="note">{activeCategory.note}</p>}
+            {activeCategory.note && <p className="note">{activeCategory.note}</p>}
+        </div>
     </div>
   );
 };
