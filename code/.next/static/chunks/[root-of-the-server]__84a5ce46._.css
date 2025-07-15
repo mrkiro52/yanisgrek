@@ -333,6 +333,10 @@
     display: none;
   }
 
+  .table {
+    display: table;
+  }
+
   .h-screen {
     height: 100vh;
   }

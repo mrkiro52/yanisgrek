@@ -1,12 +1,6 @@
 {
-    "technical_maintenance": {
-      "Замена масла ДВС": { "name": "Замена масла ДВС", "slug": "zamena-masla-dvs" },
-      "Замена воздушного фильтра": { "name": "Замена воздушного фильтра", "slug": "zamena-vozdushnogo-filtra" },
-      "Замена топливного фильтра": { "name": "Замена топливного фильтра", "slug": "zamena-toplivnogo-filtra" },
-      "Замена салонного фильтра": { "name": "Замена салонного фильтра", "slug": "zamena-salonnogo-filtra" },
-      "Прокачка топливной системы": { "name": "Прокачка топливной системы", "slug": "prokachka-toplivnoy-sistemy" }
-    },
     "transmission_service": {
+      "Ремонт КПП": { "name": "Ремонт КПП", "slug": "remont-kpp" },
       "Замена масла в АКПП": { "name": "Замена масла в АКПП", "slug": "zamena-masla-v-akpp" },
       "Замена фильтра-картера АКПП": { "name": "Замена фильтра-картера АКПП", "slug": "zamena-filtra-kartera-akpp" },
       "Замена масла в раздаточной коробке": { "name": "Замена масла в раздаточной коробке", "slug": "zamena-masla-v-razdatochnoy-korobke" },
@@ -15,6 +9,24 @@
       "Диагностика АКПП": { "name": "Диагностика АКПП", "slug": "diagnostika-akpp" },
       "Снятие/установка АКПП": { "name": "Снятие/установка АКПП", "slug": "snyatie-ustanovka-akpp" },
       "Снятие/установка раздаточной коробки": { "name": "Снятие/установка раздаточной коробки", "slug": "snyatie-ustanovka-razdatochnoy-korobki" }
+    },
+    "engine": {
+      "Ремонт ДВС": { "name": "Ремонт ДВС", "slug": "remont-dvs" },
+      "Снятие/установка ДВС": { "name": "Снятие/установка ДВС", "slug": "snyatie-ustanovka-dvs" },
+      "Замена цепи ГРМ": { "name": "Замена цепи ГРМ", "slug": "zamena-cepi-grm" },
+      "Замена маслосъёмных колпачков": { "name": "Замена маслосъёмных колпачков", "slug": "zamena-maslosyomnyh-kolpachkov" },
+      "Замена прокладок, сальников": { "name": "Замена прокладок, сальников", "slug": "zamena-prokladok-salnikov" },
+      "Замена вкладышей": { "name": "Замена вкладышей", "slug": "zamena-vkladyishey" },
+      "Чистка впускного коллектора / каналов": { "name": "Чистка впускного коллектора / каналов", "slug": "chistka-vpusknogo-kollektora-kanalov" },
+      "Притирка клапанов": { "name": "Притирка клапанов", "slug": "pritirka-klapanov" },
+      "Диагностика ДВС": { "name": "Диагностика ДВС", "slug": "diagnostika-dvs" }
+    },
+    "technical_maintenance": {
+      "Замена масла ДВС": { "name": "Замена масла ДВС", "slug": "zamena-masla-dvs" },
+      "Замена воздушного фильтра": { "name": "Замена воздушного фильтра", "slug": "zamena-vozdushnogo-filtra" },
+      "Замена топливного фильтра": { "name": "Замена топливного фильтра", "slug": "zamena-toplivnogo-filtra" },
+      "Замена салонного фильтра": { "name": "Замена салонного фильтра", "slug": "zamena-salonnogo-filtra" },
+      "Прокачка топливной системы": { "name": "Прокачка топливной системы", "slug": "prokachka-toplivnoy-sistemy" }
     },
     "brake_system": {
       "Замена передних тормозных дисков": { "name": "Замена передних тормозных дисков", "slug": "zamena-perednih-tormoznyh-diskov" },
@@ -33,16 +45,6 @@
       "Замена подушек подрамника": { "name": "Замена подушек подрамника", "slug": "zamena-podushek-podramnika" },
       "Ремонт рулевой рейки": { "name": "Ремонт рулевой рейки", "slug": "remont-rulevoy-reyki" },
       "Снятие/установка рулевой рейки": { "name": "Снятие/установка рулевой рейки", "slug": "snyatie-ustanovka-rulevoy-reyki" }
-    },
-    "engine": {
-      "Снятие/установка ДВС": { "name": "Снятие/установка ДВС", "slug": "snyatie-ustanovka-dvs" },
-      "Замена цепи ГРМ": { "name": "Замена цепи ГРМ", "slug": "zamena-cepi-grm" },
-      "Замена маслосъёмных колпачков": { "name": "Замена маслосъёмных колпачков", "slug": "zamena-maslosyomnyh-kolpachkov" },
-      "Замена прокладок, сальников": { "name": "Замена прокладок, сальников", "slug": "zamena-prokladok-salnikov" },
-      "Замена вкладышей": { "name": "Замена вкладышей", "slug": "zamena-vkladyishey" },
-      "Чистка впускного коллектора / каналов": { "name": "Чистка впускного коллектора / каналов", "slug": "chistka-vpusknogo-kollektora-kanalov" },
-      "Притирка клапанов": { "name": "Притирка клапанов", "slug": "pritirka-klapanov" },
-      "Диагностика ДВС": { "name": "Диагностика ДВС", "slug": "diagnostika-dvs" }
     },
     "electronics_and_tuning": {
       "Компьютерная диагностика": { "name": "Компьютерная диагностика", "slug": "kompyuternaya-diagnostika" },

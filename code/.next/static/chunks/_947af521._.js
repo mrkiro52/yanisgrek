@@ -134,8 +134,8 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/services/zamena-masla-dvs",
-                                            children: "Замена масла ДВС"
+                                            href: "/remontAkpp",
+                                            children: "Ремонт КПП (АКПП МКПП и др.)"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 49,
@@ -143,8 +143,8 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/services/kompyuternaya-diagnostika",
-                                            children: "Компьютерная диагностика"
+                                            href: "/remontDvs",
+                                            children: "Ремонт ДВС"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 52,
@@ -710,7 +710,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-__turbopack_context__.v(JSON.parse("{\"technical_maintenance\":{\"Замена масла ДВС\":{\"name\":\"Замена масла ДВС\",\"slug\":\"zamena-masla-dvs\"},\"Замена воздушного фильтра\":{\"name\":\"Замена воздушного фильтра\",\"slug\":\"zamena-vozdushnogo-filtra\"},\"Замена топливного фильтра\":{\"name\":\"Замена топливного фильтра\",\"slug\":\"zamena-toplivnogo-filtra\"},\"Замена салонного фильтра\":{\"name\":\"Замена салонного фильтра\",\"slug\":\"zamena-salonnogo-filtra\"},\"Прокачка топливной системы\":{\"name\":\"Прокачка топливной системы\",\"slug\":\"prokachka-toplivnoy-sistemy\"}},\"transmission_service\":{\"Замена масла в АКПП\":{\"name\":\"Замена масла в АКПП\",\"slug\":\"zamena-masla-v-akpp\"},\"Замена фильтра-картера АКПП\":{\"name\":\"Замена фильтра-картера АКПП\",\"slug\":\"zamena-filtra-kartera-akpp\"},\"Замена масла в раздаточной коробке\":{\"name\":\"Замена масла в раздаточной коробке\",\"slug\":\"zamena-masla-v-razdatochnoy-korobke\"},\"Замена масла в редукторе (перед/зад)\":{\"name\":\"Замена масла в редукторе (перед/зад)\",\"slug\":\"zamena-masla-v-reduktore-pered-zad\"},\"Сброс адаптаций АКПП\":{\"name\":\"Сброс адаптаций АКПП\",\"slug\":\"sbros-adaptaciy-akpp\"},\"Диагностика АКПП\":{\"name\":\"Диагностика АКПП\",\"slug\":\"diagnostika-akpp\"},\"Снятие/установка АКПП\":{\"name\":\"Снятие/установка АКПП\",\"slug\":\"snyatie-ustanovka-akpp\"},\"Снятие/установка раздаточной коробки\":{\"name\":\"Снятие/установка раздаточной коробки\",\"slug\":\"snyatie-ustanovka-razdatochnoy-korobki\"}},\"brake_system\":{\"Замена передних тормозных дисков\":{\"name\":\"Замена передних тормозных дисков\",\"slug\":\"zamena-perednih-tormoznyh-diskov\"},\"Замена задних тормозных дисков\":{\"name\":\"Замена задних тормозных дисков\",\"slug\":\"zamena-zadnih-tormoznyh-diskov\"},\"Замена передних тормозных колодок\":{\"name\":\"Замена передних тормозных колодок\",\"slug\":\"zamena-perednih-tormoznyh-kolodok\"},\"Замена задних тормозных колодок\":{\"name\":\"Замена задних тормозных колодок\",\"slug\":\"zamena-zadnih-tormoznyh-kolodok\"}},\"suspension_and_steering\":{\"Замена передних амортизаторов\":{\"name\":\"Замена передних амортизаторов\",\"slug\":\"zamena-perednih-amortizatorov\"},\"Замена задних амортизаторов\":{\"name\":\"Замена задних амортизаторов\",\"slug\":\"zamena-zadnih-amortizatorov\"},\"Замена сайлентблоков передней подвески\":{\"name\":\"Замена сайлентблоков передней подвески\",\"slug\":\"zamena-saylentblokov-peredney-podveski\"},\"Замена задних поперечных рычагов\":{\"name\":\"Замена задних поперечных рычагов\",\"slug\":\"zamena-zadnih-poperechnyh-rychagov\"},\"Замена стоек стабилизатора (перед/зад)\":{\"name\":\"Замена стоек стабилизатора (перед/зад)\",\"slug\":\"zamena-stoek-stabilizatora-pered-zad\"},\"Замена пружин задней подвески\":{\"name\":\"Замена пружин задней подвески\",\"slug\":\"zamena-pruzhin-zadney-podveski\"},\"Замена ступичных подшипников\":{\"name\":\"Замена ступичных подшипников\",\"slug\":\"zamena-stupichnyh-podshipnikov\"},\"Замена подушек подрамника\":{\"name\":\"Замена подушек подрамника\",\"slug\":\"zamena-podushek-podramnika\"},\"Ремонт рулевой рейки\":{\"name\":\"Ремонт рулевой рейки\",\"slug\":\"remont-rulevoy-reyki\"},\"Снятие/установка рулевой рейки\":{\"name\":\"Снятие/установка рулевой рейки\",\"slug\":\"snyatie-ustanovka-rulevoy-reyki\"}},\"engine\":{\"Снятие/установка ДВС\":{\"name\":\"Снятие/установка ДВС\",\"slug\":\"snyatie-ustanovka-dvs\"},\"Замена цепи ГРМ\":{\"name\":\"Замена цепи ГРМ\",\"slug\":\"zamena-cepi-grm\"},\"Замена маслосъёмных колпачков\":{\"name\":\"Замена маслосъёмных колпачков\",\"slug\":\"zamena-maslosyomnyh-kolpachkov\"},\"Замена прокладок, сальников\":{\"name\":\"Замена прокладок, сальников\",\"slug\":\"zamena-prokladok-salnikov\"},\"Замена вкладышей\":{\"name\":\"Замена вкладышей\",\"slug\":\"zamena-vkladyishey\"},\"Чистка впускного коллектора / каналов\":{\"name\":\"Чистка впускного коллектора / каналов\",\"slug\":\"chistka-vpusknogo-kollektora-kanalov\"},\"Притирка клапанов\":{\"name\":\"Притирка клапанов\",\"slug\":\"pritirka-klapanov\"},\"Диагностика ДВС\":{\"name\":\"Диагностика ДВС\",\"slug\":\"diagnostika-dvs\"}},\"electronics_and_tuning\":{\"Компьютерная диагностика\":{\"name\":\"Компьютерная диагностика\",\"slug\":\"kompyuternaya-diagnostika\"},\"Обновление программного обеспечения\":{\"name\":\"Обновление программного обеспечения\",\"slug\":\"obnovlenie-programmnogo-obespecheniya\"},\"Чип-тюнинг Stage 1 / Stage 2\":{\"name\":\"Чип-тюнинг Stage 1 / Stage 2\",\"slug\":\"chip-tyuning-stage-1-stage-2\"},\"Калибровка пневмоподвески\":{\"name\":\"Калибровка пневмоподвески\",\"slug\":\"kalibrovka-pnevmopodveski\"},\"Замена АКБ с регистрацией\":{\"name\":\"Замена АКБ с регистрацией\",\"slug\":\"zamena-akb-s-registraciey\"}},\"ac_and_cooling\":{\"Вакуумирование и заправка кондиционера\":{\"name\":\"Вакуумирование и заправка кондиционера\",\"slug\":\"vakuumirovanie-i-zapravka-konditsionera\"},\"Антибактериальная обработка кондиционера\":{\"name\":\"Антибактериальная обработка кондиционера\",\"slug\":\"antibakterialnaya-obrabotka-konditsionera\"},\"Замена насоса охлаждающей жидкости\":{\"name\":\"Замена насоса охлаждающей жидкости\",\"slug\":\"zamena-nasosa-ohlazhdayushchey-zhidkosti\"},\"Замена термостата\":{\"name\":\"Замена термостата\",\"slug\":\"zamena-termostata\"},\"Мойка радиаторов\":{\"name\":\"Мойка радиаторов\",\"slug\":\"moyka-radiatorov\"}},\"special_and_tuning\":{\"Отключение и удаление EGR / DPF / AdBlue\":{\"name\":\"Отключение и удаление EGR / DPF / AdBlue\",\"slug\":\"otklyuchenie-i-udalenie-egr-dpf-adblue\"},\"Профилактика дренажей подкапотного пространства\":{\"name\":\"Профилактика дренажей подкапотного пространства\",\"slug\":\"profilaktika-drenazhey-podkapotnogo-prostranstva\"},\"Чистка клапанов\":{\"name\":\"Чистка клапанов\",\"slug\":\"chistka-klapanov\"},\"Удаление впуска / впускной системы\":{\"name\":\"Удаление впуска / впускной системы\",\"slug\":\"udalenie-vpuska-vpusknoy-sistemy\"}}}"));}}),
+__turbopack_context__.v(JSON.parse("{\"transmission_service\":{\"Ремонт КПП\":{\"name\":\"Ремонт КПП\",\"slug\":\"remont-kpp\"},\"Замена масла в АКПП\":{\"name\":\"Замена масла в АКПП\",\"slug\":\"zamena-masla-v-akpp\"},\"Замена фильтра-картера АКПП\":{\"name\":\"Замена фильтра-картера АКПП\",\"slug\":\"zamena-filtra-kartera-akpp\"},\"Замена масла в раздаточной коробке\":{\"name\":\"Замена масла в раздаточной коробке\",\"slug\":\"zamena-masla-v-razdatochnoy-korobke\"},\"Замена масла в редукторе (перед/зад)\":{\"name\":\"Замена масла в редукторе (перед/зад)\",\"slug\":\"zamena-masla-v-reduktore-pered-zad\"},\"Сброс адаптаций АКПП\":{\"name\":\"Сброс адаптаций АКПП\",\"slug\":\"sbros-adaptaciy-akpp\"},\"Диагностика АКПП\":{\"name\":\"Диагностика АКПП\",\"slug\":\"diagnostika-akpp\"},\"Снятие/установка АКПП\":{\"name\":\"Снятие/установка АКПП\",\"slug\":\"snyatie-ustanovka-akpp\"},\"Снятие/установка раздаточной коробки\":{\"name\":\"Снятие/установка раздаточной коробки\",\"slug\":\"snyatie-ustanovka-razdatochnoy-korobki\"}},\"engine\":{\"Ремонт ДВС\":{\"name\":\"Ремонт ДВС\",\"slug\":\"remont-dvs\"},\"Снятие/установка ДВС\":{\"name\":\"Снятие/установка ДВС\",\"slug\":\"snyatie-ustanovka-dvs\"},\"Замена цепи ГРМ\":{\"name\":\"Замена цепи ГРМ\",\"slug\":\"zamena-cepi-grm\"},\"Замена маслосъёмных колпачков\":{\"name\":\"Замена маслосъёмных колпачков\",\"slug\":\"zamena-maslosyomnyh-kolpachkov\"},\"Замена прокладок, сальников\":{\"name\":\"Замена прокладок, сальников\",\"slug\":\"zamena-prokladok-salnikov\"},\"Замена вкладышей\":{\"name\":\"Замена вкладышей\",\"slug\":\"zamena-vkladyishey\"},\"Чистка впускного коллектора / каналов\":{\"name\":\"Чистка впускного коллектора / каналов\",\"slug\":\"chistka-vpusknogo-kollektora-kanalov\"},\"Притирка клапанов\":{\"name\":\"Притирка клапанов\",\"slug\":\"pritirka-klapanov\"},\"Диагностика ДВС\":{\"name\":\"Диагностика ДВС\",\"slug\":\"diagnostika-dvs\"}},\"technical_maintenance\":{\"Замена масла ДВС\":{\"name\":\"Замена масла ДВС\",\"slug\":\"zamena-masla-dvs\"},\"Замена воздушного фильтра\":{\"name\":\"Замена воздушного фильтра\",\"slug\":\"zamena-vozdushnogo-filtra\"},\"Замена топливного фильтра\":{\"name\":\"Замена топливного фильтра\",\"slug\":\"zamena-toplivnogo-filtra\"},\"Замена салонного фильтра\":{\"name\":\"Замена салонного фильтра\",\"slug\":\"zamena-salonnogo-filtra\"},\"Прокачка топливной системы\":{\"name\":\"Прокачка топливной системы\",\"slug\":\"prokachka-toplivnoy-sistemy\"}},\"brake_system\":{\"Замена передних тормозных дисков\":{\"name\":\"Замена передних тормозных дисков\",\"slug\":\"zamena-perednih-tormoznyh-diskov\"},\"Замена задних тормозных дисков\":{\"name\":\"Замена задних тормозных дисков\",\"slug\":\"zamena-zadnih-tormoznyh-diskov\"},\"Замена передних тормозных колодок\":{\"name\":\"Замена передних тормозных колодок\",\"slug\":\"zamena-perednih-tormoznyh-kolodok\"},\"Замена задних тормозных колодок\":{\"name\":\"Замена задних тормозных колодок\",\"slug\":\"zamena-zadnih-tormoznyh-kolodok\"}},\"suspension_and_steering\":{\"Замена передних амортизаторов\":{\"name\":\"Замена передних амортизаторов\",\"slug\":\"zamena-perednih-amortizatorov\"},\"Замена задних амортизаторов\":{\"name\":\"Замена задних амортизаторов\",\"slug\":\"zamena-zadnih-amortizatorov\"},\"Замена сайлентблоков передней подвески\":{\"name\":\"Замена сайлентблоков передней подвески\",\"slug\":\"zamena-saylentblokov-peredney-podveski\"},\"Замена задних поперечных рычагов\":{\"name\":\"Замена задних поперечных рычагов\",\"slug\":\"zamena-zadnih-poperechnyh-rychagov\"},\"Замена стоек стабилизатора (перед/зад)\":{\"name\":\"Замена стоек стабилизатора (перед/зад)\",\"slug\":\"zamena-stoek-stabilizatora-pered-zad\"},\"Замена пружин задней подвески\":{\"name\":\"Замена пружин задней подвески\",\"slug\":\"zamena-pruzhin-zadney-podveski\"},\"Замена ступичных подшипников\":{\"name\":\"Замена ступичных подшипников\",\"slug\":\"zamena-stupichnyh-podshipnikov\"},\"Замена подушек подрамника\":{\"name\":\"Замена подушек подрамника\",\"slug\":\"zamena-podushek-podramnika\"},\"Ремонт рулевой рейки\":{\"name\":\"Ремонт рулевой рейки\",\"slug\":\"remont-rulevoy-reyki\"},\"Снятие/установка рулевой рейки\":{\"name\":\"Снятие/установка рулевой рейки\",\"slug\":\"snyatie-ustanovka-rulevoy-reyki\"}},\"electronics_and_tuning\":{\"Компьютерная диагностика\":{\"name\":\"Компьютерная диагностика\",\"slug\":\"kompyuternaya-diagnostika\"},\"Обновление программного обеспечения\":{\"name\":\"Обновление программного обеспечения\",\"slug\":\"obnovlenie-programmnogo-obespecheniya\"},\"Чип-тюнинг Stage 1 / Stage 2\":{\"name\":\"Чип-тюнинг Stage 1 / Stage 2\",\"slug\":\"chip-tyuning-stage-1-stage-2\"},\"Калибровка пневмоподвески\":{\"name\":\"Калибровка пневмоподвески\",\"slug\":\"kalibrovka-pnevmopodveski\"},\"Замена АКБ с регистрацией\":{\"name\":\"Замена АКБ с регистрацией\",\"slug\":\"zamena-akb-s-registraciey\"}},\"ac_and_cooling\":{\"Вакуумирование и заправка кондиционера\":{\"name\":\"Вакуумирование и заправка кондиционера\",\"slug\":\"vakuumirovanie-i-zapravka-konditsionera\"},\"Антибактериальная обработка кондиционера\":{\"name\":\"Антибактериальная обработка кондиционера\",\"slug\":\"antibakterialnaya-obrabotka-konditsionera\"},\"Замена насоса охлаждающей жидкости\":{\"name\":\"Замена насоса охлаждающей жидкости\",\"slug\":\"zamena-nasosa-ohlazhdayushchey-zhidkosti\"},\"Замена термостата\":{\"name\":\"Замена термостата\",\"slug\":\"zamena-termostata\"},\"Мойка радиаторов\":{\"name\":\"Мойка радиаторов\",\"slug\":\"moyka-radiatorov\"}},\"special_and_tuning\":{\"Отключение и удаление EGR / DPF / AdBlue\":{\"name\":\"Отключение и удаление EGR / DPF / AdBlue\",\"slug\":\"otklyuchenie-i-udalenie-egr-dpf-adblue\"},\"Профилактика дренажей подкапотного пространства\":{\"name\":\"Профилактика дренажей подкапотного пространства\",\"slug\":\"profilaktika-drenazhey-podkapotnogo-prostranstva\"},\"Чистка клапанов\":{\"name\":\"Чистка клапанов\",\"slug\":\"chistka-klapanov\"},\"Удаление впуска / впускной системы\":{\"name\":\"Удаление впуска / впускной системы\",\"slug\":\"udalenie-vpuska-vpusknoy-sistemy\"}}}"));}}),
 "[project]/src/components/BtnGoCalc/BtnGoCalc.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -910,9 +910,19 @@ function ServicesPage() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "services_container",
-                children: servicesOfActiveCategory.map((service)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: servicesOfActiveCategory.map((service)=>{
+                    const handleClick = ()=>{
+                        if (service.slug === 'remont-kpp') {
+                            router.push('/remontAkpp');
+                        } else if (service.slug === 'remont-dvs') {
+                            router.push('/remontDvs');
+                        } else {
+                            router.push(`/services/${service.slug}`);
+                        }
+                    };
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "service",
-                        onClick: ()=>router.push(`/services/${service.slug}`),
+                        onClick: handleClick,
                         style: {
                             backgroundImage: `url(/images/servicesImages/${service.slug}.jpg)`,
                             backgroundSize: 'cover',
@@ -923,14 +933,15 @@ function ServicesPage() {
                             children: service.name
                         }, void 0, false, {
                             fileName: "[project]/src/app/services/page.jsx",
-                            lineNumber: 78,
-                            columnNumber: 11
+                            lineNumber: 89,
+                            columnNumber: 13
                         }, this)
                     }, service.slug, false, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 67,
-                        columnNumber: 9
-                    }, this))
+                        lineNumber: 78,
+                        columnNumber: 11
+                    }, this);
+                })
             }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
                 lineNumber: 65,
@@ -950,13 +961,13 @@ function ServicesPage() {
                                     "BMW ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 86,
+                                        lineNumber: 98,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 85,
+                                lineNumber: 97,
                                 columnNumber: 11
                             }, this),
                             " ",
@@ -966,14 +977,14 @@ function ServicesPage() {
                                 children: " — в"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 88,
+                                lineNumber: 100,
                                 columnNumber: 20
                             }, this),
                             " Москве"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 83,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -986,7 +997,7 @@ function ServicesPage() {
                                         children: "Любая, даже идеальная на вид машина, однажды может подвести. И дело не только в пробеге или возрасте — часто всё начинается с мелочей: немного не так заехал на бордюр, не заметил вибрации, проигнорировал странный звук при запуске двигателя. Даже неправильно выбранное масло или затянутый визит на ТО могут привести к серьёзным последствиям. Именно поэтому так важно регулярно обслуживать автомобиль, даже если кажется, что “всё нормально”. Своевременное техническое обслуживание — это не расходы, это инвестиция в надёжность, безопасность и спокойствие. Лучше вовремя поменять фильтр, чем потом менять двигатель. Сервис — это не про сломалось, это про сохранить. Машина требует внимания, даже если пока не просит его вслух."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 92,
+                                        lineNumber: 104,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -994,13 +1005,13 @@ function ServicesPage() {
                                         alt: ""
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 95,
+                                        lineNumber: 107,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 91,
+                                lineNumber: 103,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1012,7 +1023,7 @@ function ServicesPage() {
                                         className: "photo_worker"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 98,
+                                        lineNumber: 110,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1020,32 +1031,32 @@ function ServicesPage() {
                                         children: "Мы в YanisGrek не просто чиним машины — мы понимаем, что за каждым автомобилем стоит человек. С любыми задачами по BMW, MINI или Rolls-Royce мы справляемся без суеты и лишних слов. У нас не просто опыт — у нас внутренняя система, где каждый мастер не только делает свою работу, но и умеет внятно объяснить, что, почему и зачем. И делает это с уважением, спокойно, без давления. Мы создаём атмосферу, в которую хочется возвращаться — когда и техника в порядке, и ты сам чувствуешь, что попал в правильное место. К нам приходят не только за ремонтом, а за доверием. Мы не просто сервис, мы команда людей, которые действительно любят своё дело. И любят своих клиентов."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 103,
+                                        lineNumber: 115,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 97,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 90,
+                        lineNumber: 102,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 82,
+                lineNumber: 94,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$contacts$2f$page$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 ref: formRef
             }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 109,
+                lineNumber: 121,
                 columnNumber: 7
             }, this)
         ]
