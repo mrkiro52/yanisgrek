@@ -592,10 +592,17 @@ function Header() {
                             lineNumber: 69,
                             columnNumber: 21
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: "/logo.svg",
-                            alt: "logo",
-                            className: "logo"
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: "/logo.svg",
+                                alt: "logo",
+                                className: "logo"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Header/Header.jsx",
+                                lineNumber: 73,
+                                columnNumber: 36
+                            }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header/Header.jsx",
                             lineNumber: 73,
@@ -625,10 +632,17 @@ function Header() {
                         lineNumber: 77,
                         columnNumber: 17
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                        src: "/logo.svg",
-                        className: "logo",
-                        alt: "logo"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        href: "/",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: "/logo.svg",
+                            className: "logo",
+                            alt: "logo"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Header/Header.jsx",
+                            lineNumber: 83,
+                            columnNumber: 32
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
                         lineNumber: 83,
@@ -1079,7 +1093,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 function Calculator({ data, services }) {
     _s();
-    /* -------- выбор машины -------- */ const [modelId, setModelId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(data?.length ? data[data.length - 1].id : null);
+    /* -------- выбор машины -------- */ const [modelId, setModelId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(data?.length ? data[data.length - 2].id : null);
     const [subId, setSubId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [seriesName, setSeriesName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(""); // имя серии
     const [mileage, setMileage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
@@ -1744,7 +1758,7 @@ function Calculator({ data, services }) {
         columnNumber: 5
     }, this);
 }
-_s(Calculator, "fL7/Her3osrSo3bmuzfxXR/U038=");
+_s(Calculator, "eG/zglazr8cvqIoKlns/0osgUiU=");
 _c = Calculator;
 var _c;
 __turbopack_context__.k.register(_c, "Calculator");

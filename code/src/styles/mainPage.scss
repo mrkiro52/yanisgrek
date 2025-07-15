@@ -224,6 +224,26 @@
         flex-direction: column;
         padding: 120px 0px;
         gap: 60px;
+        & > .remont {
+          display: flex;
+          gap: 24px;
+          & > .block {
+            width: 50%;
+            min-height: 150px;
+            box-sizing: border-box;
+            padding: 24px;
+            cursor: pointer;
+            background-color: #2e2e2e;
+            transition: all 0.3s;
+            &:hover {
+              background-color: #656565;
+            }
+            & > h3 {
+              color: white;
+              font-size: 24px;
+            }
+          }
+        }
         & > h2 {
           color: #656565;
           font-size: 131px;
@@ -488,6 +508,9 @@
           flex-direction: column;
           padding: 120px 0px;
           gap: 60px;
+          & > .remont {
+            padding: 0px 24px;
+          }
           & > h2 {
             color: #656565;
             font-size: 90px;
@@ -760,6 +783,12 @@
           flex-direction: column;
           padding: 120px 0px;
           gap: 60px;
+          & > .remont {
+            flex-direction: column;
+            & > .block {
+              width: 100%;
+            }
+          }
           & > h2 {
             color: #656565;
             font-size: 60px;
