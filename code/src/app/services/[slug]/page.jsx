@@ -29,19 +29,13 @@ export default async function Service({ params }) {
             <div className="info">
               <h1>{serviceData.title}</h1>
               <p>{serviceData.subtitle}</p>
+              <p>от {serviceData.price} рублей</p>
             </div>
             <ButtonGoForm/>
           </div>
           <div className="right">
-            <ImageBlock/>
+            <ImageBlock image={slug} />
           </div>
-        </div>
-      </div>
-      <div className="calculator">
-        <div className="content">
-          <h2>Стоимость услуги {serviceData.title}</h2>
-          <h3>от {serviceData.price} рублей</h3>
-          <ButtonGoForm/>
         </div>
       </div>
       <div className="block_about_from_founder">

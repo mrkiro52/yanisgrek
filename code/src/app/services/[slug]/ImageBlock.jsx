@@ -64,7 +64,7 @@ const serviceImages = [
   ];
    
 
-export default function ImageBlock() {
+export default function ImageBlock(props) {
   const [bg, setBg] = useState(null);
   const [overlay, setOverlay] = useState(null);
 
@@ -95,7 +95,7 @@ export default function ImageBlock() {
       }}
     >
 
-    <img src={overlay} alt="car" className="ImageBlock__overlay" />
+    <img src={`/images/servicesImages/${props.image}.jpg`} alt="car" className="ImageBlock__overlay" />
       
     </div>
   );

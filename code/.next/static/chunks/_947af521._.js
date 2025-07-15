@@ -884,37 +884,8 @@ function ServicesPage() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                 className: "hero_title white",
-                children: [
-                    "Расчёты стоимости",
-                    " ",
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "hero_title_small white",
-                        children: [
-                            "услуги",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 49,
-                                columnNumber: 19
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 48,
-                        columnNumber: 11
-                    }, this),
-                    " ",
-                    "находятся",
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "hero_title_small white",
-                        children: " — на"
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 51,
-                        columnNumber: 20
-                    }, this),
-                    " странице услуги"
-                ]
-            }, void 0, true, {
+                children: "Все услуги Yanis Grek"
+            }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
                 lineNumber: 46,
                 columnNumber: 7
@@ -929,12 +900,12 @@ function ServicesPage() {
                         children: categoryTitles[key] ?? key
                     }, key, false, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 55,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 53,
+                lineNumber: 49,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -952,17 +923,17 @@ function ServicesPage() {
                             children: service.name
                         }, void 0, false, {
                             fileName: "[project]/src/app/services/page.jsx",
-                            lineNumber: 82,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this)
                     }, service.slug, false, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 71,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 69,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -979,13 +950,13 @@ function ServicesPage() {
                                     "BMW ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 90,
+                                        lineNumber: 86,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 89,
+                                lineNumber: 85,
                                 columnNumber: 11
                             }, this),
                             " ",
@@ -995,14 +966,14 @@ function ServicesPage() {
                                 children: " — в"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 92,
+                                lineNumber: 88,
                                 columnNumber: 20
                             }, this),
                             " Москве"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 87,
+                        lineNumber: 83,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1015,7 +986,7 @@ function ServicesPage() {
                                         children: "Любая, даже идеальная на вид машина, однажды может подвести. И дело не только в пробеге или возрасте — часто всё начинается с мелочей: немного не так заехал на бордюр, не заметил вибрации, проигнорировал странный звук при запуске двигателя. Даже неправильно выбранное масло или затянутый визит на ТО могут привести к серьёзным последствиям. Именно поэтому так важно регулярно обслуживать автомобиль, даже если кажется, что “всё нормально”. Своевременное техническое обслуживание — это не расходы, это инвестиция в надёжность, безопасность и спокойствие. Лучше вовремя поменять фильтр, чем потом менять двигатель. Сервис — это не про сломалось, это про сохранить. Машина требует внимания, даже если пока не просит его вслух."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 96,
+                                        lineNumber: 92,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -1023,13 +994,13 @@ function ServicesPage() {
                                         alt: ""
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 99,
+                                        lineNumber: 95,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 95,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1041,7 +1012,7 @@ function ServicesPage() {
                                         className: "photo_worker"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 102,
+                                        lineNumber: 98,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1049,32 +1020,32 @@ function ServicesPage() {
                                         children: "Мы в YanisGrek не просто чиним машины — мы понимаем, что за каждым автомобилем стоит человек. С любыми задачами по BMW, MINI или Rolls-Royce мы справляемся без суеты и лишних слов. У нас не просто опыт — у нас внутренняя система, где каждый мастер не только делает свою работу, но и умеет внятно объяснить, что, почему и зачем. И делает это с уважением, спокойно, без давления. Мы создаём атмосферу, в которую хочется возвращаться — когда и техника в порядке, и ты сам чувствуешь, что попал в правильное место. К нам приходят не только за ремонтом, а за доверием. Мы не просто сервис, мы команда людей, которые действительно любят своё дело. И любят своих клиентов."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/page.jsx",
-                                        lineNumber: 107,
+                                        lineNumber: 103,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/page.jsx",
-                                lineNumber: 101,
+                                lineNumber: 97,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/services/page.jsx",
-                        lineNumber: 94,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 86,
+                lineNumber: 82,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$contacts$2f$page$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 ref: formRef
             }, void 0, false, {
                 fileName: "[project]/src/app/services/page.jsx",
-                lineNumber: 113,
+                lineNumber: 109,
                 columnNumber: 7
             }, this)
         ]
