@@ -44,11 +44,7 @@ export default function ServicesPage() {
         </div>
       </div>
       <h1 className="hero_title white">
-          Расчёты стоимости{" "}
-          <span className="hero_title_small white">
-            услуги<br />
-          </span>{" "}
-          находятся<span className="hero_title_small white"> — на</span> странице услуги
+          Все услуги Yanis Grek
         </h1>
       <div className="buttons_container" id="Calculator">
         {categoryKeys.map((key, index) => (
