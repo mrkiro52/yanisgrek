@@ -304,7 +304,7 @@ function RemontDvs() {
                     models: 'G70 760i, G99 X5 M'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         },
         {
             title: 'Гибрид/Электро',
@@ -338,7 +338,7 @@ function RemontDvs() {
                     models: 'G09 iX'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         },
         {
             title: 'Дизельный',
@@ -364,7 +364,7 @@ function RemontDvs() {
                     models: 'G30, G11, G01, G05, G07 (530d, 730d, X3 30d, X5 30d)'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

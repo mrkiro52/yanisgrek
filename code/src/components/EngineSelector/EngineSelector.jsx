@@ -35,7 +35,7 @@ const EngineSelector = ({
             <div className="tabs">
                 {categories.map((cat, idx) => (
                 <button
-                    key={cat.title}
+                    key={idx}
                     className={idx === activeIndex ? 'tab active' : 'tab'}
                     onClick={() => setActiveIndex(idx)}
                 >
@@ -52,8 +52,8 @@ const EngineSelector = ({
                 </tr>
                 </thead>
                 <tbody>
-                {activeCategory.items.map(item => (
-                    <tr key={item.name}>
+                {activeCategory.items.map((item, idx) => (
+                    <tr key={idx}>
                     <td>{item.name}</td>
                     <td>{item.models}</td>
                     </tr>
@@ -61,7 +61,7 @@ const EngineSelector = ({
                 </tbody>
             </table>
 
-            {activeCategory.note && <p className="note">{activeCategory.note}</p>}
+            <a href="https://wa.me/79852707575" target="_blank"><p className="note">{activeCategory.note}</p></a>
         </div>
     </div>
   );

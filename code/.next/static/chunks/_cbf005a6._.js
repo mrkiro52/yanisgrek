@@ -933,7 +933,7 @@ var _s = __turbopack_context__.k.signature();
                                 className: idx === activeIndex ? 'tab active' : 'tab',
                                 onClick: ()=>setActiveIndex(idx),
                                 children: cat.title
-                            }, cat.title, false, {
+                            }, idx, false, {
                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
                                 lineNumber: 37,
                                 columnNumber: 17
@@ -975,7 +975,7 @@ var _s = __turbopack_context__.k.signature();
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                children: activeCategory.items.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                children: activeCategory.items.map((item, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 children: item.name
@@ -992,7 +992,7 @@ var _s = __turbopack_context__.k.signature();
                                                 columnNumber: 21
                                             }, this)
                                         ]
-                                    }, item.name, true, {
+                                    }, idx, true, {
                                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
                                         lineNumber: 56,
                                         columnNumber: 21
@@ -1008,13 +1008,21 @@ var _s = __turbopack_context__.k.signature();
                         lineNumber: 47,
                         columnNumber: 13
                     }, this),
-                    activeCategory.note && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "note",
-                        children: activeCategory.note
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                        href: "https://wa.me/79852707575",
+                        target: "_blank",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "note",
+                            children: activeCategory.note
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
+                            lineNumber: 64,
+                            columnNumber: 65
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
                         lineNumber: 64,
-                        columnNumber: 37
+                        columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {

@@ -256,7 +256,7 @@ function RemontAkpp() {
                     models: 'G20, G21, G42, G87 (M2, 3 серии)'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         },
         {
             title: 'АКПП',
@@ -290,7 +290,7 @@ function RemontAkpp() {
                     models: 'F90 M5, F92 M8, G80 M3, G82 M4'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         },
         {
             title: 'DCT',
@@ -312,7 +312,7 @@ function RemontAkpp() {
                     models: 'F90 M5, F92 M8'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         },
         {
             title: 'Электро',
@@ -330,7 +330,7 @@ function RemontAkpp() {
                     models: 'i7'
                 }
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе'
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
