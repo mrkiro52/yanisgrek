@@ -166,7 +166,7 @@
 @media screen and (max-width: 450px) {
   .Header {
     & > .content {
-      & > a {
+      & > a.logo {
         display: none;
       }
     }
