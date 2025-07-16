@@ -80,8 +80,8 @@ export default function Header() {
                     onClick={() => setMenuOpened(true)}
                     alt="burger"
                 />
-                <Link href="/"><img src="/logo.svg" className="logo" alt="logo" /></Link>
-                <a href="https://wa.me/79852707575" target="_blank">+7 495 76-76-500</a>
+                <Link href="/" className="logo"><img src="/logo.svg" alt="logo" /></Link>
+                <a href="https://wa.me/79852707575" target="_blank" className='phone'>+7 495 76-76-500</a>
             </div>
         </div>
     );
