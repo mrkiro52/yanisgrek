@@ -382,7 +382,7 @@
 }
 
 @media screen and (width <= 450px) {
-  .Header > .content > a {
+  .Header > .content > a.logo {
     display: none;
   }
 }

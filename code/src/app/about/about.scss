@@ -1,12 +1,14 @@
-.Startscreen {
-  background-image: url("/images/black_car_about.jpg");
-  // background-size: cover;
-  background-position: center;
-  // height: 100vh;
-  position: relative;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  width: 100%;
+.About {
+  & > .Startscreen {
+    background-image: url("/images/black_car_about.jpg");
+    // background-size: cover;
+    background-position: center;
+    // height: 100vh;
+    position: relative;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
 }
 
 .about_title {
