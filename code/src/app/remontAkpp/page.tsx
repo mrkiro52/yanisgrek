@@ -16,7 +16,7 @@ export default function RemontAkpp() {
             { name: 'ZF GS6-53DZ', models: 'F80 M3, F82 M4' },
             { name: 'ZF GS6-45DZ', models: 'G20, G21, G42, G87 (M2, 3 серии)' },
           ],
-          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
+          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
         },
         {
           title: 'АКПП',
@@ -29,7 +29,7 @@ export default function RemontAkpp() {
             { name: 'ZF 8HP76', models: 'G05, G06, G07 (X5, X6, X7)' },
             { name: 'ZF 8HP90', models: 'F90 M5, F92 M8, G80 M3, G82 M4' },
           ],
-          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
+          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
         },
         {
           title: 'DCT',
@@ -39,7 +39,7 @@ export default function RemontAkpp() {
             { name: 'Getrag 7DCT600', models: 'F80 M3, F82 M4, F10 M5, F13 M6' },
             { name: 'Getrag 7DCT700', models: 'F90 M5, F92 M8' },
           ],
-          note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
+          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
         },
         {
             title: 'Электро',
@@ -48,7 +48,7 @@ export default function RemontAkpp() {
               { name: 'BMW i4 1AT', models: 'i4' },
               { name: 'BMW i7 1AT', models: 'i7' },
             ],
-            note: '* Стоимость услуг зависит от заправочного объема масла в двигателе',
+            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
           },
       ];
 

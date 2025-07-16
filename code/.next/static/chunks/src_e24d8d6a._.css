@@ -626,6 +626,7 @@ input[type="date"], input[type="time"] {
 }
 
 .EngineSelector > .engine-selector .tabs {
+  justify-content: center;
   gap: 16px;
   margin-bottom: 24px;
   display: flex;
@@ -690,6 +691,11 @@ input[type="date"], input[type="time"] {
   margin-top: 12px;
   font-size: 14px;
   font-style: italic;
+  transition: all .2s;
+}
+
+.EngineSelector > .engine-selector .note:hover {
+  color: #000;
 }
 
 @media screen and (width <= 1200px) {
