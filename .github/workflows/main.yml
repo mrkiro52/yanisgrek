@@ -10,6 +10,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Получаем всю историю коммитов
+
+      - name: Prepare code folder
+        run: |
+          # Создаем временную папку с содержимым code
+          mkdir -p temp_deploy
+          cp -r ./code/* temp_deploy/
+          tar -czf code.tar.gz -C temp_deploy .
 
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.7.0
@@ -18,28 +27,29 @@ jobs:
 
       - name: Deploy via SSH
         run: |
+          # Копируем архив на сервер
+          scp -o StrictHostKeyChecking=no code.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:./yanisgrek-main/
+          
+          # Распаковываем на сервере
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           set -e
           set -x
           
-          # Основная рабочая директория
           WORK_DIR="./yanisgrek-main"
           cd $WORK_DIR || { echo "Directory $WORK_DIR not found"; exit 1; }
           
-          # Если папка code не существует - создаем
-          if [ ! -d "code" ]; then
+          # Очищаем папку code, сохраняя .git если есть
+          if [ -d "code" ]; then
+            find code/ -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          else
             mkdir code
           fi
           
-          # Очищаем папку code, кроме специальных файлов
-          cd code
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          # Распаковываем новый код
+          tar -xzf code.tar.gz -C code/
+          rm code.tar.gz
           
-          # Скачиваем и распаковываем только содержимое папки code из репозитория
-          git archive --remote=https://github.com/mrkiro52/yanisgrek.git HEAD:code | tar -x
-          
-          # Возвращаемся и запускаем docker
-          cd ..
+          # Запускаем docker
           docker compose build app --no-cache
           docker compose up -d --no-deps app
           
