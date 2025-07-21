@@ -22,12 +22,27 @@ jobs:
           set -e  # Прерывать выполнение при ошибке
           set -x  # Выводить выполняемые команды
           
-          cd ./yanisgrek-main/code || { echo "Directory ./yanisgrek-main/code not found"; exit 1; }
+          # Переходим в рабочую директорию
+          cd ./yanisgrek-main || { echo "Directory ./yanisgrek-main not found"; exit 1; }
           
-          # Полная очистка и сброс репозитория
-          git reset --hard HEAD
-          git clean -fd
-          git pull origin main --force
+          # Если папка code существует, но не является git репозиторием
+          if [ -d "code" ] && [ ! -d "code/.git" ]; then
+            echo "Directory 'code' exists but is not a git repo, removing..."
+            rm -rf code
+          fi
+          
+          # Если папки code нет или она пустая - клонируем заново
+          if [ ! -d "code" ]; then
+            echo "Cloning fresh repository..."
+            git clone https://github.com/mrkiro52/yanisgrek.git code
+            cd code
+          else
+            # Если репозиторий существует - обновляем
+            cd code
+            git fetch --all
+            git reset --hard origin/main
+            git clean -fd
+          fi
           
           # Возвращаемся в корень и запускаем docker
           cd ..
