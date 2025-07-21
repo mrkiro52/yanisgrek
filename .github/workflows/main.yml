@@ -19,32 +19,26 @@ jobs:
       - name: Deploy via SSH
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          set -e  # Прерывать выполнение при ошибке
-          set -x  # Выводить выполняемые команды
+          set -e
+          set -x
           
-          # Переходим в рабочую директорию
-          cd ./yanisgrek-main || { echo "Directory ./yanisgrek-main not found"; exit 1; }
+          # Основная рабочая директория
+          WORK_DIR="./yanisgrek-main"
+          cd $WORK_DIR || { echo "Directory $WORK_DIR not found"; exit 1; }
           
-          # Если папка code существует, но не является git репозиторием
-          if [ -d "code" ] && [ ! -d "code/.git" ]; then
-            echo "Directory 'code' exists but is not a git repo, removing..."
-            rm -rf code
-          fi
-          
-          # Если папки code нет или она пустая - клонируем заново
+          # Если папка code не существует - создаем
           if [ ! -d "code" ]; then
-            echo "Cloning fresh repository..."
-            git clone https://github.com/mrkiro52/yanisgrek.git code
-            cd code
-          else
-            # Если репозиторий существует - обновляем
-            cd code
-            git fetch --all
-            git reset --hard origin/main
-            git clean -fd
+            mkdir code
           fi
           
-          # Возвращаемся в корень и запускаем docker
+          # Очищаем папку code, кроме специальных файлов
+          cd code
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          
+          # Скачиваем и распаковываем только содержимое папки code из репозитория
+          git archive --remote=https://github.com/mrkiro52/yanisgrek.git HEAD:code | tar -x
+          
+          # Возвращаемся и запускаем docker
           cd ..
           docker compose build app --no-cache
           docker compose up -d --no-deps app
