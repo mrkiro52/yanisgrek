@@ -1,32 +1,31 @@
-name: Deploy
+name: HARD Deploy prem_service
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'prem_service/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # Качаем код
 
-      - name: Add SSH key
-        uses: webfactory/ssh-agent@v0.7.0
+      - name: NUKE AND SYNC
+        uses: appleboy/ssh-action@master
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy via SSH
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd ./yanisgrek-main
-          
-          git -C ./code reset --hard
-          git -C ./code clean -fd
-          git -C ./code pull --force origin main
-          
-          docker compose build app --no-cache
-          docker compose up -d --no-deps app
-          
-          docker compose ps
-          EOF
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            # 1. Удаляем всю папку на сервере (если есть)
+            rm -rf ~/prem-service/prem_service
+            
+            # 2. Копируем ВСЁ из репозитория
+            cp -R /home/runner/work/repo/prem_service ~/prem-service/
+            
+            # 3. Перезапускаем сервис
+            cd ~/prem-service && docker compose restart web
+            echo "☢️ Папка prem_service полностью перезаписана!"
