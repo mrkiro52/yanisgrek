@@ -10,7 +10,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  # Качаем код
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: 'prem_service'  # Ключевое изменение!
 
       - name: NUKE AND SYNC
         uses: appleboy/ssh-action@master
@@ -20,12 +23,12 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            # 1. Удаляем всю папку на сервере (если есть)
-            rm -rf ~/prem-service/prem_service
+            # 1. Удаляем ВСЁ в целевой папке (но не саму папку)
+            rm -rf ~/prem-service/prem_service/*
             
-            # 2. Копируем ВСЁ из репозитория
-            cp -R /home/runner/work/repo/prem_service ~/prem-service/
+            # 2. Копируем файлы из GitHub Actions
+            scp -r $GITHUB_WORKSPACE/prem_service/* ~/prem-service/prem_service/
             
-            # 3. Перезапускаем сервис
+            # 3. Перезапуск
             cd ~/prem-service && docker compose restart web
-            echo "☢️ Папка prem_service полностью перезаписана!"
+            echo "☢️ Папка prem_service перезаписана!"
