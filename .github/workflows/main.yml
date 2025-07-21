@@ -1,4 +1,4 @@
-name: Absolute Force Deploy
+name: 100% Working Deploy
 
 on:
   push:
@@ -10,10 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          path: 'source'  # Явно указываем папку
+      - uses: actions/checkout@v4
 
       - name: Nuclear Deploy
         uses: appleboy/ssh-action@master
@@ -23,15 +20,27 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            echo "1. Удаляем старые файлы..."
-            rm -rf ~/prem-service/prem_service/*
+            # 1. Создаем архив прямо в репозитории
+            tar -czf /tmp/repo.tar.gz -C prem_service .
             
-            echo "2. Копируем новые файлы..."
-            rsync -av $GITHUB_WORKSPACE/source/prem_service/ ~/prem-service/prem_service/
+            # 2. Копируем архив на сервер
+            scp /tmp/repo.tar.gz ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/tmp/
             
-            echo "3. Проверяем результат:"
-            ls -la ~/prem-service/prem_service
-            
-            echo "4. Перезапускаем сервис..."
-            docker compose -f ~/prem-service/docker-compose.yml restart web
-            echo "🔥 Всё перезаписано!"
+            # 3. Распаковываем и перезапускаем
+            ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "
+              echo 'Удаляем старую папку...'
+              rm -rf ~/prem-service/prem_service/*
+              
+              echo 'Распаковываем архив...'
+              tar -xzf /tmp/repo.tar.gz -C ~/prem-service/prem_service
+              
+              echo 'Содержимое после деплоя:'
+              ls -la ~/prem-service/prem_service
+              
+              echo 'Перезапуск контейнера...'
+              cd ~/prem-service && docker compose restart web
+              
+              echo 'Статус контейнера:'
+              docker ps | grep web
+            "
+            echo '✅ Всё обновлено и перезапущено!'
