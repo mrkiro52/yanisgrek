@@ -20,4 +20,4 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}  # или key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SERVER_PORT || 22 }}
         source: "prem_service/*"
-        target: "/path/to/prem-service/prem_service/"
+        target: ""
