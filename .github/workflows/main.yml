@@ -1,46 +1,23 @@
-name: 100% Working Deploy
+name: Deploy to Server
 
 on:
   push:
-    branches: [main]
-    paths:
-      - 'prem_service/**'
+    branches: [ main ]  # или master, в зависимости от вашей ветки
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Nuclear Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: ${{ secrets.SERVER_PORT }}
-          script: |
-            # 1. Создаем архив прямо в репозитории
-            tar -czf /tmp/repo.tar.gz -C prem_service .
-            
-            # 2. Копируем архив на сервер
-            scp /tmp/repo.tar.gz ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/tmp/
-            
-            # 3. Распаковываем и перезапускаем
-            ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "
-              echo 'Удаляем старую папку...'
-              rm -rf ~/prem-service/prem_service/*
-              
-              echo 'Распаковываем архив...'
-              tar -xzf /tmp/repo.tar.gz -C ~/prem-service/prem_service
-              
-              echo 'Содержимое после деплоя:'
-              ls -la ~/prem-service/prem_service
-              
-              echo 'Перезапуск контейнера...'
-              cd ~/prem-service && docker compose restart web
-              
-              echo 'Статус контейнера:'
-              docker ps | grep web
-            "
-            echo '✅ Всё обновлено и перезапущено!'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Copy files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        password: ${{ secrets.SERVER_PASSWORD }}  # или key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SERVER_PORT || 22 }}
+        source: "prem_service/*"
+        target: "/path/to/prem-service/prem_service/"
