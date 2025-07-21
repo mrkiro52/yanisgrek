@@ -46,38 +46,6 @@
   display: flex;
 }
 
-.Home > .startscreen > .firstRow > .buttons > .send_request {
-  color: #fff;
-  opacity: .6;
-  cursor: pointer;
-  border: 1px solid #fff;
-  width: 230px;
-  height: 45px;
-  font-family: Helvetica;
-  font-size: 16px;
-  transition: all .2s;
-}
-
-.Home > .startscreen > .firstRow > .buttons > .send_request:hover {
-  opacity: 1;
-}
-
-.Home > .startscreen > .firstRow > .buttons > .calculate_cost {
-  color: #000;
-  cursor: pointer;
-  background-color: #fff;
-  width: 230px;
-  height: 45px;
-  font-family: Helvetica;
-  font-size: 16px;
-  transition: all .2s;
-}
-
-.Home > .startscreen > .firstRow > .buttons > .calculate_cost:hover {
-  color: #fff;
-  background-color: #242424;
-}
-
 .Home > .startscreen > .secondRow {
   justify-content: flex-end;
   width: 1200px;
@@ -423,11 +391,6 @@
     padding-left: 25px;
   }
 
-  .Home > .startscreen > .firstRow > .buttons > .calculate_cost {
-    cursor: pointer;
-    transition: all .2s;
-  }
-
   .Home > .startscreen > .secondRow {
     justify-content: flex-end;
     width: 100%;
@@ -671,11 +634,6 @@
   .Home > .startscreen > .firstRow {
     width: 100%;
     padding-left: 25px;
-  }
-
-  .Home > .startscreen > .firstRow > .buttons > .calculate_cost {
-    cursor: pointer;
-    transition: all .2s;
   }
 
   .Home > .startscreen > .secondRow {
@@ -945,11 +903,6 @@
   .Home > .startscreen > .firstRow {
     width: 100%;
     padding-left: 15px;
-  }
-
-  .Home > .startscreen > .firstRow > .buttons > .calculate_cost {
-    cursor: pointer;
-    transition: all .2s;
   }
 
   .Home > .startscreen > .secondRow {

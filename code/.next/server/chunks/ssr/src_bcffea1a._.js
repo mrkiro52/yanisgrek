@@ -395,13 +395,74 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$servicesTo$2f
 ;
 const revalidate = 60; // ISR: обновляем раз в минуту
 async function CalculatorServer() {
-    // 1) Подгружаем модели, субмодели и серию из API
-    const [modelsRes, submodelsRes, seriesRes] = await Promise.all([
-        fetch('http://89.104.65.124/api/models/', {
-            next: {
-                revalidate: 60
+    const models = [
+        {
+            id: 5,
+            name: '7',
+            brand: {
+                id: 2,
+                name: 'BMW'
             }
-        }),
+        },
+        {
+            id: 7,
+            name: '5',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 8,
+            name: '4',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 9,
+            name: '3',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 10,
+            name: '2',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 11,
+            name: '1',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 12,
+            name: 'X',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        },
+        {
+            id: 13,
+            name: 'M',
+            brand: {
+                id: 2,
+                name: 'BMW'
+            }
+        }
+    ];
+    // 1) Подгружаем модели, субмодели и серию из API
+    const [submodelsRes, seriesRes] = await Promise.all([
         fetch('http://89.104.65.124/api/submodels/', {
             next: {
                 revalidate: 60
@@ -414,14 +475,12 @@ async function CalculatorServer() {
         })
     ]);
     if (![
-        modelsRes,
         submodelsRes,
         seriesRes
     ].every((r)=>r.ok)) {
         throw new Error('Не удалось загрузить данные моделей из API');
     }
-    const [models, submodels, series] = await Promise.all([
-        modelsRes.json(),
+    const [submodels, series] = await Promise.all([
         submodelsRes.json(),
         seriesRes.json()
     ]);
@@ -441,7 +500,7 @@ async function CalculatorServer() {
         services: services
     }, void 0, false, {
         fileName: "[project]/src/components/Calculator/CalculatorServer.jsx",
-        lineNumber: 43,
+        lineNumber: 52,
         columnNumber: 10
     }, this);
 }

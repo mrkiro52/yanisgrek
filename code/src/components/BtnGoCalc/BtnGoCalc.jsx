@@ -1,4 +1,5 @@
 'use client';
+import './BtnGoCalc.scss';
 
 export default function BtnGoCalc() {
   const scrollToCalculator = () => {

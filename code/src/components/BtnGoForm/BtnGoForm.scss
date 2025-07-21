@@ -1,0 +1,14 @@
+.send_request {
+    font-size: 16px;
+    font-family: Helvetica;
+    color: white;
+    width: 230px;
+    height: 45px;
+    border: 1px solid white;
+    opacity: 60%;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+        opacity: 100%;
+    }
+}

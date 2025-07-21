@@ -150,26 +150,88 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$c
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-// components/Calculator/CalculatorServer.jsx
+// src/components/Calculator/CalculatorServer.jsx
 __turbopack_context__.s({
     "default": (()=>CalculatorServer),
     "revalidate": (()=>revalidate)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react.js [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Calculator$2f$Calculator$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Calculator/Calculator.jsx [app-rsc] (ecmascript)"); // ваш существующий client-компонент
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Calculator$2f$Calculator$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Calculator/Calculator.jsx [app-rsc] (ecmascript)");
 ;
 ;
 ;
+// Статичный список моделей (вручную вставленный)
+const models = [
+    {
+        id: 5,
+        name: '7',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 7,
+        name: '5',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 8,
+        name: '4',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 9,
+        name: '3',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 10,
+        name: '2',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 11,
+        name: '1',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 12,
+        name: 'X',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    },
+    {
+        id: 13,
+        name: 'M',
+        brand: {
+            id: 2,
+            name: 'BMW'
+        }
+    }
+];
 const revalidate = 60; // ISR: обновляем раз в минуту
 async function CalculatorServer() {
-    // 1) Сервисы API
-    const [modelsRes, submodelsRes, seriesRes, servicesRes] = await Promise.all([
-        fetch('http://89.104.65.124/api/models/', {
-            next: {
-                revalidate: 60
-            }
-        }),
+    // 1) Подгружаем только подмодели и серии с API
+    const [submodelsRes, seriesRes] = await Promise.all([
         fetch('http://89.104.65.124/api/submodels/', {
             next: {
                 revalidate: 60
@@ -179,42 +241,35 @@ async function CalculatorServer() {
             next: {
                 revalidate: 60
             }
-        }),
-        fetch('http://89.104.65.124/api/maintenance-services/', {
-            next: {
-                revalidate: 60
-            }
         })
     ]);
     if (![
-        modelsRes,
         submodelsRes,
-        seriesRes,
-        servicesRes
+        seriesRes
     ].every((r)=>r.ok)) {
-        throw new Error('Не удалось загрузить данные с API');
+        throw new Error('Не удалось загрузить данные submodels или series');
     }
-    const [models, submodels, series, services] = await Promise.all([
-        modelsRes.json(),
+    const [submodels, series] = await Promise.all([
         submodelsRes.json(),
-        seriesRes.json(),
-        servicesRes.json()
+        seriesRes.json()
     ]);
-    // 2) Формируем структуру data
+    // 2) Собираем структуру data из моделей + связей
     const data = models.map((m)=>({
             ...m,
             submodels: submodels.filter((sm)=>sm.model.id === m.id).map((sm)=>({
                     ...sm,
-                    series: series.filter((s)=>s.submodel.id === sm.id)
+                    series: series.filter((s)=>s.model.id === sm.id)
                 }))
         }));
-    // 3) Передаём в чистый клиент-компонент
+    // 3) Услуги пока можно оставить заглушкой или добавить позже
+    const services = [];
+    // 4) Передаём данные в клиентский компонент
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Calculator$2f$Calculator$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
         data: data,
         services: services
     }, void 0, false, {
         fileName: "[project]/src/components/Calculator/CalculatorServer.jsx",
-        lineNumber: 41,
+        lineNumber: 50,
         columnNumber: 10
     }, this);
 }

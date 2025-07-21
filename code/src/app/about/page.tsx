@@ -3,11 +3,14 @@ import Header from "../../components/Header/Header";
 import Contacts from "../contacts/page";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
+import Image from 'next/image';
 
 
 const problemsImages = [
+  { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "" },
   { src: "/images/car_slides/car_slide_17.jpg", caption: "" },
   { src: "/images/car_slides/car_slide_18.jpg", caption: "" },
+  { src: "/images/car_slides/aboutPhotoAvotmat.jpg", caption: "" },
   { src: "/images/car_slides/car_slide_19.jpg", caption: "" },
   { src: "/images/car_slides/car_slide_20.jpg", caption: "" },
   { src: "/images/car_slides/car_slide_21.jpg", caption: "" },
@@ -30,6 +33,14 @@ export default function AboutPage() {
       <div className="Startscreen">
         <div className="startscreen_text">
           <h1 className="about_title">О НАС</h1>
+          <div className="car_mobile">
+            <Image
+              src="/images/black_car_about.jpg"    // путь относительно папки public
+              alt="BMW"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
           <div className="block_title">
             <h1 className="title">Опыт сквозь года</h1>
             <p className="subtitle">
@@ -104,23 +115,21 @@ export default function AboutPage() {
         <h1 className="hero_title">
         Работа без излишнего пафоса, исключительно человеческий подход.
         </h1>
-        <div>
-          <div className="row_1_description_photo">
-            <p className="description_about_block_founder">
-              Для нашей компании приоритетом являются не автомобили, а люди — клиенты, обращающиеся к нам за обслуживанием. Мы ценим каждого, кто приезжает в наш сервис, тех, кому мы объясняем причины и порядок проводимых работ. Наша главная задача — обеспечить максимально высокий уровень удовлетворённости клиентов и качеством выполненных работ, и уровнем сервиса. Это непросто, поскольку у каждого человека свои ожидания и представления об обслуживании, но мы прилагаем все усилия для их превосходства ежедневно.
-            </p>
-            <img src="/images/photo_office.jpg" alt="" />
-          </div>
-          <div className="row_2_description_photo">
-            <img
-              src="/images/photo_worker.jpg"
-              alt=""
-              className="photo_worker"
-            />
-            <p className="description_about_block_founder">
-              Мы не претендуем на статус «супермастеров», демонстрирующих свою компетентность с помощью дорогостоящего оборудования и громких заявлений. Мы выполняем свою работу профессионально и скрупулёзно: анализируем ситуацию, применяем навыки и опыт, тщательно осуществляем ремонт. При этом мы продолжаем совершенствоваться — изучаем новейшие технологии и методики, чтобы оставаться в курсе отраслевых трендов. Но несмотря на это развитие, мы сохраняем неподдельную человеческую составляющую в общении и подходе к делу, а не превращаемся в бездушных «роботов».
-            </p>
-          </div>
+        <div className="row_1_description_photo">
+          <p className="description_about_block_founder">
+            Для нашей компании приоритетом являются не автомобили, а люди — клиенты, обращающиеся к нам за обслуживанием. Мы ценим каждого, кто приезжает в наш сервис, тех, кому мы объясняем причины и порядок проводимых работ. Наша главная задача — обеспечить максимально высокий уровень удовлетворённости клиентов и качеством выполненных работ, и уровнем сервиса. Это непросто, поскольку у каждого человека свои ожидания и представления об обслуживании, но мы прилагаем все усилия для их превосходства ежедневно.
+          </p>
+          <img src="/images/photo_office.jpg" alt="" />
+        </div>
+        <div className="row_2_description_photo">
+          <img
+            src="/images/photo_worker.jpg"
+            alt=""
+            className="photo_worker"
+          />
+          <p className="description_about_block_founder">
+            Мы не претендуем на статус «супермастеров», демонстрирующих свою компетентность с помощью дорогостоящего оборудования и громких заявлений. Мы выполняем свою работу профессионально и скрупулёзно: анализируем ситуацию, применяем навыки и опыт, тщательно осуществляем ремонт. При этом мы продолжаем совершенствоваться — изучаем новейшие технологии и методики, чтобы оставаться в курсе отраслевых трендов. Но несмотря на это развитие, мы сохраняем неподдельную человеческую составляющую в общении и подходе к делу, а не превращаемся в бездушных «роботов».
+          </p>
         </div>
         <p className="signature">
           С уважением, Янис Грек, владелец мастерской

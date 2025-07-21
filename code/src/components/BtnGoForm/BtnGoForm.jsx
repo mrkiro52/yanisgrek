@@ -1,4 +1,5 @@
 'use client';
+import './BtnGoForm.scss';
 
 export default function BtnGoForm() {
   const scrollToForm= () => {

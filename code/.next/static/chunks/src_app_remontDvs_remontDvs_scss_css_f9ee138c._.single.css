@@ -48,18 +48,6 @@
   font-weight: 400;
 }
 
-.RemontDvs .Startscreen > .content > .left > button {
-  color: #fff;
-  cursor: pointer;
-  background-color: #2b6eff;
-  justify-content: center;
-  align-items: center;
-  width: 273px;
-  height: 50px;
-  font-size: 16px;
-  display: flex;
-}
-
 .RemontDvs .Startscreen > .content > .right {
   flex-grow: 0;
   flex-shrink: 0;

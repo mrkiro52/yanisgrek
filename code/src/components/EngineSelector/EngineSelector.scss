@@ -67,9 +67,16 @@
             }
           }
         }
-      
+        & > .hint {
+          line-height: 104%;
+          margin-top: 12px;
+          font-size: 14px;
+          font-style: italic;
+          color: #8c8c8c;
+        }
         .note {
           margin-top: 12px;
+          line-height: 104%;
           font-size: 14px;
           font-style: italic;
           color: #8c8c8c;
@@ -103,4 +110,17 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 480px) {
+  .EngineSelector {
+      & > .engine-selector {
+          & > .tabs {
+            gap: 8px;
+              & > .tab {
+                  font-size: 12px;
+              }
+          }
+      }
+  }
 }
