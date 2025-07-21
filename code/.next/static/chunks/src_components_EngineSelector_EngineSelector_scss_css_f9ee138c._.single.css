@@ -77,11 +77,20 @@
   background-color: #fff;
 }
 
+.EngineSelector > .engine-selector > .hint {
+  color: #8c8c8c;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 104%;
+}
+
 .EngineSelector > .engine-selector .note {
   color: #8c8c8c;
   margin-top: 12px;
   font-size: 14px;
   font-style: italic;
+  line-height: 104%;
   transition: all .2s;
 }
 
@@ -111,6 +120,16 @@
 
   .EngineSelector > .engine-selector > .tabs > .tab {
     flex: 1;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .EngineSelector > .engine-selector > .tabs {
+    gap: 8px;
+  }
+
+  .EngineSelector > .engine-selector > .tabs > .tab {
+    font-size: 12px;
   }
 }
 

@@ -1,0 +1,14 @@
+.calculate_cost {
+    font-size: 16px;
+    font-family: Helvetica;
+    color: black;
+    background-color: white;
+    width: 230px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+        color: white;
+        background-color: #242424;
+    }
+}

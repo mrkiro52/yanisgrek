@@ -132,10 +132,17 @@
   .Header {
     & > .menu {
       & > .content {
-        gap: 0px;
-        justify-content: space-between;
+        gap: 24px;
+        position: relative;
+        padding: 64px 24px 80px 24px;
+        overflow-y: scroll;
         & > img.logo {
           margin-bottom: 24px;
+        }
+        & > img.cross {
+          position: absolute;
+          top: 24px;
+          left: 24px;
         }
         & > .links {
           flex-direction: column;
@@ -154,6 +161,10 @@
         & > .buttons {
           & > a {
             width: 100%;
+            &.phone_link {
+              display: flex;
+              justify-content: flex-start;
+            }
           }
         }
       }

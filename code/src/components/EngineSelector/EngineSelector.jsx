@@ -61,6 +61,7 @@ const EngineSelector = ({
                 </tbody>
             </table>
 
+            <p className='hint'>* Нажмите на название для перехода на соответствующую страницу</p>
             <a href="https://wa.me/79852707575" target="_blank"><p className="note">{activeCategory.note}</p></a>
         </div>
     </div>

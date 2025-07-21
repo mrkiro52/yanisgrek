@@ -3,7 +3,9 @@
 import "./Calculator.scss";
 import { useEffect, useMemo, useState } from "react";
 import { useRef } from "react";
+import fetchMaintenanceServices from './fetchServices';
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function Calculator({ data, services }) {
   /* -------- выбор машины -------- */
@@ -97,7 +99,7 @@ export default function Calculator({ data, services }) {
             </Link>
           )}
         </div>
-        <h3 className="stepTitle">1. Выбери модель</h3>
+        <h3 className="stepTitle">1. Выберите модель</h3>
         <div className="buttons">
           {data.map((m) => (
             <button
@@ -114,7 +116,7 @@ export default function Calculator({ data, services }) {
           ))}
         </div>
       </div>
-      <h3 className="stepTitle">2. Уточни модель</h3>
+      <h3 className="stepTitle">2. Уточните модель (листается)</h3>
       <div className="choose_car_block">
         {subsList.map((sm) => {
           const fileName = `bmw-${sm.name}`.toLowerCase();
@@ -140,7 +142,7 @@ export default function Calculator({ data, services }) {
           );
         })}
       </div>
-      <h3 className="stepTitle">3. Выбери серию</h3>
+      <h3 className="stepTitle">3. Выберите серию</h3>
       <div className="choose_special_model">
         <div className="model-select">
           <label form="model" className="model-select__label">
@@ -220,10 +222,21 @@ export default function Calculator({ data, services }) {
           return (
             <div className="calculator_table__row" key={index}>
               <div className="calculator_table__cell--first">
-                <div
-                  className={`sq ${selectedRows[index] ? "selected" : ""}`}
-                  onClick={() => toggleRow(index)}
-                ></div>
+              <div
+                className={`sq ${selectedRows[index] ? "selected" : ""}`}
+                onClick={() => toggleRow(index)}
+              >
+                {selectedRows[index] && (
+                  <Image 
+                    src="/images/CheckmarkFill.png" 
+                    alt="Checkmark" 
+                    width={20}
+                    height={20}
+                    className="checkmark-icon"
+                    unoptimized={true} // Если изображение очень маленькое (меньше 40px), лучше отключить оптимизацию
+                  />
+                )}
+              </div>
                 <span>{s.name}</span>
               </div>
               <div className="calculator_table__cell">
@@ -262,7 +275,18 @@ export default function Calculator({ data, services }) {
               <div className="top">
                 <div
                   className={`sq ${selectedRows[index] ? "selected" : ""}`}
-                ></div>
+                >
+                  {selectedRows[index] && (
+                    <Image 
+                      src="/images/CheckmarkFill.png" 
+                      alt="Checkmark" 
+                      width={20}
+                      height={20}
+                      className="checkmark-icon"
+                      unoptimized={true} // Если изображение очень маленькое (меньше 40px), лучше отключить оптимизацию
+                    />
+                  )}
+              </div>
                 <span className="title">{s.name}</span>
                 <span className="price">{total}</span>
               </div>

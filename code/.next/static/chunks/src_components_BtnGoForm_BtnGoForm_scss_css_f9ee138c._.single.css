@@ -1,0 +1,18 @@
+/* [project]/src/components/BtnGoForm/BtnGoForm.scss.css [app-client] (css) */
+.send_request {
+  color: #fff;
+  opacity: .6;
+  cursor: pointer;
+  border: 1px solid #fff;
+  width: 230px;
+  height: 45px;
+  font-family: Helvetica;
+  font-size: 16px;
+  transition: all .2s;
+}
+
+.send_request:hover {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=src_components_BtnGoForm_BtnGoForm_scss_css_f9ee138c._.single.css.map*/

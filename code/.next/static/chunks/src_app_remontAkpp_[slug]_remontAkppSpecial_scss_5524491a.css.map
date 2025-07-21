@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///Users/mrkr/Documents/yanisgrek/code/src/app/remontAkpp/%5Bslug%5D/remontAkppSpecial.scss.css"],"sourcesContent":[".RemontAkppSpecial{min-height:100vh}.RemontAkppSpecial>h1{color:#fff}"],"names":[],"mappings":"AAAA;;;;AAAoC","debugId":null}}]
+}

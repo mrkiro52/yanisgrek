@@ -11,6 +11,7 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 'use client';
 ;
+;
 function BtnGoForm() {
     const scrollToForm = ()=>{
         if ("TURBOPACK compile-time truthy", 1) {
@@ -28,7 +29,7 @@ function BtnGoForm() {
         children: "Оставить заявку"
     }, void 0, false, {
         fileName: "[project]/src/components/BtnGoForm/BtnGoForm.jsx",
-        lineNumber: 14,
+        lineNumber: 15,
         columnNumber: 5
     }, this);
 }
@@ -375,6 +376,7 @@ function Header() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                     href: "https://wa.me/79852707575",
                                     target: "_blank",
+                                    className: "phone_link",
                                     children: "+7 495 76-76-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header/Header.jsx",

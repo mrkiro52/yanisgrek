@@ -142,12 +142,20 @@
 
 @media screen and (width <= 664px) {
   .Header > .menu > .content {
-    justify-content: space-between;
-    gap: 0;
+    gap: 24px;
+    padding: 64px 24px 80px;
+    position: relative;
+    overflow-y: scroll;
   }
 
   .Header > .menu > .content > img.logo {
     margin-bottom: 24px;
+  }
+
+  .Header > .menu > .content > img.cross {
+    position: absolute;
+    top: 24px;
+    left: 24px;
   }
 
   .Header > .menu > .content > .links {
@@ -171,10 +179,15 @@
   .Header > .menu > .content > .buttons > a {
     width: 100%;
   }
+
+  .Header > .menu > .content > .buttons > a.phone_link {
+    justify-content: flex-start;
+    display: flex;
+  }
 }
 
 @media screen and (width <= 450px) {
-  .Header > .content > a {
+  .Header > .content > a.logo {
     display: none;
   }
 }
@@ -400,7 +413,7 @@ input[type="date"], input[type="time"] {
 
 
 /* [project]/src/app/about/about.scss.css [app-client] (css) */
-.Startscreen {
+.About > .Startscreen {
   background-image: url("/images/black_car_about.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -409,28 +422,7 @@ input[type="date"], input[type="time"] {
   position: relative;
 }
 
-.about_title {
-  padding: 120px;
-  font-size: 96px;
-}
-
-.block_title {
-  border-left: 2px solid #fff;
-  height: 100%;
-  padding-left: 30px;
-  padding-right: 120px;
-}
-
-.title {
-  font-size: 24px;
-}
-
-.subtitle {
-  font-family: Helvetica;
-  font-size: 20px;
-}
-
-.startscreen_text {
+.About > .Startscreen > .startscreen_text {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
@@ -438,60 +430,91 @@ input[type="date"], input[type="time"] {
   display: flex;
 }
 
-.citation_block_about {
-  text-align: center;
-  border-left: 1px solid silver;
-  justify-content: flex-start;
-  align-items: center;
-  height: 43px;
-  padding-left: 20px;
-  display: flex;
+.About > .Startscreen > .startscreen_text > .car_mobile {
+  display: none;
 }
 
-.description_block_about {
-  padding: 20px 0;
+.About > .Startscreen > .startscreen_text > .about_title {
+  padding: 120px;
+  font-size: 96px;
+}
+
+.About > .Startscreen > .startscreen_text > .about_title > h1.title {
+  font-size: 24px;
+}
+
+.About > .Startscreen > .startscreen_text > .about_title > p.subtitle {
   font-family: Helvetica;
-  font-size: 16px;
+  font-size: 20px;
 }
 
-.block_about {
+.About > .Startscreen > .startscreen_text > .block_title {
+  border-left: 2px solid #fff;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 120px;
+}
+
+.About > .Startscreen > .startscreen_text > .slider_hover {
+  padding: 0 0 120px 120px;
+  position: relative;
+}
+
+.About > .block_about {
   margin: auto;
   padding: 120px 120px 80px;
 }
 
-.title_block_about {
-  text-transform: uppercase;
-  padding-bottom: 40px;
-  font-size: 36px;
-  line-height: 103%;
-}
-
-.text_block_about {
-  flex: 620px;
-  min-width: 0;
-}
-
-.citation_block_about {
-  font-family: Helvetica;
-  font-size: 16px;
-  font-style: italic;
-}
-
-.block_about_photo_text {
+.About > .block_about > .block_about_photo_text {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
   display: flex;
 }
 
-.block_about_photo_text img {
+.About > .block_about > .block_about_photo_text > .text_block_about {
+  flex: 620px;
+  min-width: 0;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > h1.title_block_about {
+  text-transform: uppercase;
+  padding-bottom: 40px;
+  font-size: 36px;
+  line-height: 103%;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > p.description_block_about {
+  padding: 20px 0;
+  font-family: Helvetica;
+  font-size: 16px;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > .citation_block_about {
+  border-left: 1px solid silver;
+  align-items: center;
+  height: 43px;
+  padding-left: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: italic;
+  display: flex;
+}
+
+.About > .block_about > .block_about_photo_text > img {
   flex: 0 auto;
   max-width: 100%;
   height: auto;
   margin-top: 1rem;
 }
 
-.asset {
+.About > .block_assets_about {
+  justify-content: space-between;
+  padding: 20px 120px;
+  display: flex;
+}
+
+.About > .block_assets_about > .asset {
   text-align: center;
   flex-direction: column;
   gap: 20px;
@@ -501,70 +524,47 @@ input[type="date"], input[type="time"] {
   display: flex;
 }
 
-.block_assets_about {
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 120px;
+.About > .block_box_citation {
+  justify-content: flex-end;
+  padding: 90px 120px 120px 0;
   display: flex;
 }
 
-.block_title_assets_about {
+.About > .block_box_citation > .block_title_assets_about {
   border-left: 2px solid #fff;
   width: 50%;
   padding-left: 30px;
 }
 
-.title_block2 {
+.About > .block_box_citation > .block_title_assets_about > h1.title_block2 {
   padding-bottom: 20px;
   font-size: 24px;
   line-height: 103%;
 }
 
-.subtitle_block2 {
+.About > .block_box_citation > .block_title_assets_about > p.subtitle_block2 {
   font-family: Helvetica;
   font-size: 16px;
   line-height: 130%;
 }
 
-.block_box_citation {
-  justify-content: end;
-  padding: 90px 120px 120px 0;
-  display: flex;
+.About > .block_about_from_founder {
+  background-color: #d0d0d0;
+  background-position: center;
+  background-size: cover;
+  position: relative;
 }
 
-.hero_title {
+.About > .block_about_from_founder > .hero_title {
   text-align: center;
-  color: #000;
   text-transform: uppercase;
+  color: #000;
   padding-top: 120px;
   font-size: 48px;
   line-height: 103%;
 }
 
-.hero_title_small {
-  color: #000;
-  text-transform: uppercase;
-  font-size: 24px;
-}
-
-.block_about_from_founder {
-  background-color: #d0d0d0;
-  background-position: center;
-  background-size: cover;
-  height: auto;
-  position: relative;
-}
-
-.description_about_block_founder {
-  color: #000;
-  max-width: 660px;
-  font-family: Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 130%;
-}
-
-.row_1_description_photo {
+.About > .block_about_from_founder > .row_1_description_photo, .About > .block_about_from_founder > .row_2_description_photo {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
@@ -572,299 +572,238 @@ input[type="date"], input[type="time"] {
   display: flex;
 }
 
-.row_2_description_photo {
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 2rem;
-  padding: 70px 120px;
-  display: flex;
+.About > .block_about_from_founder > .row_1_description_photo > p.description_about_block_founder, .About > .block_about_from_founder > .row_2_description_photo > p.description_about_block_founder {
+  color: #000;
+  max-width: 660px;
+  font-family: Helvetica;
+  font-size: 20px;
+  line-height: 130%;
 }
 
-.signature {
-  color: #000;
+.About > .block_about_from_founder > .signature {
   z-index: 2;
+  color: #000;
   justify-content: flex-end;
   margin-top: -100px;
-  padding-bottom: 120px;
-  padding-right: 120px;
+  padding: 0 120px 120px;
   font-family: Helvetica;
   font-size: 16px;
   font-style: italic;
   display: flex;
 }
 
-.team {
+.About > .team {
   background-color: #000;
-  background-position: center;
-  background-size: cover;
-  height: auto;
   position: relative;
 }
 
-.team_title {
+.About > .team > .team_title {
   padding: 120px 0 60px 120px;
   font-size: 36px;
 }
 
-.team_container {
-  align-items: flex-start;
-  gap: 20px;
-  padding: 0 0 120px 120px;
-  display: flex;
-}
-
-.team_arrows {
-  flex-direction: row;
-  gap: 20px;
-  display: flex;
-}
-
-.team_arrow {
-  cursor: pointer;
-  color: #fff;
-  background: #ffffff1a;
-  border: none;
-  padding: 10px;
-  font-size: 18px;
-}
-
-.team_slider {
-  flex: 1;
-  overflow: hidden;
-}
-
-.team_track {
-  transition: transform .3s;
-  display: flex;
-}
-
-.team_slide {
-  text-align: center;
-  min-width: 250px;
-  margin-right: 20px;
-}
-
-.team_photo {
-  border-radius: 4px;
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.team_name {
-  margin: 0;
-  font-size: 18px;
-}
-
-.team_position {
-  opacity: .8;
-  margin: 0;
-  font-size: 14px;
-}
-
-.yandex_map {
-  background-color: #d0d0d0;
-  background-position: center;
-  background-size: cover;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 400px;
-  display: flex;
-  position: relative;
-}
-
-.map_title {
-  color: #000;
-}
-
-.slider_hover, .slider2 {
+.About > .team > .slider2 {
   padding: 0 0 120px 120px;
   position: relative;
 }
 
-@media (width <= 1170px) {
-  .startscreen_text {
-    padding-top: 60px;
+@media (width <= 1200px) {
+  .About > .Startscreen > .startscreen_text {
+    row-gap: 500px;
   }
 
-  .about_title {
-    padding: 0 0 0 60px;
+  .About > .Startscreen > .startscreen_text > h1.about_title {
+    padding: 120px 0 0 24px;
   }
 
-  .block_title {
-    margin-left: 60px;
+  .About > .Startscreen > .startscreen_text > .block_title {
+    margin-top: 120px;
   }
 
-  .slider_hover {
-    padding: 120px 0 60px 60px;
-  }
-
-  .block_about {
+  .About > .block_about {
     padding: 120px 60px 80px;
   }
 
-  .block_assets_about {
+  .About > .block_assets_about {
     flex-wrap: wrap;
     padding: 20px 60px;
   }
 
-  .row_1_description_photo {
+  .About > .block_about_from_founder .row_1_description_photo {
     padding: 70px 60px;
   }
 
-  .row_2_description_photo {
+  .About > .block_about_from_founder .row_2_description_photo {
     flex-direction: column-reverse;
     padding: 70px 60px;
   }
 
-  .slider2 {
-    padding: 0 0 120px 60px;
+  .About .slider2, .About .team_title {
+    padding-left: 60px;
   }
 
-  .team_title {
-    padding: 120px 0 60px 60px;
-  }
-
-  .photo_worker {
+  .About .photo_worker {
     width: 50%;
   }
 
-  .signature {
+  .About .signature {
     margin-top: 0;
   }
 }
 
-@media (width <= 1047px) {
-  .startscreen_text {
-    row-gap: 20px;
-  }
-}
-
 @media (width <= 930px) {
-  .block_about_photo_text {
+  .About > .Startscreen {
+    background: #000;
+  }
+
+  .About > .Startscreen > .startscreen_text {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0;
+  }
+
+  .About > .Startscreen > .startscreen_text > .car_mobile {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .About > .Startscreen > .startscreen_text > h1.about_title {
+    padding: 120px 0 0 24px;
+    font-size: 32px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title {
+    margin-top: 0;
+    margin-left: 24px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title > h1.title {
+    font-size: 20px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title > p.subtitle {
+    font-size: 16px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .slider_hover {
+    margin-top: 32px;
+    padding: 0 0 24px 24px;
+  }
+
+  .About .block_about_photo_text {
     flex-direction: column;
   }
 
-  .text_block_about, .block_about_photo_text img {
+  .About .text_block_about, .About .block_about_photo_text img {
     width: 100%;
   }
 }
 
 @media (width <= 480px) {
-  .about_title {
+  .About .about_title {
     font-size: 32px;
   }
 
-  .title {
+  .About .title {
     font-size: 20px;
   }
 
-  .subtitle {
+  .About .subtitle {
     font-size: 16px;
   }
 
-  .slider_hover {
+  .About .slider_hover {
     padding: 250px 0 60px 15px;
   }
 
-  .startscreen_text {
-    padding-top: 120px;
-  }
-
-  .block_title {
+  .About .block_title {
     margin-left: 15px;
     padding-right: 15px;
   }
 
-  .about_title {
-    padding-left: 15px;
-  }
-
-  .title_block_about {
-    font-size: 20px;
-  }
-
-  .block_about {
+  .About .block_about {
     padding: 120px 15px 80px;
   }
 
-  .text_block_about {
+  .About .title_block_about {
+    font-size: 20px;
+  }
+
+  .About .text_block_about {
     flex: auto;
   }
 
-  .block_assets_about {
+  .About .block_assets_about {
     flex-direction: column;
     align-items: center;
     gap: 30px;
     padding: 15px;
   }
 
-  .asset {
+  .About .block_assets_about > .asset {
+    width: 100%;
+  }
+
+  .About .asset {
     gap: 15px;
     width: auto;
   }
 
-  .asset > p {
-    padding-left: 6px;
-    padding-right: 6px;
+  .About .asset > p {
+    padding: 0 6px;
   }
 
-  .title_block2 {
+  .About .title_block2 {
     font-size: 20px;
   }
 
-  .subtitle_block2 {
+  .About .subtitle_block2 {
     font-size: 16px;
   }
 
-  .block_title_assets_about {
+  .About .block_box_citation {
+    width: 100%;
+    padding-right: 15px;
+    display: block;
+  }
+
+  .About .block_box_citation > .block_title_assets_about {
     width: 100%;
     margin-left: 15px;
     padding-right: 15px;
   }
 
-  .block_box_citation {
-    width: auto;
-    padding-right: 15px;
-    display: block;
+  .About > .block_about_from_founder > h1.hero_title {
+    font-size: 24px;
   }
 
-  .hero_title {
-    font-size: 20px;
-  }
-
-  .hero_title_small {
-    font-size: 13px;
-  }
-
-  .row_1_description_photo {
+  .About > .block_about_from_founder > .row_1_description_photo {
     flex-direction: column-reverse;
     padding: 60px 15px;
   }
 
-  .description_about_block_founder {
-    font-size: 16px;
-  }
-
-  .row_2_description_photo {
+  .About > .block_about_from_founder > .row_2_description_photo {
     padding: 0 15px 60px;
   }
 
-  .signature {
-    margin-top: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+  .About > .block_about_from_founder .signature {
+    margin: 0 15px;
+    padding: 0 0 24px;
   }
 
-  .slider2 {
+  .About > .team > .team_title {
+    padding: 48px 0 30px 24px;
+    font-size: 20px;
+  }
+
+  .About > .team > .slider2 {
     padding: 0 0 120px 15px;
   }
 
-  .team_title {
-    padding: 120px 0 30px 15px;
-    font-size: 20px;
+  .About .description_about_block_founder {
+    font-size: 16px;
   }
 }
 

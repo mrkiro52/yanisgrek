@@ -5,12 +5,13 @@ import Header from '../components/Header/Header';
 import '../styles/globals.css';
 import '../styles/mainPage.scss';
 import Contacts from './contacts/page';
-import CalculatorServer from '../components/Calculator/CalculatorServer';
+import Calculator from '../components/Calculator/Calculator';
 import BtnGoCalc from '../components/BtnGoCalc/BtnGoCalc';
 import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
 
 import fs from 'fs/promises';
 import path from 'path';
+import CalculatorServer from '../components/Calculator/CalculatorServer';
 
 // ISR: обновляем страницу раз в минуту
 export const revalidate = 60;
