@@ -19,12 +19,18 @@ jobs:
       - name: Deploy via SSH
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd ./yanisgrek-main
+          set -e  # Прерывать выполнение при ошибке
+          set -x  # Выводить выполняемые команды
           
-          git -C ./code reset --hard
-          git -C ./code clean -fd
-          git -C ./code pull --force origin main
+          cd ./yanisgrek-main/code || { echo "Directory ./yanisgrek-main/code not found"; exit 1; }
           
+          # Полная очистка и сброс репозитория
+          git reset --hard HEAD
+          git clean -fd
+          git pull origin main --force
+          
+          # Возвращаемся в корень и запускаем docker
+          cd ..
           docker compose build app --no-cache
           docker compose up -d --no-deps app
           
