@@ -1,4 +1,4 @@
-name: HARD Deploy prem_service
+name: Absolute Force Deploy
 
 on:
   push:
@@ -10,12 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: 'prem_service'  # Ключевое изменение!
+          path: 'source'  # Явно указываем папку
 
-      - name: NUKE AND SYNC
+      - name: Nuclear Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -23,12 +23,15 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            # 1. Удаляем ВСЁ в целевой папке (но не саму папку)
+            echo "1. Удаляем старые файлы..."
             rm -rf ~/prem-service/prem_service/*
             
-            # 2. Копируем файлы из GitHub Actions
-            scp -r $GITHUB_WORKSPACE/prem_service/* ~/prem-service/prem_service/
+            echo "2. Копируем новые файлы..."
+            rsync -av $GITHUB_WORKSPACE/source/prem_service/ ~/prem-service/prem_service/
             
-            # 3. Перезапуск
-            cd ~/prem-service && docker compose restart web
-            echo "☢️ Папка prem_service перезаписана!"
+            echo "3. Проверяем результат:"
+            ls -la ~/prem-service/prem_service
+            
+            echo "4. Перезапускаем сервис..."
+            docker compose -f ~/prem-service/docker-compose.yml restart web
+            echo "🔥 Всё перезаписано!"
