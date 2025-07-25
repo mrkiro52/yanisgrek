@@ -1,0 +1,77 @@
+/* [project]/src/app/remontAkpp/[slug]/remontAkppSpecial.scss.css [app-client] (css) */
+.RemontAkppSpecial {
+  background-color: #000;
+  min-height: 100vh;
+}
+
+.RemontAkppSpecial > .wrapper {
+  flex-direction: column;
+  gap: 120px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 150px;
+  padding-bottom: 80px;
+  display: flex;
+}
+
+.RemontAkppSpecial > .wrapper > h1 {
+  color: #fff;
+  font-size: 96px;
+  line-height: 103%;
+}
+
+.RemontAkppSpecial > .wrapper > .row {
+  justify-content: space-between;
+  align-items: stretch;
+  display: flex;
+}
+
+.RemontAkppSpecial > .wrapper > .row > .block {
+  flex-direction: column;
+  gap: 32px;
+  width: 45%;
+  display: flex;
+}
+
+.RemontAkppSpecial > .wrapper > .row > .block > h2 {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 34px;
+}
+
+.RemontAkppSpecial > .wrapper > .row > .block > p {
+  color: #fff;
+  font-size: 16px;
+}
+
+@media screen and (width <= 1200px) {
+  .RemontAkppSpecial > .wrapper {
+    width: 100%;
+    padding: 150px 24px 48px;
+  }
+}
+
+@media screen and (width <= 850px) {
+  .RemontAkppSpecial > .wrapper {
+    gap: 60px;
+  }
+
+  .RemontAkppSpecial > .wrapper > .row {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .RemontAkppSpecial > .wrapper > .row > .block {
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+@media screen and (width <= 600px) {
+  .RemontAkppSpecial > .wrapper > h1 {
+    word-wrap: break-word;
+    font-size: 48px;
+  }
+}
+
+/*# sourceMappingURL=src_app_remontAkpp_%5Bslug%5D_remontAkppSpecial_scss_css_f9ee138c._.single.css.map*/

@@ -23,8 +23,8 @@ export default async function CalculatorServer() {
     submodelsRes,
     seriesRes,
   ] = await Promise.all([
-    fetch('http://89.104.65.124/api/submodels/', { next: { revalidate: 60 } }),
-    fetch('http://89.104.65.124/api/series/',    { next: { revalidate: 60 } }),
+    fetch('https://api.test-grek.online/api/submodels/', { next: { revalidate: 60 } }),
+    fetch('https://api.test-grek.online/api/series/',    { next: { revalidate: 60 } }),
   ]);
   if (![submodelsRes, seriesRes].every(r => r.ok)) {
     throw new Error('Не удалось загрузить данные моделей из API');

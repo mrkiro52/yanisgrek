@@ -2290,6 +2290,17 @@ input[type="date"], input[type="time"] {
   }
 }
 
+@media screen and (width <= 400px) {
+  .choose_special_model {
+    margin-top: 28px;
+  }
+
+  .choose_special_model > .buttons > button {
+    padding: 0 !important;
+    font-size: 20px !important;
+  }
+}
+
 
 /* [project]/src/components/BtnGoCalc/BtnGoCalc.scss.css [app-client] (css) */
 .calculate_cost {

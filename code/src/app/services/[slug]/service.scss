@@ -214,7 +214,7 @@
   color: white;
   text-transform: uppercase;
 }
-@media (max-width: 750px) {
+@media screen and (max-width: 750px) {
   .images-wrapper__subtitle {
     display: none;
   }
@@ -241,6 +241,7 @@
   }
   .hero_title {
     font-size: 20px;
+    padding: 48px 24px 0px 24px;
   }
   .hero_title_small {
     font-size: 13px;
@@ -315,6 +316,28 @@
             & > p {
               line-height: 105%;
               font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .Service {
+    & > .Startscreen {
+      & > .content {
+        & > .left {
+          & > .info {
+            & > h1 {
+              font-size: 24px;
+              word-wrap: break-word;
+              width: 100%;
+            }
+            & > p {
+              line-height: 105%;
+              font-size: 16px;
             }
           }
         }

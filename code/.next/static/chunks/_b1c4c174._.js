@@ -275,7 +275,7 @@ function Header() {
                                             className: "linkSmall",
                                             href: "/cars/bmw-m5",
                                             onClick: ()=>handleLinkClick('/cars/bmw-m5'),
-                                            children: "Ремонт BMW M5"
+                                            children: "Ремонт BMW"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 45,
@@ -283,9 +283,9 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/cars/bmw-x6",
-                                            onClick: ()=>handleLinkClick('/cars/bmw-x6'),
-                                            children: "Ремонт BMW X6"
+                                            href: "/cars/bmw-m5",
+                                            onClick: ()=>handleLinkClick('/cars/bmw-m5'),
+                                            children: "Ремонт Rolls Royce"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 48,
@@ -293,9 +293,9 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/cars/bmw-z4",
-                                            onClick: ()=>handleLinkClick('/cars/bmw-z4'),
-                                            children: "Ремонт BMW Z4"
+                                            href: "/cars/bmw-m5",
+                                            onClick: ()=>handleLinkClick('/cars/bmw-m5'),
+                                            children: "Ремонт Mini Cooper"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 51,
@@ -342,42 +342,12 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/services/zamena-perednih-tormoznyh-diskov",
-                                            onClick: ()=>handleLinkClick('/services/zamena-perednih-tormoznyh-diskov'),
-                                            children: "Замена передних тормозных дисков"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 63,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            className: "linkSmall",
-                                            href: "/services/diagnostika-akpp",
-                                            onClick: ()=>handleLinkClick('/services/diagnostika-akpp'),
-                                            children: "Диагностика АКПП"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 66,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            className: "linkSmall",
-                                            href: "/services/zamena-salonnogo-filtra",
-                                            onClick: ()=>handleLinkClick('/services/zamena-salonnogo-filtra'),
-                                            children: "Замена салонного фильтра"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 69,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            className: "linkSmall",
                                             href: "/services",
                                             onClick: ()=>handleLinkClick('/services'),
                                             children: "Все услуги автосервиса YanisGrek..."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 72,
+                                            lineNumber: 63,
                                             columnNumber: 29
                                         }, this)
                                     ]
@@ -402,7 +372,7 @@ function Header() {
                                     children: "+7 495 76-76-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header/Header.jsx",
-                                    lineNumber: 78,
+                                    lineNumber: 69,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -412,13 +382,13 @@ function Header() {
                                     children: "Оставить заявку"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header/Header.jsx",
-                                    lineNumber: 79,
+                                    lineNumber: 70,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 77,
+                            lineNumber: 68,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -429,12 +399,12 @@ function Header() {
                                 className: "logo"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Header/Header.jsx",
-                                lineNumber: 81,
+                                lineNumber: 72,
                                 columnNumber: 36
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 81,
+                            lineNumber: 72,
                             columnNumber: 21
                         }, this)
                     ]
@@ -458,7 +428,7 @@ function Header() {
                         alt: "burger"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 85,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -469,12 +439,12 @@ function Header() {
                             alt: "logo"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 91,
+                            lineNumber: 82,
                             columnNumber: 49
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 91,
+                        lineNumber: 82,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -484,13 +454,13 @@ function Header() {
                         children: "+7 495 76-76-500"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 92,
+                        lineNumber: 83,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Header/Header.jsx",
-                lineNumber: 84,
+                lineNumber: 75,
                 columnNumber: 13
             }, this)
         ]
@@ -529,7 +499,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function ContactsPage() {
+function ContactsPage({ showHeader = true }) {
     _s();
     const [defaultDate, setDefaultDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [defaultTime, setDefaultTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
@@ -555,10 +525,10 @@ function ContactsPage() {
                 className: "Contacts",
                 id: "Form",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2f$Header$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                    showHeader && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2f$Header$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/app/contacts/page.jsx",
                         lineNumber: 31,
-                        columnNumber: 9
+                        columnNumber: 24
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                         src: "/images/contacts_green_car.jpg",
@@ -917,11 +887,13 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 // src/components/EngineSelector/EngineSelector.jsx
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$prop$2d$types$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/prop-types/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -940,7 +912,7 @@ var _s = __turbopack_context__.k.signature();
  *   ]
  * - firstColumnHeader: string = 'Название'
  * - secondColumnHeader: string = 'Модели'
- */ const EngineSelector = ({ categories, firstColumnHeader = 'Название', secondColumnHeader = 'Модели' })=>{
+ */ const EngineSelector = ({ categories, firstColumnHeader = 'Название', secondColumnHeader = 'Модели', type = '' })=>{
     _s();
     const [activeIndex, setActiveIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const activeCategory = categories[activeIndex];
@@ -951,7 +923,7 @@ var _s = __turbopack_context__.k.signature();
                 children: "Выберите тип коробки переключения передач "
             }, void 0, false, {
                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                lineNumber: 33,
+                lineNumber: 35,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -965,12 +937,12 @@ var _s = __turbopack_context__.k.signature();
                                 children: cat.title
                             }, idx, false, {
                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                lineNumber: 37,
+                                lineNumber: 39,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                        lineNumber: 35,
+                        lineNumber: 37,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -983,59 +955,66 @@ var _s = __turbopack_context__.k.signature();
                                             children: firstColumnHeader
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                            lineNumber: 50,
+                                            lineNumber: 52,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: secondColumnHeader
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                            lineNumber: 51,
+                                            lineNumber: 53,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                    lineNumber: 49,
+                                    lineNumber: 51,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                lineNumber: 48,
+                                lineNumber: 50,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                 children: activeCategory.items.map((item, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                children: item.name
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: `/${type}/${item.path}`,
+                                                    children: item.name
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
+                                                    lineNumber: 60,
+                                                    columnNumber: 21
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                                lineNumber: 57,
+                                                lineNumber: 59,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 children: item.models
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                                lineNumber: 58,
+                                                lineNumber: 64,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, idx, true, {
                                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                        lineNumber: 56,
+                                        lineNumber: 58,
                                         columnNumber: 21
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                                lineNumber: 54,
+                                lineNumber: 56,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                        lineNumber: 47,
+                        lineNumber: 49,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1043,7 +1022,7 @@ var _s = __turbopack_context__.k.signature();
                         children: "* Нажмите на название для перехода на соответствующую страницу"
                     }, void 0, false, {
                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                        lineNumber: 64,
+                        lineNumber: 70,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1054,24 +1033,24 @@ var _s = __turbopack_context__.k.signature();
                             children: activeCategory.note
                         }, void 0, false, {
                             fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                            lineNumber: 65,
+                            lineNumber: 71,
                             columnNumber: 65
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                        lineNumber: 65,
+                        lineNumber: 71,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-                lineNumber: 34,
+                lineNumber: 36,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/EngineSelector/EngineSelector.jsx",
-        lineNumber: 32,
+        lineNumber: 34,
         columnNumber: 5
     }, this);
 };

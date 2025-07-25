@@ -302,8 +302,18 @@ async function Service({ params }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                         className: "hero_title",
-                        children: "Работа без излишнего пафоса, исключительно человеческий подход."
-                    }, void 0, false, {
+                        children: [
+                            "Подробнее об услуге",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                fileName: "[project]/src/app/services/[slug]/page.jsx",
+                                lineNumber: 44,
+                                columnNumber: 11
+                            }, this),
+                            '"',
+                            serviceData.title,
+                            '"'
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/app/services/[slug]/page.jsx",
                         lineNumber: 42,
                         columnNumber: 9
@@ -318,7 +328,7 @@ async function Service({ params }) {
                                         children: serviceData.text1
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                        lineNumber: 47,
+                                        lineNumber: 48,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -326,13 +336,13 @@ async function Service({ params }) {
                                         alt: "office"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                        lineNumber: 50,
+                                        lineNumber: 51,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -344,7 +354,7 @@ async function Service({ params }) {
                                         className: "photo_worker"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                        lineNumber: 53,
+                                        lineNumber: 54,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -352,19 +362,19 @@ async function Service({ params }) {
                                         children: serviceData.text2
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                        lineNumber: 58,
+                                        lineNumber: 59,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/services/[slug]/page.jsx",
-                                lineNumber: 52,
+                                lineNumber: 53,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/services/[slug]/page.jsx",
-                        lineNumber: 45,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, this)
                 ]
@@ -375,7 +385,7 @@ async function Service({ params }) {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$contacts$2f$page$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/services/[slug]/page.jsx",
-                lineNumber: 64,
+                lineNumber: 65,
                 columnNumber: 7
             }, this)
         ]

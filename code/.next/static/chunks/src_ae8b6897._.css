@@ -142,12 +142,20 @@
 
 @media screen and (width <= 664px) {
   .Header > .menu > .content {
-    justify-content: space-between;
-    gap: 0;
+    gap: 24px;
+    padding: 64px 24px 80px;
+    position: relative;
+    overflow-y: scroll;
   }
 
   .Header > .menu > .content > img.logo {
     margin-bottom: 24px;
+  }
+
+  .Header > .menu > .content > img.cross {
+    position: absolute;
+    top: 24px;
+    left: 24px;
   }
 
   .Header > .menu > .content > .links {
@@ -170,6 +178,11 @@
 
   .Header > .menu > .content > .buttons > a {
     width: 100%;
+  }
+
+  .Header > .menu > .content > .buttons > a.phone_link {
+    justify-content: flex-start;
+    display: flex;
   }
 }
 
