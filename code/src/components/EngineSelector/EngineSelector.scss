@@ -44,6 +44,7 @@
             padding: 12px 16px;
             color: black;
             width: 50%;
+            word-break: break-word;
           }
       
           th {
@@ -96,7 +97,7 @@
         width: 100%;
         & > h2 {
             width: 100%;
-            padding: 0px 0px 0px 24px;
+            padding: 0px 24px;
         }
         & > .engine-selector {
             width: 100%;
@@ -114,11 +115,15 @@
 
 @media screen and (max-width: 480px) {
   .EngineSelector {
+      padding: 50px 0px 50px 0px;
+      & > h2 {
+        font-size: 20px;
+      }
       & > .engine-selector {
           & > .tabs {
             gap: 8px;
               & > .tab {
-                  font-size: 12px;
+                  font-size: 10px;
               }
           }
       }

@@ -40,7 +40,8 @@ export default async function Service({ params }) {
       </div>
       <div className="block_about_from_founder">
         <h1 className="hero_title">
-          Работа без излишнего пафоса, исключительно человеческий подход.
+          Подробнее об услуге
+          <br/>"{serviceData.title}"
         </h1>
         <div>
           <div className="row_1_description_photo">

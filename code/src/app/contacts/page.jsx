@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import "./contacts.scss";
 
-export default function ContactsPage() {
+export default function ContactsPage({ showHeader = true }) {
   const [defaultDate, setDefaultDate] = useState("");
   const [defaultTime, setDefaultTime] = useState("");
 
@@ -28,7 +28,7 @@ export default function ContactsPage() {
   return (
     <>
       <div className="Contacts" id="Form">
-        <Header />
+        {showHeader && <Header />}
 
         <img
           src="/images/contacts_green_car.jpg"

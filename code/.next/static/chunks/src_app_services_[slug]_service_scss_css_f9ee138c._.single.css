@@ -215,7 +215,7 @@
   font-size: 24px;
 }
 
-@media (width <= 750px) {
+@media screen and (width <= 750px) {
   .images-wrapper__subtitle {
     display: none;
   }
@@ -241,7 +241,12 @@
     right: 15px;
   }
 
-  .title_small, .hero_title {
+  .title_small {
+    font-size: 20px;
+  }
+
+  .hero_title {
+    padding: 48px 24px 0;
     font-size: 20px;
   }
 
@@ -318,6 +323,19 @@
 
   .Service > .Startscreen > .content > .left > .info > p {
     font-size: 20px;
+    line-height: 105%;
+  }
+}
+
+@media screen and (width <= 390px) {
+  .Service > .Startscreen > .content > .left > .info > h1 {
+    word-wrap: break-word;
+    width: 100%;
+    font-size: 24px;
+  }
+
+  .Service > .Startscreen > .content > .left > .info > p {
+    font-size: 16px;
     line-height: 105%;
   }
 }

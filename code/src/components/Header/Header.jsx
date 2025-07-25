@@ -43,13 +43,13 @@ export default function Header() {
                                 Контакты
                             </Link>
                             <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
-                                Ремонт BMW M5
+                                Ремонт BMW
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-x6" onClick={() => handleLinkClick('/cars/bmw-x6')}>
-                                Ремонт BMW X6
+                            <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
+                                Ремонт Rolls Royce
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-z4" onClick={() => handleLinkClick('/cars/bmw-z4')}>
-                                Ремонт BMW Z4
+                            <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
+                                Ремонт Mini Cooper
                             </Link>
                         </div>
                         <div className="linksCol">
@@ -59,15 +59,6 @@ export default function Header() {
                             </Link>
                             <Link className='linkSmall' href="/remontDvs" onClick={() => handleLinkClick('/remontDvs')}>
                                 Ремонт ДВС
-                            </Link>
-                            <Link className='linkSmall' href="/services/zamena-perednih-tormoznyh-diskov" onClick={() => handleLinkClick('/services/zamena-perednih-tormoznyh-diskov')}>
-                                Замена передних тормозных дисков
-                            </Link>
-                            <Link className='linkSmall' href="/services/diagnostika-akpp" onClick={() => handleLinkClick('/services/diagnostika-akpp')}>
-                                Диагностика АКПП
-                            </Link>
-                            <Link className='linkSmall' href="/services/zamena-salonnogo-filtra" onClick={() => handleLinkClick('/services/zamena-salonnogo-filtra')}>
-                                Замена салонного фильтра
                             </Link>
                             <Link className='linkSmall' href="/services" onClick={() => handleLinkClick('/services')}>
                                 Все услуги автосервиса YanisGrek...

@@ -463,12 +463,12 @@ async function CalculatorServer() {
     ];
     // 1) Подгружаем модели, субмодели и серию из API
     const [submodelsRes, seriesRes] = await Promise.all([
-        fetch('http://89.104.65.124/api/submodels/', {
+        fetch('https://api.test-grek.online/api/submodels/', {
             next: {
                 revalidate: 60
             }
         }),
-        fetch('http://89.104.65.124/api/series/', {
+        fetch('https://api.test-grek.online/api/series/', {
             next: {
                 revalidate: 60
             }

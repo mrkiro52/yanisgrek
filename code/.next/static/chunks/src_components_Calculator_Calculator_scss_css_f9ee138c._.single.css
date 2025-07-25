@@ -632,4 +632,15 @@
   }
 }
 
+@media screen and (width <= 400px) {
+  .choose_special_model {
+    margin-top: 28px;
+  }
+
+  .choose_special_model > .buttons > button {
+    padding: 0 !important;
+    font-size: 20px !important;
+  }
+}
+
 /*# sourceMappingURL=src_components_Calculator_Calculator_scss_css_f9ee138c._.single.css.map*/

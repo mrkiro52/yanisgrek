@@ -1,5 +1,6 @@
 'use client'
 // src/components/EngineSelector/EngineSelector.jsx
+import Link from 'next/link';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './EngineSelector.scss'; // импорт стилей (создайте файл и настройте по дизайну)
@@ -24,6 +25,7 @@ const EngineSelector = ({
   categories,
   firstColumnHeader = 'Название',
   secondColumnHeader = 'Модели',
+  type = '',
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeCategory = categories[activeIndex];
@@ -54,7 +56,11 @@ const EngineSelector = ({
                 <tbody>
                 {activeCategory.items.map((item, idx) => (
                     <tr key={idx}>
-                    <td>{item.name}</td>
+                    <td>
+                    <Link href={`/${type}/${item.path}`}>
+                        {item.name}
+                      </Link>
+                    </td>
                     <td>{item.models}</td>
                     </tr>
                 ))}
