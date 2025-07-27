@@ -1,0 +1,769 @@
+/* [project]/src/app/remontAkpp/remontAkpp.scss.css [app-client] (css) */
+.RemontAkpp .Startscreen {
+  background-color: #1d1d1d;
+  width: 100%;
+  padding-top: 90px;
+  padding-bottom: 250px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content {
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  height: 590px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 590px;
+  padding-top: 100px;
+  padding-left: calc(50% - 600px);
+  padding-right: 24px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info {
+  flex-direction: column;
+  gap: 24px;
+  display: flex;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info > h1 {
+  color: #fff;
+  font-family: Russo One;
+  font-size: 64px;
+  line-height: 100%;
+}
+
+.RemontAkpp .Startscreen > .content > .left > .info > p {
+  color: silver;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-family: Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.RemontAkpp .Startscreen > .content > .right {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 50%;
+  height: 590px;
+}
+
+@media screen and (width <= 1000px) {
+  .RemontAkpp > .Startscreen {
+    padding: 80px 24px;
+  }
+
+  .RemontAkpp > .Startscreen > .content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .RemontAkpp > .Startscreen > .content > .left {
+    gap: 24px;
+    height: auto;
+  }
+
+  .RemontAkpp > .Startscreen > .content > .right {
+    display: none;
+  }
+}
+
+.problems_block_top {
+  align-items: center;
+  padding: 120px 0 0 120px;
+  display: flex;
+}
+
+.problems_block_top > h2 {
+  color: silver;
+  opacity: .1;
+  margin-bottom: 0;
+  font-size: 96px;
+  position: absolute;
+  right: 0;
+}
+
+.title_problem {
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 103%;
+}
+
+.container_problems {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 90px 120px;
+  display: flex;
+}
+
+.block_title {
+  border-left: 2px solid #fff;
+  max-width: 560px;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 120px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.subtitle {
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+@media (width <= 480px) {
+  .title_problem {
+    padding: 120px 15px 0;
+    font-size: 20px;
+  }
+
+  .container_problems {
+    gap: 50px;
+    padding: 50px 15px;
+  }
+
+  .block_title {
+    padding-right: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+}
+
+@media screen and (width <= 1400px) {
+  .problems_block {
+    flex-direction: column;
+    gap: 24px;
+    display: flex;
+  }
+
+  .problems_block > .problems_block_top {
+    padding: 80px 24px 0;
+  }
+
+  .problems_block > .problems_block_top > h2 {
+    display: none;
+  }
+
+  .problems_block > .container_problems {
+    padding: 0 24px 80px;
+  }
+}
+
+
+/* [project]/src/components/BtnGoForm/BtnGoForm.scss.css [app-client] (css) */
+.send_request {
+  color: #fff;
+  opacity: .6;
+  cursor: pointer;
+  border: 1px solid #fff;
+  width: 230px;
+  height: 45px;
+  font-family: Helvetica;
+  font-size: 16px;
+  transition: all .2s;
+}
+
+.send_request:hover {
+  opacity: 1;
+}
+
+
+/* [project]/src/app/services/[slug]/ImageBlock.scss.css [app-client] (css) */
+.ImageBlock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ImageBlock.placeholder {
+  background: #f0f0f0;
+}
+
+.ImageBlock__overlay {
+  pointer-events: none;
+  width: 345px;
+  height: 233px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+@media screen and (width <= 1000px) {
+  .ImageBlock {
+    display: none;
+  }
+}
+
+
+/* [project]/src/components/Header/Header.scss.css [app-client] (css) */
+.Header {
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  background-color: #000000a6;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  position: fixed;
+}
+
+.Header > .content {
+  justify-content: space-between;
+  width: 1200px;
+  display: flex;
+}
+
+.Header > .content > .burger, .Header > .content > .logo {
+  cursor: pointer;
+}
+
+.Header > .menu {
+  -webkit-overflow-scrolling: touch;
+  z-index: 1000;
+  background-color: #000;
+  justify-content: center;
+  width: 100%;
+  transition: all .3s;
+  display: flex;
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+}
+
+.Header > .menu.opened {
+  height: 100vh;
+  transform: translateX(0);
+}
+
+.Header > .menu.closed {
+  transform: translateX(-100%);
+}
+
+.Header > .menu > .content {
+  flex-direction: column;
+  gap: 64px;
+  width: 1200px;
+  padding-top: 34px;
+  display: flex;
+}
+
+.Header > .menu > .content > img.cross {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+
+.Header > .menu > .content > .links {
+  gap: 64px;
+  display: flex;
+}
+
+.Header > .menu > .content > .links > .linksCol {
+  flex-direction: column;
+  gap: 16px;
+  min-width: 300px;
+  display: flex;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkSmall {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkSmall:hover {
+  opacity: .5;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkTitle {
+  color: silver;
+  font-family: Russo One;
+  font-size: 24px;
+  font-weight: 400;
+  transition: all .2s;
+}
+
+.Header > .menu > .content > .links > .linksCol > a.linkTitle:hover {
+  color: #fff;
+}
+
+.Header > .menu > .content > .buttons {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  display: flex;
+}
+
+.Header > .menu > .content > .buttons > a {
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 45px;
+  display: flex;
+}
+
+.Header > .menu > .content > .buttons > a.calcButton {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Header > .menu > .content > .buttons > a.formButton {
+  color: #fff9;
+  background-color: #0000;
+  border: 1px solid #fff9;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Header > .menu > .content > img.logo {
+  width: 183px;
+  height: 25px;
+}
+
+@media screen and (width <= 1200px) {
+  .Header > .content {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .Header > .menu > .content {
+    width: 100%;
+    padding: 34px 24px 0;
+  }
+}
+
+@media screen and (width <= 664px) {
+  .Header > .menu > .content {
+    gap: 24px;
+    padding: 64px 24px 80px;
+    position: relative;
+    overflow-y: scroll;
+  }
+
+  .Header > .menu > .content > img.logo {
+    margin-bottom: 24px;
+  }
+
+  .Header > .menu > .content > img.cross {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+
+  .Header > .menu > .content > .links {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .Header > .menu > .content > .links > .linksCol {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .Header > .menu > .content > .links > .linksCol > a.linkTitle {
+    font-size: 20px !important;
+  }
+
+  .Header > .menu > .content > .links > .linksCol > a.linkSmall {
+    font-size: 15px !important;
+  }
+
+  .Header > .menu > .content > .buttons > a {
+    width: 100%;
+  }
+
+  .Header > .menu > .content > .buttons > a.phone_link {
+    justify-content: flex-start;
+    display: flex;
+  }
+}
+
+@media screen and (width <= 450px) {
+  .Header > .content > a.logo {
+    display: none;
+  }
+}
+
+
+/* [project]/src/app/contacts/contacts.scss.css [app-client] (css) */
+input {
+  color: #fff;
+  background-color: #0000 !important;
+}
+
+input::placeholder {
+  color: #ffffff80;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff !important;
+  background-color: #0000 !important;
+  transition: background-color 5000s ease-in-out !important;
+  -webkit-box-shadow: inset 0 0 0 1000px #0000 !important;
+  box-shadow: inset 0 0 0 1000px #0000 !important;
+}
+
+.Contacts {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (width <= 1050px) {
+  .bg-image {
+    object-fit: cover;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .right-blur-overlay {
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    will-change: backdrop-filter;
+    pointer-events: none;
+    background-color: #0006;
+    height: 100%;
+    position: absolute;
+    transform: translateZ(0);
+    width: 100% !important;
+  }
+}
+
+.bg-image {
+  object-fit: cover;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.right-blur-overlay {
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  will-change: backdrop-filter;
+  pointer-events: none;
+  background-color: #0006;
+  width: 405px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateZ(0);
+}
+
+.ContactFormSection {
+  z-index: 2;
+  padding: 120px 0 0 120px;
+  position: relative;
+}
+
+@media screen and (width <= 740px) {
+  .Contacts {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .ContactFormSection {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 15px;
+  }
+}
+
+.yandex_map {
+  background-color: #d0d0d0;
+  background-position: center;
+  background-size: cover;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+}
+
+@media screen and (width <= 500px) {
+  .ContactFormSection {
+    max-width: 470px;
+    margin: 80px auto;
+    padding: 15px;
+  }
+
+  .form-label-1 {
+    display: none;
+  }
+
+  .form-label {
+    font-size: 12px;
+  }
+
+  .form-datetime {
+    width: 100% !important;
+  }
+}
+
+.form {
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  font-family: Russo One, sans-serif;
+  display: flex;
+}
+
+.form-row {
+  border: 1px solid #fff;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.form-label, .form-label-1 {
+  color: #fff;
+  text-transform: uppercase;
+  width: 183px;
+  padding-left: 15px;
+  font-size: 14px;
+}
+
+.form-input {
+  color: #fff;
+  background: none;
+  border: 1px solid #fff;
+  width: 305px;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.form-input::placeholder {
+  color: #ffffff80;
+}
+
+.form-input:-webkit-autofill {
+  transition: background-color 100000s ease-in-out;
+  -webkit-text-fill-color: #fff !important;
+  background: none !important;
+}
+
+.form-datetime {
+  width: 305px;
+  display: flex;
+}
+
+.form-button {
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  transition: background .3s;
+}
+
+.form-button:hover {
+  background-color: #e0e0e0;
+}
+
+.contacts-info {
+  color: #fff;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 500px;
+  margin-top: 40px;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  display: grid;
+}
+
+.contacts-info-block {
+  background-color: #ffffff0d;
+  border: 1px solid #ffffff4d;
+  padding: 16px;
+}
+
+.title-contacts-info {
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 6px;
+  font-family: Russo One, sans-serif;
+  font-size: 16px;
+}
+
+.contacts-info-block p {
+  margin: 0;
+}
+
+input[type="date"], input[type="time"] {
+  color-scheme: dark;
+}
+
+
+/* [project]/src/components/EngineSelector/EngineSelector.scss.css [app-client] (css) */
+.EngineSelector {
+  background-color: #d0d0d0;
+  padding: 100px 0;
+}
+
+.EngineSelector > h2 {
+  color: #262626;
+  width: 1200px;
+  margin: 0 auto 32px;
+  font-size: 24px;
+}
+
+.EngineSelector > .engine-selector {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.EngineSelector > .engine-selector .tabs {
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.EngineSelector > .engine-selector .tabs .tab {
+  color: #000;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #fff;
+  width: 25%;
+  padding: 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color .2s;
+}
+
+.EngineSelector > .engine-selector .tabs .tab.active {
+  color: #fff;
+  background-color: #06f;
+  border-color: #06f;
+}
+
+.EngineSelector > .engine-selector .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.EngineSelector > .engine-selector .table th, .EngineSelector > .engine-selector .table td {
+  color: #000;
+  word-break: break-word;
+  width: 50%;
+  padding: 12px 16px;
+}
+
+.EngineSelector > .engine-selector .table th {
+  text-align: left;
+  font-weight: 700;
+}
+
+.EngineSelector > .engine-selector .table th.first-col {
+  background-color: #b3b3b3;
+}
+
+.EngineSelector > .engine-selector .table th.second-col {
+  background-color: #fff;
+}
+
+.EngineSelector > .engine-selector .table td {
+  vertical-align: top;
+}
+
+.EngineSelector > .engine-selector .table td:first-child {
+  background-color: #b3b3b3;
+}
+
+.EngineSelector > .engine-selector .table td:nth-child(2) {
+  background-color: #fff;
+}
+
+.EngineSelector > .engine-selector > .hint {
+  color: #8c8c8c;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 104%;
+}
+
+.EngineSelector > .engine-selector .note {
+  color: #8c8c8c;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 104%;
+  transition: all .2s;
+}
+
+.EngineSelector > .engine-selector .note:hover {
+  color: #000;
+}
+
+@media screen and (width <= 1200px) {
+  .EngineSelector {
+    width: 100%;
+  }
+
+  .EngineSelector > h2, .EngineSelector > .engine-selector {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .EngineSelector > .engine-selector > .tabs {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .EngineSelector > .engine-selector > .tabs > .tab {
+    flex: 1;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .EngineSelector {
+    padding: 50px 0;
+  }
+
+  .EngineSelector > h2 {
+    font-size: 20px;
+  }
+
+  .EngineSelector > .engine-selector > .tabs {
+    gap: 8px;
+  }
+
+  .EngineSelector > .engine-selector > .tabs > .tab {
+    font-size: 10px;
+  }
+}
+
+
+/*# sourceMappingURL=src_d965b98f._.css.map*/

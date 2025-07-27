@@ -1,0 +1,396 @@
+/* [project]/src/app/about/about.scss.css [app-client] (css) */
+.About > .Startscreen {
+  background-image: url("/images/black_car_about.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.About > .Startscreen > .startscreen_text {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 120px;
+  display: flex;
+}
+
+.About > .Startscreen > .startscreen_text > .car_mobile {
+  display: none;
+}
+
+.About > .Startscreen > .startscreen_text > .about_title {
+  padding: 120px;
+  font-size: 96px;
+}
+
+.About > .Startscreen > .startscreen_text > .about_title > h1.title {
+  font-size: 24px;
+}
+
+.About > .Startscreen > .startscreen_text > .about_title > p.subtitle {
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+.About > .Startscreen > .startscreen_text > .block_title {
+  border-left: 2px solid #fff;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 120px;
+}
+
+.About > .Startscreen > .startscreen_text > .slider_hover {
+  padding: 0 0 120px 120px;
+  position: relative;
+}
+
+.About > .block_about {
+  margin: auto;
+  padding: 120px 120px 80px;
+}
+
+.About > .block_about > .block_about_photo_text {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  display: flex;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about {
+  flex: 620px;
+  min-width: 0;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > h1.title_block_about {
+  text-transform: uppercase;
+  padding-bottom: 40px;
+  font-size: 36px;
+  line-height: 103%;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > p.description_block_about {
+  padding: 20px 0;
+  font-family: Helvetica;
+  font-size: 16px;
+}
+
+.About > .block_about > .block_about_photo_text > .text_block_about > .citation_block_about {
+  border-left: 1px solid silver;
+  align-items: center;
+  height: 43px;
+  padding-left: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: italic;
+  display: flex;
+}
+
+.About > .block_about > .block_about_photo_text > img {
+  flex: 0 auto;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+.About > .block_assets_about {
+  justify-content: space-between;
+  padding: 20px 120px;
+  display: flex;
+}
+
+.About > .block_assets_about > .asset {
+  text-align: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 285px;
+  font-family: Helvetica;
+  font-size: 16px;
+  display: flex;
+}
+
+.About > .block_box_citation {
+  justify-content: flex-end;
+  padding: 90px 120px 120px 0;
+  display: flex;
+}
+
+.About > .block_box_citation > .block_title_assets_about {
+  border-left: 2px solid #fff;
+  width: 50%;
+  padding-left: 30px;
+}
+
+.About > .block_box_citation > .block_title_assets_about > h1.title_block2 {
+  padding-bottom: 20px;
+  font-size: 24px;
+  line-height: 103%;
+}
+
+.About > .block_box_citation > .block_title_assets_about > p.subtitle_block2 {
+  font-family: Helvetica;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.About > .block_about_from_founder {
+  background-color: #d0d0d0;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.About > .block_about_from_founder > .hero_title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+  padding-top: 120px;
+  font-size: 48px;
+  line-height: 103%;
+}
+
+.About > .block_about_from_founder > .row_1_description_photo, .About > .block_about_from_founder > .row_2_description_photo {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 70px 120px;
+  display: flex;
+}
+
+.About > .block_about_from_founder > .row_1_description_photo > p.description_about_block_founder, .About > .block_about_from_founder > .row_2_description_photo > p.description_about_block_founder {
+  color: #000;
+  max-width: 660px;
+  font-family: Helvetica;
+  font-size: 20px;
+  line-height: 130%;
+}
+
+.About > .block_about_from_founder > .signature {
+  z-index: 2;
+  color: #000;
+  justify-content: flex-end;
+  margin-top: -100px;
+  padding: 0 120px 120px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: italic;
+  display: flex;
+}
+
+.About > .team {
+  background-color: #000;
+  position: relative;
+}
+
+.About > .team > .team_title {
+  padding: 120px 0 60px 120px;
+  font-size: 36px;
+}
+
+.About > .team > .slider2 {
+  padding: 0 0 120px 120px;
+  position: relative;
+}
+
+@media (width <= 1200px) {
+  .About > .Startscreen > .startscreen_text {
+    row-gap: 500px;
+  }
+
+  .About > .Startscreen > .startscreen_text > h1.about_title {
+    padding: 120px 0 0 24px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title {
+    margin-top: 120px;
+  }
+
+  .About > .block_about {
+    padding: 120px 60px 80px;
+  }
+
+  .About > .block_assets_about {
+    flex-wrap: wrap;
+    padding: 20px 60px;
+  }
+
+  .About > .block_about_from_founder .row_1_description_photo {
+    padding: 70px 60px;
+  }
+
+  .About > .block_about_from_founder .row_2_description_photo {
+    flex-direction: column-reverse;
+    padding: 70px 60px;
+  }
+
+  .About .slider2, .About .team_title {
+    padding-left: 60px;
+  }
+
+  .About .photo_worker {
+    width: 50%;
+  }
+
+  .About .signature {
+    margin-top: 0;
+  }
+}
+
+@media (width <= 930px) {
+  .About > .Startscreen {
+    background: #000;
+  }
+
+  .About > .Startscreen > .startscreen_text {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0;
+  }
+
+  .About > .Startscreen > .startscreen_text > .car_mobile {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .About > .Startscreen > .startscreen_text > h1.about_title {
+    padding: 120px 0 0 24px;
+    font-size: 32px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title {
+    margin-top: 0;
+    margin-left: 24px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title > h1.title {
+    font-size: 20px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .block_title > p.subtitle {
+    font-size: 16px;
+  }
+
+  .About > .Startscreen > .startscreen_text > .slider_hover {
+    margin-top: 32px;
+    padding: 0 0 24px 24px;
+  }
+
+  .About .block_about_photo_text {
+    flex-direction: column;
+  }
+
+  .About .text_block_about, .About .block_about_photo_text img {
+    width: 100%;
+  }
+}
+
+@media (width <= 480px) {
+  .About .about_title {
+    font-size: 32px;
+  }
+
+  .About .title {
+    font-size: 20px;
+  }
+
+  .About .subtitle {
+    font-size: 16px;
+  }
+
+  .About .slider_hover {
+    padding: 250px 0 60px 15px;
+  }
+
+  .About .block_title {
+    margin-left: 15px;
+    padding-right: 15px;
+  }
+
+  .About .block_about {
+    padding: 120px 15px 80px;
+  }
+
+  .About .title_block_about {
+    font-size: 20px;
+  }
+
+  .About .text_block_about {
+    flex: auto;
+  }
+
+  .About .block_assets_about {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 15px;
+  }
+
+  .About .block_assets_about > .asset {
+    width: 100%;
+  }
+
+  .About .asset {
+    gap: 15px;
+    width: auto;
+  }
+
+  .About .asset > p {
+    padding: 0 6px;
+  }
+
+  .About .title_block2 {
+    font-size: 20px;
+  }
+
+  .About .subtitle_block2 {
+    font-size: 16px;
+  }
+
+  .About .block_box_citation {
+    width: 100%;
+    padding-right: 15px;
+    display: block;
+  }
+
+  .About .block_box_citation > .block_title_assets_about {
+    width: 100%;
+    margin-left: 15px;
+    padding-right: 15px;
+  }
+
+  .About > .block_about_from_founder > h1.hero_title {
+    font-size: 24px;
+  }
+
+  .About > .block_about_from_founder > .row_1_description_photo {
+    flex-direction: column-reverse;
+    padding: 60px 15px;
+  }
+
+  .About > .block_about_from_founder > .row_2_description_photo {
+    padding: 0 15px 60px;
+  }
+
+  .About > .block_about_from_founder .signature {
+    margin: 0 15px;
+    padding: 0 0 24px;
+  }
+
+  .About > .team > .team_title {
+    padding: 48px 0 30px 24px;
+    font-size: 20px;
+  }
+
+  .About > .team > .slider2 {
+    padding: 0 0 120px 15px;
+  }
+
+  .About .description_about_block_founder {
+    font-size: 16px;
+  }
+}
+
+/*# sourceMappingURL=src_app_about_about_scss_css_f9ee138c._.single.css.map*/

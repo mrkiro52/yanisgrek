@@ -35,24 +35,25 @@ export default async function RemontAkppSpecial({ params }) {
     <div className="RemontAkppSpecial">
       <Header/>
       <div className="wrapper">
-        <h1>Ремонт КПП<br/>{slug}</h1>
+        <h1>Ремонт КПП<br/>{data.name}</h1>
         <div className="row">
             <div className="block">
-                <h2>Слабые места {slug}</h2>
+                <h2>Слабые места {data.name}</h2>
                 <p>{data.slabie_mesta}</p>
             </div>
             <div className="block">
-                <h2>Как обслуживать {slug}</h2>
+                <h2>Как обслуживать {data.name}</h2>
                 <p>{data.kak_obslujivat}</p>
             </div>
         </div>
         <div className="row">
             <div className="block">
-                <h2>Как ремонтировать {slug}</h2>
+                <h2>Как ремонтировать {data.name}</h2>
                 <p>{data.kak_remontirovat}</p>
             </div>
             <div className="block">
-                <h2>как увеличить срок службы {slug}</h2>
+                <h2>как увеличить срок службы {data.name}</h2>
+
                 <p>{data.kak_uvelichit_srok_slujby}</p>
             </div>
         </div>
