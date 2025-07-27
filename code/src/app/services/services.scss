@@ -247,33 +247,42 @@
 }
 @media (max-width: 480px) {
   .Services {
-    .block_about_services {
-      display: block;
-      padding-right: 15px;
-      width: auto;
+    & > .Startscreen {
+      & > .title {
+        font-size: 64px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
     }
-    .hero_title {
-      font-size: 20px;
+    & > .buttons_container {
+      padding: 45px 15px 30px;
+      & > button {
+        text-align: left;
+      }
     }
-    .hero_title_small {
-      font-size: 13px;
-    }
-    .row_1_description_photo {
-      padding: 60px 15px;
-      flex-direction: column-reverse;
+    & > .block_about_services {
+      & > .row_1_description_photo {
+        padding: 60px 15px;
+        flex-direction: column-reverse;
+      }
+      & > .row_2_description_photo {
+        padding: 0px 15px 60px 15px;
+        & > img {
+          width: 100%;
+        }
+      }
+      & > .hero_title {
+        padding-top: 64px;
+        font-size: 20px;
+        & > .hero_title_small {
+          font-size: 13px;
+        }
+      }
     }
     .description_about_block_founder {
       font-size: 16px;
-    }
-    .row_2_description_photo {
-      padding: 0px 15px 60px 15px;
-    }
-    .title {
-      font-size: 32px;
-      width: 100%;
-      padding-left: 15px;
-      display: flex;
-      justify-content: flex-start;
     }
     .services_container {
       padding: 0 15px 30px;
@@ -281,9 +290,6 @@
     .button_menu {
       padding: 9px 15px;
       font-size: 14px;
-    }
-    .buttons_container {
-      padding: 45px 15px 30px;
     }
     .Startscreen {
       padding-bottom: 45px;
