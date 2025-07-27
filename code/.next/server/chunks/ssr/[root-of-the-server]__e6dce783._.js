@@ -127,12 +127,32 @@ function Header() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                             className: "linkSmall",
-                                            href: "/cars/bmw-m5",
-                                            onClick: ()=>handleLinkClick('/cars/bmw-m5'),
-                                            children: "*Ремонт BMW"
+                                            href: "/cars/",
+                                            onClick: ()=>handleLinkClick('/cars/'),
+                                            children: "Ремонт BMW"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
                                             lineNumber: 45,
+                                            columnNumber: 29
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                            className: "linkSmall",
+                                            href: "/cars/",
+                                            onClick: ()=>handleLinkClick('/cars/'),
+                                            children: "Ремонт Rolls Royce"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/Header/Header.jsx",
+                                            lineNumber: 48,
+                                            columnNumber: 29
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                            className: "linkSmall",
+                                            href: "/cars/",
+                                            onClick: ()=>handleLinkClick('/cars/'),
+                                            children: "Ремонт Mini Cooper"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/Header/Header.jsx",
+                                            lineNumber: 51,
                                             columnNumber: 29
                                         }, this)
                                     ]
@@ -151,7 +171,7 @@ function Header() {
                                             children: "УСЛУГИ YANIS GREK"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 50,
+                                            lineNumber: 56,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -161,7 +181,7 @@ function Header() {
                                             children: "Ремонт КПП (АКПП МКПП и др.)"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 51,
+                                            lineNumber: 57,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -171,7 +191,7 @@ function Header() {
                                             children: "Ремонт ДВС"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 54,
+                                            lineNumber: 60,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -181,13 +201,13 @@ function Header() {
                                             children: "Все услуги автосервиса YanisGrek..."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header/Header.jsx",
-                                            lineNumber: 57,
+                                            lineNumber: 63,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Header/Header.jsx",
-                                    lineNumber: 49,
+                                    lineNumber: 55,
                                     columnNumber: 25
                                 }, this)
                             ]
@@ -206,7 +226,7 @@ function Header() {
                                     children: "+7 495 76-76-500"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header/Header.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 69,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -216,13 +236,13 @@ function Header() {
                                     children: "Оставить заявку"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header/Header.jsx",
-                                    lineNumber: 64,
+                                    lineNumber: 70,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 62,
+                            lineNumber: 68,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -233,12 +253,12 @@ function Header() {
                                 className: "logo"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Header/Header.jsx",
-                                lineNumber: 66,
+                                lineNumber: 72,
                                 columnNumber: 36
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 66,
+                            lineNumber: 72,
                             columnNumber: 21
                         }, this)
                     ]
@@ -262,7 +282,7 @@ function Header() {
                         alt: "burger"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 70,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -273,12 +293,12 @@ function Header() {
                             alt: "logo"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header/Header.jsx",
-                            lineNumber: 76,
+                            lineNumber: 82,
                             columnNumber: 49
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 76,
+                        lineNumber: 82,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -288,13 +308,13 @@ function Header() {
                         children: "+7 495 76-76-500"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header/Header.jsx",
-                        lineNumber: 77,
+                        lineNumber: 83,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Header/Header.jsx",
-                lineNumber: 69,
+                lineNumber: 75,
                 columnNumber: 13
             }, this)
         ]

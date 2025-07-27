@@ -18,7 +18,7 @@ const problemsImages = [
 ];
 
 const images = [
-  { src: "/images/alexandr_director.jpg", caption: "Александр — директор" },
+  { src: "/images/alexandr_director.jpg", caption: "Александр — управляющий" },
   { src: "/images/alexandr_master.jpg", caption: "Александр — мастер" },
   { src: "/images/maksim_master.jpg", caption: "Максим — мастер" },
   { src: "/images/vitaly.jpg", caption: "Виталий — специалист" },

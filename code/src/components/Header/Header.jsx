@@ -42,13 +42,13 @@ export default function Header() {
                             <Link className='linkSmall' href="/contacts" onClick={() => handleLinkClick('/contacts')}>
                                 Контакты
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
+                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
                                 Ремонт BMW
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
+                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
                                 Ремонт Rolls Royce
                             </Link>
-                            <Link className='linkSmall' href="/cars/bmw-m5" onClick={() => handleLinkClick('/cars/bmw-m5')}>
+                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
                                 Ремонт Mini Cooper
                             </Link>
                         </div>
