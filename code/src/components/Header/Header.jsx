@@ -42,6 +42,7 @@ export default function Header() {
                             <Link className='linkSmall' href="/contacts" onClick={() => handleLinkClick('/contacts')}>
                                 Контакты
                             </Link>
+
                             <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
                                 Ремонт BMW
                             </Link>
@@ -49,6 +50,7 @@ export default function Header() {
                                 Ремонт Rolls Royce
                             </Link>
                             <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+
                                 Ремонт Mini Cooper
                             </Link>
                         </div>
