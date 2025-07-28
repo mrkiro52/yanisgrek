@@ -237,6 +237,12 @@
         }
       }
     }
+    & > .block_about_from_founder {
+      & > .signature { 
+        margin: 0 15px;
+        padding: 0 0 24px 0;
+      }
+    }
     & .block_about_photo_text { flex-direction: column; }
     & .text_block_about,
     & .block_about_photo_text img { width: 100%; }
@@ -285,10 +291,9 @@
       }
       & > .row_2_description_photo { 
         padding: 0 15px 60px; 
-      }
-      & .signature { 
-        margin: 0 15px;
-        padding: 0 0 24px 0;
+        & > img {
+          width: 100%;
+        }
       }
     }
     & > .team {

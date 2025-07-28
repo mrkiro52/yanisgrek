@@ -279,6 +279,7 @@
 
   .Services > .buttons_container > button {
     text-align: left;
+    width: 100%;
   }
 
   .Services > .block_about_services > .row_1_description_photo {
