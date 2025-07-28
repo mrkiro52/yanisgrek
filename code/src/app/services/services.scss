@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
     & > .title {
       font-size: 96px;
       display: flex;
@@ -183,6 +183,9 @@
 
 @media (max-width: 1170px) {
   .Services {
+    & > h1.hero_title.white {
+      padding-top: 24px;
+    }
     .buttons_container {
       padding: 60px 24px 30px;
     }
