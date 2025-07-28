@@ -135,10 +135,10 @@
             position: relative;
             & > span {
               position: absolute;
-              bottom: 1;
-              left: 45;
+              bottom: 1px;
+              left: 45px;
               color: black;
-              font-size: 20;
+              font-size: 20px;
             }
           }
           & > .block2 {
@@ -147,7 +147,7 @@
             & > span {
               text-wrap: nowrap;
               color: black;
-              font-size: 20;
+              font-size: 20px;
               & > a {
                 transition: all 0.2s;
                 &:hover {
@@ -168,7 +168,7 @@
               bottom: 0;
               left: 0;
               color: black;
-              font-size: 20;
+              font-size: 20px;
               text-wrap: nowrap;
             }
           }
@@ -179,7 +179,7 @@
               bottom: 0;
               left: 0;
               color: black;
-              font-size: 20;
+              font-size: 20px;
               text-wrap: nowrap;
             }
           }

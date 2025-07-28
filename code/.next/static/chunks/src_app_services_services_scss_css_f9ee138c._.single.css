@@ -265,39 +265,46 @@
 }
 
 @media (width <= 480px) {
-  .Services .block_about_services {
-    width: auto;
-    padding-right: 15px;
-    display: block;
+  .Services > .Startscreen > .title {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 64px;
+    display: flex;
   }
 
-  .Services .hero_title {
-    font-size: 20px;
+  .Services > .buttons_container {
+    padding: 45px 15px 30px;
   }
 
-  .Services .hero_title_small {
-    font-size: 13px;
+  .Services > .buttons_container > button {
+    text-align: left;
   }
 
-  .Services .row_1_description_photo {
+  .Services > .block_about_services > .row_1_description_photo {
     flex-direction: column-reverse;
     padding: 60px 15px;
   }
 
-  .Services .description_about_block_founder {
-    font-size: 16px;
-  }
-
-  .Services .row_2_description_photo {
+  .Services > .block_about_services > .row_2_description_photo {
     padding: 0 15px 60px;
   }
 
-  .Services .title {
-    justify-content: flex-start;
+  .Services > .block_about_services > .row_2_description_photo > img {
     width: 100%;
-    padding-left: 15px;
-    font-size: 32px;
-    display: flex;
+  }
+
+  .Services > .block_about_services > .hero_title {
+    padding-top: 64px;
+    font-size: 20px;
+  }
+
+  .Services > .block_about_services > .hero_title > .hero_title_small {
+    font-size: 13px;
+  }
+
+  .Services .description_about_block_founder {
+    font-size: 16px;
   }
 
   .Services .services_container {
@@ -307,10 +314,6 @@
   .Services .button_menu {
     padding: 9px 15px;
     font-size: 14px;
-  }
-
-  .Services .buttons_container {
-    padding: 45px 15px 30px;
   }
 
   .Services .Startscreen {
