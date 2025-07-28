@@ -6,7 +6,6 @@ import Header from "@/components/Header/Header";
 import servicesData from '@/data/servicesPage/data.json'; // путь под себя
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-import BtnGoCalc from '../../components/BtnGoCalc/BtnGoCalc';
 import BtnGoForm from '../../components/BtnGoForm/BtnGoForm';
  
 export default function ServicesPage() {
@@ -39,7 +38,6 @@ export default function ServicesPage() {
       <div className="Startscreen">
         <h2 className="title">Услуги</h2>
         <div className="buttons">
-          <BtnGoCalc/>
           <BtnGoForm/>
         </div>
       </div>
