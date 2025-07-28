@@ -278,6 +278,11 @@
     padding: 0 0 24px 24px;
   }
 
+  .About > .block_about_from_founder > .signature {
+    margin: 0 15px;
+    padding: 0 0 24px;
+  }
+
   .About .block_about_photo_text {
     flex-direction: column;
   }
@@ -374,9 +379,8 @@
     padding: 0 15px 60px;
   }
 
-  .About > .block_about_from_founder .signature {
-    margin: 0 15px;
-    padding: 0 0 24px;
+  .About > .block_about_from_founder > .row_2_description_photo > img {
+    width: 100%;
   }
 
   .About > .team > .team_title {

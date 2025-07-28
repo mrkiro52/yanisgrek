@@ -6,11 +6,15 @@ import "./Form.scss";
 export default function Form() {
   const [defaultDate, setDefaultDate] = useState("");
   const [defaultTime, setDefaultTime] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
 
   useEffect(() => {
     const now = new Date();
 
-    // Завтрашняя дата
     const tomorrow = new Date(now);
     tomorrow.setDate(tomorrow.getDate() + 1);
     const yyyy = tomorrow.getFullYear();
@@ -18,11 +22,47 @@ export default function Form() {
     const dd = String(tomorrow.getDate()).padStart(2, "0");
     setDefaultDate(`${yyyy}-${mm}-${dd}`);
 
-    // Текущее время в формате HH:MM
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
     setDefaultTime(`${hours}:${minutes}`);
   }, []);
+
+  const validatePhone = (phone) => {
+    const cleaned = phone.replace(/[\s()-]/g, "");
+    if (cleaned.startsWith("+")) {
+      return cleaned.length === 12;
+    } else if (cleaned.startsWith("7") || cleaned.startsWith("8")) {
+      return cleaned.length === 11;
+    }
+    return false;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.phone || !formData.email) {
+      alert("Пожалуйста, заполните все поля.");
+      return;
+    }
+
+    if (!validatePhone(formData.phone)) {
+      alert("Неверный формат телефона.");
+      return;
+    }
+
+    const message = `Заявка на диагностику:
+
+Имя: ${formData.name}
+Телефон: ${formData.phone}
+Email: ${formData.email}
+Дата: ${defaultDate}
+Время: ${defaultTime}`;
+
+    const encoded = encodeURIComponent(message);
+    const number = "79852707575"; // WhatsApp формат — без +
+
+    window.open(`https://wa.me/${number}?text=${encoded}`, "_blank");
+  };
 
   return (
     <>
@@ -40,7 +80,7 @@ export default function Form() {
             выбрав день и время
           </h2>
 
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form-row">
               <label htmlFor="name" className="form-label">
                 Ваше имя
@@ -51,6 +91,10 @@ export default function Form() {
                 name="name"
                 className="form-input"
                 placeholder="Иванов Иван"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
               />
             </div>
 
@@ -64,6 +108,10 @@ export default function Form() {
                 name="phone"
                 className="form-input"
                 placeholder="+7 (9xx) xxx-xx-xx"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
               />
             </div>
 
@@ -77,6 +125,10 @@ export default function Form() {
                 name="email"
                 className="form-input"
                 placeholder="yanis_grek@gmail.com"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
               />
             </div>
 
@@ -133,7 +185,7 @@ export default function Form() {
             </div>
             <div className="contacts-info-block">
               <h2 className="title-contacts-info">Телефоны</h2>
-              <a href="https://wa.me/79852707575" target="_blank">
+              <a href="https://wa.me/+79852707575" target="_blank">
                 +7 (495) 76-76-500
               </a>
               <p>Запишитесь по телефону</p>
