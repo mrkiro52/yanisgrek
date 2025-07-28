@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     & > .startscreen {
+      min-height: 850px;
       height: 100vh;
       position: relative;
       position: relative;
