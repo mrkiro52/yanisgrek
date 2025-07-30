@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/BtnGoForm/BtnGoForm.scss.css"],"sourcesContent":[".send_request{font-size:16px;font-family:Helvetica;color:#fff;width:230px;height:45px;border:1px solid #fff;opacity:60%;cursor:pointer;transition:all .2s}.send_request:hover{opacity:100%}"],"names":[],"mappings":"AAAA;;;;;;;;;;;;AAA0J"}}]
-}
