@@ -367,6 +367,7 @@
   }
 
   .About > .block_about_from_founder > h1.hero_title {
+    padding-top: 60px;
     font-size: 24px;
   }
 

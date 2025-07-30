@@ -123,7 +123,7 @@
 
 @media (width <= 480px) {
   .title_problem {
-    padding: 120px 15px 0;
+    padding: 0 15px;
     font-size: 20px;
   }
 

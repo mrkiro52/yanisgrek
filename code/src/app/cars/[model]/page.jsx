@@ -5,7 +5,7 @@ import fs from 'fs/promises';
 import Header from '@/components/Header/Header';
 import EmblaCarousel from '@/components/embla/EmblaCarousel';
 import CalculatorServer from '@/components/Calculator/CalculatorServer';
-import Contacts from '@/app/contacts/page';
+import Form from '../../../components/Form/Form';
 import './car.scss';
 
 // ISR: пересобираем страницу раз в минуту
@@ -75,7 +75,7 @@ export default async function CarPage({ params }) {
       </div>
 
       <CalculatorServer />
-      <Contacts />
+      <Form />
     </div>
   );
 }

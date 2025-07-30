@@ -2,7 +2,7 @@ import "./remontAkpp.scss";
 import ButtonGoForm from '../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from '../services/[slug]/ImageBlock';
 import Header from '../../components/Header/Header';
-import Contacts from '../contacts/page';
+import Form from '../../components/Form/Form';
 import EngineSelector from '../../components/EngineSelector/EngineSelector';
 
 export default function RemontAkpp() {
@@ -101,7 +101,7 @@ export default function RemontAkpp() {
                 secondColumnHeader="Модели BMW"
                 type="remontAkpp"
             />
-            <Contacts/>
+            <Form/>
         </div>
     )
 }

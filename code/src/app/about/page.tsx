@@ -1,6 +1,6 @@
 "use client";
 import Header from "../../components/Header/Header";
-import Contacts from "../contacts/page";
+import Form from "../../components/Form/Form";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 import Image from 'next/image';
@@ -147,7 +147,7 @@ export default function AboutPage() {
           />
         </div>
       </div>
-      <Contacts/>
+      <Form/>
     </div>
   );
 }

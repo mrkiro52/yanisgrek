@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Header from '../components/Header/Header';
 import '../styles/globals.css';
 import '../styles/mainPage.scss';
-import Contacts from './contacts/page';
+import Form from '../components/Form/Form';
 import Calculator from '../components/Calculator/Calculator';
 import BtnGoCalc from '../components/BtnGoCalc/BtnGoCalc';
 import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
@@ -204,7 +204,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <Contacts />
+      <Form />
     </main>
   );
 }

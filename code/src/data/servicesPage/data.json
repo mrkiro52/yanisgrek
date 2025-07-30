@@ -29,10 +29,8 @@
       "Прокачка топливной системы": { "name": "Прокачка топливной системы", "slug": "prokachka-toplivnoy-sistemy" }
     },
     "brake_system": {
-      "Замена передних тормозных дисков": { "name": "Замена передних тормозных дисков", "slug": "zamena-perednih-tormoznyh-diskov" },
-      "Замена задних тормозных дисков": { "name": "Замена задних тормозных дисков", "slug": "zamena-zadnih-tormoznyh-diskov" },
-      "Замена передних тормозных колодок": { "name": "Замена передних тормозных колодок", "slug": "zamena-perednih-tormoznyh-kolodok" },
-      "Замена задних тормозных колодок": { "name": "Замена задних тормозных колодок", "slug": "zamena-zadnih-tormoznyh-kolodok" }
+      "Замена тормозных дисков": { "name": "Замена тормозных дисков", "slug": "zamena-tormoznyh-diskov" },
+      "Замена тормозных колодок": { "name": "Замена тормозных колодок", "slug": "zamena-tormoznyh-kolodok" }
     },
     "suspension_and_steering": {
       "Замена передних амортизаторов": { "name": "Замена передних амортизаторов", "slug": "zamena-perednih-amortizatorov" },

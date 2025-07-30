@@ -1,7 +1,7 @@
 "use client";
 import "./services.scss";
-import { useState } from "react";
-import Contacts from "../contacts/page";
+import { useState, useEffect } from "react";
+import Form from "../../components/Form/Form";
 import Header from "@/components/Header/Header";
 import servicesData from '@/data/servicesPage/data.json'; // путь под себя
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,8 @@ import { useRef } from 'react';
 import BtnGoForm from '../../components/BtnGoForm/BtnGoForm';
  
 export default function ServicesPage() {
+  const LOCAL_STORAGE_KEY = 'activeServiceTabIndex';
+
   const router = useRouter();
 
   const formRef = useRef(null);
@@ -29,6 +31,14 @@ export default function ServicesPage() {
   const categoryKeys = Object.keys(servicesData);
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const storedIndex = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storedIndex !== null) {
+      setActiveIndex(Number(storedIndex));
+    }
+  }, []);
+
   const activeKey   = categoryKeys[activeIndex];
 
   const servicesOfActiveCategory = Object.values(servicesData[activeKey]); 
@@ -54,7 +64,10 @@ export default function ServicesPage() {
                 ? 'button_menu button_menu_active'
                 : 'button_menu'
             }
-            onClick={() => setActiveIndex(index)}
+            onClick={() => {
+              setActiveIndex(index);
+              localStorage.setItem(LOCAL_STORAGE_KEY, index);
+            }}
           >
             {categoryTitles[key] ?? key}
           </button>
@@ -114,7 +127,7 @@ export default function ServicesPage() {
           </p>
         </div>
       </div>
-      <Contacts ref={formRef}/>
+      <Form />
     </div>
   );
 }
