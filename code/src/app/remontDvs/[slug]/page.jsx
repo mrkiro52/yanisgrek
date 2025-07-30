@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import './remontDvsSpecial.scss';
 import Header from '@/components/Header/Header';
-import Contacts from '@/app/contacts/page';
+import Form from '../../../components/Form/Form';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -57,7 +57,7 @@ export default async function RemontDvsPage({ params }) {
             </div>
         </div>
       </div>
-      <Contacts showHeader={false} />
+      <Form />
     </div>
   );
 }

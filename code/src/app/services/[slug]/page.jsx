@@ -2,7 +2,7 @@ import "./service.scss";
 import Header from "../../../components/Header/Header";
 import fs from "fs";
 import path from "path";
-import Contacts from "../../contacts/page";
+import Form from "../../../components/Form/Form";
 import ButtonGoForm from '../../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from './ImageBlock';
 
@@ -62,7 +62,7 @@ export default async function Service({ params }) {
           </div>
         </div>
       </div>
-      <Contacts/>
+      <Form/>
     </div>
   );
 }
