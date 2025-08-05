@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
+import Footer from '../components/Footer/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <path fillRule="evenodd" clipRule="evenodd" d="M22 44C19.5528 44 18.1988 43.7374 16 43L11.7889 45.1056C9.12924 46.4354 6 44.5014 6 41.5278V37C1.6931 32.984 0 28.3534 0 22C0 9.84974 9.84974 0 22 0C34.1502 0 44 9.84974 44 22C44 34.1502 34.1502 44 22 44ZM10 35.2606L8.7279 34.0744C5.38174 30.9544 4 27.4662 4 22C4 12.0589 12.0589 4 22 4C31.9412 4 40 12.0589 40 22C40 31.9412 31.9412 40 22 40C20.0286 40 19.104 39.822 17.2719 39.2076L15.6969 38.6794L10 41.5278V35.2606Z" fill="white"/>
         </svg>
       </a>
+      <Footer/>
       </body>
     </html>
   );

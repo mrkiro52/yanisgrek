@@ -30,7 +30,8 @@ const EngineSelector = ({
 
   return (
     <div className="EngineSelector">
-      <h2>Выберите тип коробки переключения передач </h2>
+      {type === 'remontAkpp' && <h2>Выберите тип коробки переключения передач</h2>}
+      {type === 'remontDvs' && <h2>Выберите тип вашего двигателя</h2>}
       <div className="engine-selector">
         <div className="tabs">
           {categories.map((cat, idx) => (

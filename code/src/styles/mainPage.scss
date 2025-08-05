@@ -264,8 +264,7 @@
             overflow: hidden;
   
             display: flex;
-            padding: 0px 60px;
-            height: 192px;
+            padding: 24px 60px;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s;
@@ -350,6 +349,7 @@
       }
     }
   }
+  
   @media screen and (max-width: 1250px) {
     .Home {
       & > .startscreen {
@@ -525,8 +525,7 @@
               overflow: hidden;
   
               display: flex;
-              padding: 0px 25px;
-              height: 192px;
+              padding: 24px 25px;
               justify-content: space-between;
               align-items: center;
               transition: all 0.3s;
