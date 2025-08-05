@@ -11,30 +11,30 @@ export default function Footer() {
                         <p>Первый автосервис BMW с человеческим подходом.</p>
                     </div>
                     <div className="col">
-                        <span>Услуги</span>
-                        <Link href="/remontDvs" className="block">Тех Обслуживание</Link>
-                        <Link href="/remontDvs" className="block">Обслуживание трансмиссии и АКПП</Link>
-                        <Link href="/remontDvs" className="block">Тормозная система</Link>
-                        <Link href="/remontDvs" className="block">Подвеска и рулевое управление</Link>
-                        <Link href="/remontDvs" className="block">Двигатель (ДВС)</Link>
-                        <Link href="/remontDvs" className="block">Электроника и чип-тюнинг</Link>
-                        <Link href="/remontDvs" className="block">Кондиционер и охлаждение</Link>
-                        <Link href="/remontDvs" className="block">Спец работы и тюнинг</Link>
+                        <span><Link href="/services">Услуги</Link></span>
+                        <Link href="/remontAkpp" className="block">Ремонт КПП</Link>
+                        <Link href="/remontDvs" className="block">Ремонт ДВС</Link>
+                        <Link href="/services/zamena-vozdushnogo-filtra" className="block">Замена воздушного фильтра</Link>
+                        <Link href="/services/zamena-tormoznyh-diskov" className="block">Замена тормозных дисков</Link>
+                        <Link href="/services/chip-tyuning-stage-1-stage-2" className="block">Чип-тюнинг BMW</Link>
+                        <Link href="/services/diagnostika-dvs" className="block">Диагностика ДВС</Link>
+                        <Link href="/services/moyka-radiatorov" className="block">Мойка радиаторов</Link>
+                        <Link href="/services/zamena-masla-dvs" className="block">Замена масла ДВС</Link>
                     </div>
                     <div className="col">
                         <span>Полезные страницы</span>
-                        <Link href="/remontDvs" className="block">Модели BMW</Link>
-                        <Link href="/remontDvs" className="block">Rolls Roys</Link>
-                        <Link href="/remontDvs" className="block">Mini Cooper</Link>
-                        <Link href="/remontDvs" className="block">Все страницы сайта</Link>
+                        <Link href="/cars" className="block">Модели BMW</Link>
+                        <Link href="/cars" className="block">Rolls Roys</Link>
+                        <Link href="/cars" className="block">Mini Cooper</Link>
+                        <Link href="/cars" className="block">Все страницы сайта</Link>
                     </div>
                     <div className="col">
                         <span>Yanis Grek</span>
-                        <Link href="/remontDvs" className="block">О нас</Link>
-                        <Link href="/remontDvs" className="block">Контакты</Link>
-                        <Link href="/remontDvs" className="block">Яндекс карты</Link>
-                        <Link href="/remontDvs" className="block">Google карты</Link>
-                        <Link href="/remontDvs" className="block">2 Gis</Link>
+                        <Link href="/about" className="block">О нас</Link>
+                        <Link href="/contacts" className="block">Контакты</Link>
+                        <Link href="https://yandex.ru/maps/-/CHdCZPKH" target='_blank' className="block">Яндекс карты</Link>
+                        <Link href="https://maps.app.goo.gl/pHJLNeRrhrpB8mzk7" target='_blank' className="block">Google карты</Link>
+                        <Link href="https://go.2gis.com/gUpli" target='_blank' className="block">2 Gis</Link>
                     </div>
                 </div>
             </div>

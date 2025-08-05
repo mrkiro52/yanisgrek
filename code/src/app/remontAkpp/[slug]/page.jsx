@@ -1,9 +1,10 @@
 // app/remontDvs/[slug]/page.jsx
 import fs from 'fs/promises';
 import path from 'path';
-import './remontAkppSpecial.scss';
+import '../../../styles/slugKppAndDvs.scss';
 import Header from '@/components/Header/Header';
 import Form from '../../../components/Form/Form';
+import Image from 'next/image';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -35,8 +36,18 @@ export default async function RemontAkppSpecial({ params }) {
     <div className="RemontAkppSpecial">
       <Header/>
       <div className="wrapper">
-        <div className="row">
+        <div className="title_row">
           <h1>Ремонт КПП<br/>{data.name}</h1>
+          <div className="image_wrapper">
+            <Image
+              src={`/images/kpp/${slug}.jpg`}
+              alt="remont-kpp"
+              width={500}     // тут достаточно произвольного числа, важно: оно будет перезаписано стилями
+              height={500}    // то же самое
+              className="img_full_height"
+              priority
+            />
+          </div>
         </div>
         <div className="row">
             <div className="block">
@@ -58,6 +69,131 @@ export default async function RemontAkppSpecial({ params }) {
 
                 <p>{data.kak_uvelichit_srok_slujby}</p>
             </div>
+        </div>
+      </div>
+      <div className="Service_why">
+              <div className="Service_why__wrapper">
+                <h2>Почему стоит делать у нас?</h2>
+                <div className="row">
+                  <div className="block">
+                    <Image
+                      src="/images/why1.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Оригинальные или сертифицированные запчасти</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why2.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Оборудование как в официальных сервисах</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why3.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Мастера с опытом по BMW</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="block">
+                    <Image
+                      src="/images/why4.png"
+                      alt="Phone Call"
+                      width={134} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Гарантия</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why5.png"
+                      alt="Phone Call"
+                      width={104} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Честная цена</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why6.png"
+                      alt="Phone Call"
+                      width={112} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Быстрая запись</span>
+                  </div>
+                </div>
+              </div>
+      </div>
+      <div className="Service_steps">
+        <div className="Service_steps__wrapper">
+          <h2>Этапы работы</h2>
+          <div className="steps">
+            <div className="step">
+              <span>1</span>
+              <h3>Диагностика коробки передач</h3>
+              <p>
+                Полная компьютерная и ручная диагностика для выявления точных
+                причин неисправности: шумов, пробуксовок и подтеков масла.
+              </p>
+            </div>
+            <div className="step">
+              <span>2</span>
+              <h3>Демонтаж и разборка узла</h3>
+              <p>
+                Снятие КПП с автомобиля, разборка внутренних компонентов и
+                оценка износа шестерён, синхронизаторов и подшипников.
+              </p>
+            </div>
+            <div className="step">
+              <span>3</span>
+              <h3>Замена изношенных деталей</h3>
+              <p>
+                Установка оригинальных или высококачественных аналогов всех
+                изношенных элементов: фрикционных колец, прокладок и уплотнений.
+              </p>
+            </div>
+            <div className="step">
+              <span>4</span>
+              <h3>Сборка и тестирование</h3>
+              <p>
+                Сборка коробки передач с заводскими настройками, заливка нового
+                масла и проведение контрольного тест-драйва.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="Service_phone">
+        <div className="Service_phone__wrapper">
+          <Image
+            src="/images/phoneCall.png"
+            alt="Phone Call"
+            width={390} // укажи нужную ширину
+            height={430} // и высоту
+            priority // если важно для LCP
+          />
+          <div className="block">
+            <h2>Получите консультацию по услугам и ценам по телефону</h2>
+            <span>
+              <a href="tel:+74957676500">+7 (495) 76-76-500</a>
+            </span>
+          </div>
         </div>
       </div>
       <Form />

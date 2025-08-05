@@ -186,7 +186,9 @@ export default async function Service({ params }) {
           />
           <div className="block">
             <h2>Получите консультацию по услугам и ценам по телефону</h2>
-            <span>+7 (495) 76-76-500</span>
+            <span>
+              <a href="tel:+74957676500">+7 (495) 76-76-500</a>
+            </span>
           </div>
         </div>
       </div>

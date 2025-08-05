@@ -1,9 +1,11 @@
-import "./remontDvs.scss";
+import "../../styles/KppAndDvs.scss";
 import ButtonGoForm from '../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from '../services/[slug]/ImageBlock';
 import Header from '../../components/Header/Header';
 import Form from '../../components/Form/Form';
 import EngineSelector from '../../components/EngineSelector/EngineSelector';
+import Image from 'next/image';
+
 
 export default function RemontDvs() {
     
@@ -105,6 +107,131 @@ export default function RemontDvs() {
                 secondColumnHeader="Модели BMW"
                 type="remontDvs"
             />
+            <div className="Service_why">
+                <div className="Service_why__wrapper">
+                <h2>Почему стоит делать у нас?</h2>
+                <div className="row">
+                    <div className="block">
+                    <Image
+                        src="/images/why1.png"
+                        alt="Phone Call"
+                        width={124} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Оригинальные или сертифицированные запчасти</span>
+                    </div>
+                    <div className="block">
+                    <Image
+                        src="/images/why2.png"
+                        alt="Phone Call"
+                        width={124} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Оборудование как в официальных сервисах</span>
+                    </div>
+                    <div className="block">
+                    <Image
+                        src="/images/why3.png"
+                        alt="Phone Call"
+                        width={124} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Мастера с опытом по BMW</span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="block">
+                    <Image
+                        src="/images/why4.png"
+                        alt="Phone Call"
+                        width={134} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Гарантия</span>
+                    </div>
+                    <div className="block">
+                    <Image
+                        src="/images/why5.png"
+                        alt="Phone Call"
+                        width={104} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Честная цена</span>
+                    </div>
+                    <div className="block">
+                    <Image
+                        src="/images/why6.png"
+                        alt="Phone Call"
+                        width={112} // укажи нужную ширину
+                        height={124} // и высоту
+                        priority // если важно для LCP
+                    />
+                    <span>Быстрая запись</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="Service_steps">
+                <div className="Service_steps__wrapper">
+                    <h2>Этапы работы</h2>
+                    <div className="steps">
+                    <div className="step">
+                        <span>1</span>
+                        <h3>Компьютерная и визуальная диагностика</h3>
+                        <p>
+                        Проверка давления, расхода масла и компрессии; сканирование на наличие ошибок
+                        электронных блоков управления и оценка состояния внешних компонентов.
+                        </p>
+                    </div>
+                    <div className="step">
+                        <span>2</span>
+                        <h3>Демонтаж и разборка двигателя</h3>
+                        <p>
+                        Снятие двигателя, разделение блока и головки цилиндров, оценка износа поршневых
+                        колец, вкладышей и распредвалов.
+                        </p>
+                    </div>
+                    <div className="step">
+                        <span>3</span>
+                        <h3>Ремонт и замена узлов</h3>
+                        <p>
+                        Шлифовка и притирка клапанов, замена прокладок, поршневых колец и маслосъёмных
+                        колец, восстановление или замена шатунных вкладышей и масляного насоса.
+                        </p>
+                    </div>
+                    <div className="step">
+                        <span>4</span>
+                        <h3>Сборка, регулировка и тест-драйв</h3>
+                        <p>
+                        Сборка двигателя с заводскими допусками, настройка фаз ГРМ и зазоров клапанов,
+                        заливка нового масла и контрольный запуск с поездкой для проверки надёжности.
+                        </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div className="Service_phone">
+                <div className="Service_phone__wrapper">
+                <Image
+                    src="/images/phoneCall.png"
+                    alt="Phone Call"
+                    width={390} // укажи нужную ширину
+                    height={430} // и высоту
+                    priority // если важно для LCP
+                />
+                <div className="block">
+                    <h2>Получите консультацию по услугам и ценам по телефону</h2>
+                    <span>
+                        <a href="tel:+74957676500">+7 (495) 76-76-500</a>
+                    </span>
+                </div>
+                </div>
+            </div>
             <Form/>
         </div>
     )
