@@ -10,9 +10,11 @@
         flex-direction: column;
         gap: 120px;
         & > h1 {
-            font-size: 96px;
+            width: 50%;
+            font-size: clamp(24px, 4vw, 48px); 
             color: white;
-            line-height: 103%;
+            line-height: 1.2;
+            word-break: break-word;
         }
         & > .row {
             display: flex;
@@ -28,9 +30,12 @@
                     color: white;
                     font-size: 34px;
                     margin-bottom: 0;
+                    font-family: 'Helvetica';
+                    font-weight: 700;
                 }
                 & > p {
                     color: white;
+                    font-family: 'Helvetica';
                     font-size: 16px;
                 }
             }
@@ -41,6 +46,10 @@
 @media screen and (max-width: 1200px) {
     .RemontAkppSpecial {
         & > .wrapper {
+            & > h1 {
+                font-size: clamp(32px, 6vw, 48px); 
+                width: 100%;
+            }
             width: 100%;
             padding: 150px 24px 48px 24px;
         }

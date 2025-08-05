@@ -177,3 +177,24 @@
 .embla__slide__number:hover {
   filter: grayscale(0%);
 }
+
+
+.overlayEmbla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.enlargedImageEmbla {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}

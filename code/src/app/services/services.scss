@@ -149,32 +149,34 @@
       display: flex;
       justify-content: space-between;
       padding: 70px 120px 70px 120px;
-      gap: 30px;
-      gap: 2rem; /* небольшой промежуток между текстом и картинкой */
-      flex-wrap: wrap;
+      gap: 60px;
+      align-items: flex-start;
       & > .description_about_block_founder {
         font-family: Helvetica;
         font-size: 20px;
         color: black;
         line-height: 130%;
-        max-width: 660px;
         font-weight: 400;
+      }
+      & > img {
+        width: 50%;
       }
     }
     & > .row_2_description_photo {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       padding: 70px 120px 70px 120px;
-      gap: 30px;
-      gap: 2rem; /* небольшой промежуток между текстом и картинкой */
-      flex-wrap: wrap;
+      gap: 60px;
+      align-items: flex-start;
       & > .description_about_block_founder {
         font-family: Helvetica;
         font-size: 20px;
         color: black;
         line-height: 130%;
-        max-width: 660px;
         font-weight: 400;
+      }
+      & > img {
+        width: 50%;
       }
     }
   }
@@ -209,11 +211,18 @@
       padding: 20px 60px;
     }
     .row_1_description_photo {
-      padding: 70px 60px;
+      padding: 24px!important;
+      flex-direction: column;
+      & > img {
+        width: 100%!important;
+      }
     }
     .row_2_description_photo {
-      padding: 70px 60px;
+      padding: 24px!important;
       flex-direction: column-reverse;
+      & > img {
+        width: 100%!important;
+      }
     }
     .slider2 {
       padding: 0 0 120px 60px;
@@ -269,7 +278,6 @@
     & > .block_about_services {
       & > .row_1_description_photo {
         padding: 60px 15px;
-        flex-direction: column-reverse;
       }
       & > .row_2_description_photo {
         padding: 0px 15px 60px 15px;

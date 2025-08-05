@@ -104,21 +104,17 @@ export default function ServicesPage() {
       </div>
       <div className="block_about_services">
         <h2 className="hero_title">
-          Премиальный автосервис{" "}
-          <span className="hero_title_small">
-            BMW <br />
-          </span>{" "}
-          YanisGrek<span className="hero_title_small"> — в</span> Москве
+          Премиальный автосервис BMW<br/>YanisGrek — в Москве
         </h2>
         <div className="row_1_description_photo">
           <p className="description_about_block_founder">
           Любая, даже идеальная на вид машина, однажды может подвести. И дело не только в пробеге или возрасте — часто всё начинается с мелочей: немного не так заехал на бордюр, не заметил вибрации, проигнорировал странный звук при запуске двигателя. Даже неправильно выбранное масло или затянутый визит на ТО могут привести к серьёзным последствиям. Именно поэтому так важно регулярно обслуживать автомобиль, даже если кажется, что “всё нормально”. Своевременное техническое обслуживание — это не расходы, это инвестиция в надёжность, безопасность и спокойствие. Лучше вовремя поменять фильтр, чем потом менять двигатель. Сервис — это не про сломалось, это про сохранить. Машина требует внимания, даже если пока не просит его вслух.
           </p>
-          <img src="/images/photo_office.jpg" alt="" />
+          <img src="/images/car_slides/car_slide_11.jpg" alt="" />
         </div>
         <div className="row_2_description_photo">
           <img
-            src="/images/photo_worker.jpg"
+            src="/images/car_slides/car_slide_17.jpg"
             alt=""
             className="photo_worker"
           />

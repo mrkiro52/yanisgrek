@@ -50,10 +50,6 @@
             width: 50%;
             transition: all 0.2s;
             word-break: break-word;
-            cursor: pointer;
-            &:hover {
-              font-weight: 700;
-            }
           }
       
           th {
@@ -71,6 +67,10 @@
             vertical-align: top;
             &:nth-child(1) {
               background-color: #b3b3b3;
+              cursor: pointer;
+              &:hover {
+                font-weight: 700;
+              }
             }
             &:nth-child(2) {
               background-color: #ffffff;

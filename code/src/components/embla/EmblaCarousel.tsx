@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 import {
@@ -9,11 +9,6 @@ import {
 } from "./EmblaCarouselArrowButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./embla.module.scss";
-
-// type EmblaCarouselProps = {
-//   slides: string[];
-//   options?: EmblaOptionsType;
-// };
 
 type Slide = {
   src: string;
@@ -28,6 +23,7 @@ type EmblaCarouselProps = {
 const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -39,27 +35,26 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
+  const handleImageClick = (src: string) => {
+    setEnlargedImage(src);
+  };
+
+  const handleCloseOverlay = () => {
+    setEnlargedImage(null);
+  };
+
   return (
     <section className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-          {/* {slides.map((src, idx) => (
-            <div className={styles.embla__slide} key={idx}>
-              <img
-                className={styles.embla__slide__number}
-                src={src}
-                alt={`slide-${idx}`}
-                style={{ width: "auto", display: "block" }}
-              />
-            </div>
-          ))} */}
           {slides.map((slide, idx) => (
             <div className={styles.embla__slide} key={idx}>
               <img
                 className={styles.embla__slide__number}
                 src={slide.src}
                 alt={`slide-${idx}`}
-                style={{ width: "auto", display: "block" }}
+                style={{ width: "auto", display: "block", cursor: "pointer" }}
+                onClick={() => handleImageClick(slide.src)}
               />
               {slide.caption && (
                 <p className={styles.embla__caption}>{slide.caption}</p>
@@ -87,6 +82,17 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
           ))}
         </div>
       </div>
+
+      {/* Enlarged Image Overlay */}
+      {enlargedImage && (
+        <div className={styles.overlayEmbla} onClick={handleCloseOverlay}>
+          <img
+            src={enlargedImage}
+            alt="Enlarged view"
+            className={styles.enlargedImageEmbla}
+          />
+        </div>
+      )}
     </section>
   );
 };

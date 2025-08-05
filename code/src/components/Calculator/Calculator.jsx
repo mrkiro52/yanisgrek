@@ -12,7 +12,7 @@ export default function Calculator({ data, services }) {
   const [modelId, setModelId] = useState(
     data?.length ? data[data.length - 2].id : null
   );
-  const [subId, setSubId] = useState(null);
+  const [subId, setSubId] = useState(31);
   const [seriesName, setSeriesName] = useState(""); // имя серии
   const [mileage, setMileage] = useState(0);
   const [partType, setPartType] = useState("Аналог");
@@ -178,20 +178,32 @@ export default function Calculator({ data, services }) {
             ПРОБЕГ
           </label>
           <div className="mileage-input__control">
-            <input
-              id="mileage"
-              name="mileage"
-              type="text"
-              inputMode="numeric"
-              pattern="\\d*"
-              placeholder="Пробег авто"
-              className="mileage-input__field"
-              value={mileage === 0 ? "" : mileage}
-              onChange={(e) => {
-                const val = e.target.value.replace(/\\D/g, "");
-                setMileage(val === "" ? 0 : Number(val));
-              }}
-            />
+          <input
+            id="mileage"
+            name="mileage"
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            placeholder="Пробег авто"
+            className="mileage-input__field"
+            value={mileage === 0 ? "" : mileage}
+            onBeforeInput={(e) => {
+              if (!/^\d$/.test(e.data)) {
+                e.preventDefault(); // блокируем ввод, если не цифра
+              }
+            }}
+            onPaste={(e) => {
+              e.preventDefault();
+              const pasted = e.clipboardData.getData("Text");
+              const digitsOnly = pasted.replace(/\D/g, "");
+              setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
+            }}
+            onChange={(e) => {
+              const raw = e.target.value;
+              const digitsOnly = raw.replace(/\D/g, "");
+              setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
+            }}
+          />
             <span className="mileage-input__unit">км</span>
           </div>
         </div>
