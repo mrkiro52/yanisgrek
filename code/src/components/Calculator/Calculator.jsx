@@ -2,83 +2,168 @@
 
 import "./Calculator.scss";
 import { useEffect, useMemo, useState } from "react";
-import { useRef } from "react";
-import fetchMaintenanceServices from './fetchServices';
 import Link from "next/link";
 import Image from 'next/image';
+import { usePathname } from 'next/navigation'
 
-export default function Calculator({ data, services }) {
-  /* -------- выбор машины -------- */
-  const [modelId, setModelId] = useState(
-    data?.length ? data[data.length - 2].id : null
-  );
-  const [subId, setSubId] = useState(31);
-  const [seriesName, setSeriesName] = useState(""); // имя серии
-  const [mileage, setMileage] = useState(0);
-  const [partType, setPartType] = useState("Аналог");
+// JSON imports
+import services1 from '../../data/calcServices/services_1.json';
+import services2 from '../../data/calcServices/services_2.json';
+import services3 from '../../data/calcServices/services_3.json';
+import services4 from '../../data/calcServices/services_4.json';
+import services5 from '../../data/calcServices/services_5.json';
+import services7 from '../../data/calcServices/services_7.json';
+import servicesM5 from '../../data/calcServices/services_m5.json';
+import servicesX1 from '../../data/calcServices/services_x1.json';
+import servicesX3 from '../../data/calcServices/services_x3.json';
+import servicesX5 from '../../data/calcServices/services_x5.json';
+import servicesX6 from '../../data/calcServices/services_x6.json';
 
-  /* -------- выбранные строки таблицы -------- */
-  const [selectedRows, setSelectedRows] = useState([]); // индексы выбранных строк
+// Models and submodels definitions
+const models = [
+  { id: '7', name: '7' },
+  { id: '5', name: '5' },
+  { id: '4', name: '4' },
+  { id: '3', name: '3' },
+  { id: '2', name: '2' },
+  { id: '1', name: '1' },
+  { id: 'X', name: 'X' },
+  { id: 'M', name: 'M' }
+];
 
-  /* -------- вычисляем списки -------- */
-  const model = data.find((m) => m.id === modelId);
-  const subsList = model?.submodels ?? [];
-  const sub = subsList.find((sm) => sm.id === subId);
-  const seriesList = sub?.series ?? [];
+const submodels = {
+  '7': [{ id: '7', name: '7' }],
+  '5': [{ id: '5', name: '5' }],
+  '4': [{ id: '4', name: '4' }],
+  '3': [{ id: '3', name: '3' }],
+  '2': [{ id: '2', name: '2' }],
+  '1': [{ id: '1', name: '1' }],
+  'X': [
+    { id: 'X1', name: 'X1' },
+    { id: 'X3', name: 'X3' },
+    { id: 'X5', name: 'X5' },
+    { id: 'X6', name: 'X6' }
+  ],
+  'M': [{ id: 'M5', name: 'M5' }]
+};
 
-  /* -------- фильтрация услуг -------- */
-  const filteredServices = useMemo(() => {
-    if (!seriesName || !mileage) return [];
-  
-    const apiPartType =
-      partType.toLowerCase() === "оригинал" ? "original" : "analog";
-  
-    const mileageNum = Number(mileage);
-    const targetMileage = mileageNum < 60000 ? 10 : 60;
-  
-    return services
-      .filter(
-        (s) =>
-          s.car_series.name === seriesName &&
-          s.mileage === targetMileage &&
-          s.part_type === apiPartType
-      )
-      .map((s) => ({
-        name: s.name,
-        part_price: s.part_price,
-        labor_price: s.labor_price,
-      }));
-  }, [seriesName, mileage, partType, services]);
-  
+// Mapping JSON data to submodel keys
+const servicesData = {
+  '1': services1,
+  '2': services2,
+  '3': services3,
+  '4': services4,
+  '5': services5,
+  '7': services7,
+  'M5': servicesM5,
+  'X1': servicesX1,
+  'X3': servicesX3,
+  'X5': servicesX5,
+  'X6': servicesX6
+};
 
-  /* -------- всегда выбираем все строки при изменении списка услуг -------- */
+export default function Calculator() {
+  const [modelId, setModelId] = useState('X');
+  const [subId, setSubId] = useState('X5');
+  const [seriesName, setSeriesName] = useState('');
+  const [mileage, setMileage] = useState(50000);
+  const [partType, setPartType] = useState('Аналог');
+  const [filteredServices, setFilteredServices] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
+
+  const pathname = usePathname()
+
+  // Update services when parameters change
   useEffect(() => {
-    setSelectedRows(filteredServices.map(() => true));
-  }, [filteredServices]);
+    if (subId && seriesName) {
+      const list = servicesData[subId] || [];
+      const entry = list.find(item => Object.keys(item)[0] === seriesName);
+      if (entry) {
+        const data = entry[seriesName];
+        const services = data.services;
+        const mileageObj = data.mileage || {};
+        const names = mileageObj[mileage] || Object.keys(services);
+        const result = names.map(name => {
+          const prices = services[name] || [0,0,0];
+          const part = partType === 'Оригинал' ? prices[1] : prices[2];
+          const labor = prices[0];
+          return { name, part_price: part, labor_price: labor };
+        });
+        setFilteredServices(result);
+        setSelectedRows(result.map(() => true));
+      } else {
+        setFilteredServices([]);
+        setSelectedRows([]);
+      }
+    } else {
+      setFilteredServices([]);
+      setSelectedRows([]);
+    }
+  }, [subId, seriesName, mileage, partType]);
 
-  /* -------- сумма только по выбранным строкам -------- */
-  const totalSum = useMemo(() => {
-    return filteredServices.reduce((acc, s, idx) => {
-      if (!selectedRows[idx]) return acc;
-      return acc + Number(s.part_price) + Number(s.labor_price);
-    }, 0);
-  }, [filteredServices, selectedRows]);
+  // Автовыбор подмодели при смене модели
+  useEffect(() => {
+    if (!modelId) return;
 
-  /* -------- переключатель выбора строки -------- */
-  const toggleRow = (index) => {
-    setSelectedRows((prev) => {
-      const updated = [...prev];
-      updated[index] = !updated[index];
-      return updated;
-    });
+    let defaultSub = '';
+    if (['7','5','4','3','2','1'].includes(modelId)) {
+      defaultSub = modelId;
+    } else if (modelId === 'M') {
+      defaultSub = 'M5';
+    } else if (modelId === 'X') {
+      defaultSub = 'X5';
+    }
+
+    setSubId(defaultSub);
+    setSeriesName('');
+  }, [modelId]);
+
+  useEffect(() => {
+    // Список доступных подмоделей
+    const validSubs = ['1','2','3','4','5','7','X1','X3','X5','X6','M5']
+    const m = pathname.match(/^\/cars\/bmw-([a-z0-9]+)/i)
+
+    if (m) {
+      const id = m[1].toUpperCase()
+      if (validSubs.includes(id)) {
+        // Устанавливаем subId
+        setSubId(id)
+        // Модель — первая буква/цифра подмодели
+        setModelId(id.charAt(0))
+        return
+      }
+    }
+    // Если не совпало, сбрасываем на дефолт
+    setSubId('X5')
+    setModelId('X')
+  }, [pathname]);
+
+  const toggleRow = idx => {
+    setSelectedRows(prev => prev.map((v,i) => i === idx ? !v : v));
   };
+
+  const totalSum = useMemo(() =>
+    filteredServices.reduce((sum, s, i) =>
+      selectedRows[i] ? sum + Number(s.part_price) + Number(s.labor_price) : sum
+    , 0)
+  , [filteredServices, selectedRows]);
 
   const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth", // плавно
+    const formEl = document.getElementById('Form');
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };  
+
+  const data = models;
+  const subsList = useMemo(() => submodels[modelId] || [], [modelId]);
+  const seriesList = useMemo(() => {
+    if (!subId) return [];
+    return (servicesData[subId] || []).map(item => {
+      const name = Object.keys(item)[0];
+      return { id: name, name };
     });
-  };
+  }, [subId]);
 
   return (
     <div className="Calculator" id="Calculator">
@@ -87,28 +172,27 @@ export default function Calculator({ data, services }) {
           <h2>
             Рассчитайте стоимость <span>ТО</span>, не выходя из дома
           </h2>
-          {subId === null ? (
+          {subId === '' ? (
             <span className="red">Выберите модель</span>
           ) : (
             <Link
-              href={`/cars/bmw-${sub.name.toLowerCase()}`}
+              href={`/cars/bmw-${subId.toLowerCase()}`}
               className="black"
             >
-              &gt;
-              Страница BMW {sub.name}
+              &gt; Страница BMW {subId}
             </Link>
           )}
         </div>
         <h3 className="stepTitle">1. Выберите модель</h3>
         <div className="buttons">
-          {data.map((m) => (
+          {data.map(m => (
             <button
               key={m.id}
-              className={m.id === modelId ? "selected" : ""}
+              className={m.id === modelId ? 'selected' : ''}
               onClick={() => {
                 setModelId(m.id);
-                setSubId(null);
-                setSeriesName("");
+                setSubId('');
+                setSeriesName('');
               }}
             >
               {m.name}
@@ -116,25 +200,25 @@ export default function Calculator({ data, services }) {
           ))}
         </div>
       </div>
-      <h3 className="stepTitle">2. Уточните модель (листается)</h3>
+
+      <h3 className="stepTitle">2. Уточните модель</h3>
       <div className="choose_car_block">
-        {subsList.map((sm) => {
+        {subsList.map(sm => {
           const fileName = `bmw-${sm.name}`.toLowerCase();
           const imageUrl = `/images/cars/${fileName}.png`;
-
           return (
             <div
-              key={sm.id}
-              className={`block${sm.id === subId ? " selected" : ""}`}
+              key={'model_' + sm.id}
+              className={`block${sm.id === subId ? ' selected' : ''}`}
               onClick={() => {
                 setSubId(sm.id);
-                setSeriesName("");
+                setSeriesName('');
               }}
               style={{
                 backgroundImage: `url('${imageUrl}')`,
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
               }}
             >
               <span>{`BMW ${sm.name}`}</span>
@@ -142,10 +226,11 @@ export default function Calculator({ data, services }) {
           );
         })}
       </div>
+
       <h3 className="stepTitle">3. Выберите серию</h3>
       <div className="choose_special_model">
         <div className="model-select">
-          <label form="model" className="model-select__label">
+          <label htmlFor="series" className="model-select__label">
             СЕРИЯ
           </label>
           <div className="model-select__control">
@@ -154,11 +239,11 @@ export default function Calculator({ data, services }) {
               name="series"
               className="model-select__dropdown"
               value={seriesName}
-              onChange={(e) => setSeriesName(e.target.value)}
+              onChange={e => setSeriesName(e.target.value)}
             >
               <option value="">Выберите серию</option>
-              {seriesList.map((s) => (
-                <option key={s.id} value={s.name}>
+              {seriesList.map(s => (
+                <option key={'series_' + s.name} value={s.name}>
                   {s.name}
                 </option>
               ))}
@@ -173,6 +258,7 @@ export default function Calculator({ data, services }) {
             </svg>
           </div>
         </div>
+
         <div className="mileage-input">
           <label form="mileage" className="mileage-input__label">
             ПРОБЕГ
@@ -208,10 +294,10 @@ export default function Calculator({ data, services }) {
           </div>
         </div>
         <div className="buttons">
-          {["Аналог", "Оригинал"].map((type) => (
+          {['Аналог', 'Оригинал'].map(type => (
             <button
               key={type}
-              className={partType === type ? "selected" : ""}
+              className={partType === type ? 'selected' : ''}
               onClick={() => setPartType(type)}
             >
               {type}
@@ -219,36 +305,34 @@ export default function Calculator({ data, services }) {
           ))}
         </div>
       </div>
+
       <div className="calculator_table">
-        {/* Header */}
         <div className="calculator_table__row--header">
           <div className="calculator_table__cell--first">Услуга</div>
-          <div className="calculator_table__cell">Стоимость услуги</div>
+          <div className="calculator_table__cell">Стоимость запчастей</div>
           <div className="calculator_table__cell">Стоимость работ</div>
           <div className="calculator_table__cell">Общая стоимость</div>
         </div>
-
-        {/* Услуги */}
-        {filteredServices.map((s, index) => {
+        {filteredServices.map((s, idx) => {
           const total = Number(s.part_price) + Number(s.labor_price);
           return (
-            <div className="calculator_table__row" key={index}>
+            <div className="calculator_table__row" key={idx}>
               <div className="calculator_table__cell--first">
-              <div
-                className={`sq ${selectedRows[index] ? "selected" : ""}`}
-                onClick={() => toggleRow(index)}
-              >
-                {selectedRows[index] && (
-                  <Image 
-                    src="/images/CheckmarkFill.png" 
-                    alt="Checkmark" 
-                    width={20}
-                    height={20}
-                    className="checkmark-icon"
-                    unoptimized={true} // Если изображение очень маленькое (меньше 40px), лучше отключить оптимизацию
-                  />
-                )}
-              </div>
+                <div
+                  className={`sq ${selectedRows[idx] ? 'selected' : ''}`}
+                  onClick={() => toggleRow(idx)}
+                >
+                  {selectedRows[idx] && (
+                    <Image
+                      src="/images/CheckmarkFill.png"
+                      alt="Checkmark"
+                      width={20}
+                      height={20}
+                      className="checkmark-icon"
+                      unoptimized
+                    />
+                  )}
+                </div>
                 <span>{s.name}</span>
               </div>
               <div className="calculator_table__cell">
@@ -263,44 +347,26 @@ export default function Calculator({ data, services }) {
             </div>
           );
         })}
-
-        {/* Итого */}
         <div className="calculator_table__row">
           <div className="calculator_table__cell--first-summ">
             <span onClick={scrollToBottom}>Записаться через форму</span>
           </div>
           <div className="calculator_table__cell--second">
-            <div className="calculator_table__cell--second-left">
-              итоговая стоимость
-            </div>
-            <div className="calculator_table__cell--second-right">
-              {totalSum.toLocaleString()}
-            </div>
+            <div className="calculator_table__cell--second-left">итоговая стоимость</div>
+            <div className="calculator_table__cell--second-right">{totalSum.toLocaleString()}</div>
           </div>
         </div>
       </div>
+
       <div className="calculator_table__mobile">
-        {filteredServices.map((s, index) => {
+        {filteredServices.map((s, idx) => {
           const total = Number(s.part_price) + Number(s.labor_price);
           return (
-            <div className="card" key={index} onClick={() => toggleRow(index)}>
+            <div className="card" key={idx} onClick={() => toggleRow(idx)}>
               <div className="top">
-                <div
-                  className={`sq ${selectedRows[index] ? "selected" : ""}`}
-                >
-                  {selectedRows[index] && (
-                    <Image 
-                      src="/images/CheckmarkFill.png" 
-                      alt="Checkmark" 
-                      width={20}
-                      height={20}
-                      className="checkmark-icon"
-                      unoptimized={true} // Если изображение очень маленькое (меньше 40px), лучше отключить оптимизацию
-                    />
-                  )}
-              </div>
+                <div className={`sq ${selectedRows[idx] ? 'selected' : ''}`}></div>
                 <span className="title">{s.name}</span>
-                <span className="price">{total}</span>
+                <span className="price">{total.toLocaleString()}</span>
               </div>
               <div className="bottom">
                 <div className="left">
@@ -313,7 +379,7 @@ export default function Calculator({ data, services }) {
                 </div>
               </div>
             </div>
-          )
+          );
         })}
         <div className="totalRow">
           <div className="textBlock">итоговая стоимость</div>

@@ -11,7 +11,6 @@ import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
 
 import fs from 'fs/promises';
 import path from 'path';
-import CalculatorServer from '../components/Calculator/CalculatorServer';
 
 // ISR: обновляем страницу раз в минуту
 export const revalidate = 60;
@@ -65,7 +64,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <CalculatorServer />
+      <Calculator />
 
       <div className="blackInfo">
         <div className="content">
