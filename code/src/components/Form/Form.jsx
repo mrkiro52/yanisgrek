@@ -155,7 +155,7 @@ export default function Form() {
                   name="time"
                   className="form-input"
                   value={selectedTime}
-                  step={300}
+                  step={60}
                   min="00:00"
                   max="23:59"
                   onChange={(e) => setSelectedTime(e.target.value)}
