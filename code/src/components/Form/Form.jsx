@@ -4,27 +4,30 @@ import React, { useEffect, useState } from "react";
 import "./Form.scss";
 
 export default function Form() {
-  const [defaultDate, setDefaultDate] = useState("");
-  const [defaultTime, setDefaultTime] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
   });
 
-  useEffect(() => {
-    const now = new Date();
+  // Формат сегодняшней даты для ограничения min
+  const now = new Date();
+  const yyyyToday = now.getFullYear();
+  const mmToday = String(now.getMonth() + 1).padStart(2, "0");
+  const ddToday = String(now.getDate()).padStart(2, "0");
+  const todayString = `${yyyyToday}-${mmToday}-${ddToday}`;
 
+  useEffect(() => {
+    // По умолчанию — завтра в 10:00
     const tomorrow = new Date(now);
     tomorrow.setDate(tomorrow.getDate() + 1);
     const yyyy = tomorrow.getFullYear();
     const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
     const dd = String(tomorrow.getDate()).padStart(2, "0");
-    setDefaultDate(`${yyyy}-${mm}-${dd}`);
-
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    setDefaultTime(`${hours}:${minutes}`);
+    setSelectedDate(`${yyyy}-${mm}-${dd}`);
+    setSelectedTime("10:00");
   }, []);
 
   const validatePhone = (phone) => {
@@ -40,6 +43,12 @@ export default function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Проверка рабочего времени
+    if (selectedTime < "10:00" || selectedTime > "20:00") {
+      alert("Выберите рабочее время автосервиса с 10:00 до 20:00");
+      return;
+    }
+
     if (!formData.name || !formData.phone || !formData.email) {
       alert("Пожалуйста, заполните все поля.");
       return;
@@ -50,16 +59,10 @@ export default function Form() {
       return;
     }
 
-    const message = `Заявка на диагностику:
-
-Имя: ${formData.name}
-Телефон: ${formData.phone}
-Email: ${formData.email}
-Дата: ${defaultDate}
-Время: ${defaultTime}`;
+    const message = `Заявка на диагностику:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
 
     const encoded = encodeURIComponent(message);
-    const number = "79852707575"; // WhatsApp формат — без +
+    const number = "79852707575";
 
     window.open(`https://wa.me/${number}?text=${encoded}`, "_blank");
   };
@@ -133,8 +136,8 @@ Email: ${formData.email}
             </div>
 
             <div className="form-row">
-              <label htmlFor="date" className="form-label-1">
-                Дата
+              <label htmlFor="datetime" className="form-label-1">
+                Дата и время
               </label>
               <div className="form-datetime">
                 <input
@@ -142,16 +145,20 @@ Email: ${formData.email}
                   id="date"
                   name="date"
                   className="form-input"
-                  value={defaultDate}
-                  readOnly
+                  value={selectedDate}
+                  min={todayString}
+                  onChange={(e) => setSelectedDate(e.target.value)}
                 />
                 <input
                   type="time"
                   id="time"
                   name="time"
                   className="form-input"
-                  value={defaultTime}
-                  readOnly
+                  value={selectedTime}
+                  step={60}
+                  min="00:00"
+                  max="23:59"
+                  onChange={(e) => setSelectedTime(e.target.value)}
                 />
               </div>
             </div>

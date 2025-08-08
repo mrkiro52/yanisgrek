@@ -24,7 +24,7 @@ export default function Footer() {
                     <div className="col">
                         <span>Полезные страницы</span>
                         <Link href="/cars" className="block">Модели BMW</Link>
-                        <Link href="/cars" className="block">Rolls Roys</Link>
+                        <Link href="/cars" className="block">Rolls Royce</Link>
                         <Link href="/cars" className="block">Mini Cooper</Link>
                         <Link href="/cars" className="block">Все страницы сайта</Link>
                     </div>
@@ -33,7 +33,7 @@ export default function Footer() {
                         <Link href="/about" className="block">О нас</Link>
                         <Link href="/contacts" className="block">Контакты</Link>
                         <Link href="https://yandex.ru/maps/-/CHdCZPKH" target='_blank' className="block">Яндекс карты</Link>
-                        <Link href="https://maps.app.goo.gl/pHJLNeRrhrpB8mzk7" target='_blank' className="block">Google карты</Link>
+                        <Link href="https://www.google.ru/maps/place/Техцентр+YANIS+GREK,+Высоковольтный+пр.,+1с29,+Москва,+127566/@55.875835,37.594256,17z/data=!4m6!3m5!1s0x46b53716e7dca2f3:0xe5773bceb1214cc8!8m2!3d55.875835!4d37.594256!16s%2Fg%2F11b7_0fhld?hl=ru&g_ep=Eg1tbF8yMDI1MDczMF8wIJvbDyoASAJQAg%3D%3D" target='_blank' className="block">Google карты</Link>
                         <Link href="https://go.2gis.com/gUpli" target='_blank' className="block">2 Gis</Link>
                     </div>
                 </div>
