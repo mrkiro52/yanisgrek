@@ -37,7 +37,12 @@ export default async function RemontAkppSpecial({ params }) {
       <Header/>
       <div className="wrapper">
         <div className="title_row">
-          <h1>Ремонт КПП<br/>{data.name}</h1>
+          <div className="left">
+            <h1>Ремонт КПП<br/>{data.name}</h1>
+            <span>- Гарантия на ремонт от 2-х лет</span>
+            <span>- Мастера по КПП с опытом до 20 лет</span>
+            <a href='#Form' className='goform'>Записаться в автосервис</a>
+          </div>
           <div className="image_wrapper">
             <Image
               src={`/images/kpp/${slug}.jpg`}
@@ -103,7 +108,7 @@ export default async function RemontAkppSpecial({ params }) {
                       height={124} // и высоту
                       priority // если важно для LCP
                     />
-                    <span>Мастера с опытом по BMW</span>
+                    <span>Мастера с опытом по BMW от 10 лет</span>
                   </div>
                 </div>
                 <div className="row">
@@ -115,7 +120,7 @@ export default async function RemontAkppSpecial({ params }) {
                       height={124} // и высоту
                       priority // если важно для LCP
                     />
-                    <span>Гарантия</span>
+                    <span>Гарантия на ремонт до 2-х лет</span>
                   </div>
                   <div className="block">
                     <Image
@@ -135,7 +140,7 @@ export default async function RemontAkppSpecial({ params }) {
                       height={124} // и высоту
                       priority // если важно для LCP
                     />
-                    <span>Быстрая запись</span>
+                    <span>Быстрая запись прямо на сайте</span>
                   </div>
                 </div>
               </div>

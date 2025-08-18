@@ -12,6 +12,12 @@
     width: 1200px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    & > .info_col {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
     & > .burger {
       cursor: pointer;
     }
@@ -123,6 +129,16 @@
       & > .content {
         width: 100%;
         padding: 34px 24px 0px 24px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Header {
+    & > .content {
+      & > .info_col {
+        display: none;
       }
     }
   }

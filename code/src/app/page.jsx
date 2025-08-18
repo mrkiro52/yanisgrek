@@ -11,6 +11,7 @@ import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
 
 import fs from 'fs/promises';
 import path from 'path';
+import TeamBlock from '../components/TeamBlock/TeamBlock';
 
 // ISR: обновляем страницу раз в минуту
 export const revalidate = 60;
@@ -202,7 +203,8 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
+      
+      <TeamBlock/>
       <Form />
     </main>
   );

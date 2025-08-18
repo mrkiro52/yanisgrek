@@ -4,7 +4,7 @@ import Form from "../../components/Form/Form";
 import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 import Image from 'next/image';
-
+import TeamBlock from '../../components/TeamBlock/TeamBlock';
 
 const problemsImages = [
   { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "" },
@@ -82,24 +82,7 @@ export default function AboutPage() {
           <img src="/images/photo_block_about.jpg" alt="" />
         </div>
       </div>
-      <div className="block_assets_about">
-        <div className="asset">
-          <img src="/images/preim3.jpg" alt="" />
-          <p>14 лет стабильной работы одной и той же командой.</p>
-        </div>
-        <div className="asset">
-          <img src="/images/preim1.jpg" alt="" />
-          <p>Честная диагностика, прозрачные цены, никаких скрытых услуг.</p>
-        </div>
-        <div className="asset">
-          <img src="/images/preim2.jpg" alt="" />
-          <p>Всегда на связи, всегда готовы объяснить и пойти навстречу.</p>
-        </div>
-        <div className="asset">
-          <img src="/images/preim4.jpg" alt="" />
-          <p>Уважение к каждому клиенту, даже в форс-мажорных ситуациях.</p>
-        </div>
-      </div>
+      <TeamBlock/>
       <div className="block_box_citation">
         <div className="block_title_assets_about">
           <h1 className="title_block2">
@@ -147,7 +130,7 @@ export default function AboutPage() {
           />
         </div>
       </div>
-      <Form/>
+<Form/>
     </div>
   );
 }
