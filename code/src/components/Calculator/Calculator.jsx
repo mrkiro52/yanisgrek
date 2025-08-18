@@ -231,7 +231,7 @@ export default function Calculator() {
       <div className="choose_special_model">
         <div className="model-select">
           <label htmlFor="series" className="model-select__label">
-            СЕРИЯ
+            Серия
           </label>
           <div className="model-select__control">
             <select
@@ -261,7 +261,7 @@ export default function Calculator() {
 
         <div className="mileage-input">
           <label form="mileage" className="mileage-input__label">
-            ПРОБЕГ
+            Пробег
           </label>
           <div className="mileage-input__control">
           <input
@@ -348,12 +348,12 @@ export default function Calculator() {
           );
         })}
         <div className="calculator_table__row">
-          <div className="calculator_table__cell--first-summ">
-            <span onClick={scrollToBottom}>Записаться через форму</span>
-          </div>
           <div className="calculator_table__cell--second">
             <div className="calculator_table__cell--second-left">итоговая стоимость</div>
             <div className="calculator_table__cell--second-right">{totalSum.toLocaleString()}</div>
+          </div>
+          <div className="calculator_table__cell--first-summ">
+            <span onClick={scrollToBottom}>Записаться через форму</span>
           </div>
         </div>
       </div>

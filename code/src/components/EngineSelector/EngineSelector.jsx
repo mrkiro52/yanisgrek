@@ -29,7 +29,7 @@ const EngineSelector = ({
   const activeCategory = categories[activeIndex];
 
   return (
-    <div className="EngineSelector">
+    <div className="EngineSelector" id='EngineSelector'>
       {type === 'remontAkpp' && <h2>Выберите тип коробки переключения передач</h2>}
       {type === 'remontDvs' && <h2>Выберите тип вашего двигателя</h2>}
       <div className="engine-selector">

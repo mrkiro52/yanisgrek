@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Form from '../../components/Form/Form';
 import EngineSelector from '../../components/EngineSelector/EngineSelector';
 import Image from 'next/image';
+import TeamBlock from "../../components/TeamBlock/TeamBlock";
 
 
 export default function RemontDvs() {
@@ -65,10 +66,11 @@ export default function RemontDvs() {
                 <div className="content">
                     <div className="left">
                         <div className="info">
-                        <h1>Ремонт ДВС</h1>
-                        <p>При ремонте двигателей внутреннего сгорания мы применяем оригинальные комплектующие и современные технологии: гарантия восстановления мощности, герметичности и ресурса мотора.</p>
+                            <h1>Ремонт и диагностика ДВС</h1>
+                            <p>При ремонте двигателей внутреннего сгорания мы применяем оригинальные комплектующие и современные технологии: гарантия восстановления мощности, герметичности и ресурса мотора.</p>
                         </div>
-                        <ButtonGoForm/>
+                        <a href="#EngineSelector" className="choose">Выбрать модель</a>
+                        <a href="#Form" className="goform">Оставить заявку</a>
                     </div>
                     <div className="right">
                         <ImageBlock image={'remont-dvs'} />
@@ -139,7 +141,7 @@ export default function RemontDvs() {
                         height={124} // и высоту
                         priority // если важно для LCP
                     />
-                    <span>Мастера с опытом по BMW</span>
+                    <span>Мастера с опытом по BMW от 10 лет</span>
                     </div>
                 </div>
                 <div className="row">
@@ -151,7 +153,7 @@ export default function RemontDvs() {
                         height={124} // и высоту
                         priority // если важно для LCP
                     />
-                    <span>Гарантия</span>
+                    <span>Гарантия на ремонт до 2-х лет</span>
                     </div>
                     <div className="block">
                     <Image
@@ -171,7 +173,7 @@ export default function RemontDvs() {
                         height={124} // и высоту
                         priority // если важно для LCP
                     />
-                    <span>Быстрая запись</span>
+                    <span>Быстрая запись прямо на сайте</span>
                     </div>
                 </div>
                 </div>
@@ -215,6 +217,7 @@ export default function RemontDvs() {
                     </div>
                 </div>
             </div>
+            <TeamBlock/>
             <div className="Service_phone">
                 <div className="Service_phone__wrapper">
                 <Image
@@ -232,7 +235,8 @@ export default function RemontDvs() {
                 </div>
                 </div>
             </div>
-            <Form/>
+
+<Form/>
         </div>
     )
 }

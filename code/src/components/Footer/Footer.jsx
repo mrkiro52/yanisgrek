@@ -9,6 +9,11 @@ export default function Footer() {
                     <div className="col">
                         <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
                         <p>Первый автосервис BMW с человеческим подходом.</p>
+                        <p>Москва, Высоковольтный проезд, 1, стр. 29</p>
+                        <p>+7 (495) 76 76 500</p>
+                        <p>Пн-Пт: 10:00-20:00</p>
+                        <p>Сб: 11:00-20:00</p>
+                        <p>Вс: 11:00-18:00</p>
                     </div>
                     <div className="col">
                         <span><Link href="/services">Услуги</Link></span>

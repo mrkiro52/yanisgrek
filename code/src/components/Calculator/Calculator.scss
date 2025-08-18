@@ -23,7 +23,7 @@
                 text-transform: uppercase;
                 margin-bottom: 0;
                 & > span {
-                    color: #2B6EFF;
+                    text-decoration: underline;
                 }
             }
             & > a, span {
@@ -61,7 +61,7 @@
                 cursor: pointer;
                 transition: all 0.2s;
                 &.selected {
-                    background-color: #2B6EFF;
+                    background-color: black;
                     color: white;
                 }
             }
@@ -119,7 +119,6 @@
                 background: #bababa; /* фон левой части */
                 color: #000;
                 font-size: 24px;
-                text-transform: uppercase;
                 font-family: Russo One, sans-serif;
                 padding: 0px 20px;
             }
@@ -166,7 +165,6 @@
                 background: #bababa; /* фон левой секции */
                 color: #000;
                 font-size: 24px;
-                text-transform: uppercase;
                 font-family: Russo One, sans-serif;
                 padding: 0px 20px;
             }
@@ -215,7 +213,7 @@
                 font-size: 24px;
                 cursor: pointer;
                 &.selected {
-                    background-color: #2B6EFF;
+                    background-color: black;
                     color: white;
                 }
             }
@@ -256,18 +254,20 @@
             display: flex;
             align-items: center;
             & > .calculator_table__cell--first-summ {
-                width: 45%;
-                padding: 0px 30px 0px 0px;
+                width: 55%;
                 background-color: transparent;
                 height: 60px;
                 display: flex;
+                justify-content: flex-end;
                 align-items: flex-end;
                 gap: 10px;
-                justify-content: flex-start;
                 & > span {
                     color: black;
-                    text-decoration: underline;
                     cursor: pointer;
+                    background-color: #2B6EFF;
+                    padding: 12px 24px;
+                    border-radius: 24px;
+                    color: white;
                 }
             }
             & > .calculator_table__cell--first {
@@ -288,7 +288,7 @@
                     cursor: pointer;
                     transition: all 0.1s;
                     &.selected {
-                        background-color: #2B6EFF;
+                        background-color: black;
                     }
                 }
                 & > span {
@@ -309,16 +309,16 @@
                 font-family: Helvetica;
             }
             & > .calculator_table__cell--second {
-                width: 55%;
+                width: 45%;
                 display: flex;
                 height: 60px;
                 display: flex;
                 align-items: center;
                 & > .calculator_table__cell--second-left {
                     height: 60px;
-                    background-color: #2B6EFF;
+                    background-color: black;
                     color: white;
-                    font-size: 24;
+                    font-size: 18px;
                     display: flex;
                     align-items: center;
                     justify-content: center;

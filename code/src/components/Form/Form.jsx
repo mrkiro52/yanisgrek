@@ -120,14 +120,14 @@ export default function Form() {
 
             <div className="form-row">
               <label htmlFor="email" className="form-label">
-                Ваша почта
+                Ваш VIN-номер*
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 className="form-input"
-                placeholder="yanis_grek@gmail.com"
+                placeholder="НЕОБЯЗАТЕЛЬНО"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })

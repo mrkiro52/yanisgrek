@@ -6,6 +6,7 @@ import Form from "../../../components/Form/Form";
 import ButtonGoForm from '../../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from './ImageBlock';
 import Image from 'next/image';
+import TeamBlock from '../../../components/TeamBlock/TeamBlock';
 
 export default async function Service({ params }) {
 
@@ -71,7 +72,7 @@ export default async function Service({ params }) {
                 height={124} // и высоту
                 priority // если важно для LCP
               />
-              <span>Мастера с опытом по BMW</span>
+              <span>Мастера с опытом по BMW от 10 лет</span>
             </div>
           </div>
           <div className="row">
@@ -83,7 +84,7 @@ export default async function Service({ params }) {
                 height={124} // и высоту
                 priority // если важно для LCP
               />
-              <span>Гарантия</span>
+              <span>Гарантия на ремонт до 2-х лет</span>
             </div>
             <div className="block">
               <Image
@@ -103,7 +104,7 @@ export default async function Service({ params }) {
                 height={124} // и высоту
                 priority // если важно для LCP
               />
-              <span>Быстрая запись</span>
+              <span>Быстрая запись прямо на сайте</span>
             </div>
           </div>
         </div>
@@ -192,7 +193,8 @@ export default async function Service({ params }) {
           </div>
         </div>
       </div>
-      <Form/>
+      <TeamBlock/>
+<Form/>
     </div>
   );
 }
