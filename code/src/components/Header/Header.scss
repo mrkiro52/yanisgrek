@@ -95,6 +95,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          &.phone_link {
+            justify-content: flex-start;
+          }
           &.calcButton {
             border: 1px solid rgba(255, 255, 255, 1);
             background-color: rgba(255, 255, 255, 1);
@@ -175,6 +178,9 @@
           }
         }
         & > .buttons {
+          & > span {
+            font-size: 12px;
+          }
           & > a {
             width: 100%;
             &.phone_link {

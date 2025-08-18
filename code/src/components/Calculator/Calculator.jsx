@@ -385,6 +385,7 @@ export default function Calculator() {
           <div className="textBlock">итоговая стоимость</div>
           <div className="sumBlock">{totalSum.toLocaleString()}</div>
         </div>
+        <span onClick={scrollToBottom} className="mobileFormButton"><a href="#Form">Записаться через форму</a></span>
       </div>
     </div>
   );

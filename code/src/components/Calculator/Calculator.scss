@@ -266,7 +266,6 @@
                     cursor: pointer;
                     background-color: #2B6EFF;
                     padding: 12px 24px;
-                    border-radius: 24px;
                     color: white;
                 }
             }
@@ -429,7 +428,7 @@
                         cursor: pointer;
                         transition: all 0.1s;
                         &.selected {
-                            background-color: #2B6EFF;
+                            background-color: black;
                             border: 1px solid transparent;
                         }
                     }
@@ -499,7 +498,7 @@
                 margin-top: 12px;
                 & > .textBlock {
                     height: 48px;
-                    background-color: rgba(43, 110, 255, 1);
+                    background-color: black;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -526,6 +525,19 @@
                     font-family: 'Russo One';
                     font-weight: 700;
                     text-transform: uppercase;
+                }
+            }
+            & > span.mobileFormButton {
+                height: 50px;
+                background-color: #2B6EFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                & > a {
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: white;
                 }
             }
         }

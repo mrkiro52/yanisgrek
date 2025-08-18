@@ -67,6 +67,10 @@ export default function Header() {
                     </div>
                     <div className="buttons">
                         <a href="https://wa.me/79852707575" target="_blank" className='phone_link'>+7 495 76-76-500</a>
+                        <span><a href="https://maps.app.goo.gl/TH4XvY6H5MPaXN8w6" target='_blank'>Москва, Высоковольтный проезд, 1, стр. 29</a></span>
+                        <span>Пн-Пт: 10:00-20:00</span>
+                        <span>Сб: 11:00-20:00</span>
+                        <span>Вс: 11:00-18:00</span>
                         <Link href="/contacts" className='calcButton' onClick={() => handleLinkClick('/contacts')}>Оставить заявку</Link>
                     </div>
                     <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
