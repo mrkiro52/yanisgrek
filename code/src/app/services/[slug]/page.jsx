@@ -7,6 +7,7 @@ import ButtonGoForm from '../../../components/BtnGoForm/BtnGoForm';
 import ImageBlock from './ImageBlock';
 import Image from 'next/image';
 import TeamBlock from '../../../components/TeamBlock/TeamBlock';
+import Chillzone from "../../../components/Chillzone/Chillzone";
 
 export default async function Service({ params }) {
 
@@ -194,6 +195,7 @@ export default async function Service({ params }) {
         </div>
       </div>
       <TeamBlock/>
+      <Chillzone/>
 <Form/>
     </div>
   );

@@ -12,6 +12,9 @@ import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
 import fs from 'fs/promises';
 import path from 'path';
 import TeamBlock from '../components/TeamBlock/TeamBlock';
+import Discounts from '../components/Discounts/Discounts';
+import Chillzone from '../components/Chillzone/Chillzone';
+import Quiz from '../components/Quiz/Quiz';
 
 // ISR: обновляем страницу раз в минуту
 export const revalidate = 60;
@@ -66,6 +69,11 @@ export default async function Home() {
       </div>
 
       <Calculator />
+      <Quiz/>
+      <Discounts />
+      <div style={{paddingTop: "130px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
 
       <div className="blackInfo">
         <div className="content">
@@ -273,6 +281,7 @@ export default async function Home() {
               </div>
             </div>
       <TeamBlock/>
+      <Chillzone/>
       <Form />
     </main>
   );

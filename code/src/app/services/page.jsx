@@ -9,6 +9,8 @@ import { useRef } from 'react';
 import BtnGoForm from '../../components/BtnGoForm/BtnGoForm';
 import TeamBlock from "../../components/TeamBlock/TeamBlock";
 import Image from "next/image";
+import Discounts from "../../components/Discounts/Discounts";
+import Chillzone from "../../components/Chillzone/Chillzone";
  
 export default function ServicesPage() {
   const LOCAL_STORAGE_KEY = 'activeServiceTabIndex';
@@ -104,6 +106,7 @@ export default function ServicesPage() {
         );
       })}
       </div>
+      <Discounts/>
       <div className="Service_why">
         <div className="Service_why__wrapper">
           <h2>Почему стоит делать у нас?</h2>
@@ -195,6 +198,7 @@ export default function ServicesPage() {
         </div>
       </div>
       <TeamBlock/>
+      <Chillzone/>
       <Form />
     </div>
   );
