@@ -94,6 +94,75 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+      <div className="Service_why">
+              <div className="Service_why__wrapper">
+                <h2>Почему стоит делать у нас?</h2>
+                <div className="row">
+                  <div className="block">
+                    <Image
+                      src="/images/why1.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Оригинальные или сертифицированные запчасти</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why2.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Оборудование как в официальных сервисах</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why3.png"
+                      alt="Phone Call"
+                      width={124} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Мастера с опытом по BMW от 10 лет</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="block">
+                    <Image
+                      src="/images/why4.png"
+                      alt="Phone Call"
+                      width={134} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Гарантия на ремонт до 2-х лет</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why5.png"
+                      alt="Phone Call"
+                      width={104} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Честная цена</span>
+                  </div>
+                  <div className="block">
+                    <Image
+                      src="/images/why6.png"
+                      alt="Phone Call"
+                      width={112} // укажи нужную ширину
+                      height={124} // и высоту
+                      priority // если важно для LCP
+                    />
+                    <span>Быстрая запись прямо на сайте</span>
+                  </div>
+                </div>
+              </div>
+            </div>
       <div className="block_about_from_founder">
         <h1 className="hero_title">
         Работа без излишнего пафоса, исключительно человеческий подход.
