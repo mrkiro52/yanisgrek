@@ -5,6 +5,8 @@ import '../../../styles/slugKppAndDvs.scss';
 import Header from '@/components/Header/Header';
 import Form from '../../../components/Form/Form';
 import Image from 'next/image';
+import Discounts from '../../../components/Discounts/Discounts';
+import Chillzone from '../../../components/Chillzone/Chillzone';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -184,6 +186,7 @@ export default async function RemontAkppSpecial({ params }) {
           </div>
         </div>
       </div>
+      <Discounts/>
       <div className="Service_phone">
         <div className="Service_phone__wrapper">
           <Image
@@ -201,6 +204,7 @@ export default async function RemontAkppSpecial({ params }) {
           </div>
         </div>
       </div>
+      <Chillzone/>
       <Form />
     </div>
   );

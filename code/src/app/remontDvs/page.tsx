@@ -5,7 +5,8 @@ import Form from '../../components/Form/Form';
 import EngineSelector from '../../components/EngineSelector/EngineSelector';
 import Image from 'next/image';
 import TeamBlock from "../../components/TeamBlock/TeamBlock";
-
+import Discounts from "../../components/Discounts/Discounts";
+import Chillzone from "../../components/Chillzone/Chillzone";
 
 export default function RemontDvs() {
     
@@ -108,6 +109,7 @@ export default function RemontDvs() {
                 secondColumnHeader="Модели BMW"
                 type="remontDvs"
             />
+            <Discounts/>
             <div className="Service_why">
                 <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>
@@ -234,7 +236,7 @@ export default function RemontDvs() {
                 </div>
                 </div>
             </div>
-
+<Chillzone/>
 <Form/>
         </div>
     )

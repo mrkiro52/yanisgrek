@@ -5,6 +5,8 @@ import "./about.scss";
 import EmblaCarousel from "@/components/embla/EmblaCarousel";
 import Image from 'next/image';
 import TeamBlock from '../../components/TeamBlock/TeamBlock';
+import Discounts from '../../components/Discounts/Discounts';
+import Chillzone from '../../components/Chillzone/Chillzone';
 
 const problemsImages = [
   { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "" },
@@ -94,6 +96,7 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+      <Discounts/>
       <div className="Service_why">
               <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>
@@ -199,6 +202,7 @@ export default function AboutPage() {
           />
         </div>
       </div>
+      <Chillzone/>
 <Form/>
     </div>
   );

@@ -7,6 +7,7 @@ import EmblaCarousel from '@/components/embla/EmblaCarousel';
 import Calculator from '@/components/Calculator/Calculator';
 import Form from '../../../components/Form/Form';
 import './car.scss';
+import Chillzone from '../../../components/Chillzone/Chillzone';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -86,6 +87,7 @@ export default async function CarPage({ params }) {
       </div>
 
       <Calculator />
+      <Chillzone/>
       <Form />
     </div>
   );

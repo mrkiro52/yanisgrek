@@ -1,0 +1,115 @@
+.Works {
+    .Startscreen {
+        display: flex;
+        justify-content: center;
+        .Startscreen_wrapper {
+            width: 1200px;
+            padding-top: 100px;
+            padding-bottom: 130px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            & > .left {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                padding-top: 130px;
+                gap: 32px;
+                & > h2 {
+                    font-size: 96px;
+                    color: white;
+                    font-family: 'Russo One';
+                    line-height: 103%;
+                    margin-bottom: 0px;
+                }
+                & > .info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    padding-left: 24px;
+                    border-left: 1px solid white;
+                    & > h3 {
+                        font-size: 24px;
+                        color: white;
+                        font-family: 'Russo One';
+                        text-transform: uppercase;
+                    }
+                    & > p {
+                        font-size: 20px;
+                        color: white;
+                        font-family: 'Helvetica';
+                        line-height: 130%;
+                    }
+                }
+            }
+            & > .right {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                width: 50%;
+                & > img {
+                    width: 48%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .Works {
+        & > .Startscreen {
+            width: 100%;
+            padding-left: 24px;
+            padding-right: 24px;
+            & > .Startscreen_wrapper {
+                padding-top: 150px;
+                flex-direction: column;
+                gap: 32px;
+                & > .left {
+                    width: 100%;
+                    padding: 0px;
+                }
+                & > .right {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .Works {
+        & > .Startscreen {
+            & > .Startscreen_wrapper {
+                & > .left {
+                    & > h2 {
+                        font-size: 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .Works {
+        & > .Startscreen {
+            & > .Startscreen_wrapper {
+                & > .left {
+                    & > h2 {
+                        font-size: 32px;
+                    }
+                    & > .info {
+                        & > h3 {
+                            font-size: 20px;
+                            line-height: 103%;
+                        }
+                        & > p {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
