@@ -238,7 +238,7 @@ export default function Quiz() {
     }
 
     const generateWhatsAppMessage = () => {
-        // Определяем тип контакта
+        // Определяем тип
         const contactTypes = ['Телефон', 'Telegram', 'WhatsApp'];
         const contactType = contactTypes[connection];
         
