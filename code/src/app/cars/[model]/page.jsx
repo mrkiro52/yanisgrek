@@ -48,7 +48,10 @@ export default async function CarPage({ params }) {
 
       <div
         className="Startscreen"
-        style={{ background: `url(/images/carsbg/${model}.jpg) center / cover no-repeat` }}
+        style={{ 
+          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url(/images/carsbg/${model}.jpg) center / cover no-repeat` 
+        }}
       >
         <div className="first">
           <h1>Ремонт и диагностика {carInfo.title} у профессионалов</h1>
