@@ -124,6 +124,8 @@
       padding: 24px;
       cursor: pointer;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     
       // 🔧 постоянное затемнение (чёрный слой под текстом)
       &::after {
@@ -157,6 +159,10 @@
         font-size: 24px;
         color: white;
         text-align: center;
+        &.price {
+          font-size: 16px;
+          opacity: 0.8;
+        }
       }
     }
   }

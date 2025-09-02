@@ -102,6 +102,14 @@ export default function ServicesPage() {
             }}
           >
             <span>{service.name}</span>
+            <span className="price">
+              от {service.price.toString().length === 5 
+                  ? `${service.price.toString().slice(0, 2)}.${service.price.toString().slice(2)}`
+                  : service.price.toString().length === 6
+                  ? `${service.price.toString().slice(0, 3)}.${service.price.toString().slice(3)}`
+                  : service.price
+              } руб.
+            </span>
           </div>
         );
       })}

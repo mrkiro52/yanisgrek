@@ -1,6 +1,6 @@
 {
     "transmission_service": { 
-      "Ремонт КПП": { "name": "Ремонт КПП", "slug": "remont-kpp", "price": 0 },
+      "Ремонт КПП": { "name": "Ремонт КПП", "slug": "remont-kpp", "price": "5000" },
       "Замена масла в АКПП": { "name": "Замена масла в АКПП", "slug": "zamena-masla-v-akpp", "price": 21600 },
       "Замена фильтра-картера АКПП": { "name": "Замена фильтра-картера АКПП", "slug": "zamena-filtra-kartera-akpp", "price": 11600 },
       "Замена масла в раздаточной коробке": { "name": "Замена масла в раздаточной коробке", "slug": "zamena-masla-v-razdatochnoy-korobke", "price": 4800 },
@@ -16,53 +16,53 @@
       "Замена цепи ГРМ": { "name": "Замена цепи ГРМ", "slug": "zamena-cepi-grm", "price": 20000 },
       "Замена маслосъёмных колпачков": { "name": "Замена маслосъёмных колпачков", "slug": "zamena-maslosyomnyh-kolpachkov", "price": 80000 },
       "Замена прокладок, сальников": { "name": "Замена прокладок, сальников", "slug": "zamena-prokladok-salnikov", "price": 5800 },
-      "Замена вкладышей": { "name": "Замена вкладышей", "slug": "zamena-vkladyishey", "price": 0 },
-      "Чистка впускного коллектора / каналов": { "name": "Чистка впускного коллектора / каналов", "slug": "chistka-vpusknogo-kollektora-kanalov", "price": 0 },
-      "Притирка клапанов": { "name": "Притирка клапанов", "slug": "pritirka-klapanov", "price": 0 },
-      "Диагностика ДВС": { "name": "Диагностика ДВС", "slug": "diagnostika-dvs", "price": 0 }
+      "Замена вкладышей": { "name": "Замена вкладышей", "slug": "zamena-vkladyishey", "price": 40000 },
+      "Чистка впускного коллектора / каналов": { "name": "Чистка впускного коллектора / каналов", "slug": "chistka-vpusknogo-kollektora-kanalov", "price": 4500 },
+      "Притирка клапанов": { "name": "Притирка клапанов", "slug": "pritirka-klapanov", "price": 15000 },
+      "Диагностика ДВС": { "name": "Диагностика ДВС", "slug": "diagnostika-dvs", "price": 1500 }
     },
     "technical_maintenance": {
-      "Замена масла ДВС": { "name": "Замена масла ДВС", "slug": "zamena-masla-dvs", "price": 0 },
-      "Замена воздушного фильтра": { "name": "Замена воздушного фильтра", "slug": "zamena-vozdushnogo-filtra", "price": 0 },
-      "Замена топливного фильтра": { "name": "Замена топливного фильтра", "slug": "zamena-toplivnogo-filtra", "price": 0 },
-      "Замена салонного фильтра": { "name": "Замена салонного фильтра", "slug": "zamena-salonnogo-filtra", "price": 0 },
-      "Прокачка топливной системы": { "name": "Прокачка топливной системы", "slug": "prokachka-toplivnoy-sistemy", "price": 0 }
+      "Замена масла ДВС": { "name": "Замена масла ДВС", "slug": "zamena-masla-dvs", "price": 9000 },
+      "Замена воздушного фильтра": { "name": "Замена воздушного фильтра", "slug": "zamena-vozdushnogo-filtra", "price": 2200 },
+      "Замена топливного фильтра": { "name": "Замена топливного фильтра", "slug": "zamena-toplivnogo-filtra", "price": 3900 },
+      "Замена салонного фильтра": { "name": "Замена салонного фильтра", "slug": "zamena-salonnogo-filtra", "price": 6900 },
+      "Прокачка топливной системы": { "name": "Прокачка топливной системы", "slug": "prokachka-toplivnoy-sistemy", "price": 3600 }
     },
     "brake_system": {
-      "Замена тормозных дисков": { "name": "Замена тормозных дисков", "slug": "zamena-tormoznyh-diskov", "price": 0 },
-      "Замена тормозных колодок": { "name": "Замена тормозных колодок", "slug": "zamena-tormoznyh-kolodok", "price": 0 }
+      "Замена тормозных дисков": { "name": "Замена тормозных дисков", "slug": "zamena-tormoznyh-diskov", "price": 3900 },
+      "Замена тормозных колодок": { "name": "Замена тормозных колодок", "slug": "zamena-tormoznyh-kolodok", "price": 2400 }
     },
     "suspension_and_steering": {
-      "Замена передних амортизаторов": { "name": "Замена передних амортизаторов", "slug": "zamena-perednih-amortizatorov", "price": 0 },
-      "Замена задних амортизаторов": { "name": "Замена задних амортизаторов", "slug": "zamena-zadnih-amortizatorov", "price": 0 },
-      "Замена сайлентблоков передней подвески": { "name": "Замена сайлентблоков передней подвески", "slug": "zamena-saylentblokov-peredney-podveski", "price": 0 },
-      "Замена задних поперечных рычагов": { "name": "Замена задних поперечных рычагов", "slug": "zamena-zadnih-poperechnyh-rychagov", "price": 0 },
-      "Замена стоек стабилизатора (перед/зад)": { "name": "Замена стоек стабилизатора (перед/зад)", "slug": "zamena-stoek-stabilizatora-pered-zad", "price": 0 },
-      "Замена пружин задней подвески": { "name": "Замена пружин задней подвески", "slug": "zamena-pruzhin-zadney-podveski", "price": 0 },
-      "Замена ступичных подшипников": { "name": "Замена ступичных подшипников", "slug": "zamena-stupichnyh-podshipnikov", "price": 0 },
-      "Замена подушек подрамника": { "name": "Замена подушек подрамника", "slug": "zamena-podushek-podramnika", "price": 0 },
-      "Ремонт рулевой рейки": { "name": "Ремонт рулевой рейки", "slug": "remont-rulevoy-reyki", "price": 0 },
-      "Снятие/установка рулевой рейки": { "name": "Снятие/установка рулевой рейки", "slug": "snyatie-ustanovka-rulevoy-reyki", "price": 0 }
+      "Замена передних амортизаторов": { "name": "Замена передних амортизаторов", "slug": "zamena-perednih-amortizatorov", "price": 8000 },
+      "Замена задних амортизаторов": { "name": "Замена задних амортизаторов", "slug": "zamena-zadnih-amortizatorov", "price":  6200 },
+      "Замена сайлентблоков передней подвески": { "name": "Замена сайлентблоков передней подвески", "slug": "zamena-saylentblokov-peredney-podveski", "price": 5900 },
+      "Замена задних поперечных рычагов": { "name": "Замена задних поперечных рычагов", "slug": "zamena-zadnih-poperechnyh-rychagov", "price": 4600 },
+      "Замена стоек стабилизатора (перед/зад)": { "name": "Замена стоек стабилизатора (перед/зад)", "slug": "zamena-stoek-stabilizatora-pered-zad", "price": 2100 },
+      "Замена пружин задней подвески": { "name": "Замена пружин задней подвески", "slug": "zamena-pruzhin-zadney-podveski", "price": 6000 },
+      "Замена ступичных подшипников": { "name": "Замена ступичных подшипников", "slug": "zamena-stupichnyh-podshipnikov", "price": 4300 },
+      "Замена подушек подрамника": { "name": "Замена подушек подрамника", "slug": "zamena-podushek-podramnika", "price": 8600 },
+      "Ремонт рулевой рейки": { "name": "Ремонт рулевой рейки", "slug": "remont-rulevoy-reyki", "price": 15000 },
+      "Снятие/установка рулевой рейки": { "name": "Снятие/установка рулевой рейки", "slug": "snyatie-ustanovka-rulevoy-reyki", "price": 6000 }
     },
     "electronics_and_tuning": {
-      "Компьютерная диагностика": { "name": "Компьютерная диагностика", "slug": "kompyuternaya-diagnostika", "price": 0 },
-      "Обновление программного обеспечения": { "name": "Обновление программного обеспечения", "slug": "obnovlenie-programmnogo-obespecheniya", "price": 0 },
-      "Чип-тюнинг Stage 1 / Stage 2": { "name": "Чип-тюнинг Stage 1 / Stage 2", "slug": "chip-tyuning-stage-1-stage-2", "price": 0 },
-      "Калибровка пневмоподвески": { "name": "Калибровка пневмоподвески", "slug": "kalibrovka-pnevmopodveski", "price": 0 },
-      "Замена АКБ с регистрацией": { "name": "Замена АКБ с регистрацией", "slug": "zamena-akb-s-registraciey", "price": 0 }
+      "Компьютерная диагностика": { "name": "Компьютерная диагностика", "slug": "kompyuternaya-diagnostika", "price": 1500 },
+      "Обновление программного обеспечения": { "name": "Обновление программного обеспечения", "slug": "obnovlenie-programmnogo-obespecheniya", "price": 4500 },
+      "Чип-тюнинг Stage 1 / Stage 2": { "name": "Чип-тюнинг Stage 1 / Stage 2", "slug": "chip-tyuning-stage-1-stage-2", "price": 10000 },
+      "Калибровка пневмоподвески": { "name": "Калибровка пневмоподвески", "slug": "kalibrovka-pnevmopodveski", "price": 1500 },
+      "Замена АКБ с регистрацией": { "name": "Замена АКБ с регистрацией", "slug": "zamena-akb-s-registraciey", "price": 3000 }
     },
     "ac_and_cooling": {
-      "Вакуумирование и заправка кондиционера": { "name": "Вакуумирование и заправка кондиционера", "slug": "vakuumirovanie-i-zapravka-konditsionera", "price": 0 },
-      "Антибактериальная обработка кондиционера": { "name": "Антибактериальная обработка кондиционера", "slug": "antibakterialnaya-obrabotka-konditsionera", "price": 0 },
-      "Замена насоса охлаждающей жидкости": { "name": "Замена насоса охлаждающей жидкости", "slug": "zamena-nasosa-ohlazhdayushchey-zhidkosti", "price": 0 },
-      "Замена термостата": { "name": "Замена термостата", "slug": "zamena-termostata", "price": 0 },
-      "Мойка радиаторов": { "name": "Мойка радиаторов", "slug": "moyka-radiatorov", "price": 0 }
+      "Вакуумирование и заправка кондиционера": { "name": "Вакуумирование и заправка кондиционера", "slug": "vakuumirovanie-i-zapravka-konditsionera", "price": 6800 },
+      "Антибактериальная обработка кондиционера": { "name": "Антибактериальная обработка кондиционера", "slug": "antibakterialnaya-obrabotka-konditsionera", "price": 3900 },
+      "Замена насоса охлаждающей жидкости": { "name": "Замена насоса охлаждающей жидкости", "slug": "zamena-nasosa-ohlazhdayushchey-zhidkosti", "price": 6900 },
+      "Замена термостата": { "name": "Замена термостата", "slug": "zamena-termostata", "price": 3900 },
+      "Мойка радиаторов": { "name": "Мойка радиаторов", "slug": "moyka-radiatorov", "price": 5500 }
     },
     "special_and_tuning": {
-      "Отключение и удаление EGR / DPF / AdBlue": { "name": "Отключение и удаление EGR / DPF / AdBlue", "slug": "otklyuchenie-i-udalenie-egr-dpf-adblue", "price": 0},
-      "Профилактика дренажей подкапотного пространства": { "name": "Профилактика дренажей подкапотного пространства", "slug": "profilaktika-drenazhey-podkapotnogo-prostranstva", "price": 0 },
-      "Чистка клапанов": { "name": "Чистка клапанов", "slug": "chistka-klapanov", "price": 0 },
-      "Удаление впуска / впускной системы": { "name": "Удаление впуска / впускной системы", "slug": "udalenie-vpuska-vpusknoy-sistemy", "price": 0 }
+      "Отключение и удаление EGR / DPF / AdBlue": { "name": "Отключение и удаление EGR / DPF / AdBlue", "slug": "otklyuchenie-i-udalenie-egr-dpf-adblue", "price": 15000},
+      "Профилактика дренажей подкапотного пространства": { "name": "Профилактика дренажей подкапотного пространства", "slug": "profilaktika-drenazhey-podkapotnogo-prostranstva", "price": 3000 },
+      "Чистка клапанов": { "name": "Чистка клапанов", "slug": "chistka-klapanov", "price": 12000 },
+      "Удаление впуска / впускной системы": { "name": "Удаление впуска / впускной системы", "slug": "udalenie-vpuska-vpusknoy-sistemy", "price": 4500 }
     }
   }
   
