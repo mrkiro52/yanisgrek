@@ -138,6 +138,7 @@ input {
     font-size: 14px;
     text-transform: uppercase;
     padding-left: 15px;
+    font-family: 'Helvetica';
   }
   
   .form-label-1 {
@@ -146,6 +147,7 @@ input {
     font-size: 14px;
     text-transform: uppercase;
     padding-left: 15px;
+    font-family: 'Helvetica';
   }
   
   .form-input {
@@ -155,10 +157,12 @@ input {
     background: transparent;
     font-family: inherit;
     color: white;
+    font-family: 'Helvetica';
   }
   
   .form-input::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    font-family: 'Helvetica';
   }
   
   .form-input:-webkit-autofill {
@@ -181,6 +185,7 @@ input {
     border: none;
     cursor: pointer;
     transition: background 0.3s;
+    font-family: 'Helvetica';
   }
   
   .form-button:hover {
