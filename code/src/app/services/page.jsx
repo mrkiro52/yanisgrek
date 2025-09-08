@@ -43,6 +43,15 @@ export default function ServicesPage() {
     }
   }, []);
 
+  useEffect(() => {
+    // ищем первый элемент с классом "service"
+    const firstService = document.querySelector(".service");
+    if (firstService) {
+      const y = firstService.getBoundingClientRect().top + window.scrollY - 90; // отступ 90px
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [activeIndex]);
+
   const activeKey   = categoryKeys[activeIndex];
 
   const servicesOfActiveCategory = Object.values(servicesData[activeKey]); 

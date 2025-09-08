@@ -1,6 +1,6 @@
 {
     "transmission_service": { 
-      "Ремонт КПП": { "name": "Ремонт КПП", "slug": "remont-kpp", "price": "5000" },
+      "Ремонт АКПП": { "name": "Ремонт АКПП", "slug": "remont-kpp", "price": "5000" },
       "Замена масла в АКПП": { "name": "Замена масла в АКПП", "slug": "zamena-masla-v-akpp", "price": 21600 },
       "Замена фильтра-картера АКПП": { "name": "Замена фильтра-картера АКПП", "slug": "zamena-filtra-kartera-akpp", "price": 11600 },
       "Замена масла в раздаточной коробке": { "name": "Замена масла в раздаточной коробке", "slug": "zamena-masla-v-razdatochnoy-korobke", "price": 4800 },

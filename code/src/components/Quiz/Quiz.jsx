@@ -269,36 +269,39 @@ export default function Quiz() {
         window.open(whatsappUrl, '_blank');
       };
 
+      const scrollToQuizTitle = () => {
+        const el = document.getElementById("quiz_title");
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 110; 
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      };      
+      
+
     return (
         <div className="Quiz">
             <div className="Quiz_wrapper">
-                <h2>Получите расчет <span>конкретной</span> услуги </h2>
+                <h2 id='quiz_title'>Получите расчет <span>конкретной</span> услуги </h2>
                 <div className="slide">
                     {step === 1 && <h3>Выберите модель вашего БМВ:</h3>}
                     {step === 2 && <h3>Выберите кузов БМВ:</h3>}
                     {step === 3 && <h3>Выберите вид работ:</h3>}
                     {step === 4 && <h3>Введите VIN номер, сразу проверим стоимость и наличие запчастей:</h3>}
                     {step === 5 && <h3>Для отправки расчета выберите удобный способ связи:</h3>}
-                    {step === 1 && <div className="content1">
-                        <div className="content1__container">
+                    {step === 1 && (
+                        <div className="content2">
                             {bmwModels.map(model => (
-                            <div 
+                            <div
                                 key={model.id}
-                                className={model.name === selectedModel ? "content1__card selected" : "content1__card"}
-                                onClick={() => setSelectedModel(model.name)}    
+                                className={`block ${selectedModel === model.name ? 'selected' : ''}`}
+                                onClick={() => setSelectedModel(model.name)}
                             >
-                                <div className="content1__image-container">
-                                    <img 
-                                        src={model.image} 
-                                        alt={model.name}
-                                        className="content1__image"
-                                    />
-                                </div>
-                                <span className="content1__model-name">{model.name}</span>
+                                <div className="sq"></div>
+                                <span>{model.name}</span>
                             </div>
                             ))}
                         </div>
-                    </div>}
+                    )}
                     {step === 2 && (
                         <div className="content2">
                             {bmwSeries[selectedModel]?.map((series, index) => (
@@ -310,8 +313,8 @@ export default function Quiz() {
                                 <div className="sq"></div>
                                 <span>{series}</span>
                             </div>
-                            ))}
-                        </div>
+                        ))}
+                    </div>
                     )}
                     {step === 3 && (
                         <div className="content3">
@@ -366,6 +369,7 @@ export default function Quiz() {
                         onClick={() => {
                             if (step !== 1) {
                             setStep(step - 1);
+                            scrollToQuizTitle();
                             }
                         }}
                         >
@@ -374,7 +378,10 @@ export default function Quiz() {
 
                         <button 
                         className={!canProceedToNextStep() ? 'disabled' : ''} 
-                        onClick={handleNextStep}
+                        onClick={() => {
+                            handleNextStep();
+                            scrollToQuizTitle();
+                        }}
                         >
                         {step === 5 ? 'Отправить' : 'Дальше'}
                         </button>
