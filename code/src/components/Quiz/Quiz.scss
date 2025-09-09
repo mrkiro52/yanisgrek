@@ -348,6 +348,12 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+  .Quiz>.Quiz_wrapper>.slide>.content5>.btns_row {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .Quiz > .Quiz_wrapper > .slide > .content2 > .block {
     width: 100%;
