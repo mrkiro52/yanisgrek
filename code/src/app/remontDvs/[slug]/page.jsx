@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Discounts from '../../../components/Discounts/Discounts';
 import Chillzone from '../../../components/Chillzone/Chillzone';
 import Quiz from '../../../components/Quiz/Quiz';
+import QuizDvs from '../../../components/QuizDvs/QuizDvs';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -78,6 +79,7 @@ export default async function RemontDvsPage({ params }) {
             </div>
         </div>
       </div>
+      <QuizDvs defaultEngine={slug} />
       <div className="Service_why">
                 <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>

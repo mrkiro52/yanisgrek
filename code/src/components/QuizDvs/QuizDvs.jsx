@@ -1,16 +1,15 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./QuizDvs.scss";
 
-export default function QuizDvs() {
+export default function QuizDvs({ defaultEngine }) {
   const models = [
     "BMW 1", "BMW 2", "BMW 3", "BMW 4",
     "BMW 5", "BMW 7", "BMW X1", "BMW X3",
     "BMW X5", "BMW X6", "BMW M5"
   ];
 
-  // Сопоставим модели и двигатели
   const engines = {
     "BMW 1": ["n13b16", "n20b16-n20b20", "b38b15"],
     "BMW 2": ["b37d15", "b47d20", "b48b20"],
@@ -30,6 +29,24 @@ export default function QuizDvs() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
+  // Если передан defaultEngine → ищем в какой модели он есть
+  useEffect(() => {
+    if (!defaultEngine) return;
+
+    let foundModel = null;
+    for (const model in engines) {
+      if (engines[model].includes(defaultEngine)) {
+        foundModel = model;
+        break;
+      }
+    }
+
+    if (foundModel) {
+      setSelectedModel(foundModel);
+      setSelectedEngine(defaultEngine);
+    }
+  }, [defaultEngine]);
+
   const handleSubmit = () => {
     const message = `Клиент оставил заявку на ремонт двигателя:
   - Модель: ${selectedModel}
@@ -37,17 +54,14 @@ export default function QuizDvs() {
   - Имя: ${name}
   - Телефон: ${phone}`;
   
-    const phoneNumber = "79852707575"; // без плюса и пробелов
+    const phoneNumber = "79852707575";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-  
     window.open(url, "_blank");
   };
 
-  // Проверка на все обязательные поля
   const isFormValid =
     selectedEngine && name.trim() !== "" && phone.trim() !== "";
 
-  // Валидация имени (только буквы, пробелы, дефисы)
   const handleNameChange = (e) => {
     const value = e.target.value;
     if (/^[a-zA-Zа-яА-ЯёЁ\s-]*$/.test(value)) {
@@ -55,7 +69,6 @@ export default function QuizDvs() {
     }
   };
 
-  // Валидация телефона (только цифры и + в начале)
   const handlePhoneChange = (e) => {
     const value = e.target.value;
     if (/^\+?\d*$/.test(value)) {
@@ -77,7 +90,7 @@ export default function QuizDvs() {
                 className={`model_tab ${selectedModel === model ? "selected" : ""}`}
                 onClick={() => {
                   setSelectedModel(model);
-                  setSelectedEngine(null); // сброс при выборе новой модели
+                  setSelectedEngine(null);
                 }}
               >
                 <span>{model}</span>
@@ -85,7 +98,7 @@ export default function QuizDvs() {
             ))}
           </div>
 
-          {/* Шаг 2 - двигатель (появляется только после выбора модели) */}
+          {/* Шаг 2 - двигатель */}
           {selectedModel && (
             <div className="row">
               <h3>2. Выбери двигатель</h3>
@@ -101,7 +114,7 @@ export default function QuizDvs() {
             </div>
           )}
 
-          {/* Шаг 3 и 4 - данные пользователя (после выбора двигателя) */}
+          {/* Шаг 3 и 4 - данные */}
           {selectedEngine && (
             <>
               <div className="row">
