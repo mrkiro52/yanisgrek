@@ -78,7 +78,7 @@ export default function RemontDvs() {
                     </div>
                 </div>
             </div>
-            <QuizDvs/>
+            <QuizDvs defaultEngine=""/>
             <div className="problems_block">
                     <div className="problems_block_top">
                         <h1 className="title_problem">
@@ -182,9 +182,15 @@ export default function RemontDvs() {
                 </div>
             </div>
             <div style={{paddingTop: "130px"}}></div>
-            <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
-            <div style={{paddingBottom: "130px"}}></div>
-            <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+                  <div style={{paddingBottom: "130px"}}></div>
+                  <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+                `,
+              }}
+            />
             <div className="Service_steps">
                 <div className="Service_steps__wrapper">
                     <h2>Этапы работы</h2>
