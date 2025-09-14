@@ -55,7 +55,7 @@ export default function Header() {
                         <div className="linksCol">
                             <Link className='linkTitle' href='/services' onClick={() => handleLinkClick('/services')}>УСЛУГИ YANIS GREK</Link>
                             <Link className='linkSmall' href="/remontAkpp" onClick={() => handleLinkClick('/remontAkpp')}>
-                                Ремонт КПП (АКПП МКПП и др.)
+                                Ремонт АКПП (МКПП и др.)
                             </Link>
                             <Link className='linkSmall' href="/remontDvs" onClick={() => handleLinkClick('/remontDvs')}>
                                 Ремонт ДВС

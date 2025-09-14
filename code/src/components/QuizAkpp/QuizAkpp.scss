@@ -1,0 +1,112 @@
+.QuizAkpp {
+    display: flex;
+    justify-content: center;
+    background-color: #d0d0d0;
+    & > .wrapper {
+        width: 1200px;
+        padding: 80px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        & > h2 {
+            color: #262626;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+        & > .block {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            & > .row {
+                display: flex;
+                align-items: center;
+                gap: 8px 8px;
+                flex-wrap: wrap;
+                & > h3 {
+                    margin: 0px 20px 0px 0px;
+                    color: black;
+                    font-size: 16px;
+                    font-family: 'Helvetica';
+                }
+                & > .model_tab {
+                    height: 50px;
+                    background-color: #adadad;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0px 24px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    & > span {
+                        transition: all 0.2s;
+                        font-size: 16px;
+                        color: black;
+                        font-family: 'Helvetica';
+                        font-weight: 400;
+                    }
+                    &.selected {
+                        background-color: rgb(43, 110, 255);
+                        & > span {
+                            color: white;
+                        }
+                    }
+                }
+                & > input {
+                    border: none;
+                    height: 50px;
+                    padding: 16px;
+                    outline: none;
+                    font-size: 16px;
+                    font-family: 'Helvetica';
+                    background-color: #adadad!important;
+                    color: black;
+                    &::placeholder {
+                        font-size: 16px;
+                        font-family: 'Helvetica';
+                        color: rgb(106, 106, 106);
+                    }
+                    &:focus {
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            & > button {
+                background-color: rgb(43, 110, 255);
+                width: max-content;
+                height: 50px;
+                padding: 0px 24px;
+                cursor: pointer;
+                &.disabled {
+                    cursor: default;
+                    background-color: #adadad;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .QuizAkpp {
+        & > .wrapper {
+            width: 100%;
+            padding: 48px 24px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .QuizAkpp > .wrapper > .block > .row > h3 {
+        width: 100%;
+        margin: 0;
+    }
+    .QuizAkpp > .wrapper > .block > .row > input {
+        width: 100%;
+    }
+    .QuizAkpp > .wrapper > .block > .row {
+        gap: 8px 2%;
+    }
+    .QuizAkpp > .wrapper > .block > .row > .model_tab {
+        width: 49%;
+    }
+}

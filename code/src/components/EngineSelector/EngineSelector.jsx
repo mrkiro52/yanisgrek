@@ -56,8 +56,9 @@ const EngineSelector = ({
             {activeCategory.items.map((item, idx) => (
               <tr key={idx}>
                 <td>
-                  <Link href={`/${type}/${item.path}`}>
+                  <Link href={`/${type}/${item.path}`} style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                     {item.name}
+                    <span>{'>'}</span>
                   </Link>
                 </td>
                 <td>{item.models}</td>

@@ -9,8 +9,8 @@ export default function Form() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
-  });
+    vin: "",
+  });  
 
   // Формат сегодняшней даты для ограничения min
   const now = new Date();
@@ -49,22 +49,25 @@ export default function Form() {
       return;
     }
 
-    if (!formData.name || !formData.phone || !formData.email) {
-      alert("Пожалуйста, заполните все поля.");
+    if (!formData.name || !formData.phone) {
+      alert("Пожалуйста, заполните все обязательные поля.");
       return;
     }
-
+    
     if (!validatePhone(formData.phone)) {
       alert("Неверный формат телефона.");
       return;
     }
-
-    const message = `Заявка на диагностику:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
-
+    
+    let message = `Заявка на диагностику:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}`;
+    if (formData.vin) message += `\nVIN: ${formData.vin}`;
+    message += `\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
+    
     const encoded = encodeURIComponent(message);
     const number = "79852707575";
-
+    
     window.open(`https://wa.me/${number}?text=${encoded}`, "_blank");
+    
   };
 
   return (
@@ -79,7 +82,7 @@ export default function Form() {
 
         <div className="ContactFormSection">
           <h2>
-            Запишитесь на диагностику, <br />
+            Отсавь заявку, <br />
             выбрав день и время
           </h2>
 
@@ -119,18 +122,18 @@ export default function Form() {
             </div>
 
             <div className="form-row">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="vin" className="form-label">
                 Ваш VIN-номер*
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                type="text"
+                id="vin"
+                name="vin"
                 className="form-input"
                 placeholder="НЕОБЯЗАТЕЛЬНО"
-                value={formData.email}
+                value={formData.vin}
                 onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
+                  setFormData({ ...formData, vin: e.target.value })
                 }
               />
             </div>
