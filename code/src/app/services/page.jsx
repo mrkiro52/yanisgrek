@@ -193,6 +193,10 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      <div style={{paddingTop: "130px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <div style={{paddingBottom: "130px"}}></div>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
       <div className="block_about_services">
         <h2 className="hero_title">
           Премиальный автосервис BMW<br/>YanisGrek — в Москве

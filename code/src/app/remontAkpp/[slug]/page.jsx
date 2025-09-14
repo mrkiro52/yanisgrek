@@ -7,6 +7,8 @@ import Form from '../../../components/Form/Form';
 import Image from 'next/image';
 import Discounts from '../../../components/Discounts/Discounts';
 import Chillzone from '../../../components/Chillzone/Chillzone';
+import Quiz from '../../../components/Quiz/Quiz';
+import QuizAkpp from '../../../components/QuizAkpp/QuizAkpp';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -78,6 +80,7 @@ export default async function RemontAkppSpecial({ params }) {
             </div>
         </div>
       </div>
+      <QuizAkpp defaultGearbox={slug} />
       <div className="Service_why">
               <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>
@@ -186,6 +189,11 @@ export default async function RemontAkppSpecial({ params }) {
           </div>
         </div>
       </div>
+      <Quiz/>
+      <div style={{paddingTop: "80px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <div style={{paddingBottom: "130px"}}></div>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
       <Discounts/>
       <div className="Service_phone">
         <div className="Service_phone__wrapper">

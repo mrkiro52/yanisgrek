@@ -8,6 +8,7 @@ import ImageBlock from './ImageBlock';
 import Image from 'next/image';
 import TeamBlock from '../../../components/TeamBlock/TeamBlock';
 import Chillzone from "../../../components/Chillzone/Chillzone";
+import Discounts from "../../../components/Discounts/Discounts";
 
 export default async function Service({ params }) {
 
@@ -41,6 +42,7 @@ export default async function Service({ params }) {
           </div>
         </div>
       </div>
+      <Discounts/>
       <div className="Service_why">
         <div className="Service_why__wrapper">
           <h2>Почему стоит делать у нас?</h2>
@@ -110,6 +112,10 @@ export default async function Service({ params }) {
           </div>
         </div>
       </div>
+      <div style={{paddingTop: "130px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <div style={{paddingBottom: "130px"}}></div>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
       <div className="Service_steps">
         <div className="Service_steps__wrapper">
           <h2>Этапы работы</h2>

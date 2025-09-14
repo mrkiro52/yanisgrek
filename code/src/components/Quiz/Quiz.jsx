@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import './Quiz.scss';
 
-export default function Quiz() {
+export default function Quiz({ propModel }) {
 
     const [step, setStep] = useState(1);
 
@@ -14,11 +14,11 @@ export default function Quiz() {
         { id: 4, name: 'BMW 4', image: '/images/cars/bmw-4.png' },
         { id: 5, name: 'BMW 5', image: '/images/cars/bmw-5.png' },
         { id: 6, name: 'BMW 7', image: '/images/cars/bmw-7.png' },
-        { id: 7, name: 'BMW Х1', image: '/images/cars/bmw-x1.png' },
+        { id: 7, name: 'BMW X1', image: '/images/cars/bmw-x1.png' },
         { id: 8, name: 'BMW X3', image: '/images/cars/bmw-x3.png' },
-        { id: 9, name: 'BMW Х5', image: '/images/cars/bmw-x5.png' },
+        { id: 9, name: 'BMW X5', image: '/images/cars/bmw-x5.png' },
         { id: 10, name: 'BMW X6', image: '/images/cars/bmw-x6.png' },
-        { id: 11, name: 'BMW М5', image: '/images/cars/bmw-m5.png' },
+        { id: 11, name: 'BMW M5', image: '/images/cars/bmw-m5.png' },
     ];
 
     const services = [
@@ -32,7 +32,7 @@ export default function Quiz() {
 
     // Состояние для выбранных услуг
     const [selectedServices, setSelectedServices] = useState([]);
-    const [selectedModel, setSelectedModel] = useState(null);
+    const [selectedModel, setSelectedModel] = useState(propModel || null);
     const [selectedSeries, setSelectedSeries] = useState(null);
 
     const [connection, setConnection] = useState(0);
@@ -281,7 +281,7 @@ export default function Quiz() {
     return (
         <div className="Quiz">
             <div className="Quiz_wrapper">
-                <h2 id='quiz_title'>Получите расчет <span>конкретной</span> услуги </h2>
+                <h2 id='quiz_title'>Получите расчет <span>конкретной</span> услуги</h2>
                 <div className="slide">
                     {step === 1 && <h3>Выберите модель вашего БМВ:</h3>}
                     {step === 2 && <h3>Выберите кузов БМВ:</h3>}
@@ -297,6 +297,7 @@ export default function Quiz() {
                                 onClick={() => setSelectedModel(model.name)}
                             >
                                 <div className="sq"></div>
+                                <img src={model.image} style={{width: '90px'}} alt="bmw" />
                                 <span>{model.name}</span>
                             </div>
                             ))}

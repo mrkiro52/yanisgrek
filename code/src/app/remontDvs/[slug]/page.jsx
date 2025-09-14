@@ -7,6 +7,7 @@ import Form from '../../../components/Form/Form';
 import Image from 'next/image';
 import Discounts from '../../../components/Discounts/Discounts';
 import Chillzone from '../../../components/Chillzone/Chillzone';
+import Quiz from '../../../components/Quiz/Quiz';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -185,6 +186,11 @@ export default async function RemontDvsPage({ params }) {
               </div>
           </div>
       </div>
+      <Quiz/>
+      <div style={{paddingTop: "80px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <div style={{paddingBottom: "130px"}}></div>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
       <Discounts/>
       <div className="Service_phone">
           <div className="Service_phone__wrapper">

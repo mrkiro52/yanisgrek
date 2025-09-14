@@ -8,6 +8,8 @@ import Calculator from '@/components/Calculator/Calculator';
 import Form from '../../../components/Form/Form';
 import './car.scss';
 import Chillzone from '../../../components/Chillzone/Chillzone';
+import Discounts from '../../../components/Discounts/Discounts';
+import Quiz from '../../../components/Quiz/Quiz';
 
 // ISR: пересобираем страницу раз в минуту
 export const revalidate = 60;
@@ -24,6 +26,22 @@ export async function generateStaticParams() {
 export default async function CarPage({ params }) {
   // Await params per Next.js requirements
   const { model } = await params;
+
+  const modelsMap = {
+    "bmw-1": "BMW 1",
+    "bmw-2": "BMW 2",
+    "bmw-3": "BMW 3",
+    "bmw-4": "BMW 4",
+    "bmw-5": "BMW 5",
+    "bmw-7": "BMW 7",
+    "bmw-x1": "BMW X1",
+    "bmw-x3": "BMW X3",
+    "bmw-x5": "BMW X5",
+    "bmw-x6": "BMW X6",
+    "bmw-m5": "BMW M5",
+  };
+
+  const propModel = modelsMap[model];
 
   // Чтение статичных данных о машине
   const filePath = path.join(
@@ -68,6 +86,8 @@ export default async function CarPage({ params }) {
         </div>
       </div>
 
+      <Discounts/>
+
       <div className="problems_block">
         <div className="problems_block_top">
           <h1 className="title_problem">
@@ -90,6 +110,11 @@ export default async function CarPage({ params }) {
       </div>
 
       <Calculator />
+      {propModel ? <Quiz propModel={propModel} /> : <Quiz />}
+      <div style={{paddingTop: "130px"}}></div>
+      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+      <div style={{paddingBottom: "130px"}}></div>
+      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
       <Chillzone/>
       <Form />
     </div>
