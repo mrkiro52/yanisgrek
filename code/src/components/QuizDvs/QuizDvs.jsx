@@ -1,143 +1,135 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./QuizDvs.scss";
 
-export default function QuizDvs({ defaultEngine }) {
+export default function QuizDvs() {
   const models = [
     "BMW 1", "BMW 2", "BMW 3", "BMW 4",
     "BMW 5", "BMW 7", "BMW X1", "BMW X3",
-    "BMW X5", "BMW X6", "BMW M5"
+    "BMW X5", "BMW X6", "BMW M5", "Другая"
   ];
 
-  const engines = {
-    "BMW 1": ["n13b16", "n20b16-n20b20", "b38b15"],
-    "BMW 2": ["b37d15", "b47d20", "b48b20"],
-    "BMW 3": ["n20-elektromotor-edrive", "n26b20", "n52b30", "b48-elektromotor"],
-    "BMW 4": ["n54b30", "n55b30", "s55b30"],
-    "BMW 5": ["b57d30", "b58b30", "n63b44"],
-    "BMW 7": ["b58-elektromotor", "n63b44-tu-tu2-tu3", "s68b44"],
-    "BMW X1": ["n47d160-n47d20", "b37d15", "b38b15"],
-    "BMW X3": ["b47d20", "b58b30", "ix3-edrive80"],
-    "BMW X5": ["n57d30", "n63b44-tu-tu2-tu3", "ix-xdrive40-50-m60"],
-    "BMW X6": ["n63b44", "s63b44", "b58-elektromotor"],
-    "BMW M5": ["s63b44", "s68-elektromotor", "s68b44"]
-  };
+  const services = [
+    "Устранение течи масла ",
+    "Замена маслосъемных колпачков",
+    "Замена ваносов, замена цепи",
+    "Капитальный ремонт двигателя",
+    "Замена навесного двигателя",
+    "Техническое обслуживание двигател",
+    "Диагностика ДВС",
+    "Консультация"
+  ];
 
   const [selectedModel, setSelectedModel] = useState(null);
-  const [selectedEngine, setSelectedEngine] = useState(null);
+  const [selectedServices, setSelectedServices] = useState([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Если передан defaultEngine → ищем в какой модели он есть
-  useEffect(() => {
-    if (!defaultEngine) return;
-
-    let foundModel = null;
-    for (const model in engines) {
-      if (engines[model].includes(defaultEngine)) {
-        foundModel = model;
-        break;
-      }
-    }
-
-    if (foundModel) {
-      setSelectedModel(foundModel);
-      setSelectedEngine(defaultEngine);
-    }
-  }, [defaultEngine]);
+  const toggleService = (service) => {
+    setSelectedServices(prev =>
+      prev.includes(service)
+        ? prev.filter(s => s !== service)
+        : [...prev, service]
+    );
+  };
 
   const handleSubmit = () => {
-    const message = `Клиент оставил заявку на ремонт двигателя:
-  - Модель: ${selectedModel}
-  - Двигатель: ${selectedEngine}
-  - Имя: ${name}
-  - Телефон: ${phone}`;
-  
-    const phoneNumber = "79852707575";
+    const message = `Клиент оставил заявку:
+Модель: ${selectedModel || "-"}
+Услуги:
+${selectedServices.map(s => "- " + s).join("\n")}
+Имя: ${name}
+Телефон: ${phone}`;
+
+    const phoneNumber = "79852707575"; 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   const isFormValid =
-    selectedEngine && name.trim() !== "" && phone.trim() !== "";
+    selectedModel && selectedServices.length > 0 && name.trim() && phone.trim();
 
   const handleNameChange = (e) => {
     const value = e.target.value;
-    if (/^[a-zA-Zа-яА-ЯёЁ\s-]*$/.test(value)) {
-      setName(value);
-    }
+    if (/^[a-zA-Zа-яА-ЯёЁ\s-]*$/.test(value)) setName(value);
   };
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
-    if (/^\+?\d*$/.test(value)) {
-      setPhone(value);
-    }
+    if (/^\+?\d*$/.test(value)) setPhone(value);
   };
+
+  // Разбиваем массивы на колонки
+  const halfModels = Math.ceil(models.length / 2);
+  const firstModelsCol = models.slice(0, halfModels);
+  const secondModelsCol = models.slice(halfModels);
+
+  const halfServices = Math.ceil(services.length / 2);
+  const firstServicesCol = services.slice(0, halfServices);
+  const secondServicesCol = services.slice(halfServices);
 
   return (
     <div className="QuizDvs">
       <div className="wrapper">
-        <h2>Запишись на ремонт двигателя</h2>
-        <div className="block">
-          {/* Шаг 1 - модель */}
-          <div className="row">
-            <h3>1. Выбери модель</h3>
-            {models.map((model, idx) => (
-              <div
-                key={idx}
-                className={`model_tab ${selectedModel === model ? "selected" : ""}`}
-                onClick={() => {
-                  setSelectedModel(model);
-                  setSelectedEngine(null);
-                }}
-              >
-                <span>{model}</span>
-              </div>
-            ))}
-          </div>
+        <h2>Запишись на ремонт коробки передач</h2>
 
-          {/* Шаг 2 - двигатель */}
-          {selectedModel && (
-            <div className="row">
-              <h3>2. Выбери двигатель</h3>
-              {engines[selectedModel].map((engine, idx) => (
+        {/* Выбор модели */}
+        <div className="block">
+        <div className="block">
+  <div className="row models">
+    <h3>Выбери модель BMW</h3>
+    {models.map((m, idx) => (
+      <div
+        key={idx}
+        className={`model_tab ${selectedModel === m ? "selected" : ""}`}
+        onClick={() => setSelectedModel(m)}
+      >
+        {m}
+      </div>
+    ))}
+  </div>
+</div>
+
+        </div>
+
+        {/* Выбор услуг */}
+        <div className="block">
+          {selectedModel && <div className="row services">
+            <h3>Выбери услуги</h3>
+            <div className="column">
+              {firstServicesCol.map((s, idx) => (
                 <div
                   key={idx}
-                  className={`model_tab ${selectedEngine === engine ? "selected" : ""}`}
-                  onClick={() => setSelectedEngine(engine)}
+                  className={`model_tab ${selectedServices.includes(s) ? "selected" : ""}`}
+                  onClick={() => toggleService(s)}
                 >
-                  <span>{engine}</span>
+                  {s}
                 </div>
               ))}
             </div>
-          )}
+            <div className="column">
+              {secondServicesCol.map((s, idx) => (
+                <div
+                  key={idx}
+                  className={`model_tab ${selectedServices.includes(s) ? "selected" : ""}`}
+                  onClick={() => toggleService(s)}
+                >
+                  {s}
+                </div>
+              ))}
+            </div>
+          </div>}
 
-          {/* Шаг 3 и 4 - данные */}
-          {selectedEngine && (
-            <>
-              <div className="row">
-                <h3>3. Введи имя</h3>
-                <input
-                  type="text"
-                  placeholder="Имя"
-                  value={name}
-                  onChange={handleNameChange}
-                />
-              </div>
+          {selectedServices.length !== 0 && <div className="row">
+            <h3>Имя</h3>
+            <input type="text" placeholder="Имя" value={name} onChange={handleNameChange} />
+          </div>}
 
-              <div className="row">
-                <h3>4. Введи телефон</h3>
-                <input
-                  type="text"
-                  placeholder="+7XXXXXXXXXX"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                />
-              </div>
-            </>
-          )}
+          {selectedServices.length !== 0 && <div className="row">
+            <h3>Телефон</h3>
+            <input type="text" placeholder="+7XXXXXXXXXX" value={phone} onChange={handlePhoneChange} />
+          </div>}
 
           <button
             onClick={isFormValid ? handleSubmit : undefined}

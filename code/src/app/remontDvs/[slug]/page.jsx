@@ -43,7 +43,7 @@ export default async function RemontDvsPage({ params }) {
         <div className="title_row">
             <div className="left">
                 <h1>Ремонт ДВС<br/>{data.name}</h1>
-                <span>- Гарантия на ремонт от 2-х лет</span>
+                <span>- Гарантия на ремонт до 2-х лет</span>
                 <span>- Мастера по КПП с опытом до 20 лет</span>
                 <a href='#Form' className='goform'>Записаться в автосервис</a>
             </div>

@@ -19,23 +19,42 @@ export default function Quiz({ propModel }) {
         { id: 9, name: 'BMW X5', image: '/images/cars/bmw-x5.png' },
         { id: 10, name: 'BMW X6', image: '/images/cars/bmw-x6.png' },
         { id: 11, name: 'BMW M5', image: '/images/cars/bmw-m5.png' },
+        { id: 12, name: 'Другая', image: null}
     ];
 
     const services = [
-        'Ремонт мехатроника АКПП',
-        'Замена масла в АКПП',
-        'Диагностика двигателя',
-        'Ремонт электрооборудования',
-        'Замена тормозных колодок',
-        'Регулировка развала-схождения'
-    ];
+        "Диагностика Авто",
+        "Консультация",
+
+        // АКПП
+        "Ремонт АКПП",
+        "Диагностика АКПП",
+      
+        // Двигатель
+        "Ремонт ДВС",
+        "Диагностика ДВС",
+      
+        // Подвеска
+        "Ремонт подвески",
+      
+        // Тормозная система
+        "Ремонт тормозной системы",
+      
+        // Система охлаждения
+        "Ремонт системы охлаждения",
+      
+        // Прочее
+        "Ремонт и замена аккумуляторов",
+        "Другое"
+      ];
+      
 
     // Состояние для выбранных услуг
     const [selectedServices, setSelectedServices] = useState([]);
     const [selectedModel, setSelectedModel] = useState(propModel || null);
     const [selectedSeries, setSelectedSeries] = useState(null);
 
-    const [connection, setConnection] = useState(0);
+    const [connection, setConnection] = useState(2);
     const [vinNumber, setVinNumber] = useState('');
     const [contact, setContact] = useState('');
 
@@ -67,14 +86,21 @@ export default function Quiz({ propModel }) {
     // Функция для перехода к следующему шагу
     const handleNextStep = () => {
         if (step === 5) {
-        handleSendMessage();
-        return;
+            handleSendMessage();
+            return;
         }
-        
+    
+        // Если модель "Другая" и мы на шаге 1 — сразу переходим на шаг 3
+        if (step === 1 && selectedModel === 'Другая') {
+            setSelectedSeries(null); // оставляем пустую строку
+            setStep(3);
+            return;
+        }
+    
         if (canProceedToNextStep()) {
-        setStep(step + 1);
+            setStep(step + 1);
         }
-    };
+    };    
 
     const bmwSeries = {
         'BMW 1': [
@@ -287,7 +313,7 @@ export default function Quiz({ propModel }) {
                     {step === 2 && <h3>Выберите кузов БМВ:</h3>}
                     {step === 3 && <h3>Выберите вид работ:</h3>}
                     {step === 4 && <h3>Введите VIN номер, сразу проверим стоимость и наличие запчастей:</h3>}
-                    {step === 5 && <h3>Для отправки расчета выберите удобный способ связи:</h3>}
+                    {step === 5 && <h3>Для отправки расчета введите ваш номер</h3>}
                     {step === 1 && (
                         <div className="content2">
                             {bmwModels.map(model => (
@@ -297,7 +323,8 @@ export default function Quiz({ propModel }) {
                                 onClick={() => setSelectedModel(model.name)}
                             >
                                 <div className="sq"></div>
-                                <img src={model.image} style={{width: '90px'}} alt="bmw" />
+                                {model.image && <img src={model.image} style={{width: '90px'}} alt="bmw" />}
+                                {!model.image && <div className='empty-image-for-other' style={{width: '90px'}}></div>}
                                 <span>{model.name}</span>
                             </div>
                             ))}
@@ -344,11 +371,6 @@ export default function Quiz({ propModel }) {
                         <span>*необязательное поле</span>
                     </div>}
                     {step === 5 && <div className='content5'>
-                        <div className="btns_row">
-                            <button onClick={() => setConnection(0)} className={connection === 0 ? 'selected' : ''}>Телефон</button>
-                            <button onClick={() => setConnection(1)} className={connection === 1 ? 'selected' : ''}>Telegram</button>
-                            <button onClick={() => setConnection(2)} className={connection === 2 ? 'selected' : ''}>Whatsapp</button>
-                        </div>
                         <div className="row">
                             <span>{connection === 0 ? 'Телефон' : connection === 1 ? 'Telegram' : 'Whatsapp'}</span>
                             <input 
@@ -366,17 +388,20 @@ export default function Quiz({ propModel }) {
                     </div>
                     <div className="right">
                         <button 
-                        className={step === 1 ? 'disabled' : ''} 
-                        onClick={() => {
-                            if (step !== 1) {
-                            setStep(step - 1);
-                            scrollToQuizTitle();
-                            }
-                        }}
+                            className={step === 1 ? 'disabled' : ''} 
+                            onClick={() => {
+                                if (step !== 1) {
+                                    if (step === 3 && selectedModel === 'Другая') {
+                                        setStep(1);
+                                    } else {
+                                        setStep(step - 1);
+                                    }
+                                    scrollToQuizTitle();
+                                }
+                            }}
                         >
-                        Назад
+                            Назад
                         </button>
-
                         <button 
                         className={!canProceedToNextStep() ? 'disabled' : ''} 
                         onClick={() => {
