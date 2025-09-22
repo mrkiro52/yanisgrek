@@ -75,7 +75,7 @@ export default function RemontAkpp() {
                     </div>
                 </div>
             </div>
-            <QuizAkpp defaultGearbox="" />
+            <QuizAkpp />
             <div className="problems_block">
                     <div className="problems_block_top">
                         <h1 className="title_problem">

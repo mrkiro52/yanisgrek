@@ -80,7 +80,7 @@ export default async function RemontAkppSpecial({ params }) {
             </div>
         </div>
       </div>
-      <QuizAkpp defaultGearbox={slug} />
+      <QuizAkpp />
       <div className="Service_why">
               <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>
