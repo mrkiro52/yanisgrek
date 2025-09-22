@@ -79,7 +79,7 @@ export default async function RemontDvsPage({ params }) {
             </div>
         </div>
       </div>
-      <QuizDvs defaultEngine={slug} />
+      <QuizDvs />
       <div className="Service_why">
                 <div className="Service_why__wrapper">
                 <h2>Почему стоит делать у нас?</h2>
