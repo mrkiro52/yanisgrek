@@ -22,8 +22,8 @@ export const revalidate = 60;
 export default async function Home() {
   const serviceSlugs = [
     'zamena-masla-v-akpp',
-    'kalibrovka-pnevmopodveski',
-    'remont-rulevoy-reyki',
+    'diagnostika-akpp',
+    'diagnostika-dvs',
   ];
 
   // Асинхронное чтение данных услуг из файлов

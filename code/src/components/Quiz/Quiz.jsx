@@ -263,36 +263,88 @@ export default function Quiz({ propModel }) {
         ]
     }
 
-    const generateWhatsAppMessage = () => {
+    // const generateWhatsAppMessage = () => {
+    //     // Определяем тип
+    //     const contactTypes = ['Телефон', 'Telegram', 'WhatsApp'];
+    //     const contactType = contactTypes[connection];
+        
+    //     // Формируем список услуг
+    //     const servicesList = selectedServices.map(service => `• ${service}`).join('%0A');
+        
+    //     // Формируем текст сообщения
+    //     const message = `
+    //   Модель: ${selectedModel || 'Не указана'} 
+    //   Серия: ${selectedSeries || 'Не указана'} 
+    //   VIN номер: ${vinNumber || 'Не указан'} 
+    //   Контакт для связи (${contactType}): ${contact || 'Не указан'} 
+      
+    //   Выбранные услуги:
+    //   ${servicesList}
+    //     `.trim();
+      
+    //     // Кодируем сообщение для URL
+    //     const encodedMessage = encodeURIComponent(message);
+        
+    //     return `https://wa.me/79852707575?text=${encodedMessage}`;
+    // };
+    
+    // const handleSendMessage = () => {
+    //     if (!canProceedToNextStep()) return;
+        
+    //     const whatsappUrl = generateWhatsAppMessage();
+    //     window.open(whatsappUrl, '_blank');
+    //   };
+
+    const sendTelegramMessage = async () => {
+        if (!canProceedToNextStep()) return;
+      
         // Определяем тип
-        const contactTypes = ['Телефон', 'Telegram', 'WhatsApp'];
+        const contactTypes = ["Телефон", "Telegram", "WhatsApp"];
         const contactType = contactTypes[connection];
-        
+      
         // Формируем список услуг
-        const servicesList = selectedServices.map(service => `• ${service}`).join('%0A');
-        
+        const servicesList = selectedServices.map(service => `• ${service}`).join("\n");
+      
         // Формируем текст сообщения
         const message = `
-      Модель: ${selectedModel || 'Не указана'} 
-      Серия: ${selectedSeries || 'Не указана'} 
-      VIN номер: ${vinNumber || 'Не указан'} 
-      Контакт для связи (${contactType}): ${contact || 'Не указан'} 
+      Модель: ${selectedModel || "Не указана"}
+      Серия: ${selectedSeries || "Не указана"}
+      VIN номер: ${vinNumber || "Не указан"}
+      Контакт для связи (${contactType}): ${contact || "Не указан"}
       
       Выбранные услуги:
       ${servicesList}
         `.trim();
       
-        // Кодируем сообщение для URL
-        const encodedMessage = encodeURIComponent(message);
-        
-        return `https://wa.me/79852707575?text=${encodedMessage}`;
-    };
-    
-    const handleSendMessage = () => {
-        if (!canProceedToNextStep()) return;
-        
-        const whatsappUrl = generateWhatsAppMessage();
-        window.open(whatsappUrl, '_blank');
+        // 🔑 данные для Telegram
+        const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ"; // получить у BotFather
+        const CHAT_ID = "-1002955332793"; // id группы/канала или личного чата
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+      
+        try {
+          const response = await fetch(URI_API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: message,
+              parse_mode: "HTML",
+            }),
+          });
+      
+          if (response.ok) {
+            alert("Заявка успешно отправлена в Telegram!");
+          } else {
+            alert("Ошибка при отправке. Попробуйте ещё раз.");
+          }
+        } catch (error) {
+          console.error("Ошибка отправки:", error);
+          alert("Не удалось отправить заявку.");
+        }
+      };
+      
+      const handleSendMessage = () => {
+        sendTelegramMessage();
       };
 
       const scrollToQuizTitle = () => {

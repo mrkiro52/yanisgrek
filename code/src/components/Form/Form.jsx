@@ -40,35 +40,55 @@ export default function Form() {
     return false;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Проверка рабочего времени
     if (selectedTime < "10:00" || selectedTime > "20:00") {
       alert("Выберите рабочее время автосервиса с 10:00 до 20:00");
       return;
     }
-
+  
     if (!formData.name || !formData.phone) {
       alert("Пожалуйста, заполните все обязательные поля.");
       return;
     }
-    
+  
     if (!validatePhone(formData.phone)) {
       alert("Неверный формат телефона.");
       return;
     }
-    
+  
     let message = `Заявка на диагностику:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}`;
     if (formData.vin) message += `\nVIN: ${formData.vin}`;
     message += `\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
-    
-    const encoded = encodeURIComponent(message);
-    const number = "79852707575";
-    
-    window.open(`https://wa.me/${number}?text=${encoded}`, "_blank");
-    
-  };
+  
+    // 🔑 данные бота
+    const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ"; // получаешь у @BotFather
+    const CHAT_ID = "-1002955332793"; // id твоей группы/чата/канала
+    const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+  
+    try {
+      const response = await fetch(URI_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+          parse_mode: "HTML",
+        }),
+      });
+  
+      if (response.ok) {
+        alert("Заявка успешно отправлена в Telegram!");
+      } else {
+        alert("Ошибка при отправке. Попробуйте ещё раз.");
+      }
+    } catch (error) {
+      console.error("Ошибка отправки:", error);
+      alert("Не удалось отправить заявку.");
+    }
+  };  
 
   return (
     <>
