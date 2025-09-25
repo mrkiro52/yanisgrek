@@ -85,18 +85,54 @@ export default function QuizDvs() {
     );
   };
 
-  const handleSubmit = () => {
-    const message = `Клиент оставил заявку:
-Модель: ${selectedModel || "-"}
-Услуги:
-${selectedServices.map(s => "- " + s).join("\n")}
-Имя: ${name}
-Телефон: ${phone}`;
-
-    const phoneNumber = "79852707575"; 
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+  const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";   // возьми у BotFather
+  const CHAT_ID = "-1002955332793";   // твой id или id группы
+  
+  const handleSubmit = async () => {
+    const message = `Клиент оставил заявку на ДВС:
+  Модель: ${selectedModel || "-"}
+  ДВС: ${slug}
+  Услуги:
+  ${selectedServices.map(s => "- " + s).join("\n")}
+  Имя: ${name}
+  Телефон: ${phone}`;
+  
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+          parse_mode: "HTML"
+        })
+      });
+  
+      if (response.ok) {
+        console.log("Сообщение отправлено в Telegram ✅");
+        
+        // 1. Очистка всех полей
+        setSelectedModel("");
+        setSelectedServices([]);
+        setName("");
+        setPhone("");
+  
+        // 2. Уведомление
+        alert("Заявка успешно отправлена!");
+        
+      } else {
+        console.error("Ошибка при отправке:", await response.text());
+        alert("Ошибка при отправке. Попробуйте ещё раз.");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+      alert("Ошибка при отправке. Попробуйте позже.");
+    }
   };
+  
+  
 
   const isFormValid =
     selectedModel && selectedServices.length > 0 && name.trim() && phone.trim();

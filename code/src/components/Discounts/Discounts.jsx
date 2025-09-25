@@ -33,23 +33,46 @@ export default function Discounts() {
     if (/^\+?\d*$/.test(value)) setPhone(value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!name || !phone) return;
-
+  
     const message = `Клиент записался на акцию:
-${activeDiscount.title}
-Имя: ${name}
-Телефон: ${phone}`;
-
-    const phoneNumber = "79852707575";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-
-    // Закрываем попап и сбрасываем поля
-    setActiveDiscount(null);
-    setName('');
-    setPhone('');
+  ${activeDiscount.title}
+  Имя: ${name}
+  Телефон: ${phone}`;
+  
+    const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
+    const CHAT_ID = "-1002955332793";
+    const URI_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  
+    try {
+      const response = await fetch(URI_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+        }),
+      });
+  
+      if (response.ok) {
+        // Очистка формы и закрытие модалки
+        setActiveDiscount(null);
+        setName('');
+        setPhone('');
+  
+        // Уведомление
+        alert("Заявка успешно отправлена!");
+      } else {
+        console.error("Ошибка при отправке:", await response.text());
+        alert("Ошибка при отправке. Попробуйте снова.");
+      }
+    } catch (error) {
+      console.error("Ошибка отправки в Telegram:", error);
+      alert("Ошибка при отправке. Попробуйте позже.");
+    }
   };
+  
 
   return (
     <section className="Discounts">
