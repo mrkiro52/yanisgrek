@@ -1,10 +1,18 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./QuizDvs.scss";
+import { usePathname } from 'next/navigation';
 
 export default function QuizDvs() {
-  const models = [
+  const pathname = usePathname(); // получаем полный путь
+  const slug = pathname.split("/").filter(Boolean).pop(); // вытаскиваем последний сегмент
+
+  useEffect(() => {
+    console.log("Slug страницы:", slug);
+  }, [slug]);
+
+  const allModels = [
     "BMW 1", "BMW 2", "BMW 3", "BMW 4",
     "BMW 5", "BMW 7", "BMW X1", "BMW X3",
     "BMW X5", "BMW X6", "BMW M5", "Другая"
@@ -20,6 +28,49 @@ export default function QuizDvs() {
     "Диагностика ДВС",
     "Консультация"
   ];
+
+  const engines = {
+    "b37d15": ["BMW 1", "BMW 2", "BMW 3"], // дизель 1.5, F20/F21/F22/F30
+    "b38b15": ["BMW 1", "BMW 2", "BMW 3", "BMW X1"], // бензин 1.5, много компактных
+    "b47d20": ["BMW 1", "BMW 2", "BMW 3", "BMW 5", "BMW X1", "BMW X3", "BMW X5"], // дизель 2.0
+    "b48-elektromotor": ["BMW X3"], // гибриды, но не в чистом виде
+    "b48b20": ["BMW 1", "BMW 2", "BMW 3", "BMW 4", "BMW 5", "BMW X1", "BMW X3"], // бензин 2.0 turbo
+    "b57d30": ["BMW 5", "BMW 7", "BMW X5", "BMW X6"], // дизель 3.0
+    "b58-elektromotor": ["BMW X5"], // гибридная установка
+    "b58b30": ["BMW 3", "BMW 4", "BMW 5", "BMW 7", "BMW X3", "BMW X5", "BMW X6"], // бензин 3.0 turbo
+    "i4-edrive40-m50": ["BMW i4"], // только i4
+    "ix-xdrive40-50-m60": ["BMW iX"], // только iX
+    "ix3-edrive80": ["BMW iX3"], // только iX3
+    "n13b16": ["BMW 1", "BMW 3"], // бензин 1.6 turbo, ставился в F20/F30
+    "n20-elektromotor-edrive": ["BMW 3"], // гибриды
+    "n20b16-n20b20": ["BMW 1", "BMW 3", "BMW 5", "BMW X3", "BMW X5"], // бензин 2.0 turbo
+    "n26b20": ["BMW 3"], // аналог N20 для США, чаще 3 серия
+    "n47d160-n47d20": ["BMW 1", "BMW 3", "BMW 5", "BMW X1", "BMW X3"], // дизель 2.0
+    "n52b30": ["BMW 3", "BMW 5", "BMW X3", "BMW X5"], // атмосферный 3.0
+    "n54b30": ["BMW 3", "BMW 5"], // ранний 3.0 turbo
+    "n55b30": ["BMW 3", "BMW 4", "BMW 5", "BMW X3", "BMW X5", "BMW X6"], // 3.0 turbo
+    "n57d30": ["BMW 3", "BMW 5", "BMW 7", "BMW X3", "BMW X5", "BMW X6"], // дизель 3.0
+    "n63b44-tu-tu2-tu3": ["BMW 5", "BMW 7", "BMW X5", "BMW X6", "BMW M5"], // 4.4 V8 twin turbo
+    "n63b44": ["BMW 5", "BMW 7", "BMW X5", "BMW X6"], // ранняя версия
+    "s55b30": ["BMW 3", "BMW 4"], // M3/M4
+    "s58b30": ["BMW 3", "BMW 4", "BMW X3", "BMW X4"], // новые M3/M4/X3M/X4M (X4 нет в списке, убираю)
+    "s63b44": ["BMW M5", "BMW X5", "BMW X6"], // M5/M X5M/X6M
+    "s68-elektromotor": ["BMW M5"], // гибриды M
+    "s68b44": ["BMW 7", "BMW X7", "BMW X5", "BMW X6", "BMW M5"], // новый V8 M (X7 нет в списке → убираем)
+  };
+
+  // Если slug есть в engines — используем его модели + "Другая", иначе — все модели
+  const [models, setModels] = useState(allModels);
+
+  useEffect(() => {
+    if (slug && engines[slug]) {
+      const newModels = [...engines[slug], "Другая"].filter((v, i, a) => a.indexOf(v) === i); // убираем дубликаты
+      setModels(newModels);
+    } else {
+      setModels(allModels);
+    }
+  }, [slug]);
+  
 
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedServices, setSelectedServices] = useState([]);
