@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./QuizAkpp.scss";
+import { usePathname } from 'next/navigation';
 
 export default function QuizAkpp() {
   const allModels = [
@@ -53,8 +54,8 @@ export default function QuizAkpp() {
 
 
       // Получаем slug из URL
-      const path = window.location.pathname;
-      const slug = path.split("/").filter(Boolean).pop();
+      const pathname = usePathname(); // получаем полный путь
+      const slug = pathname.split("/").filter(Boolean).pop(); // вытаскиваем последний сегмент
 
   useEffect(() => {
     if (slug && transmissions[slug]) {
