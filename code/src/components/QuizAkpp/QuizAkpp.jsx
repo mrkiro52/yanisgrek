@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./QuizAkpp.scss";
 
 export default function QuizAkpp() {
-  const models = [
+  const allModels = [
     "BMW 1", "BMW 2", "BMW 3", "BMW 4",
     "BMW 5", "BMW 7", "BMW X1", "BMW X3",
     "BMW X5", "BMW X6", "BMW M5", "Другая"
   ];
+
+  const [models, setModels] = useState(allModels);
 
   const services = [
     "Замена масла АКПП",
@@ -23,10 +25,44 @@ export default function QuizAkpp() {
     "Консультация"
   ];
 
+  const transmissions = {
+    "bmw-i4-1at": ["BMW i4", "Другая"],
+    "bmw-i7-1at": ["BMW i7", "Другая"],
+    "bmw-ix-1at": ["BMW iX", "Другая"],
+    "getrag-7dct300": ["BMW 1", "BMW 2", "BMW 3", "BMW 4"],
+    "getrag-7dct500": ["BMW 3", "BMW 4", "BMW 5"],
+    "getrag-7dct600": ["BMW 5", "BMW 7"],
+    "getrag-7dct700": ["BMW 7", "BMW X5", "BMW X6"],
+    "getrag-gs6-17bg": ["BMW 1", "BMW 2", "BMW 3"],
+    "getrag-gs6-45bz": ["BMW 3", "BMW 4", "BMW 5"],
+    "zf-8hp45": ["BMW 3", "BMW 4", "BMW X3"],
+    "zf-8hp50": ["BMW 4", "BMW 5", "BMW X3", "BMW X5"],
+    "zf-8hp51": ["BMW 5", "BMW 7"],
+    "zf-8hp70": ["BMW 7", "BMW X5", "BMW X6"],
+    "zf-8hp75": ["BMW 7", "BMW X5", "BMW X6", "BMW M5"],
+    "zf-8hp76": ["BMW X5", "BMW X6", "BMW M5"],
+    "zf-8hp90": ["BMW 7", "BMW X5", "BMW X6"],
+    "zf-gs6-45dz": ["BMW 1", "BMW 2", "BMW 3"],
+    "zf-gs6-53dz": ["BMW 3", "BMW 4", "BMW 5"],
+  };
+
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedServices, setSelectedServices] = useState([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    // Получаем slug из URL
+    const path = window.location.pathname;
+    const slug = path.split("/").filter(Boolean).pop();
+
+    if (slug && transmissions[slug]) {
+      // Обновляем models на основании выбранной коробки + "Другая"
+      setModels([...new Set([...transmissions[slug], "Другая"])]);
+    } else {
+      setModels(allModels);
+    }
+  }, []);
 
   const toggleService = (service) => {
     setSelectedServices(prev =>
@@ -76,26 +112,21 @@ ${selectedServices.map(s => "- " + s).join("\n")}
       <div className="wrapper">
         <h2>Запишись на ремонт коробки передач</h2>
 
-        {/* Выбор модели */}
         <div className="block">
-        <div className="block">
-  <div className="row models">
-    <h3>Выбери модель BMW</h3>
-    {models.map((m, idx) => (
-      <div
-        key={idx}
-        className={`model_tab ${selectedModel === m ? "selected" : ""}`}
-        onClick={() => setSelectedModel(m)}
-      >
-        {m}
-      </div>
-    ))}
-  </div>
-</div>
-
+          <div className="row models">
+            <h3>Выбери модель BMW</h3>
+            {models.map((m, idx) => (
+              <div
+                key={idx}
+                className={`model_tab ${selectedModel === m ? "selected" : ""}`}
+                onClick={() => setSelectedModel(m)}
+              >
+                {m}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Выбор услуг */}
         <div className="block">
           {selectedModel && <div className="row services">
             <h3>Выбери услуги</h3>

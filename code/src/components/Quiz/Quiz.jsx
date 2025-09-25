@@ -200,11 +200,11 @@ export default function Quiz({ propModel }) {
             "G11/G12 B48B20O 730i",
             "G11/G12 B47D20T 725d",
         ],
-        'BMW М5': [
+        'BMW M5': [
             "F10 S63 M5",
             "F90 S63B44T M5",
         ],
-        'BMW Х1': [
+        'BMW X1': [
             "F48 20i B48",
             "F48 18d B47",
             "F48 16d B37",
@@ -223,7 +223,7 @@ export default function Quiz({ propModel }) {
             "X3 G01 B57 30d",
             "X3 G01 B47 18d/20d",
         ],
-        'BMW Х5': [
+        'BMW X5': [
             "X5 E70 LCI N55 35i/40i",
             "X5 E70 LCI N57T 30D/40D",
             "X5 M E70 S63",
