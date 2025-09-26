@@ -65,7 +65,7 @@ export default function RemontAkpp() {
                         <div className="info">
                           <h1>Ремонт и диагностика АКПП</h1>
                           <p>- Гарантия на ремонт до 2-х лет</p>
-                          <p>- Мастера с опытом до 20 лет</p>
+                          <p>- Мастера с опытом более 15 лет</p>
                         </div>
                         <a href="#EngineSelector" className="choose">Выбрать модель</a>
                         <a href="#Form" className="goform">Оставить заявку</a>
