@@ -44,7 +44,7 @@ export default async function RemontAkppSpecial({ params }) {
           <div className="left">
             <h1>Ремонт {data.type}<br/>{data.name}</h1>
             <span>- Гарантия на ремонт до 2-х лет</span>
-            <span>- Мастера по КПП с опытом до 20 лет</span>
+            <span>- Мастера по АКПП с опытом более 15 лет</span>
             <a href='#Form' className='goform'>Записаться в автосервис</a>
           </div>
           <div className="image_wrapper">

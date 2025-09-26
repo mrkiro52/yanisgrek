@@ -1,5 +1,8 @@
 // Chillzone.scss
 .Chillzone {
+  img {
+    cursor: pointer;
+  }
   display: flex;
   gap: 20px;
   width: 100%;
@@ -97,4 +100,22 @@
       flex-direction: column;
     }
   }
+}
+
+
+.Fullscreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.Fullscreen__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; // сохраняет пропорции
 }

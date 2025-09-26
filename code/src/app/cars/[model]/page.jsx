@@ -74,7 +74,7 @@ export default async function CarPage({ params }) {
         <div className="first">
           <h1>Ремонт и диагностика {carInfo.title} у профессионалов</h1>
           <span>Гарантия на ремонт до 2-х лет</span>
-          <span>Мастера по АКПП с опытом до 20 лет</span>
+          <span>Мастера по АКПП с опытом более 15 лет</span>
           <div className="buttons">
             <a href='#Calculator' className='count'>Рассчитать стоимость</a>
             <a href='#Form' className='goform'>Записаться в автосервис</a>
