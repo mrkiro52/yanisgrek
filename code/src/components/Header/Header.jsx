@@ -42,15 +42,15 @@ export default function Header() {
                             <Link className='linkSmall' href="/contacts" onClick={() => handleLinkClick('/contacts')}>
                                 Контакты
                             </Link>
-                            {/* <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+                            <Link className='linkSmall' href='/'>
                                 Ремонт BMW
                             </Link>
-                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+                            <Link className='linkSmall' href='/'>
                                 Ремонт Rolls Royce
                             </Link>
-                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+                            <Link className='linkSmall' href='/'>
                                 Ремонт Mini Cooper
-                            </Link> */}
+                            </Link>
                         </div>
                         <div className="linksCol">
                             <Link className='linkTitle' href='/services' onClick={() => handleLinkClick('/services')}>УСЛУГИ YANIS GREK</Link>
