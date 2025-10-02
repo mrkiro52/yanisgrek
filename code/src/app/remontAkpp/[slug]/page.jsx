@@ -76,6 +76,7 @@ export default async function RemontAkppSpecial({ params }) {
             </div>
             <div className="block">
                 <h2>как увеличить срок службы {data.name}</h2>
+
                 <p>{data.kak_uvelichit_srok_slujby}</p>
             </div>
         </div>
