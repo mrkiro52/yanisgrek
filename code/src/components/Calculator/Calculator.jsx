@@ -313,43 +313,45 @@ export default function Calculator() {
           <div className="calculator_table__cell">Стоимость работ</div>
           <div className="calculator_table__cell">Общая стоимость</div>
         </div>
-        {filteredServices.map((s, idx) => {
-          const total = Number(s.part_price) + Number(s.labor_price);
-          return (
-            <div className="calculator_table__row" key={idx}>
-              <div className="calculator_table__cell--first">
-                <div
-                  className={`sq ${selectedRows[idx] ? 'selected' : ''}`}
-                  onClick={() => toggleRow(idx)}
-                >
-                  {selectedRows[idx] && (
-                    <Image
-                      src="/images/CheckmarkFill.png"
-                      alt="Checkmark"
-                      width={20}
-                      height={20}
-                      className="checkmark-icon"
-                      unoptimized
-                    />
-                  )}
+        {filteredServices
+          .filter(s => Number(s.part_price) !== 0 || Number(s.labor_price) !== 0)
+          .map((s, idx) => {
+            const total = Number(s.part_price) + Number(s.labor_price);
+            return (
+              <div className="calculator_table__row" key={idx}>
+                <div className="calculator_table__cell--first">
+                  <div
+                    className={`sq ${selectedRows[idx] ? 'selected' : ''}`}
+                    onClick={() => toggleRow(idx)}
+                  >
+                    {selectedRows[idx] && (
+                      <Image
+                        src="/images/CheckmarkFill.png"
+                        alt="Checkmark"
+                        width={20}
+                        height={20}
+                        className="checkmark-icon"
+                        unoptimized
+                      />
+                    )}
+                  </div>
+                  <span>{s.name}</span>
                 </div>
-                <span>{s.name}</span>
+                <div className="calculator_table__cell">
+                  {Number(s.part_price).toLocaleString()}
+                </div>
+                <div className="calculator_table__cell">
+                  {Number(s.labor_price).toLocaleString()}
+                </div>
+                <div className="calculator_table__cell">
+                  {total.toLocaleString()}
+                </div>
               </div>
-              <div className="calculator_table__cell">
-                {Number(s.part_price).toLocaleString()}
-              </div>
-              <div className="calculator_table__cell">
-                {Number(s.labor_price).toLocaleString()}
-              </div>
-              <div className="calculator_table__cell">
-                {total.toLocaleString()}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
         <div className="calculator_table__row">
           <div className="calculator_table__cell--second">
-            <div className="calculator_table__cell--second-left">итоговая стоимость</div>
+            <div className="calculator_table__cell--second-left">Итоговая стоимость</div>
             <div className="calculator_table__cell--second-right">{totalSum.toLocaleString()}</div>
           </div>
           <div className="calculator_table__cell--first-summ">
@@ -359,33 +361,37 @@ export default function Calculator() {
       </div>
 
       <div className="calculator_table__mobile">
-        {filteredServices.map((s, idx) => {
-          const total = Number(s.part_price) + Number(s.labor_price);
-          return (
-            <div className="card" key={idx} onClick={() => toggleRow(idx)}>
-              <div className="top">
-                <div className={`sq ${selectedRows[idx] ? 'selected' : ''}`}></div>
-                <span className="title">{s.name}</span>
-                <span className="price">{total.toLocaleString()}</span>
-              </div>
-              <div className="bottom">
-                <div className="left">
-                  <span className="title">Стоимость запчастей</span>
-                  <span className="price">{Number(s.part_price).toLocaleString()}</span>
+        {filteredServices
+          .filter(s => Number(s.part_price) !== 0 || Number(s.labor_price) !== 0)
+          .map((s, idx) => {
+            const total = Number(s.part_price) + Number(s.labor_price);
+            return (
+              <div className="card" key={idx} onClick={() => toggleRow(idx)}>
+                <div className="top">
+                  <div className={`sq ${selectedRows[idx] ? 'selected' : ''}`}></div>
+                  <span className="title">{s.name}</span>
+                  <span className="price">{total.toLocaleString()}</span>
                 </div>
-                <div className="right">
-                  <span className="title">Стоимость работы</span>
-                  <span className="price">{Number(s.labor_price).toLocaleString()}</span>
+                <div className="bottom">
+                  <div className="left">
+                    <span className="title">Стоимость запчастей</span>
+                    <span className="price">{Number(s.part_price).toLocaleString()}</span>
+                  </div>
+                  <div className="right">
+                    <span className="title">Стоимость работы</span>
+                    <span className="price">{Number(s.labor_price).toLocaleString()}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
         <div className="totalRow">
           <div className="textBlock">итоговая стоимость</div>
           <div className="sumBlock">{totalSum.toLocaleString()}</div>
         </div>
-        <span onClick={scrollToBottom} className="mobileFormButton"><a href="#Form">Записаться через форму</a></span>
+        <span onClick={scrollToBottom} className="mobileFormButton">
+          <a href="#Form">Записаться через форму</a>
+        </span>
       </div>
     </div>
   );

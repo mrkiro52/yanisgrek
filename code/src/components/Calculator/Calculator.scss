@@ -24,11 +24,12 @@
                 margin-bottom: 0;
                 & > span {
                     text-decoration: underline;
+                    font-family: 'Russo One';
                 }
             }
             & > a, span {
                 font-size: 24px;
-                font-family: 'Russo One';
+                font-family: 'Helvetica';
                 text-transform: uppercase;
                 &.red {
                     color: #BD001F;
@@ -53,7 +54,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-family: 'Russo One';
+                font-family: 'Helvetica';
                 font-size: 24;
                 color: #262626;
                 padding: 0px 32px;
@@ -92,6 +93,7 @@
             & > span {
                 font-size: 20px;
                 color: rgba(38, 38, 38, 1);
+                font-family: 'Helvetica';
             }
             &.selected {
                 width: 473px;
@@ -119,7 +121,7 @@
                 background: #bababa; /* фон левой части */
                 color: #000;
                 font-size: 24px;
-                font-family: Russo One, sans-serif;
+                font-family: 'Helvetica', sans-serif;
                 padding: 0px 20px;
             }
             & > .model-select__control {
@@ -165,7 +167,7 @@
                 background: #bababa; /* фон левой секции */
                 color: #000;
                 font-size: 24px;
-                font-family: Russo One, sans-serif;
+                font-family: 'Helvetica', sans-serif;
                 padding: 0px 20px;
             }
             & > .mileage-input__control {
@@ -209,7 +211,7 @@
                 height: 56px;
                 background-color: white;
                 color: black;
-                font-family: Russo One, sans-serif;
+                font-family: "Helvetica", sans-serif;
                 font-size: 24px;
                 cursor: pointer;
                 &.selected {

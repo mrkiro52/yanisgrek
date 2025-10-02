@@ -8,6 +8,7 @@ import TeamBlock from "../../components/TeamBlock/TeamBlock";
 import Discounts from "../../components/Discounts/Discounts";
 import Chillzone from "../../components/Chillzone/Chillzone";
 import QuizDvs from "../../components/QuizDvs/QuizDvs";
+import WhyUs from "../../components/WhyUs/WhyUs";
 
 export default function RemontDvs() {
     
@@ -110,87 +111,9 @@ export default function RemontDvs() {
                 firstColumnHeader="Название"
                 secondColumnHeader="Модели BMW"
                 type="remontDvs"
+                propActiveIndex={0}
             />
             <Discounts/>
-            <div className="Service_why">
-                <div className="Service_why__wrapper">
-                <h2>Почему стоит делать у нас?</h2>
-                <div className="row">
-                    <div className="block">
-                    <Image
-                        src="/images/why1.png"
-                        alt="Phone Call"
-                        width={124} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Оригинальные или сертифицированные запчасти</span>
-                    </div>
-                    <div className="block">
-                    <Image
-                        src="/images/why2.png"
-                        alt="Phone Call"
-                        width={124} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Оборудование как в официальных сервисах</span>
-                    </div>
-                    <div className="block">
-                    <Image
-                        src="/images/why3.png"
-                        alt="Phone Call"
-                        width={124} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Мастера с опытом по BMW от 10 лет</span>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="block">
-                    <Image
-                        src="/images/why4.png"
-                        alt="Phone Call"
-                        width={134} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Гарантия на ремонт до 2-х лет</span>
-                    </div>
-                    <div className="block">
-                    <Image
-                        src="/images/why5.png"
-                        alt="Phone Call"
-                        width={104} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Честная цена</span>
-                    </div>
-                    <div className="block">
-                    <Image
-                        src="/images/why6.png"
-                        alt="Phone Call"
-                        width={112} // укажи нужную ширину
-                        height={124} // и высоту
-                        priority // если важно для LCP
-                    />
-                    <span>Быстрая запись прямо на сайте</span>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div style={{paddingTop: "130px"}}></div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
-                  <div style={{paddingBottom: "130px"}}></div>
-                  <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
-                `,
-              }}
-            />
             <div className="Service_steps">
                 <div className="Service_steps__wrapper">
                     <h2>Этапы работы</h2>
@@ -230,6 +153,17 @@ export default function RemontDvs() {
                     </div>
                 </div>
             </div>
+            <WhyUs/>
+            <div style={{paddingTop: "130px"}}></div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
+                  <div style={{paddingBottom: "130px"}}></div>
+                  <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+                `,
+              }}
+            />
             <TeamBlock/>
             <div className="Service_phone">
                 <div className="Service_phone__wrapper">

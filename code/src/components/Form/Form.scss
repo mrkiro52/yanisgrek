@@ -74,6 +74,9 @@ input {
     position: relative;
     z-index: 2;
     padding: 120px 0 0 120px;
+    & > h2 {
+      font-family: 'Russo One';
+    }
   }
   
   @media screen and (max-width: 740px) {

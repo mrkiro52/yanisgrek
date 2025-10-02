@@ -285,7 +285,7 @@ export default function Quiz({ propModel }) {
     //     // Кодируем сообщение для URL
     //     const encodedMessage = encodeURIComponent(message);
         
-    //     return `https://wa.me/79852707575?text=${encodedMessage}`;
+    //     return `https://wa.me/74957676500?text=${encodedMessage}`;
     // };
     
     // const handleSendMessage = () => {
