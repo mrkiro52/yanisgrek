@@ -42,33 +42,34 @@ export default function Header() {
                             <Link className='linkSmall' href="/contacts" onClick={() => handleLinkClick('/contacts')}>
                                 Контакты
                             </Link>
-
-                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+                            <Link className='linkSmall' href='/'>
                                 Ремонт BMW
                             </Link>
-                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
+                            <Link className='linkSmall' href='/'>
                                 Ремонт Rolls Royce
                             </Link>
-                            <Link className='linkSmall' href="/cars/" onClick={() => handleLinkClick('/cars/')}>
-
+                            <Link className='linkSmall' href='/'>
                                 Ремонт Mini Cooper
                             </Link>
                         </div>
                         <div className="linksCol">
                             <Link className='linkTitle' href='/services' onClick={() => handleLinkClick('/services')}>УСЛУГИ YANIS GREK</Link>
+                            <Link className='linkSmall' href="/services" onClick={() => handleLinkClick('/services')}>
+                                Все услуги
+                            </Link>
                             <Link className='linkSmall' href="/remontAkpp" onClick={() => handleLinkClick('/remontAkpp')}>
-                                Ремонт АКПП (МКПП и др.)
+                                Ремонт АКПП
+                            </Link>
+                            <Link className='linkSmall' href="/remontMkpp" onClick={() => handleLinkClick('/remontMkpp')}>
+                                Ремонт МКПП
                             </Link>
                             <Link className='linkSmall' href="/remontDvs" onClick={() => handleLinkClick('/remontDvs')}>
                                 Ремонт ДВС
                             </Link>
-                            <Link className='linkSmall' href="/services" onClick={() => handleLinkClick('/services')}>
-                                Все услуги автосервиса YanisGrek...
-                            </Link>
                         </div>
                     </div>
                     <div className="buttons">
-                        <a href="https://wa.me/79852707575" target="_blank" className='phone_link'>+7 495 76-76-500</a>
+                        <a href="https://wa.me/74957676500" target="_blank" className='phone_link'>+7 495 76-76-500</a>
                         <span><a href="https://maps.app.goo.gl/TH4XvY6H5MPaXN8w6" target='_blank'>Москва, Высоковольтный проезд, 1, стр. 29</a></span>
                         <span>Пн-Пт: 10:00-20:00</span>
                         <span>Сб: 11:00-20:00</span>
@@ -94,7 +95,7 @@ export default function Header() {
                     <span><a href="https://maps.app.goo.gl/kGVW3gsNcMsAKSQF7" target='_blank'>Москва</a></span>
                     <span><a href="https://maps.app.goo.gl/kGVW3gsNcMsAKSQF7" target='_blank'>Высоковольтный проезд, 1, стр. 29</a></span>
                 </div>
-                <a href="https://wa.me/79852707575" target="_blank" className='phone'>+7 495 76-76-500</a>
+                <a href="https://wa.me/74957676500" target="_blank" className='phone'>+7 495 76-76-500</a>
             </div>
         </div>
     );

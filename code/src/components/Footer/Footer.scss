@@ -36,9 +36,6 @@
                     color: rgba(234, 236, 240, 1);
                     margin: 0;
                     transition: all 0.2s;
-                    &:hover {
-                        font-weight: 700;
-                    }
                 }
             }
         }
@@ -75,31 +72,10 @@
         & > .first {
             width: 100%;
             padding: 48px 24px;
-            & > .first__wrapper {
-                & > .col {
-                    & > p {
-        
-                    }
-                    & > span {
-        
-                    }
-                    & > a {
-        
-                    }
-                }
-            }
         }
         & > .second {
             width: 100%;
             padding: 48px 24px;
-            & > .second__wrapper {
-                & > span {
-    
-                }
-                & > .links {
-                    
-                }
-            }
         }
     }
 }
@@ -113,25 +89,6 @@
                 & > .col {
                     width: 49%;
                     flex-shrink: 0;
-                    & > p {
-        
-                    }
-                    & > span {
-        
-                    }
-                    & > a {
-        
-                    }
-                }
-            }
-        }
-        & > .second {
-            & > .second__wrapper {
-                & > span {
-    
-                }
-                & > .links {
-                    
                 }
             }
         }
@@ -146,15 +103,6 @@
                 & > .col {
                     gap: 12px;
                     width: 100%;
-                    & > p {
-        
-                    }
-                    & > span {
-        
-                    }
-                    & > a {
-        
-                    }
                 }
             }
         }
@@ -164,9 +112,6 @@
                 flex-direction: column;
                 & > span {
                     text-align: center;
-                }
-                & > .links {
-                    
                 }
             }
         }

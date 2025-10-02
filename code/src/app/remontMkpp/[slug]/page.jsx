@@ -23,7 +23,7 @@ export async function generateStaticParams() {
     .map(f => ({ slug: f.replace(/\.json$/, '') }));
 }
 
-export default async function RemontAkppSpecial({ params }) {
+export default async function RemontMkppSpecial({ params }) {
   const { slug } = params;
 
   const filePath = path.join(
@@ -38,7 +38,7 @@ export default async function RemontAkppSpecial({ params }) {
   const data = JSON.parse(fileRaw);
 
   return (
-    <div className="RemontAkppSpecial">
+    <div className="RemontMkppSpecial">
       <Header/>
       <div className="wrapper">
         <div className="title_row">
@@ -76,7 +76,6 @@ export default async function RemontAkppSpecial({ params }) {
             </div>
             <div className="block">
                 <h2>как увеличить срок службы {data.name}</h2>
-
                 <p>{data.kak_uvelichit_srok_slujby}</p>
             </div>
         </div>

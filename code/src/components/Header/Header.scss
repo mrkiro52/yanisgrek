@@ -17,12 +17,18 @@
       display: flex;
       flex-direction: column;
       gap: 0px;
+      & > span {
+        font-family: 'Helvetica';
+      }
     }
     & > .burger {
       cursor: pointer;
     }
     & > .logo {
       cursor: pointer;
+    }
+    & > a {
+      font-family: 'Helvetica';
     }
   }
   & > .menu {

@@ -9,13 +9,13 @@ export default function Discounts() {
       id: 1,
       title: "Скидка 30% на замену масла АКПП и агрегатах",
       description: "Комплексная диагностика авто - бесплатно. Акция до 31.08.2025. Подробности уточняйте у менеджеров технического центра YanisGrek",
-      image: "/images/servicesImages/zamena-masla-v-akpp.jpg"
+      image: "/images/banner1.png"
     },
     {
       id: 2,
       title: "Скидка 30% на обслуживание и перезаправку системы кондиционирования",
       description: "Акция до 31.08.2025. Подробности уточняйте у менеджеров технического центра YanisGrek",
-      image: "/images/servicesImages/antibakterialnaya-obrabotka-konditsionera.jpg"
+      image: "/images/banner2.png"
     },
   ];
 
@@ -87,8 +87,8 @@ export default function Discounts() {
               onClick={() => setActiveDiscount(discount)}
             >
               <div className="Discounts__content">
-                <h3 className="Discounts__item-title">{discount.title}</h3>
-                <p className="Discounts__item-description">{discount.description}</p>
+                {/* <h3 className="Discounts__item-title">{discount.title}</h3>
+                <p className="Discounts__item-description">{discount.description}</p> */}
               </div>
             </div>
           ))}

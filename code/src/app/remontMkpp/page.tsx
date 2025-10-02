@@ -10,7 +10,7 @@ import Chillzone from "../../components/Chillzone/Chillzone";
 import QuizAkpp from "../../components/QuizAkpp/QuizAkpp";
 import WhyUs from "../../components/WhyUs/WhyUs";
 
-export default function RemontAkpp() {
+export default function RemontMkpp() {
 
     const categories = [
         {
@@ -58,13 +58,13 @@ export default function RemontAkpp() {
       ];
 
     return (
-        <div className="RemontAkpp">
+        <div className="RemontMkpp">
             <Header />
             <div className="Startscreen"> 
                 <div className="content">
                     <div className="left">
                         <div className="info">
-                          <h1>Ремонт и диагностика АКПП</h1>
+                          <h1>Ремонт и диагностика МКПП</h1>
                           <p>- Гарантия на ремонт до 2-х лет</p>
                           <p>- Мастера с опытом более 15 лет</p>
                         </div>
@@ -107,8 +107,8 @@ export default function RemontAkpp() {
                 categories={categories}
                 firstColumnHeader="Название"
                 secondColumnHeader="Модели BMW"
-                type="remontAkpp"
-                propActiveIndex={1}
+                type="RemontMkpp"
+                propActiveIndex={0}
             />
             <Discounts/>
             <div className="Service_steps">
