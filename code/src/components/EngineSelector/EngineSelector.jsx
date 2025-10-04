@@ -54,7 +54,7 @@ const EngineSelector = ({
             </tr>
           </thead>
           <tbody>
-            {activeCategory.items.map((item, idx) => (
+            {activeCategory?.items?.map((item, idx) => (
               <tr key={idx}>
                 <td>
                   <Link href={`/${type}/${item.path}`} style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
@@ -69,9 +69,9 @@ const EngineSelector = ({
         </table>
 
         <p className="hint">* Нажмите на название для перехода на соответствующую страницу</p>
-        {activeCategory.note && (
+        {activeCategory?.note && (
           <a href="https://wa.me/74957676500" target="_blank">
-            <p className="note">{activeCategory.note}</p>
+            <p className="note">{activeCategory?.note}</p>
           </a>
         )}
       </div>
