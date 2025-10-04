@@ -215,8 +215,8 @@ export default function Form() {
             </div>
             <div className="contacts-info-block">
               <h2 className="title-contacts-info">Телефоны</h2>
-              <a href="https://wa.me/+74957676500" target="_blank">
-                +7 (495) 76-76-500
+              <a href="https://wa.me/+79852707575" target="_blank">
+                +7 985 270 75 75
               </a>
               <p>Запишитесь по телефону</p>
             </div>

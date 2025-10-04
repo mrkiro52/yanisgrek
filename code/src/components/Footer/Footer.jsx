@@ -10,7 +10,7 @@ export default function Footer() {
                         <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
                         <p>Первый автосервис BMW с человеческим подходом.</p>
                         <p><a href="https://maps.app.goo.gl/TH4XvY6H5MPaXN8w6" target='_blank'>Москва, Высоковольтный проезд, 1, стр. 29</a></p>
-                        <p><a href="tel:+74957676500" target='_blankс'>+7 (495) 76 76 500</a></p>
+                        <p><a href="tel:+79852707575" target='_blankс'>+7 985 270 75 75</a></p>
                         <p>Пн-Пт: 10:00-20:00</p>
                         <p>Сб: 11:00-20:00</p>
                         <p>Вс: 11:00-18:00</p>
