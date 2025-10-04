@@ -80,17 +80,7 @@ export default function Discounts() {
         <h2 className="Discounts__title">Акции</h2>
         <div className="Discounts__list">
           {discounts.map(discount => (
-            <div 
-              key={discount.id} 
-              className="Discounts__item"
-              style={{ backgroundImage: `url(${discount.image})` }}
-              onClick={() => setActiveDiscount(discount)}
-            >
-              <div className="Discounts__content">
-                {/* <h3 className="Discounts__item-title">{discount.title}</h3>
-                <p className="Discounts__item-description">{discount.description}</p> */}
-              </div>
-            </div>
+              <img key={discount.id}  src={discount.image} className="Discounts__item" alt="discount" onClick={() => setActiveDiscount(discount)}/>
           ))}
         </div>
       </div>

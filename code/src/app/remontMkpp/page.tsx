@@ -21,7 +21,7 @@ export default function RemontMkpp() {
             { name: 'ZF GS6-53DZ', models: 'F80 M3, F82 M4', path: 'zf-gs6-53dz' },
             { name: 'ZF GS6-45DZ', models: 'G20, G21, G42, G87 (M2, 3 серии)', path: 'zf-gs6-45dz' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
         {
           title: 'АКПП',
@@ -34,7 +34,7 @@ export default function RemontMkpp() {
             { name: 'ZF 8HP76', models: 'G05, G06, G07 (X5, X6, X7)', path: 'zf-8hp76' },
             { name: 'ZF 8HP90', models: 'F90 M5, F92 M8, G80 M3, G82 M4', path: 'zf-8hp90' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
         {
           title: 'DCT',
@@ -44,7 +44,7 @@ export default function RemontMkpp() {
             { name: 'Getrag 7DCT600', models: 'F80 M3, F82 M4, F10 M5, F13 M6', path: 'getrag-7dct600' },
             { name: 'Getrag 7DCT700', models: 'F90 M5, F92 M8', path: 'getrag-7dct700' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
         {
             title: 'Электро',
@@ -53,7 +53,7 @@ export default function RemontMkpp() {
               { name: 'BMW i4 1AT', models: 'i4', path: 'bmw-i4-1at' },
               { name: 'BMW i7 1AT', models: 'i7', path: 'bmw-i7-1at' },
             ],
-            note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+            note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
           },
       ];
 
@@ -174,7 +174,7 @@ export default function RemontMkpp() {
                 <div className="block">
                   <h2>Получите консультацию по услугам и ценам по телефону</h2>
                   <span>
-                    <a href="tel:+74957676500">+7 (495) 76-76-500</a>
+                    <a href="tel:+79852707575">+7 985 270 75 75</a>
                   </span>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const EngineSelector = ({
 }) => {
   const LOCAL_STORAGE_KEY = `EngineSelector_${type}_activeTab`;
 
-  const [activeIndex, setActiveIndex] = useState(propActiveIndex);
+  const [activeIndex, setActiveIndex] = useState( );
 
   useEffect(() => {
     const savedIndex = localStorage.getItem(LOCAL_STORAGE_KEY);

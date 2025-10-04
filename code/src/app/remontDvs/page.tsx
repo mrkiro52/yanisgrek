@@ -33,7 +33,7 @@ export default function RemontDvs() {
             { name: 'S63B44', models: 'G90 M5, G15 M8, G05 X5 M', path: 's63b44' },
             { name: 'S68B44', models: 'G70 760i, G99 X5 M', path: 's68b44' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
         {
           title: 'Гибрид/Электро',
@@ -46,7 +46,7 @@ export default function RemontDvs() {
             { name: 'i4 eDrive 40 / M50', models: 'G26 i4', path: 'i4-edrive40-m50' },
             { name: 'iX xDrive 40 / 50 / M60', models: 'G09 iX', path: 'ix-xdrive40-50-m60' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
         {
           title: 'Дизельный',
@@ -57,7 +57,7 @@ export default function RemontDvs() {
             { name: 'B47D20', models: 'F30, G20, G30, G01, G11 (320d, 520d, X3 20d)', path: 'b47d20' },
             { name: 'B57D30', models: 'G30, G11, G01, G05, G07 (530d, 730d, X3 30d, X5 30d)', path: 'b57d30' },
           ],
-          note: '* Стоимость услуг уточняйте по номеру +7 495 76 76 500',
+          note: '* Стоимость услуг уточняйте по номеру +7 985 270 75 75',
         },
       ];      
 
@@ -177,7 +177,7 @@ export default function RemontDvs() {
                 <div className="block">
                     <h2>Получите консультацию по услугам и ценам по телефону</h2>
                     <span>
-                        <a href="tel:+74957676500">+7 (495) 76-76-500</a>
+                        <a href="tel:+79852707575">+7 985 270 75 75</a>
                     </span>
                 </div>
                 </div>
