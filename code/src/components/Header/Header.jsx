@@ -60,7 +60,7 @@ export default function Header() {
                         </div>
                     </div>
                     <div className="buttons">
-                        <a href="https://wa.me/79852707575" target="_blank" className='phone_link'>+7 985 270 75 75</a>
+                        <a href="tel:74957676500" target="_blank" className='phone_link'>+7 495 76 76 500</a>
                         <span><a href="https://maps.app.goo.gl/TH4XvY6H5MPaXN8w6" target='_blank'>Москва, Высоковольтный проезд, 1, стр. 29</a></span>
                         <span>Пн-Пт: 10:00-20:00</span>
                         <span>Сб: 11:00-20:00</span>
@@ -86,7 +86,7 @@ export default function Header() {
                     <span><a href="https://maps.app.goo.gl/kGVW3gsNcMsAKSQF7" target='_blank'>Москва</a></span>
                     <span><a href="https://maps.app.goo.gl/kGVW3gsNcMsAKSQF7" target='_blank'>Высоковольтный проезд, 1, стр. 29</a></span>
                 </div>
-                <a href="https://wa.me/+79852707575" target="_blank" className='phone'>+7 985 270 75 75</a>
+                <a href="tel:+74957676500" target="_blank" className='phone'>+7 495 76 76 500</a>
             </div>
         </div>
     );

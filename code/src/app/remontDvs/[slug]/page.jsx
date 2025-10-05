@@ -139,7 +139,7 @@ export default async function RemontDvsPage({ params }) {
           <div className="block">
               <h2>Получите консультацию по услугам и ценам по телефону</h2>
               <span>
-                  <a href="tel:+79852707575">+7 985 270 75 75</a>
+                  <a href="tel:+74957676500">+7 495 76 76 500</a>
               </span>
           </div>
           </div>
