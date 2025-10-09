@@ -21,10 +21,15 @@ const problemsImages = [
 ];
 
 const images = [
-  { src: "/images/alexandr_director.jpg", caption: "Александр — управляющий" },
-  { src: "/images/maksim_master.jpg", caption: "Максим — мастер" },
-  { src: "/images/vitaly.jpg", caption: "Виталий — специалист" },
-  { src: "/images/dmitry.jpg", caption: "Дмитрий — инженер" },
+  { src: "/images/worker5.jpg", caption: "Александр - директор автосервиса" },
+  { src: "/images/worker9.jpg", caption: "Максим - мастер приемщик" },
+  { src: "/images/worker1.jpg", caption: "Сергей - механик" },
+  { src: "/images/worker6.jpg", caption: "Дмитрий - мастер приемщик" },
+  { src: "/images/worker2.jpg", caption: "Александр - механик" },
+  { src: "/images/worker4.jpg", caption: "Тимур - мастер приемщик" },
+  { src: "/images/worker3.jpg", caption: "Гайрат - механик" },
+  { src: "/images/worker7.jpg", caption: "Олег - механик" },
+  { src: "/images/worker8.jpg", caption: "Виталий - механик" },
 ];
 
 export default function AboutPage() {
