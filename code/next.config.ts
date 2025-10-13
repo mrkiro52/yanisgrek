@@ -32,9 +32,19 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/service',
+        destination: '/services',
+        permanent: true,
+      },
+      {
         source: '/service/',
         destination: '/services',
-        permanent: true, // 301
+        permanent: true,
+      },
+      {
+        source: '/pricelist',
+        destination: '/services',
+        permanent: true,
       },
       {
         source: '/pricelist/',
@@ -47,13 +57,33 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/contacts.php/',
+        destination: '/contacts',
+        permanent: true,
+      },
+      {
+        source: '/stock',
+        destination: '/services',
+        permanent: true,
+      },
+      {
         source: '/stock/',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/zapchasti',
         destination: '/services',
         permanent: true,
       },
       {
         source: '/zapchasti/',
         destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/avtoservis-bmw-x5',
+        destination: '/cars/bmw-x5',
         permanent: true,
       },
       {
@@ -64,6 +94,16 @@ const nextConfig: NextConfig = {
       {
         source: '/remont-akpp',
         destination: '/remontAkpp',
+        permanent: true,
+      },
+      {
+        source: '/remont-akpp/',
+        destination: '/remontAkpp',
+        permanent: true,
+      },
+      {
+        source: '/video',
+        destination: '/',
         permanent: true,
       },
       {
