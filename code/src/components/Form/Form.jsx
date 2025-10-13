@@ -81,6 +81,9 @@ export default function Form() {
   
       if (response.ok) {
         alert("Заявка успешно отправлена в Telegram!");
+        if (typeof ym !== "undefined") {
+          ym(94203012, 'reachGoal', 'formSent');
+        }
       } else {
         alert("Ошибка при отправке. Попробуйте ещё раз.");
       }
