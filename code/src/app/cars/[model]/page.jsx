@@ -112,9 +112,9 @@ export default async function CarPage({ params }) {
       <Calculator />
       {propModel ? <Quiz propModel={propModel} /> : <Quiz />}
       <div style={{paddingTop: "130px"}}></div>
-      <review-lab data-widgetid="68adc1e5122d897a4957fded"></review-lab>
-      <div style={{paddingBottom: "130px"}}></div>
+      <review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab>
       <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+      <div style={{paddingBottom: "130px"}}></div>
       <Chillzone/>
       <Form />
     </div>
