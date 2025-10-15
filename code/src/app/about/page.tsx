@@ -7,6 +7,7 @@ import Image from 'next/image';
 import TeamBlock from '../../components/TeamBlock/TeamBlock';
 import Discounts from '../../components/Discounts/Discounts';
 import Chillzone from '../../components/Chillzone/Chillzone';
+import WhyUs from '../../components/WhyUs/WhyUs';
 
 const problemsImages = [
   { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "" },
@@ -20,12 +21,15 @@ const problemsImages = [
 ];
 
 const images = [
-  { src: "/images/alexandr_director.jpg", caption: "Александр — управляющий" },
-  { src: "/images/alexandr_master.jpg", caption: "Александр — мастер" },
-  { src: "/images/maksim_master.jpg", caption: "Максим — мастер" },
-  { src: "/images/vitaly.jpg", caption: "Виталий — специалист" },
-  { src: "/images/murad.jpg", caption: "Мурад — механик" },
-  { src: "/images/dmitry.jpg", caption: "Дмитрий — инженер" },
+  { src: "/images/worker5.jpg", caption: "Александр - директор автосервиса" },
+  { src: "/images/worker9.jpg", caption: "Максим - мастер приемщик" },
+  { src: "/images/worker1.jpg", caption: "Сергей - механик" },
+  { src: "/images/worker6.jpg", caption: "Дмитрий - мастер приемщик" },
+  { src: "/images/worker2.jpg", caption: "Александр - механик" },
+  { src: "/images/worker4.jpg", caption: "Тимур - мастер приемщик" },
+  { src: "/images/worker3.jpg", caption: "Гайрат - механик" },
+  { src: "/images/worker7.jpg", caption: "Олег - механик" },
+  { src: "/images/worker8.jpg", caption: "Виталий - механик" },
 ];
 
 export default function AboutPage() {
@@ -97,75 +101,7 @@ export default function AboutPage() {
         </div>
       </div>
       <Discounts/>
-      <div className="Service_why">
-              <div className="Service_why__wrapper">
-                <h2>Почему стоит делать у нас?</h2>
-                <div className="row">
-                  <div className="block">
-                    <Image
-                      src="/images/why1.png"
-                      alt="Phone Call"
-                      width={124} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Оригинальные или сертифицированные запчасти</span>
-                  </div>
-                  <div className="block">
-                    <Image
-                      src="/images/why2.png"
-                      alt="Phone Call"
-                      width={124} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Оборудование как в официальных сервисах</span>
-                  </div>
-                  <div className="block">
-                    <Image
-                      src="/images/why3.png"
-                      alt="Phone Call"
-                      width={124} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Мастера с опытом по BMW от 10 лет</span>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="block">
-                    <Image
-                      src="/images/why4.png"
-                      alt="Phone Call"
-                      width={134} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Гарантия на ремонт до 2-х лет</span>
-                  </div>
-                  <div className="block">
-                    <Image
-                      src="/images/why5.png"
-                      alt="Phone Call"
-                      width={104} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Честная цена</span>
-                  </div>
-                  <div className="block">
-                    <Image
-                      src="/images/why6.png"
-                      alt="Phone Call"
-                      width={112} // укажи нужную ширину
-                      height={124} // и высоту
-                      priority // если важно для LCP
-                    />
-                    <span>Быстрая запись прямо на сайте</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <WhyUs/>
       <div className="block_about_from_founder">
         <h1 className="hero_title">
         Работа без излишнего пафоса, исключительно человеческий подход.

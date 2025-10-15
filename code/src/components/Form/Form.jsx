@@ -81,6 +81,9 @@ export default function Form() {
   
       if (response.ok) {
         alert("Заявка успешно отправлена в Telegram!");
+        if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
+          window.ym(94203012, 'reachGoal', 'formSent');
+        }        
       } else {
         alert("Ошибка при отправке. Попробуйте ещё раз.");
       }
@@ -102,7 +105,7 @@ export default function Form() {
 
         <div className="ContactFormSection">
           <h2>
-            Отсавь заявку, <br />
+            Оставь заявку, <br />
             выбрав день и время
           </h2>
 
@@ -215,8 +218,8 @@ export default function Form() {
             </div>
             <div className="contacts-info-block">
               <h2 className="title-contacts-info">Телефоны</h2>
-              <a href="https://wa.me/+79852707575" target="_blank">
-                +7 (495) 76-76-500
+              <a href="tel:+74957676500" target="_blank">
+               +7 495 76 76 500
               </a>
               <p>Запишитесь по телефону</p>
             </div>

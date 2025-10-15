@@ -22,6 +22,7 @@
       & > .about_title {
         font-size: 96px;
         padding: 120px;
+        font-family: 'Russo One';
 
         & > h1.title { font-size: 24px; }
         & > p.subtitle { font-family: Helvetica; font-size: 20px; }
@@ -100,6 +101,7 @@
           font-size: 36px;
           text-transform: uppercase;
           line-height: 103%;
+          font-family: 'Russo One';
           padding-bottom: 40px;
         }
         & > p.description_block_about {
@@ -164,6 +166,7 @@
       text-transform: uppercase;
       padding-top: 120px;
       color: #000;
+      font-family: 'Russo One';
     }
 
     & > .row_1_description_photo,
@@ -200,7 +203,7 @@
     background-color: #000;
     position: relative;
 
-    & > .team_title { font-size: 36px; padding: 120px 0 60px 120px; }
+    & > .team_title { font-size: 36px; padding: 120px 0 60px 120px; font-family: 'Russo One'; }
     & > .slider2 { position: relative; padding: 0 0 120px 120px; }
   }
 

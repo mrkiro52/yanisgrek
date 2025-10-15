@@ -9,10 +9,11 @@ const EngineSelector = ({
   firstColumnHeader = 'Название',
   secondColumnHeader = 'Модели',
   type = '',
+  propActiveIndex
 }) => {
   const LOCAL_STORAGE_KEY = `EngineSelector_${type}_activeTab`;
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState( );
 
   useEffect(() => {
     const savedIndex = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -53,7 +54,7 @@ const EngineSelector = ({
             </tr>
           </thead>
           <tbody>
-            {activeCategory.items.map((item, idx) => (
+            {activeCategory?.items?.map((item, idx) => (
               <tr key={idx}>
                 <td>
                   <Link href={`/${type}/${item.path}`} style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
@@ -68,9 +69,9 @@ const EngineSelector = ({
         </table>
 
         <p className="hint">* Нажмите на название для перехода на соответствующую страницу</p>
-        {activeCategory.note && (
-          <a href="https://wa.me/79852707575" target="_blank">
-            <p className="note">{activeCategory.note}</p>
+        {activeCategory?.note && (
+          <a href="https://wa.me/74957676500" target="_blank">
+            <p className="note">{activeCategory?.note}</p>
           </a>
         )}
       </div>

@@ -1,4 +1,4 @@
-.RemontAkpp, .RemontDvs {
+.RemontAkpp, .RemontMkpp, .RemontDvs {
     & > .Startscreen {
         display: flex;
         background-color: #1D1D1D;
@@ -166,8 +166,8 @@
           max-width: 665px;
           padding: 40px;
           & > h2 {
-            font-size: 36px;
-            font-family: 'Russo One';
+            font-size: 24px;
+            font-family: 'Helvetica';
             color: rgba(255, 255, 255, 0.6);
             line-height: 103%;
           }
@@ -184,7 +184,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .RemontAkpp, .RemontDvs {
+  .RemontAkpp, .RemontMkpp, .RemontDvs {
     & > .Service_steps {
       & > .Service_steps__wrapper {
         width: 100%;
@@ -227,7 +227,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .RemontAkpp, .RemontDvs {
+  .RemontAkpp, .RemontMkpp, .RemontDvs {
     & > .Startscreen {
       & > .content {
         & > .left {
@@ -259,7 +259,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .RemontAkpp, .RemontDvs {
+    .RemontAkpp, .RemontMkpp, .RemontDvs {
       & > .Startscreen {
         padding: 80px 24px 80px 24px;
         & > .content {
@@ -294,6 +294,7 @@
     font-size: 36px;
     line-height: 103%;
     text-transform: uppercase;
+    font-family: 'Russo One';
   }
 
   .container_problems {
