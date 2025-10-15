@@ -200,13 +200,24 @@
   }
 }
 
-
+@media screen and (min-width: 451px) {
+  .Header {
+    & > .content {
+      & > a.phoneIcon {
+        display: none;
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 450px) {
   .Header {
     & > .content {
-      & > a.logo {
+      & > a.phone {
         display: none;
+      }
+      & > a.phoneIcon {
+        display: block;
       }
     }
   }
