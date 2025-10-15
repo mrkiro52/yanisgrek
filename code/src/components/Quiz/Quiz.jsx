@@ -317,8 +317,8 @@ export default function Quiz({ propModel }) {
         `.trim();
       
         // 🔑 данные для Telegram
-        const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ"; // получить у BotFather
-        const CHAT_ID = "-1002955332793"; // id группы/канала или личного чата
+        const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
+        const CHAT_ID = "-1002955332793";
         const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
       
         try {
@@ -334,6 +334,11 @@ export default function Quiz({ propModel }) {
       
           if (response.ok) {
             alert("Заявка успешно отправлена в Telegram!");
+      
+            // 🎯 Яндекс.Метрика — цель отправки квиза
+            if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
+              window.ym(94203012, "reachGoal", "sendQuizData");
+            }
           } else {
             alert("Ошибка при отправке. Попробуйте ещё раз.");
           }
@@ -346,6 +351,7 @@ export default function Quiz({ propModel }) {
       const handleSendMessage = () => {
         sendTelegramMessage();
       };
+      
 
       const scrollToQuizTitle = () => {
         const el = document.getElementById("quiz_title");
