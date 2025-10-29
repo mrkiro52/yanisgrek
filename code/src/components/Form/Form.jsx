@@ -65,7 +65,7 @@ export default function Form() {
   
     // 🔑 данные бота
     const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ"; // получаешь у @BotFather
-    const CHAT_ID = "-1002955332793"; // id твоей группы/чата/канала
+    const CHAT_ID = "-4730139718"; // id твоей группы/чата/канала
     const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
   
     try {

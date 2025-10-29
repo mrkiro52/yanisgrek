@@ -86,7 +86,7 @@ export default function QuizDvs() {
   };
 
   const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";   // возьми у BotFather
-  const CHAT_ID = "-1002955332793";   // твой id или id группы
+  const CHAT_ID = "-4730139718";   // твой id или id группы
   
   const handleSubmit = async () => {
     const message = `Клиент оставил заявку на ДВС:

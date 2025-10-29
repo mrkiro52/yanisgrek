@@ -318,7 +318,7 @@ export default function Quiz({ propModel }) {
       
         // 🔑 данные для Telegram
         const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
-        const CHAT_ID = "-1002955332793";
+        const CHAT_ID = "-4730139718";
         const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
       
         try {
