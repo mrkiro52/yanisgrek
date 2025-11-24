@@ -84,6 +84,13 @@ export default function RootLayout({
             />
           </div>
         </noscript>
+
+        {/* 📞 Подключение Callibri коллтрекинга */}
+        <Script
+          src="//cdn.callibri.ru/callibri.js"
+          strategy="afterInteractive"
+          charSet="utf-8"
+        />
       </body>
     </html>
   );
