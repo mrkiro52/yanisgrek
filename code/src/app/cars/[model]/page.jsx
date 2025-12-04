@@ -39,6 +39,8 @@ export default async function CarPage({ params }) {
     "bmw-x5": "BMW X5",
     "bmw-x6": "BMW X6",
     "bmw-m5": "BMW M5",
+    "rolls-royce": "Rolls-Royce",
+    "mini-cooper": "MINI Cooper",
   };
 
   const propModel = modelsMap[model];
