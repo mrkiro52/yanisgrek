@@ -18,8 +18,8 @@
   
   &__list {
     display: flex;
+    flex-wrap: wrap;
     gap: 24px;
-    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -27,7 +27,7 @@
   &__item {
     cursor: pointer;
     transition: all 0.2s;
-    width: 49%;
+    width: calc(50% - 12px);
     &:hover {
       transform: scale(1.02);
       filter: brightness(0.9);
