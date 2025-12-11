@@ -8,7 +8,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 # Install dependencies
 COPY package.json package-lock.json ./
-RUN npm ci --prefer-offline --audit
+RUN npm install --prefer-offline --audit --legacy-peer-deps
 
 # Copy source and build
 COPY . .
