@@ -21,18 +21,24 @@ import servicesX6 from '../../data/calcServices/services_x6.json';
 
 // Models and submodels definitions
 const models = [
-  { id: '7', name: '7' },
-  { id: '5', name: '5' },
-  { id: '4', name: '4' },
-  { id: '3', name: '3' },
-  { id: '2', name: '2' },
   { id: '1', name: '1' },
+  { id: '2', name: '2' },
+  { id: '3', name: '3' },
+  { id: '4', name: '4' },
+  { id: '5', name: '5' },
+  { id: '6', name: '6' },
+  { id: '7', name: '7' },
+  { id: '8', name: '8' },
   { id: 'X', name: 'X' },
-  { id: 'M', name: 'M' }
+  { id: 'M', name: 'M' },
+  { id: 'i', name: 'i' },
+  { id: 'z', name: 'z' }
 ];
 
 const submodels = {
+  '8': [{ id: '8', name: '8' }],
   '7': [{ id: '7', name: '7' }],
+  '6': [{ id: '6', name: '6' }],
   '5': [{ id: '5', name: '5' }],
   '4': [{ id: '4', name: '4' }],
   '3': [{ id: '3', name: '3' }],
@@ -40,11 +46,44 @@ const submodels = {
   '1': [{ id: '1', name: '1' }],
   'X': [
     { id: 'X1', name: 'X1' },
+    { id: 'X2', name: 'X2' },
     { id: 'X3', name: 'X3' },
+    { id: 'X3M', name: 'X3M' },
+    { id: 'X4', name: 'X4' },
+    { id: 'X4M', name: 'X4M' },
     { id: 'X5', name: 'X5' },
-    { id: 'X6', name: 'X6' }
+    { id: 'X5M', name: 'X5M' },
+    { id: 'X6', name: 'X6' },
+    { id: 'X6M', name: 'X6M' },
+    { id: 'X7', name: 'X7' },
+    { id: 'XM', name: 'XM' },
+
   ],
-  'M': [{ id: 'M5', name: 'M5' }]
+  'M': [
+    { id: 'M8', name: 'M8' },
+    { id: 'M5', name: 'M5' },
+    { id: 'M4', name: 'M4' },
+    { id: 'M3', name: 'M3' },
+    { id: 'M2', name: 'M2' },
+  ],
+  'i': [
+    { id: 'i3', name: 'i3' },
+    { id: 'i4', name: 'i4' },
+    { id: 'i7', name: 'i7' },
+    { id: 'i8', name: 'i8' },
+    { id: 'iX', name: 'iX' },
+    { id: 'iX2', name: 'iX2' },
+    { id: 'iX3', name: 'iX3' },
+    { id: 'iX5', name: 'iX5' },
+  ],
+  'z': [
+    { id: 'z1', name: 'z1' },
+    { id: 'z3', name: 'z3' },
+    { id: 'z4', name: 'z4' },
+    { id: 'z8', name: 'z8' },
+    { id: 'z3M', name: 'z3M' },
+    { id: 'z4M', name: 'z4M' },
+  ]
 };
 
 // Mapping JSON data to submodel keys
@@ -84,7 +123,7 @@ export default function Calculator() {
         const mileageObj = data.mileage || {};
         const names = mileageObj[mileage] || Object.keys(services);
         const result = names.map(name => {
-          const prices = services[name] || [0,0,0];
+          const prices = services[name] || [0, 0, 0];
           const part = partType === 'Оригинал' ? prices[1] : prices[2];
           const labor = prices[0];
           return { name, part_price: part, labor_price: labor };
@@ -106,7 +145,7 @@ export default function Calculator() {
     if (!modelId) return;
 
     let defaultSub = '';
-    if (['7','5','4','3','2','1'].includes(modelId)) {
+    if (['7', '5', '4', '3', '2', '1'].includes(modelId)) {
       defaultSub = modelId;
     } else if (modelId === 'M') {
       defaultSub = 'M5';
@@ -120,7 +159,7 @@ export default function Calculator() {
 
   useEffect(() => {
     // Список доступных подмоделей
-    const validSubs = ['1','2','3','4','5','7','X1','X3','X5','X6','M5']
+    const validSubs = ['1', '2', '3', '4', '5', '7', 'X1', 'X3', 'X5', 'X6', 'M5']
     const m = pathname.match(/^\/cars\/bmw-([a-z0-9]+)/i)
 
     if (m) {
@@ -139,21 +178,21 @@ export default function Calculator() {
   }, [pathname]);
 
   const toggleRow = idx => {
-    setSelectedRows(prev => prev.map((v,i) => i === idx ? !v : v));
+    setSelectedRows(prev => prev.map((v, i) => i === idx ? !v : v));
   };
 
   const totalSum = useMemo(() =>
     filteredServices.reduce((sum, s, i) =>
       selectedRows[i] ? sum + Number(s.part_price) + Number(s.labor_price) : sum
-    , 0)
-  , [filteredServices, selectedRows]);
+      , 0)
+    , [filteredServices, selectedRows]);
 
   const scrollToBottom = () => {
     const formEl = document.getElementById('Form');
     if (formEl) {
       formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };  
+  };
 
   const data = models;
   const subsList = useMemo(() => submodels[modelId] || [], [modelId]);
@@ -264,32 +303,32 @@ export default function Calculator() {
             Пробег
           </label>
           <div className="mileage-input__control">
-          <input
-            id="mileage"
-            name="mileage"
-            type="text"
-            inputMode="numeric"
-            pattern="\d*"
-            placeholder="Пробег авто"
-            className="mileage-input__field"
-            value={mileage === 0 ? "" : mileage}
-            onBeforeInput={(e) => {
-              if (!/^\d$/.test(e.data)) {
-                e.preventDefault(); // блокируем ввод, если не цифра
-              }
-            }}
-            onPaste={(e) => {
-              e.preventDefault();
-              const pasted = e.clipboardData.getData("Text");
-              const digitsOnly = pasted.replace(/\D/g, "");
-              setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
-            }}
-            onChange={(e) => {
-              const raw = e.target.value;
-              const digitsOnly = raw.replace(/\D/g, "");
-              setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
-            }}
-          />
+            <input
+              id="mileage"
+              name="mileage"
+              type="text"
+              inputMode="numeric"
+              pattern="\d*"
+              placeholder="Пробег авто"
+              className="mileage-input__field"
+              value={mileage === 0 ? "" : mileage}
+              onBeforeInput={(e) => {
+                if (!/^\d$/.test(e.data)) {
+                  e.preventDefault(); // блокируем ввод, если не цифра
+                }
+              }}
+              onPaste={(e) => {
+                e.preventDefault();
+                const pasted = e.clipboardData.getData("Text");
+                const digitsOnly = pasted.replace(/\D/g, "");
+                setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
+              }}
+              onChange={(e) => {
+                const raw = e.target.value;
+                const digitsOnly = raw.replace(/\D/g, "");
+                setMileage(digitsOnly === "" ? 0 : Number(digitsOnly));
+              }}
+            />
             <span className="mileage-input__unit">км</span>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import "../../styles/KppAndDvs.scss";
 import ImageBlock from '../services/[slug]/ImageBlock';
 import Header from '../../components/Header/Header';
@@ -9,6 +10,20 @@ import Discounts from "../../components/Discounts/Discounts";
 import Chillzone from "../../components/Chillzone/Chillzone";
 import QuizAkpp from "../../components/QuizAkpp/QuizAkpp";
 import WhyUs from "../../components/WhyUs/WhyUs";
+
+export const metadata: Metadata = {
+  title: "Ремонт и диагностика АКПП в Москве | YANIS GREK | Гарантия до 2 лет",
+  description: "Профессиональный ремонт АКПП, МКПП и DCT для BMW. Диагностика автоматических коробок передач. Мастера с опытом 15+ лет, гарантия на работы до 2 лет.",
+  keywords: "ремонт АКПП, диагностика АКПП, ремонт коробки передач, ZF 8HP, Getrag, техническое обслуживание АКПП",
+  openGraph: {
+    title: "Ремонт АКПП в YANIS GREK - Москва",
+    description: "Профессиональный ремонт АКПП и диагностика автоматических коробок передач BMW с гарантией",
+    url: "https://yanisgrek.ru/remontAkpp",
+  },
+  alternates: {
+    canonical: "https://yanisgrek.ru/remontAkpp",
+  },
+};
 
 export default function RemontAkpp() {
 
@@ -86,19 +101,19 @@ export default function RemontAkpp() {
                     </div>
                     <div className="container_problems">
                         <div className="block_title">
-                            <h1 className="title">Гидромеханическая АКПП</h1>
+                            <h3 className="title">Гидромеханическая АКПП</h3>
                             <p className="subtitle">Износ фрикционных дисков и стальных пакетов приводит к пробуксовкам и задержкам при переключении.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Электронный блок управления</h1>
+                            <h3 className="title">Электронный блок управления</h3>
                             <p className="subtitle">Неисправности соленоидов и датчиков давления вызывают некорректное переключение и аварийный режим.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Роботизированная КПП (DST)</h1>
+                            <h3 className="title">Роботизированная КПП (DST)</h3>
                             <p className="subtitle">Сбои мехатроника и износ муфт сцепления вызывают дергания и ошибки адаптации.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Вариатор (EV)</h1>
+                            <h3 className="title">Вариатор (EV)</h3>
                             <p className="subtitle">Растяжение ремня или цепи и загрязнение масла приводят к шуму, перегреву и потере тяги.</p>
                         </div>
                     </div>
@@ -166,10 +181,10 @@ export default function RemontAkpp() {
               <div className="Service_phone__wrapper">
                 <Image
                   src="/images/phoneCall.png"
-                  alt="Phone Call"
-                  width={390} // укажи нужную ширину
-                  height={430} // и высоту
-                  priority // если важно для LCP
+                  alt="Позвоните в YANIS GREK для консультации по ремонту АКПП"
+                  width={390}
+                  height={430}
+                  priority
                 />
                 <div className="block">
                   <h2>Получите консультацию по услугам и ценам по телефону</h2>

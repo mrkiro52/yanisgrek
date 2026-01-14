@@ -1,9 +1,10 @@
 "use client";
+
 import "./services.scss";
 import { useState, useEffect } from "react";
 import Form from "../../components/Form/Form";
 import Header from "@/components/Header/Header";
-import servicesData from '@/data/servicesPage/data.json'; // путь под себя
+import servicesData from '@/data/servicesPage/data.json';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import BtnGoForm from '../../components/BtnGoForm/BtnGoForm';
@@ -59,14 +60,14 @@ export default function ServicesPage() {
     <div className="Services">
       <Header/>
       <div className="Startscreen">
-        <h2 className="title">Услуги</h2>
+        <h1 className="title">Услуги</h1>
         <div className="buttons">
           <BtnGoForm/>
         </div>
       </div>
-      <h1 className="hero_title white">
+      <h2 className="hero_title white">
         Все услуги Yanis Grek
-      </h1>
+      </h2>
       <div className="buttons_container" id="Calculator">
         {categoryKeys.map((key, index) => (
           <button
@@ -137,12 +138,12 @@ export default function ServicesPage() {
           <p className="description_about_block_founder">
           Любая, даже идеальная на вид машина, однажды может подвести. И дело не только в пробеге или возрасте — часто всё начинается с мелочей: немного не так заехал на бордюр, не заметил вибрации, проигнорировал странный звук при запуске двигателя. Даже неправильно выбранное масло или затянутый визит на ТО могут привести к серьёзным последствиям. Именно поэтому так важно регулярно обслуживать автомобиль, даже если кажется, что “всё нормально”. Своевременное техническое обслуживание — это не расходы, это инвестиция в надёжность, безопасность и спокойствие. Лучше вовремя поменять фильтр, чем потом менять двигатель. Сервис — это не про сломалось, это про сохранить. Машина требует внимания, даже если пока не просит его вслух.
           </p>
-          <img src="/images/car_slides/car_slide_11.jpg" alt="" />
+          <img src="/images/car_slides/car_slide_11.jpg" alt="Диагностика автомобиля BMW в техцентре YANIS GREK" />
         </div>
         <div className="row_2_description_photo">
           <img
             src="/images/car_slides/car_slide_17.jpg"
-            alt=""
+            alt="Профессиональный ремонт автомобиля в мастерской YANIS GREK"
             className="photo_worker"
           />
           <p className="description_about_block_founder">

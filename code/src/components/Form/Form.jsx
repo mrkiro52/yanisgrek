@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./Form.scss";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 export default function Form() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -10,7 +11,8 @@ export default function Form() {
     name: "",
     phone: "",
     vin: "",
-  });  
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false);  
 
   // Формат сегодняшней даты для ограничения min
   const now = new Date();
@@ -59,42 +61,39 @@ export default function Form() {
       return;
     }
   
-    let message = `Заявка на диагностику:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}`;
-    if (formData.vin) message += `\nVIN: ${formData.vin}`;
-    message += `\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
-  
-    // 🔑 данные бота
-    const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ"; // получаешь у @BotFather
-    const CHAT_ID = "-4730139718"; // id твоей группы/чата/канала
-    const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-  
     try {
-      const response = await fetch(URI_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const TELEGRAM_TOKEN = '8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k';
+      const CHAT_ID = '-4730139718';
+      const text = `Заявка с сайта YANIS GREK\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nVIN: ${formData.vin || '—'}\nДата: ${selectedDate}\nВремя: ${selectedTime}`;
+
+      const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: CHAT_ID,
-          text: message,
-          parse_mode: "HTML",
+          text,
         }),
       });
-  
-      if (response.ok) {
-        alert("Заявка успешно отправлена в Telegram!");
-        if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
-          window.ym(94203012, 'reachGoal', 'formSent');
-        }        
-      } else {
-        alert("Ошибка при отправке. Попробуйте ещё раз.");
+
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error('Telegram API error');
       }
+
+      setIsModalOpen(true);
+      setFormData({ name: '', phone: '', vin: '' });
     } catch (error) {
-      console.error("Ошибка отправки:", error);
-      alert("Не удалось отправить заявку.");
+      console.error('Send error:', error);
+      alert('Ошибка при отправке. Попробуйте ещё раз.');
     }
   };  
 
   return (
     <>
+      <SuccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      
       <div className="Form" id="Form">
         <img
           src="/images/contacts_green_car.jpg"
@@ -119,7 +118,7 @@ export default function Form() {
                 id="name"
                 name="name"
                 className="form-input"
-                placeholder="Иванов Иван"
+                placeholder="Ваше имя"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -136,7 +135,7 @@ export default function Form() {
                 id="phone"
                 name="phone"
                 className="form-input"
-                placeholder="+7 (9xx) xxx-xx-xx"
+                placeholder="+7 (___) ___-__-__"
                 value={formData.phone}
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })

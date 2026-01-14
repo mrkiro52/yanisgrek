@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import "./QuizAkpp.scss";
 import { usePathname } from 'next/navigation';
+import SuccessModal from '../SuccessModal/SuccessModal';
 
 export default function QuizAkpp() {
   const allModels = [
@@ -51,6 +52,7 @@ export default function QuizAkpp() {
   const [selectedServices, setSelectedServices] = useState([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
 
       // Получаем slug из URL
@@ -74,7 +76,7 @@ export default function QuizAkpp() {
     );
   };
 
-  const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
+  const BOT_TOKEN = "8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k";
   const CHAT_ID = "-4730139718";
   
   const handleSubmit = async () => {
@@ -95,27 +97,24 @@ export default function QuizAkpp() {
         body: JSON.stringify({
           chat_id: CHAT_ID,
           text: message,
-          parse_mode: "HTML"
         })
       });
-  
-      if (response.ok) {
+
+      const data = await response.json();
+      if (data.ok) {
         console.log("Сообщение отправлено в Telegram ✅");
-  
-        // 1. Очистка полей
+        
         setSelectedModel("");
         setSelectedServices([]);
         setName("");
         setPhone("");
-  
-        // 2. Уведомление
-        alert("Заявка успешно отправлена!");
+        setIsSuccessModalOpen(true);
       } else {
         console.error("Ошибка при отправке:", await response.text());
         alert("Ошибка при отправке. Попробуйте ещё раз.");
       }
     } catch (error) {
-      console.error("Ошибка запроса:", error);
+      console.error("Ошибка:", error);
       alert("Ошибка при отправке. Попробуйте позже.");
     }
   };
@@ -145,6 +144,8 @@ export default function QuizAkpp() {
 
   return (
     <div className="QuizAkpp">
+      <SuccessModal isOpen={isSuccessModalOpen} onClose={() => setIsSuccessModalOpen(false)} />
+      
       <div className="wrapper">
         <h2>Запишись на ремонт коробки передач</h2>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './Discounts.scss';
+import SuccessModal from '../SuccessModal/SuccessModal';
 
 export default function Discounts() {
   const discounts = [
@@ -28,6 +29,7 @@ export default function Discounts() {
   const [activeDiscount, setActiveDiscount] = useState(null);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -42,43 +44,36 @@ export default function Discounts() {
   const handleSubmit = async () => {
     if (!name || !phone) return;
   
-    const message = `Клиент записался на акцию:
-  ${activeDiscount.title}
-  Имя: ${name}
-  Телефон: ${phone}`;
-  
-    const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
-    const CHAT_ID = "-4730139718";
-    const URI_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  
     try {
-      const response = await fetch(URI_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const BOT_TOKEN = '8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k';
+      const CHAT_ID = '-4730139718';
+      const text = `Заявка по акции\nИмя: ${name}\nТелефон: ${phone}\nАкция: ${activeDiscount?.title || ''}`;
+      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: CHAT_ID,
-          text: message,
+          text,
         }),
       });
-  
-      if (response.ok) {
-        // 🔹 Отправляем цель в Яндекс.Метрику
-        if (typeof window !== "undefined" && window.ym) {
-          window.ym(94203012, 'reachGoal', 'discountForm');
-        }
 
-        // Очистка формы и закрытие модалки
-        setActiveDiscount(null);
-        setName('');
-        setPhone('');
-  
-        alert("Заявка успешно отправлена!");
-      } else {
-        console.error("Ошибка при отправке:", await response.text());
-        alert("Ошибка при отправке. Попробуйте снова.");
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+      // Отправляем цель в Яндекс.Метрику
+      if (typeof window !== "undefined" && window.ym) {
+        window.ym(process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID, 'reachGoal', 'discountForm');
       }
+
+      // Очистка формы и закрытие модалки
+      setActiveDiscount(null);
+      setName('');
+      setPhone('');
+
+      setIsSuccessModalOpen(true);
     } catch (error) {
-      console.error("Ошибка отправки в Telegram:", error);
+      console.error("Ошибка отправки:", error);
       alert("Ошибка при отправке. Попробуйте позже.");
     }
   };
@@ -86,6 +81,8 @@ export default function Discounts() {
 
   return (
     <section className="Discounts">
+      <SuccessModal isOpen={isSuccessModalOpen} onClose={() => setIsSuccessModalOpen(false)} />
+      
       <div className="Discounts__wrapper">
         <h2 className="Discounts__title">Акции</h2>
         <div className="Discounts__list">
