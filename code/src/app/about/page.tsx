@@ -1,4 +1,4 @@
-"use client";
+import { Metadata } from "next";
 import Header from "../../components/Header/Header";
 import Form from "../../components/Form/Form";
 import "./about.scss";
@@ -9,15 +9,30 @@ import Discounts from '../../components/Discounts/Discounts';
 import Chillzone from '../../components/Chillzone/Chillzone';
 import WhyUs from '../../components/WhyUs/WhyUs';
 
+export const metadata: Metadata = {
+  title: "О YANIS GREK - История автосервиса BMW в Москве | 14 лет опыта",
+  description: "История YANIS GREK: премиальный автосервис BMW в Москве. Узнайте о нашей команде, философии сервиса и как мы стали лучшим техцентром для немецких автомобилей.",
+  keywords: "о компании YANIS GREK, история автосервиса, команда механиков, опыт ремонта BMW",
+  openGraph: {
+    title: "О YANIS GREK - Автосервис BMW в Москве",
+    description: "История успеха техцентра YANIS GREK - 14 лет опыта в ремонте BMW, MINI и Rolls-Royce",
+    url: "https://yanisgrek.ru/about",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://yanisgrek.ru/about",
+  },
+};
+
 const problemsImages = [
-  { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_17.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_18.jpg", caption: "" },
-  { src: "/images/car_slides/aboutPhotoAvotmat.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_19.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_20.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_21.jpg", caption: "" },
-  { src: "/images/car_slides/car_slide_22.jpg", caption: "" },
+  { src: "/images/car_slides/aboutPhotoBuilding.jpg", caption: "Здание техцентра YANIS GREK" },
+  { src: "/images/car_slides/car_slide_17.jpg", caption: "Рабочая зона автосервиса" },
+  { src: "/images/car_slides/car_slide_18.jpg", caption: "Диагностическое оборудование" },
+  { src: "/images/car_slides/aboutPhotoAvotmat.jpg", caption: "Специализированное оборудование для АКПП" },
+  { src: "/images/car_slides/car_slide_19.jpg", caption: "Процесс ремонта" },
+  { src: "/images/car_slides/car_slide_20.jpg", caption: "Качественное обслуживание" },
+  { src: "/images/car_slides/car_slide_21.jpg", caption: "Профессиональный сервис" },
+  { src: "/images/car_slides/car_slide_22.jpg", caption: "Результаты работы" },
 ];
 
 const images = [
@@ -85,7 +100,7 @@ export default function AboutPage() {
               делаем свою работу по-человечески и профессионально.
             </p>
           </div>
-          <img src="/images/photo_block_about.jpg" alt="" />
+          <img src="/images/photo_block_about.jpg" alt="Интерьер техцентра YANIS GREK с профессиональным оборудованием" />
         </div>
       </div>
       <TeamBlock/>
@@ -115,7 +130,7 @@ export default function AboutPage() {
         <div className="row_2_description_photo">
           <img
             src="/images/photo_worker.jpg"
-            alt=""
+            alt="Механик YANIS GREK проводит профессиональный ремонт автомобиля"
             className="photo_worker"
           />
           <p className="description_about_block_founder">

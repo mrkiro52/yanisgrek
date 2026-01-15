@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import './Quiz.scss';
+import SuccessModal from '../SuccessModal/SuccessModal';
 
 export default function Quiz({ propModel }) {
 
     const [step, setStep] = useState(1);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     const bmwModels = [
         { id: 1, name: 'BMW 1', image: '/images/cars/bmw-1.png' },
@@ -317,9 +319,9 @@ export default function Quiz({ propModel }) {
         `.trim();
       
         // 🔑 данные для Telegram
-        const TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";
+        const BOT_TOKEN = "8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k";
         const CHAT_ID = "-4730139718";
-        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+        const URI_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
       
         try {
           const response = await fetch(URI_API, {
@@ -328,17 +330,17 @@ export default function Quiz({ propModel }) {
             body: JSON.stringify({
               chat_id: CHAT_ID,
               text: message,
-              parse_mode: "HTML",
             }),
           });
       
           if (response.ok) {
-            alert("Заявка успешно отправлена в Telegram!");
+            setIsSuccessModalOpen(true);
       
             // 🎯 Яндекс.Метрика — цель отправки квиза
-            if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
-              window.ym(94203012, "reachGoal", "sendQuizData");
-            }
+                        if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
+                            const metrikaId = Number(process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID || 94203012);
+                            window.ym(metrikaId, "reachGoal", "sendQuizData");
+                        }
           } else {
             alert("Ошибка при отправке. Попробуйте ещё раз.");
           }
@@ -364,6 +366,8 @@ export default function Quiz({ propModel }) {
 
     return (
         <div className="Quiz">
+            <SuccessModal isOpen={isSuccessModalOpen} onClose={() => setIsSuccessModalOpen(false)} />
+            
             <div className="Quiz_wrapper">
                 <h2 id='quiz_title'>Получите расчет <span>конкретной</span> услуги</h2>
                 <div className="slide">

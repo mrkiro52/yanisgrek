@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import "../../styles/KppAndDvs.scss";
 import ImageBlock from '../services/[slug]/ImageBlock';
 import Header from '../../components/Header/Header';
@@ -9,6 +10,20 @@ import Discounts from "../../components/Discounts/Discounts";
 import Chillzone from "../../components/Chillzone/Chillzone";
 import QuizDvs from "../../components/QuizDvs/QuizDvs";
 import WhyUs from "../../components/WhyUs/WhyUs";
+
+export const metadata: Metadata = {
+  title: "Ремонт и диагностика ДВС в Москве | YANIS GREK | Все типы двигателей",
+  description: "Профессиональный ремонт двигателей BMW: бензиновые, дизельные, гибридные и электрические. Диагностика ДВС, замена поршней, валов и прокладок с гарантией до 2 лет.",
+  keywords: "ремонт ДВС, диагностика двигателя, ремонт двигателя BMW, техническое обслуживание, замена масла",
+  openGraph: {
+    title: "Ремонт ДВС в YANIS GREK - Москва",
+    description: "Ремонт и диагностика двигателей BMW любых типов с гарантией на работы",
+    url: "https://yanisgrek.ru/remontDvs",
+  },
+  alternates: {
+    canonical: "https://yanisgrek.ru/remontDvs",
+  },
+};
 
 export default function RemontDvs() {
     
@@ -89,19 +104,19 @@ export default function RemontDvs() {
                     </div>
                     <div className="container_problems">
                         <div className="block_title">
-                            <h1 className="title">Дизель</h1>
+                            <h3 className="title">Дизель</h3>
                             <p className="subtitle">Засорение форсунок и клапанов из-за сажи снижает динамику и вызывает вибрации.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Гибрид</h1>
+                            <h3 className="title">Гибрид</h3>
                             <p className="subtitle">Износ сцепления и перегрев при частых переключениях режимов уменьшают ресурс ДВС.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Бензин</h1>
+                            <h3 className="title">Бензин</h3>
                             <p className="subtitle">Проблемы с системой зажигания и датчиками приводят к неустойчивому холостому ходу и провалам при разгоне.</p>
                         </div>
                         <div className="block_title">
-                            <h1 className="title">Электро</h1>
+                            <h3 className="title">Электро</h3>
                             <p className="subtitle">Для электромоторов критичны износ подшипников и перегрев контроллера — источник шумов и потери КПД.</p>
                         </div>
                     </div>
@@ -169,10 +184,10 @@ export default function RemontDvs() {
                 <div className="Service_phone__wrapper">
                 <Image
                     src="/images/phoneCall.png"
-                    alt="Phone Call"
-                    width={390} // укажи нужную ширину
-                    height={430} // и высоту
-                    priority // если важно для LCP
+                    alt="Позвоните в YANIS GREK для консультации по ремонту двигателя"
+                    width={390}
+                    height={430}
+                    priority
                 />
                 <div className="block">
                     <h2>Получите консультацию по услугам и ценам по телефону</h2>

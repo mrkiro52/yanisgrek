@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/global.d.ts"
-, "src/app/cars/[model]/page.jsx", "src/app/contacts/page.jsx", "src/app/services/page.jsx", "src/app/calc/page.jsx"  ],
+, "src/app/cars/[model]/page.tsx", "src/app/contacts/page.tsx", "src/app/services/page.jsx", "src/app/calc/page.jsx"  ],
   "exclude": ["node_modules"]
 }

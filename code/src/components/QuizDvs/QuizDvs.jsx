@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import "./QuizDvs.scss";
 import { usePathname } from 'next/navigation';
+import SuccessModal from '../SuccessModal/SuccessModal';
 
 export default function QuizDvs() {
   const pathname = usePathname(); // получаем полный путь
@@ -76,6 +77,7 @@ export default function QuizDvs() {
   const [selectedServices, setSelectedServices] = useState([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const toggleService = (service) => {
     setSelectedServices(prev =>
@@ -85,8 +87,8 @@ export default function QuizDvs() {
     );
   };
 
-  const BOT_TOKEN = "8284718697:AAFV_l6X0bdzKhyJ39SlNzAdszYp5ieKcNQ";   // возьми у BotFather
-  const CHAT_ID = "-4730139718";   // твой id или id группы
+  const BOT_TOKEN = "8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k";
+  const CHAT_ID = "-4730139718";
   
   const handleSubmit = async () => {
     const message = `Клиент оставил заявку на ДВС:
@@ -106,7 +108,6 @@ export default function QuizDvs() {
         body: JSON.stringify({
           chat_id: CHAT_ID,
           text: message,
-          parse_mode: "HTML"
         })
       });
   
@@ -120,7 +121,7 @@ export default function QuizDvs() {
         setPhone("");
   
         // 2. Уведомление
-        alert("Заявка успешно отправлена!");
+        setIsSuccessModalOpen(true);
         
       } else {
         console.error("Ошибка при отправке:", await response.text());
@@ -158,6 +159,8 @@ export default function QuizDvs() {
 
   return (
     <div className="QuizDvs">
+      <SuccessModal isOpen={isSuccessModalOpen} onClose={() => setIsSuccessModalOpen(false)} />
+      
       <div className="wrapper">
         <h2>Запишись на ремонт коробки передач</h2>
 

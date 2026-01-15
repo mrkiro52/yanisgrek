@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../../components/Header/Header";
 import Form from "../../components/Form/Form";
 import TeamBlock from "../../components/TeamBlock/TeamBlock";
@@ -11,7 +9,6 @@ export default function ContactsPage() {
     <>
       <Header/>
       <Form/>
-
     </>
   );
 }
