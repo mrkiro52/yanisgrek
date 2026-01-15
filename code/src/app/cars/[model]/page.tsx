@@ -14,7 +14,7 @@ import Quiz from '../../../components/Quiz/Quiz';
 
 export const revalidate = 60;
 
-const modelsMap = {
+const modelsMap: { [key: string]: { name: string; description: string } } = {
   // 1 Series
   "bmw-1": { name: "BMW 1", description: "Ремонт BMW 1 серии - диагностика АКПП, ДВС и техническое обслуживание с гарантией до 2 лет" },
   // 2 Series
@@ -224,10 +224,9 @@ export default async function CarPage({ params }: { params: Promise<{ model: str
       </div>
 
       <Calculator />
-      {propModel ? <Quiz propModel={propModel} /> : <Quiz />}
+      <Quiz propModel={propModel || null} />
       <div style={{paddingTop: "130px"}}></div>
-      <review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab>
-      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+      <div dangerouslySetInnerHTML={{ __html: '<review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab><script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>' }} />
       <div style={{paddingBottom: "130px"}}></div>
       <Chillzone/>
       <Form />
