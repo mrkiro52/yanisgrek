@@ -10,8 +10,6 @@ import Calculator from '../components/Calculator/Calculator';
 import BtnGoCalc from '../components/BtnGoCalc/BtnGoCalc';
 import BtnGoForm from '../components/BtnGoForm/BtnGoForm';
 
-import fs from 'fs/promises';
-import path from 'path';
 import TeamBlock from '../components/TeamBlock/TeamBlock';
 import Discounts from '../components/Discounts/Discounts';
 import Chillzone from '../components/Chillzone/Chillzone';
@@ -42,22 +40,12 @@ export default async function Home() {
     'diagnostika-dvs',
   ];
 
-  // Асинхронное чтение данных услуг из файлов
-  const serviceData = await Promise.all(
-    serviceSlugs.map(async (slug) => {
-      const filePath = path.join(
-        process.cwd(),
-        'src',
-        'data',
-        'services',
-        `${slug}.json`
-      );
-      const raw = await fs.readFile(filePath, 'utf-8');
-      return JSON.parse(raw);
-    })
-  );
-
-  const [serviceData1, serviceData2, serviceData3] = serviceData;
+  // Статические данные услуг
+  const serviceData = [
+    { title: 'Замена масла в АКПП', text2: 'Профессиональная замена масла в автоматической коробке передач' },
+    { title: 'Диагностика АКПП', text2: 'Комплексная диагностика автоматической коробки передач' },
+    { title: 'Диагностика ДВС', text2: 'Полная диагностика двигателя внутреннего сгорания' },
+  ];
 
   return (
     <main className="Home">
@@ -86,11 +74,10 @@ export default async function Home() {
       </div>
 
       <Calculator />
-      <Quiz/>
+      <Quiz propModel={null} />
       <Discounts />
       <div style={{paddingTop: "130px"}}></div>
-      <review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab>
-      <script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>
+      <div dangerouslySetInnerHTML={{ __html: '<review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab><script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>' }} />
 
       <div className="blackInfo">
         <div className="content">

@@ -1,6 +1,3 @@
-declare module "*.module.scss";
-declare module "*.module.css";
-
 declare namespace JSX {
   interface IntrinsicElements {
     'review-lab': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
