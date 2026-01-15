@@ -125,7 +125,7 @@ const modelsMap = {
   "mini-cooper": { name: "MINI Cooper", description: "Ремонт MINI Cooper в Москве - техническое обслуживание и диагностика MINI Cooper" },
 };
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ model: string }> }): Promise<Metadata> {
   const { model } = await params;
   const modelInfo = modelsMap[model] || { name: "BMW", description: "Ремонт BMW" };
 
@@ -153,7 +153,7 @@ export async function generateStaticParams() {
     .map(f => ({ model: f.replace(/\.json$/, '') }));
 }
 
-export default async function CarPage({ params }) {
+export default async function CarPage({ params }: { params: Promise<{ model: string }> }) {
   const { model } = await params;
   const propModel = modelsMap[model]?.name;
 
