@@ -73,7 +73,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <Calculator />
+      <Calculator initialModel={null} />
       <Quiz propModel={null} />
       <Discounts />
       <div style={{paddingTop: "130px"}}></div>
