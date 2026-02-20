@@ -1,0 +1,274 @@
+.SeriesPage {
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+
+  // Главная секция
+  &__hero {
+    display: flex;
+    justify-content: center;
+    padding: 100px 24px;
+    background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+
+    &-content {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      gap: 80px;
+      align-items: center;
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+
+    &-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      h1 {
+        font-size: 48px;
+        font-family: 'Russo One', sans-serif;
+        line-height: 103%;
+        text-transform: uppercase;
+        margin: 0;
+
+        @media (max-width: 900px) {
+          font-size: 36px;
+        }
+      }
+
+      .subtitle {
+        font-size: 24px;
+        color: #c0c0c0;
+        font-family: 'Russo One', sans-serif;
+        line-height: 120%;
+        margin: 0;
+
+        @media (max-width: 900px) {
+          font-size: 20px;
+        }
+      }
+
+      .description {
+        font-size: 20px;
+        color: #fff;
+        font-family: 'Helvetica', sans-serif;
+        line-height: 140%;
+        margin: 0;
+
+        @media (max-width: 900px) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  // Секция преимуществ
+  &__advantages {
+    display: flex;
+    justify-content: center;
+    padding: 80px 24px;
+    background: #000;
+
+    &-content {
+      max-width: 1200px;
+      width: 100%;
+
+      h2 {
+        font-size: 36px;
+        font-family: 'Russo One', sans-serif;
+        text-align: center;
+        margin-bottom: 48px;
+        color: #fff;
+
+        @media (max-width: 900px) {
+          font-size: 28px;
+          margin-bottom: 32px;
+        }
+      }
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+
+      @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__advantage-card {
+    background: #1d1d1d;
+    padding: 32px 24px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+    }
+
+    p {
+      font-size: 18px;
+      color: #c0c0c0;
+      font-family: 'Helvetica', sans-serif;
+      text-align: center;
+      line-height: 140%;
+      margin: 0;
+    }
+  }
+
+  &__advantage-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  // Секция проблем
+  &__problems {
+    display: flex;
+    justify-content: center;
+    padding: 80px 24px;
+    background: #1a1a1a;
+
+    &-content {
+      max-width: 1200px;
+      width: 100%;
+
+      h2 {
+        font-size: 36px;
+        font-family: 'Russo One', sans-serif;
+        text-align: center;
+        margin-bottom: 48px;
+        color: #fff;
+
+        @media (max-width: 900px) {
+          font-size: 28px;
+          margin-bottom: 32px;
+        }
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    &-button {
+      display: block;
+      margin: 0 auto;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: 'Russo One', sans-serif;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(43, 110, 255, 0.6);
+      }
+
+      @media (max-width: 900px) {
+        font-size: 16px;
+        padding: 14px 32px;
+      }
+    }
+  }
+
+  &__problem-item {
+    background: #000;
+    padding: 24px;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-left: 3px solid #c0c0c0;
+
+    p {
+      font-size: 18px;
+      color: #fff;
+      font-family: 'Helvetica', sans-serif;
+      line-height: 140%;
+      margin: 0;
+      flex: 1;
+    }
+  }
+
+  &__problem-number {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #c0c0c0;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  // Секция формы
+  &__form {
+    width: 100%;
+  }
+
+  // Секция калькулятора
+  &__calculator {
+    width: 100%;
+    background: #000;
+  }
+
+  // Секция почему мы
+  &__whyus {
+    width: 100%;
+  }
+
+  // Секция скидок
+  &__discounts {
+    width: 100%;
+    background: #000;
+  }
+}
+

@@ -59,18 +59,13 @@ export default function RootLayout({
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
             ym(94203012, "init", {
-              clickmap:true,
-              trackLinks:true,
-              accurateTrackBounce:true,
-              webvisor:true
+              webvisor: true,
+              clickmap: true,
+              referrer: document.referrer,
+              url: location.href,
+              accurateTrackBounce: true,
+              trackLinks: true
             });
-
-            // 🎯 Объявляем удобную функцию для целей
-            window.reachGoal = function(goalName) {
-              if (typeof window !== "undefined" && typeof window.ym !== "undefined") {
-                window.ym(94203012, "reachGoal", goalName);
-              }
-            };
           `}
         </Script>
 
