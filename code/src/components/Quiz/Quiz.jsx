@@ -15,13 +15,31 @@ export default function Quiz({ propModel }) {
         { id: 3, name: 'BMW 3', image: '/images/cars/bmw-3.png' },
         { id: 4, name: 'BMW 4', image: '/images/cars/bmw-4.png' },
         { id: 5, name: 'BMW 5', image: '/images/cars/bmw-5.png' },
-        { id: 6, name: 'BMW 7', image: '/images/cars/bmw-7.png' },
-        { id: 7, name: 'BMW X1', image: '/images/cars/bmw-x1.png' },
-        { id: 8, name: 'BMW X3', image: '/images/cars/bmw-x3.png' },
-        { id: 9, name: 'BMW X5', image: '/images/cars/bmw-x5.png' },
-        { id: 10, name: 'BMW X6', image: '/images/cars/bmw-x6.png' },
-        { id: 11, name: 'BMW M5', image: '/images/cars/bmw-m5.png' },
-        { id: 12, name: 'Другая', image: null}
+        { id: 6, name: 'BMW 6', image: '/images/cars/bmw-6.png' },
+        { id: 7, name: 'BMW 7', image: '/images/cars/bmw-7.png' },
+        { id: 8, name: 'BMW 8', image: '/images/cars/bmw-8.png' },
+        { id: 9, name: 'BMW X1', image: '/images/cars/bmw-x1.png' },
+        { id: 10, name: 'BMW X2', image: '/images/cars/bmw-x2.png' },
+        { id: 11, name: 'BMW X3', image: '/images/cars/bmw-x3.png' },
+        { id: 12, name: 'BMW X4', image: '/images/cars/bmw-x4.png' },
+        { id: 13, name: 'BMW X5', image: '/images/cars/bmw-x5.png' },
+        { id: 14, name: 'BMW X6', image: '/images/cars/bmw-x6.png' },
+        { id: 15, name: 'BMW X7', image: '/images/cars/bmw-x7.png' },
+        { id: 16, name: 'BMW M2', image: '/images/cars/bmw-m2.png' },
+        { id: 17, name: 'BMW M3', image: '/images/cars/bmw-m3.png' },
+        { id: 18, name: 'BMW M4', image: '/images/cars/bmw-m4.png' },
+        { id: 19, name: 'BMW M5', image: '/images/cars/bmw-m5.png' },
+        { id: 20, name: 'BMW M8', image: '/images/cars/bmw-m8.png' },
+        { id: 21, name: 'BMW i3', image: '/images/cars/bmw-i3.png' },
+        { id: 22, name: 'BMW i4', image: '/images/cars/bmw-i4.png' },
+        { id: 23, name: 'BMW i7', image: '/images/cars/bmw-i7.png' },
+        { id: 24, name: 'BMW i8', image: '/images/cars/bmw-i8.png' },
+        { id: 25, name: 'BMW iX', image: '/images/cars/bmw-ix.png' },
+        { id: 26, name: 'BMW z3', image: '/images/cars/bmw-z3.png' },
+        { id: 27, name: 'BMW z4', image: '/images/cars/bmw-z4.png' },
+        { id: 28, name: 'Rolls Royce', image: '/images/cars/rolls-royce.png' },
+        { id: 29, name: 'Mini Cooper', image: '/images/cars/mini-cooper.png' },
+        { id: 30, name: 'Другая', image: null}
     ];
 
     const services = [
@@ -190,6 +208,12 @@ export default function Quiz({ propModel }) {
             "G30 B58C/B58D 540i",
             "G30 B48/B48D 520i/530i",
         ],
+        'BMW 6': [
+            "F06 N63 650i",
+            "F06 N55 640i",
+            "F12/F13 N63 650i",
+            "F12/F13 N55 640i",
+        ],
         'BMW 7': [
             "F01/F02 N74 760i",
             "F01/F02 N63 750i",
@@ -202,9 +226,9 @@ export default function Quiz({ propModel }) {
             "G11/G12 B48B20O 730i",
             "G11/G12 B47D20T 725d",
         ],
-        'BMW M5': [
-            "F10 S63 M5",
-            "F90 S63B44T M5",
+        'BMW 8': [
+            "G14/G15/G16 N63 M850i",
+            "G14/G15/G16 B58 840i",
         ],
         'BMW X1': [
             "F48 20i B48",
@@ -213,6 +237,11 @@ export default function Quiz({ propModel }) {
             "X1 E84 N47 S20D",
             "X1 E84 X25I N52K",
             "X1 E84 S18I N46T S18I",
+        ],
+        'BMW X2': [
+            "F39 M35i B58",
+            "F39 20i B48",
+            "F39 18d B47",
         ],
         'BMW X3': [
             "X3 LCI F25 B47 18d/20d",
@@ -224,6 +253,13 @@ export default function Quiz({ propModel }) {
             "X3 G01 B48/B48X 20i/30i",
             "X3 G01 B57 30d",
             "X3 G01 B47 18d/20d",
+        ],
+        'BMW X4': [
+            "F26 M40i B58",
+            "F26 35i N55",
+            "F26 30d N57",
+            "F26 28i N20",
+            "F26 20d B47",
         ],
         'BMW X5': [
             "X5 E70 LCI N55 35i/40i",
@@ -262,6 +298,78 @@ export default function Quiz({ propModel }) {
             "X6 G06 B57D30S M50dX",
             "X6 G06 B57D30O 30D",
             "X6 M S63B44T F86",
+        ],
+        'BMW X7': [
+            "G07 M50i N63",
+            "G07 40i B58",
+            "G07 30d B57",
+        ],
+        'BMW M2': [
+            "F87 M2 N55",
+            "F87 M2 Competition S55",
+        ],
+        'BMW M3': [
+            "F80 M3 S55",
+            "G80 M3 S58",
+        ],
+        'BMW M4': [
+            "F82/F83 M4 S55",
+            "G82/G83 M4 S58",
+        ],
+        'BMW M5': [
+            "F10 S63 M5",
+            "F90 S63B44T M5",
+        ],
+        'BMW M8': [
+            "F91 M8 Convertible",
+            "F92 M8 Coupe",
+            "F93 M8 Gran Coupe",
+        ],
+        'BMW i3': [
+            "i3 I01 I12",
+            "i3s I01 I12",
+        ],
+        'BMW i4': [
+            "i4 eDrive40 G26",
+            "i4 M50 G26",
+        ],
+        'BMW i7': [
+            "i7 xDrive60 G70",
+            "i7 M70 G70",
+        ],
+        'BMW i8': [
+            "i8 I12",
+            "i8 Roadster I15",
+        ],
+        'BMW iX': [
+            "iX xDrive40 I20",
+            "iX xDrive50 I20",
+            "iX M60 I20",
+        ],
+        'BMW z3': [
+            "Z3 E36 M52",
+            "Z3 E36 M54",
+            "Z3 M E36 S52",
+            "Z3 M E36 S54",
+        ],
+        'BMW z4': [
+            "Z4 E85/E86 N52",
+            "Z4 E89 N20",
+            "Z4 E89 N55",
+            "Z4 G29 B58",
+        ],
+        'Rolls Royce': [
+            "Rolls Royce RR11",
+            "Rolls Royce RR12",
+            "Rolls Royce RR4",
+            "Rolls Royce RR5",
+            "Rolls Royce RR6",
+            "Cullinan RR31",
+        ],
+        'Mini Cooper': [
+            "Mini Coupe",
+            "Mini Clubman",
+            "Mini Countryman",
         ]
     }
 

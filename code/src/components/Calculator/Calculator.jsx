@@ -13,11 +13,19 @@ import services3 from '../../data/calcServices/services_3.json';
 import services4 from '../../data/calcServices/services_4.json';
 import services5 from '../../data/calcServices/services_5.json';
 import services7 from '../../data/calcServices/services_7.json';
+import servicesM2 from '../../data/calcServices/services_m2.json';
+import servicesM3 from '../../data/calcServices/services_m3.json';
+import servicesM4 from '../../data/calcServices/services_m4.json';
 import servicesM5 from '../../data/calcServices/services_m5.json';
+import servicesM8 from '../../data/calcServices/services_m8.json';
 import servicesX1 from '../../data/calcServices/services_x1.json';
 import servicesX3 from '../../data/calcServices/services_x3.json';
 import servicesX5 from '../../data/calcServices/services_x5.json';
 import servicesX6 from '../../data/calcServices/services_x6.json';
+import servicesZ3 from '../../data/calcServices/services_z3.json';
+import servicesZ4 from '../../data/calcServices/services_z4.json';
+import servicesRR from '../../data/calcServices/services_rr.json';
+import servicesMini from '../../data/calcServices/services_mini.json';
 
 // Models and submodels definitions
 const models = [
@@ -32,7 +40,9 @@ const models = [
   { id: 'X', name: 'X' },
   { id: 'M', name: 'M' },
   { id: 'i', name: 'i' },
-  { id: 'z', name: 'z' }
+  { id: 'z', name: 'z' },
+  { id: 'RR', name: 'Rolls Royce' },
+  { id: 'MINI', name: 'Mini' }
 ];
 
 const submodels = {
@@ -77,12 +87,14 @@ const submodels = {
     { id: 'iX5', name: 'iX5' },
   ],
   'z': [
-    { id: 'z1', name: 'z1' },
     { id: 'z3', name: 'z3' },
     { id: 'z4', name: 'z4' },
-    { id: 'z8', name: 'z8' },
-    { id: 'z3M', name: 'z3M' },
-    { id: 'z4M', name: 'z4M' },
+  ],
+  'RR': [
+    { id: 'RR', name: 'Rolls Royce' }
+  ],
+  'MINI': [
+    { id: 'MINI', name: 'Mini Cooper' }
   ]
 };
 
@@ -94,21 +106,30 @@ const servicesData = {
   '4': services4,
   '5': services5,
   '7': services7,
+  'M2': servicesM2,
+  'M3': servicesM3,
+  'M4': servicesM4,
   'M5': servicesM5,
+  'M8': servicesM8,
   'X1': servicesX1,
   'X3': servicesX3,
   'X5': servicesX5,
-  'X6': servicesX6
+  'X6': servicesX6,
+  'z3': servicesZ3,
+  'z4': servicesZ4,
+  'RR': servicesRR,
+  'MINI': servicesMini
 };
 
-export default function Calculator() {
-  const [modelId, setModelId] = useState('X');
-  const [subId, setSubId] = useState('X5');
+export default function Calculator({ initialModel }) {
+  const [modelId, setModelId] = useState('M');
+  const [subId, setSubId] = useState('M8');
   const [seriesName, setSeriesName] = useState('');
   const [mileage, setMileage] = useState(50000);
   const [partType, setPartType] = useState('Аналог');
   const [filteredServices, setFilteredServices] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
+  const [linkOpacity, setLinkOpacity] = useState(0);
 
   const pathname = usePathname()
 
@@ -144,22 +165,57 @@ export default function Calculator() {
   useEffect(() => {
     if (!modelId) return;
 
-    let defaultSub = '';
-    if (['7', '5', '4', '3', '2', '1'].includes(modelId)) {
-      defaultSub = modelId;
-    } else if (modelId === 'M') {
-      defaultSub = 'M5';
-    } else if (modelId === 'X') {
-      defaultSub = 'X5';
-    }
+    const subs = submodels[modelId] || [];
+    const defaultSub = subs.length > 0 ? subs[0].id : '';
 
     setSubId(defaultSub);
-    setSeriesName('');
   }, [modelId]);
 
+  // Автовыбор серии при смене подмодели
   useEffect(() => {
-    // Список доступных подмоделей
-    const validSubs = ['1', '2', '3', '4', '5', '7', 'X1', 'X3', 'X5', 'X6', 'M5']
+    if (!subId) {
+      setSeriesName('');
+      return;
+    }
+
+    const list = servicesData[subId] || [];
+    const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
+
+    setSeriesName(defaultSeries);
+  }, [subId]);
+
+  useEffect(() => {
+    // Если передан initialModel, используем его
+    if (initialModel) {
+      const validSubs = ['1', '2', '3', '4', '5', '7', 'X1', 'X3', 'X5', 'X6', 'M2', 'M3', 'M4', 'M5', 'M8', 'z3', 'z4']
+      
+      // Проверяем на Rolls Royce
+      if (initialModel === 'rolls-royce' || initialModel === 'rollsroyce' || initialModel === 'rr') {
+        setModelId('RR')
+        setSubId('RR')
+        return
+      }
+      
+      // Проверяем на Mini Cooper
+      if (initialModel === 'mini-cooper' || initialModel === 'mini' || initialModel === 'minicooper') {
+        setModelId('MINI')
+        setSubId('MINI')
+        return
+      }
+      
+      // Для BMW моделей
+      if (initialModel.startsWith('bmw-')) {
+        const shortModel = initialModel.replace('bmw-', '').toUpperCase()
+        if (validSubs.includes(shortModel)) {
+          setSubId(shortModel)
+          setModelId(shortModel.charAt(0))
+          return
+        }
+      }
+    }
+    
+    // Проверяем pathname как запасной вариант
+    const validSubs = ['1', '2', '3', '4', '5', '7', 'X1', 'X3', 'X5', 'X6', 'M2', 'M3', 'M4', 'M5', 'M8', 'z3', 'z4']
     const m = pathname.match(/^\/cars\/bmw-([a-z0-9]+)/i)
 
     if (m) {
@@ -172,10 +228,28 @@ export default function Calculator() {
         return
       }
     }
-    // Если не совпало, сбрасываем на дефолт
-    setSubId('X5')
-    setModelId('X')
-  }, [pathname]);
+    
+    // Если ничего не подошло и нет initialModel, используем дефолт
+    if (!initialModel) {
+      setSubId('M8')
+      setModelId('M')
+    }
+  }, [pathname, initialModel]);
+
+  // Управление opacity ссылки с задержкой
+  useEffect(() => {
+    if (subId === '') {
+      setLinkOpacity(0);
+      return;
+    }
+    
+    setLinkOpacity(0);
+    const timer = setTimeout(() => {
+      setLinkOpacity(1);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [subId, seriesName]);
 
   const toggleRow = idx => {
     setSelectedRows(prev => prev.map((v, i) => i === idx ? !v : v));
@@ -204,6 +278,23 @@ export default function Calculator() {
     });
   }, [subId]);
 
+  // Функция для генерации slug из названия серии
+  const generateSeriesSlug = (seriesName) => {
+    return seriesName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-')
+      .trim();
+  };
+
+  // Функция для генерации пути к модели
+  const getModelSlug = (subId) => {
+    if (subId === 'RR') return 'rolls-royce';
+    if (subId === 'MINI') return 'mini-cooper';
+    return `bmw-${subId.toLowerCase()}`;
+  };
+
   return (
     <div className="Calculator" id="Calculator">
       <div className="choose_model">
@@ -211,20 +302,43 @@ export default function Calculator() {
           <h2>
             Рассчитайте стоимость <span>ТО</span>, не выходя из дома
           </h2>
-          {subId === '' ? (
-            <span className="red">Выберите модель</span>
-          ) : (
+          {subId !== '' && (
             <Link
               href={`/cars/bmw-${subId.toLowerCase()}`}
               className="black"
+              style={{
+                opacity: linkOpacity,
+                transition: 'opacity 0.3s ease'
+              }}
             >
-              &gt; Страница BMW {subId}
+              &gt; Страница {subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
             </Link>
           )}
         </div>
         <h3 className="stepTitle">1. Выберите модель</h3>
         <div className="buttons">
-          {data.map(m => (
+          <button className="label-button" disabled>
+            BMW
+          </button>
+          {data.filter(m => !['RR', 'MINI'].includes(m.id)).map(m => (
+            <button
+              key={m.id}
+              className={m.id === modelId ? 'selected' : ''}
+              onClick={() => {
+                setModelId(m.id);
+                setSubId('');
+                setSeriesName('');
+              }}
+            >
+              {m.name}
+            </button>
+          ))}
+        </div>
+        <div className="buttons buttons-second-row">
+          <button className="label-button" disabled>
+            Другие
+          </button>
+          {data.filter(m => ['RR', 'MINI'].includes(m.id)).map(m => (
             <button
               key={m.id}
               className={m.id === modelId ? 'selected' : ''}
@@ -243,7 +357,12 @@ export default function Calculator() {
       <h3 className="stepTitle">2. Уточните модель</h3>
       <div className="choose_car_block">
         {subsList.map(sm => {
-          const fileName = `bmw-${sm.name}`.toLowerCase();
+          let fileName = `bmw-${sm.name}`.toLowerCase();
+          if (modelId === 'RR') {
+            fileName = 'rolls-royce';
+          } else if (modelId === 'MINI') {
+            fileName = 'mini-cooper';
+          }
           const imageUrl = `/images/cars/${fileName}.png`;
           return (
             <div
@@ -260,14 +379,14 @@ export default function Calculator() {
                 backgroundRepeat: 'no-repeat'
               }}
             >
-              <span>{`BMW ${sm.name}`}</span>
+              <span>{modelId === 'RR' || modelId === 'MINI' ? sm.name : `BMW ${sm.name}`}</span>
             </div>
           );
         })}
       </div>
 
       <h3 className="stepTitle">3. Выберите серию</h3>
-      <div className="choose_special_model">
+      <div className="choose_special_model" style={{ marginBottom: '16px' }}>
         <div className="model-select">
           <label htmlFor="series" className="model-select__label">
             Серия
@@ -345,7 +464,30 @@ export default function Calculator() {
         </div>
       </div>
 
-      <div className="calculator_table">
+      {seriesName && (
+        <Link 
+          href={`/cars/${getModelSlug(subId)}/${encodeURIComponent(generateSeriesSlug(seriesName))}`}
+          style={{
+            display: 'block',
+            marginTop: '0px',
+            marginBottom: '80px',
+            color: '#000',
+            fontWeight: 'bold',
+            fontSize: window.innerWidth > 800 ? '18px' : '16px',
+            textDecoration: 'none',
+            textAlign: 'left',
+            width: window.innerWidth >= 1200 ? '1200px' : '100%',
+            paddingLeft: window.innerWidth < 1200 ? '24px' : '0',
+            paddingRight: window.innerWidth < 1200 ? '24px' : '0',
+            opacity: 0.7,
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+        >
+          Читать подробнее про модель {seriesName}
+        </Link>
+      )}      <div className="calculator_table">
         <div className="calculator_table__row--header">
           <div className="calculator_table__cell--first">Услуга</div>
           <div className="calculator_table__cell">Стоимость запчастей</div>

@@ -82,6 +82,24 @@ export default function Form() {
         throw new Error('Telegram API error');
       }
 
+      // Отправка цели в Яндекс.Метрику
+      console.log('🔍 Проверка Яндекс.Метрики...');
+      console.log('window.ym существует?', typeof window.ym !== 'undefined');
+      console.log('Тип window.ym:', typeof window.ym);
+      
+      if (typeof window !== 'undefined' && typeof window.ym !== 'undefined') {
+        try {
+          window.ym(94203012, 'reachGoal', 'formSent');
+          console.log('✅ Яндекс.Метрика: цель formSent отправлена');
+          console.log('📊 Счетчик: 94203012, Цель: formSent');
+        } catch (error) {
+          console.error('❌ Ошибка при отправке цели:', error);
+        }
+      } else {
+        console.warn('⚠️ Яндекс.Метрика не загружена');
+        console.warn('Возможно, используется localhost или блокировщик рекламы');
+      }
+
       setIsModalOpen(true);
       setFormData({ name: '', phone: '', vin: '' });
     } catch (error) {
