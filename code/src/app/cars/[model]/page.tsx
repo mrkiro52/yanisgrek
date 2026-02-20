@@ -223,7 +223,7 @@ export default async function CarPage({ params }: { params: Promise<{ model: str
         <EmblaCarousel slides={problemsImages} options={{ loop: true, align: 'start' }} />
       </div>
 
-      <Calculator />
+      <Calculator initialModel={model} />
       <Quiz propModel={propModel || null} />
       <div style={{paddingTop: "130px"}}></div>
       <div dangerouslySetInnerHTML={{ __html: '<review-lab data-widgetid="68ef05ca67defc8041d3ab95"></review-lab><script src="https://app.reviewlab.ru/widget/index-es2015.js" defer></script>' }} />
