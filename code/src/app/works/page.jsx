@@ -3,6 +3,7 @@ import Discounts from '../../components/Discounts/Discounts';
 import Form from '../../components/Form/Form';
 import TeamBlock from '../../components/TeamBlock/TeamBlock';
 import Header from '../../components/Header/Header';
+import { LazyImage } from '../../components/LazyImage/LazyImage';
 import './Works.scss';
 
 export default function Works() {
@@ -19,8 +20,8 @@ export default function Works() {
                             </div>
                         </div>
                         <div className="right">
-                            <img src="/images/worksImg1.png" alt="Примеры выполненных ремонтов в YANIS GREK" />
-                            <img src="/images/worksImg2.png" alt="Фотоотчёт о выполненной работе" />
+                            <LazyImage src="/images/worksImg1.png" alt="Примеры выполненных ремонтов в YANIS GREK" />
+                            <LazyImage src="/images/worksImg2.png" alt="Фотоотчёт о выполненной работе" />
                         </div>
                     </div>
                 </div>

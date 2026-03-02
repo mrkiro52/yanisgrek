@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./Chillzone.scss";
+import { LazyImage } from '../LazyImage/LazyImage';
 
 export default function Chillzone() {
     const [fullscreenImage, setFullscreenImage] = useState(null);
@@ -29,7 +30,7 @@ export default function Chillzone() {
                                 className={`Chillzone__image ${i === 2 ? "Chillzone__image--full" : ""}`}
                                 onClick={() => handleImageClick(`/images/chillzone/${img}`)}
                             >
-                                <img
+                                <LazyImage
                                     src={`/images/chillzone/${img}`}
                                     alt={`Chill ${i}`}
                                     className="Chillzone__image-content"
@@ -43,7 +44,7 @@ export default function Chillzone() {
                         className="Chillzone__right_image"
                         onClick={() => handleImageClick("/images/chillzone/image4.png")}
                     >
-                        <img
+                        <LazyImage
                             src="/images/chillzone/image4.png"
                             alt="Chill area"
                             className="Chillzone__image-content"
@@ -54,7 +55,7 @@ export default function Chillzone() {
 
             {fullscreenImage && (
                 <div className="Fullscreen" onClick={closeFullscreen}>
-                    <img src={fullscreenImage} alt="Fullscreen" className="Fullscreen__image" />
+                    <LazyImage src={fullscreenImage} alt="Fullscreen" className="Fullscreen__image" />
                 </div>
             )}
         </div>

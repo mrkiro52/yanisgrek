@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./ImageBlock.scss";
+import { LazyBackgroundImage } from "../../../components/LazyBackgroundImage/LazyBackgroundImage";
+import { LazyImage } from "../../../components/LazyImage/LazyImage";
 
 const carImages = [
   "/images/carsbg/bmw-1.jpg",
@@ -85,18 +87,16 @@ export default function ImageBlock(props) {
   }
 
   return (
-    <div
+    <LazyBackgroundImage
+      src={bg}
       className="ImageBlock"
       style={{
-        backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
-
-    <img src={`/images/servicesImages/${props.image}.jpg`} alt="car" className="ImageBlock__overlay" />
-      
-    </div>
+      <LazyImage src={`/images/servicesImages/${props.image}.jpg`} alt="car" className="ImageBlock__overlay" />
+    </LazyBackgroundImage>
   );
 }

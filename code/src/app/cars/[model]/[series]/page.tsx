@@ -43,13 +43,98 @@ interface SeriesData {
   image: string;
 }
 
+// Функция для преобразования slug серии в имя файла JSON
+function getSeriesFileName(seriesSlug: string, modelSlug: string): string {
+  // Примеры преобразований:
+  // f10-s63-m5 -> m5-f10-s63
+  // f90-s63b44t -> m5-f90-s63b44t
+  // f80-m3 -> m3-f80-m3
+  // g80-m3-sedan -> m3-g80-m3-sedan
+  // g81-m3-touring -> m3-g81-m3-touring
+  // f01f02-n63-750i -> 7-f01-f02-n63-750i
+  // g11g12-n74b66u-m760lix -> 7-g11-g12-n74b66u-m760lix
+  // 4-f32-b38-418i -> 4-f32-b38-418i
+  // 4-f33-n55-435i -> 4-f33-n55-435i
+  // 3-e90-e90lci-n52-325 -> 3-e90-e90lci-n52-325
+  // 2-f22-b47-218d -> 2-f22-b47-218d
+  
+  const model = modelSlug.replace('bmw-', '').toLowerCase();
+  let slug = seriesSlug;
+  
+  // Для BMW 1: убираем префикс "1-" из начала если он есть
+  if (model === '1' && slug.startsWith('1-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для Rolls Royce: убираем префикс "rr-" из начала если он есть
+  if (model === 'rolls-royce' && slug.startsWith('rr-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для BMW 2: убираем префикс "2-" из начала если он есть
+  if (model === '2' && slug.startsWith('2-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для BMW 3: убираем префикс "3-" из начала если он есть
+  if (model === '3' && slug.startsWith('3-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для BMW 4: убираем префикс "4-" из начала если он есть
+  if (model === '4' && slug.startsWith('4-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для BMW 7: исправляем формат f01f02 -> f01-f02 или g11g12 -> g11-g12 или g1112 -> g11-g12
+  if (model === '7') {
+    // Убираем префикс "7-" если он есть
+    if (slug.startsWith('7-')) {
+      slug = slug.substring(2);
+    }
+    // Вариант 1: g11g12 -> g11-g12 (буквы слиплись: буква, 2 цифры, буква, 2 цифры)
+    slug = slug.replace(/g(\d{2})g(\d{2})/g, 'g$1-g$2');
+    slug = slug.replace(/f(\d{2})f(\d{2})/g, 'f$1-f$2');
+    // Вариант 2: общая обработка для других случаев с буквой и цифрами
+    slug = slug.replace(/([a-z])(\d{2})([a-z])(\d{2})/g, '$1$2-$3$4');
+    return `7-${slug}`;
+  }
+  
+  // Для BMW 5: убираем префикс "5-" если он есть
+  if (model === '5' && slug.startsWith('5-')) {
+    return slug; // Уже в правильном формате
+  }
+  
+  // Для M-серии: переставляем части
+  if (model.startsWith('m')) {
+    // Убираем модель с конца если она там есть
+    const modelRegex = new RegExp(`-${model}$`);
+    if (modelRegex.test(slug)) {
+      slug = slug.replace(modelRegex, '');
+    }
+    return `${model}-${slug}`;
+  }
+  
+  return slug;
+}
+
 // Функция для загрузки данных серии из JSON файла
-function loadSeriesData(seriesSlug: string): SeriesData | null {
+function loadSeriesData(seriesSlug: string, modelSlug: string): SeriesData | null {
   try {
-    const filePath = path.join(process.cwd(), 'src', 'data', 'seriesData', `${seriesSlug}.json`);
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      return JSON.parse(fileContent);
+    const dataDir = path.join(process.cwd(), 'src', 'data', 'seriesData');
+    
+    // Варианты имен файлов для попытки загрузки
+    const fileNames = [
+      seriesSlug,
+      getSeriesFileName(seriesSlug, modelSlug)
+    ];
+    
+    for (const fileName of fileNames) {
+      const filePath = path.join(dataDir, `${fileName}.json`);
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(fileContent);
+      }
     }
   } catch (error) {
     console.error(`Error loading series data for ${seriesSlug}:`, error);
@@ -83,7 +168,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ model: 
   }
   
   // Загружаем данные серии из JSON файла
-  const seriesData = loadSeriesData(key);
+  const seriesData = loadSeriesData(key, model);
   
   const info: SeriesData = seriesData || {
     title: seriesTitle,

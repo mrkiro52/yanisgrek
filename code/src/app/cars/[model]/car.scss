@@ -38,7 +38,8 @@
         & > a {
           padding: 16px 24px;
           &.count {
-            background-color: black;
+            background-color: rgb(255, 255, 255);
+            color: black;
           }
           &.goform {
             background-color: rgba(43, 110, 255, 1);
