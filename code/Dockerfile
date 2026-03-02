@@ -1,5 +1,5 @@
 # Use specific version of Node.js
-FROM node:18.20.2-alpine3.19 AS builder
+FROM node:20.11.1-alpine3.19 AS builder
 WORKDIR /app
 
 # Set node environment
@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Production image
-FROM node:18.20.2-alpine3.19
+FROM node:20.11.1-alpine3.19
 WORKDIR /app
 
 ENV NODE_ENV=production

@@ -1,9 +1,9 @@
 'use client';
 
-import { ImgHTMLAttributes, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
-interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  src: string;
+interface LazyImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src'> {
+  src?: string | null;
   alt: string;
 }
 
@@ -15,6 +15,15 @@ export function LazyImage({ src, alt, className, style, ...props }: LazyImagePro
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<HTMLImageElement>(null);
 
+  // Не рендерим если src пустой или null
+  if (!src) {
+    return <span style={style} className={className} />;
+  }
+
+  // Отфильтровываем пустой src из props если он там есть
+  const { src: _, ...cleanProps } = props as any;
+
+  // Используем native lazy loading с loading="lazy"
   const handleLoad = () => {
     setIsLoading(false);
   };
@@ -32,7 +41,7 @@ export function LazyImage({ src, alt, className, style, ...props }: LazyImagePro
         ...style,
       }}
       onLoad={handleLoad}
-      {...props}
+      {...cleanProps}
     />
   );
 }
