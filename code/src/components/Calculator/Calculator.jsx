@@ -280,12 +280,50 @@ export default function Calculator({ initialModel }) {
 
   // Функция для генерации slug из названия серии
   const generateSeriesSlug = (seriesName) => {
-    return seriesName
+    let slug = seriesName
       .toLowerCase()
       .replace(/\s+/g, '-')
+      .replace(/\//g, '-') // Заменяем слэш на дефис ДО удаления спецсимволов
       .replace(/[^\w\-]+/g, '')
       .replace(/\-\-+/g, '-')
       .trim();
+    
+    // Для BMW 7: добавляем префикс "7-" чтобы получилось 7-g11-g12-...
+    if (seriesName.includes('G11/G12') || seriesName.includes('F01/F02')) {
+      slug = `7-${slug}`;
+    }
+    
+    // Для BMW 5: добавляем префикс "5-" чтобы получилось 5-e60-m54-525i...
+    if (seriesName.includes('E60') || seriesName.includes('F10') || seriesName.includes('G30')) {
+      slug = `5-${slug}`;
+    }
+    
+    // Для BMW 4: добавляем префикс "4-" чтобы получилось 4-f32-b38-418i...
+    if (seriesName.includes('F32') || seriesName.includes('F33') || seriesName.includes('F36')) {
+      slug = `4-${slug}`;
+    }
+    
+    // Для BMW 3: добавляем префикс "3-" чтобы получилось 3-e90-e90lci-n52-325...
+    if (seriesName.includes('E90') || seriesName.includes('F30') || seriesName.includes('F34') || seriesName.includes('G20')) {
+      slug = `3-${slug}`;
+    }
+    
+    // Для BMW 2: добавляем префикс "2-" чтобы получилось 2-f22-b47-218d...
+    if (seriesName.includes('F22') || seriesName.includes('F23')) {
+      slug = `2-${slug}`;
+    }
+    
+    // Для BMW 1: добавляем префикс "1-" чтобы получилось 1-f20-lci-f21-lci-b58-m140...
+    if (seriesName.includes('F20') || seriesName.includes('F21') || seriesName.includes('E81') || seriesName.includes('E82') || seriesName.includes('E87') || seriesName.includes('E88')) {
+      slug = `1-${slug}`;
+    }
+    
+    // Для Rolls Royce: добавляем префикс "rr-" чтобы получилось rr-rr11, rr-rr12, rr-rr4, rr-rr5, rr-rr6, rr-cullinan-rr31
+    if (seriesName.includes('RR') || seriesName.includes('Cullinan')) {
+      slug = `rr-${slug}`;
+    }
+    
+    return slug;
   };
 
   // Функция для генерации пути к модели
@@ -304,7 +342,7 @@ export default function Calculator({ initialModel }) {
           </h2>
           {subId !== '' && (
             <Link
-              href={`/cars/bmw-${subId.toLowerCase()}`}
+              href={subId === 'RR' ? '/cars/rolls-royce' : subId === 'MINI' ? '/cars/mini-cooper' : `/cars/bmw-${subId.toLowerCase()}`}
               className="black"
               style={{
                 opacity: linkOpacity,

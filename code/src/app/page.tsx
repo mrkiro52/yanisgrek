@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { LazyImage } from '../components/LazyImage/LazyImage';
 import Header from '../components/Header/Header';
 import '../styles/globals.css';
 import '../styles/mainPage.scss';
@@ -86,11 +87,9 @@ export default async function Home() {
             <br /> <span>КОТОРОМУ</span> ДОВЕРЯЮТ ТЫСЯЧИ.
           </h2>
           <div className="row row1">
-            <Image 
+            <LazyImage 
               src="/images/blackInfoImg1.png" 
               alt="Оригинальные запчасти BMW - обеспечение совместимости и надёжности"
-              width={285} 
-              height={380} 
             />
             <div className="textBlock">
               <h3>Оригинальные запчасти BMW</h3>
@@ -102,11 +101,9 @@ export default async function Home() {
             </div>
           </div>
           <div className="row row2">
-            <Image 
+            <LazyImage 
               src="/images/blackInfoImg2.png" 
               alt="Сертифицированные мастера BMW с официальным обучением"
-              width={489} 
-              height={402} 
             />
             <div className="textBlock">
               <h3>Сертифицированные мастера</h3>
@@ -126,11 +123,9 @@ export default async function Home() {
                 открытость.
               </p>
             </div>
-            <Image 
+            <LazyImage 
               src="/images/blackInfoImg3.png" 
               alt="Прозрачные цены и подробный фотоотчёт о выполненных работах"
-              width={387} 
-              height={516} 
             />
           </div>
         </div>
@@ -140,20 +135,16 @@ export default async function Home() {
         <div className="content">
           <div className="row1">
             <div className="block1">
-              <Image 
+              <LazyImage 
                 src="/images/number1.png" 
                 alt="14 лет опыта в автосервисе BMW"
-                width={256} 
-                height={178} 
               />
               <span>лет опыта</span>
             </div>
             <div className="block2">
-              <Image
+              <LazyImage
                 src="/images/number2.png"
                 alt="4.9 рейтинг в Google и Яндекс Карты"
-                width={360}
-                height={178}
               />
               <span>
                 <a
@@ -169,20 +160,16 @@ export default async function Home() {
           </div>
           <div className="row2">
             <div className="block3">
-              <Image 
+              <LazyImage 
                 src="/images/number3.png" 
                 alt="Гарантия до 2 лет на выполненные работы"
-                width={138} 
-                height={178} 
               />
               <span>года гарантии</span>
             </div>
             <div className="block4">
-              <Image 
+              <LazyImage 
                 src="/images/number4.png" 
                 alt="Более 5000 автомобилей успешно обслужено"
-                width={780} 
-                height={178} 
               />
               <span>машин обслужено</span>
             </div>
@@ -236,11 +223,9 @@ export default async function Home() {
                 <span className="num">0{idx + 1}</span>
                 <span className="name">{serviceData[idx].title}</span>
                 <p>{serviceData[idx].text2}</p>
-                <Image
+                <LazyImage
                   src="/images/goCircle.png"
                   alt="Перейти к услуге"
-                  width={43}
-                  height={43}
                 />
               </Link>
             ))}
