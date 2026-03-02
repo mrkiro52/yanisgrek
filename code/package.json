@@ -10,7 +10,6 @@
     "export": "next export"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.11",
