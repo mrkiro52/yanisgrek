@@ -1,6 +1,6 @@
 'use client';
 
-import { ImgHTMLAttributes, useRef, useEffect, useState } from 'react';
+import { ImgHTMLAttributes, useRef, useState } from 'react';
 
 interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -9,38 +9,11 @@ interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 /**
  * Компонент для ленивой загрузки обычных изображений
- * Заменяет <img> тег на версию с lazy loading
+ * Использует встроенный HTML5 loading="lazy" атрибут
  */
 export function LazyImage({ src, alt, className, style, ...props }: LazyImageProps) {
-  const [imageSrc, setImageSrc] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
   const ref = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setImageSrc(src);
-          if (ref.current) {
-            observer.unobserve(ref.current);
-          }
-        }
-      },
-      {
-        rootMargin: '50px', // Начинаем загрузку за 50px до видимости
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [src]);
 
   const handleLoad = () => {
     setIsLoading(false);
@@ -49,8 +22,9 @@ export function LazyImage({ src, alt, className, style, ...props }: LazyImagePro
   return (
     <img
       ref={ref}
-      src={imageSrc}
+      src={src}
       alt={alt}
+      loading="lazy"
       className={className}
       style={{
         opacity: isLoading ? 0.7 : 1,
