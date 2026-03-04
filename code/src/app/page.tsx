@@ -139,24 +139,14 @@ export default async function Home() {
 
       <div className="numbersBlock">
         <div className="content">
-          <div className="row1">
-            <div className="block1">
-              <Image 
-                src="/images/number1.png" 
-                alt="14 лет опыта в автосервисе BMW"
-                width={256} 
-                height={178} 
-              />
-              <span>лет опыта</span>
+          <div className="stats">
+            <div className="statItem">
+              <div className="statNumber">10</div>
+              <div className="statText">лет опыта</div>
             </div>
-            <div className="block2">
-              <Image
-                src="/images/number2.png"
-                alt="4.9 рейтинг в Google и Яндекс Карты"
-                width={360}
-                height={178}
-              />
-              <span>
+            <div className="statItem">
+              <div className="statNumber">4.9</div>
+              <div className="statText">
                 <a
                   href="https://yandex.ru/profile/1175654222?lang=ru"
                   target="_blank"
@@ -165,27 +155,15 @@ export default async function Home() {
                 >
                   рейтинг в Google и Яндекс
                 </a>
-              </span>
+              </div>
             </div>
-          </div>
-          <div className="row2">
-            <div className="block3">
-              <Image 
-                src="/images/number3.png" 
-                alt="Гарантия до 2 лет на выполненные работы"
-                width={138} 
-                height={178} 
-              />
-              <span>года гарантии</span>
+            <div className="statItem">
+              <div className="statNumber">2</div>
+              <div className="statText">года гарантии</div>
             </div>
-            <div className="block4">
-              <Image 
-                src="/images/number4.png" 
-                alt="Более 5000 автомобилей успешно обслужено"
-                width={780} 
-                height={178} 
-              />
-              <span>машин обслужено</span>
+            <div className="statItem">
+              <div className="statNumber">8000+</div>
+              <div className="statText">машин обслужено</div>
             </div>
           </div>
         </div>

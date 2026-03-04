@@ -17,40 +17,27 @@ export default function Chillzone() {
     return (
         <div className="Chillzone">
             <div className="Chillzone__wrapper">
-                <div className="Chillzone__left">
-                    <h2 className="Chillzone__left_title">Зона отдыха</h2>
-                    <p className="Chillzone__left_text">
+                <div className="Chillzone__header">
+                    <h2 className="Chillzone__title">Зона отдыха</h2>
+                    <p className="Chillzone__text">
                         Проведите время в ожидании своего автомобиля с комфортом. Для вас оборудована лаунж-зона с удобными диванами, кофе и развлекательным центром.
                     </p>
-                    <div className="Chillzone__left_images">
-                        {["image1.png", "image2.png", "image3.png"].map((img, i) => (
-                            <div
-                                key={i}
-                                className={`Chillzone__image ${i === 2 ? "Chillzone__image--full" : ""}`}
-                                onClick={() => handleImageClick(`/images/chillzone/${img}`)}
-                            >
-                                <img
-                                    src={`/images/chillzone/${img}`}
-                                    alt={`Chill ${i}`}
-                                    className="Chillzone__image-content"
-                                    loading="lazy"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                <div className="Chillzone__right">
-                    <div
-                        className="Chillzone__right_image"
-                        onClick={() => handleImageClick("/images/chillzone/image4.png")}
-                    >
-                        <img
-                            src="/images/chillzone/image4.png"
-                            alt="Chill area"
-                            className="Chillzone__image-content"
-                            loading="lazy"
-                        />
-                    </div>
                 </div>
+                <div className="Chillzone__gallery">
+                    {["image1.png", "image2.png", "image3.png", "image4.png"].map((img, i) => (
+                        <div
+                            key={i}
+                            className="Chillzone__image-card"
+                            onClick={() => handleImageClick(`/images/chillzone/${img}`)}
+                        >
+                            <img
+                                src={`/images/chillzone/${img}`}
+                                alt={`Chill zone ${i + 1}`}
+                                className="Chillzone__image-content"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
             {fullscreenImage && (
