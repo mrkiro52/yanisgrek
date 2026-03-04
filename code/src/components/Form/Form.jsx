@@ -182,7 +182,7 @@ export default function Form() {
               <label htmlFor="datetime" className="form-label-1">
                 Дата и время
               </label>
-              <div className="form-datetime">
+              <div className="form-datetime" id="datetime">
                 <input
                   type="date"
                   id="date"

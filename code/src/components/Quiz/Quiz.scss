@@ -120,9 +120,10 @@
               display: flex;
               flex-wrap: wrap;
               width: 100%;
+              gap: 0;
               & > .block {
                 cursor: pointer;
-                width: 50%;
+                width: 25%;
                 background-color: rgba(21, 21, 21, 1);
                 padding: 0px 32px;
                 height: 60px;
@@ -133,6 +134,7 @@
                 font-size: 16px;
                 font-weight: 400;
                 color: rgba(154, 154, 154, 1);
+                box-sizing: border-box;
                 &.selected {
                   color: white;
                   background-color: rgba(36, 36, 36, 1);
@@ -343,6 +345,14 @@
     }
 }
 
+@media screen and (max-width: 450px) {
+  .Quiz > .Quiz_wrapper > .slide > .content2 > .block,
+  .Quiz > .Quiz_wrapper > .slide > .content3 > .block {
+    font-size: 13px;
+    padding: 0 14px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .Quiz>.Quiz_wrapper>.slide>.content5>.btns_row {
     flex-direction: column;
@@ -351,7 +361,7 @@
 
 @media screen and (max-width: 800px) {
   .Quiz > .Quiz_wrapper > .slide > .content2 > .block {
-    width: 100%;
+    width: 50%;
   }
   .Quiz > .Quiz_wrapper > .slide > .content3 > .block {
     width: 100%;
