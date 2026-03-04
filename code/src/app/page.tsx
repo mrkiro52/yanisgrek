@@ -236,12 +236,6 @@ export default async function Home() {
                 <span className="num">0{idx + 1}</span>
                 <span className="name">{serviceData[idx].title}</span>
                 <p>{serviceData[idx].text2}</p>
-                <Image
-                  src="/images/goCircle.png"
-                  alt="Перейти к услуге"
-                  width={43}
-                  height={43}
-                />
               </Link>
             ))}
           </div>

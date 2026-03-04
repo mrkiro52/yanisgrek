@@ -19,8 +19,8 @@ export default function Works() {
                             </div>
                         </div>
                         <div className="right">
-                            <img src="/images/worksImg1.png" alt="Примеры выполненных ремонтов в YANIS GREK" />
-                            <img src="/images/worksImg2.png" alt="Фотоотчёт о выполненной работе" />
+                            <img src="/images/worksImg1.png" alt="Примеры выполненных ремонтов в YANIS GREK" loading="lazy"/>
+                            <img src="/images/worksImg2.png" alt="Фотоотчёт о выполненной работе" loading="lazy"/>
                         </div>
                     </div>
                 </div>

@@ -52,10 +52,9 @@ export default async function RemontAkppSpecial({ params }) {
             <Image
               src={`/images/kpp/${slug}.jpg`}
               alt="remont-kpp"
-              width={500}     // тут достаточно произвольного числа, важно: оно будет перезаписано стилями
-              height={500}    // то же самое
+              width={500}
+              height={500}
               className="img_full_height"
-              priority
             />
           </div>
         </div>
@@ -133,9 +132,8 @@ export default async function RemontAkppSpecial({ params }) {
           <Image
             src="/images/phoneCall.png"
             alt="Phone Call"
-            width={390} // укажи нужную ширину
-            height={430} // и высоту
-            priority // если важно для LCP
+            width={390}
+            height={430}
           />
           <div className="block">
             <h2>Получите консультацию по услугам и ценам по телефону</h2>

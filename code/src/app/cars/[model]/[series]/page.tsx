@@ -125,7 +125,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ model: 
               alt={info.title}
               width={600}
               height={340}
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
           </div>

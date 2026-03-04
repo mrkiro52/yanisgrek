@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="first">
                 <div className="first__wrapper">
                     <div className="col">
-                        <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
+                        <Link href="/"><img src="/logo.svg" alt="logo" className='logo' loading="lazy"/></Link>
                         <p>Первый автосервис BMW с человеческим подходом.</p>
                         <p><a href="https://maps.app.goo.gl/TH4XvY6H5MPaXN8w6" target='_blank'>Москва, Высоковольтный проезд, 1, стр. 29</a></p>
                         <p><a href="tel:+74957676500" target='_blankс'>+7 495 76 76 500</a></p>
