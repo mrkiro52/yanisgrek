@@ -20,7 +20,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: url("/images/mainBG.png") center/contain no-repeat;
+        background: url("/images/mainBG.webp") center/contain no-repeat;
         opacity: 0;
         animation: bgFade 5s ease forwards;
         z-index: -1;
@@ -1254,7 +1254,7 @@
     .Home {
       & > .startscreen {
         &:before {
-          background: url("/images/mainBG.png") top / 190% no-repeat;
+          background: url("/images/mainBG.webp") top / 190% no-repeat;
         }    
       }
     }
