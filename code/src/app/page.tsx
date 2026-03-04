@@ -130,7 +130,8 @@ export default async function Home() {
               src="/images/blackInfoImg3.png" 
               alt="Прозрачные цены и подробный фотоотчёт о выполненных работах"
               width={387} 
-              height={516} 
+              height={516}
+              priority
             />
           </div>
         </div>
