@@ -408,16 +408,12 @@
         & > .firstRow {
           width: 100%;
           padding-left: 25px;
-          & > .buttons {
-          }
         }
         & > .secondRow {
           display: flex;
           width: 100%;
           justify-content: flex-end;
           padding-right: 25px;
-          & > p {
-          }
         }
       }
       & > .blackInfo {
@@ -441,10 +437,6 @@
               }
             }
             &.row1 {
-              & > .textBlock {
-              }
-            }
-            &.row2 {
               & > .textBlock {
               }
             }
@@ -687,25 +679,18 @@
           width: 100%;
           justify-content: flex-end;
           padding-right: 25px;
-          & > p {
-          }
         }
       }
       & > .blackInfo {
         & > .content {
           width: 100%;
-  
           & > h2 {
             font-size: 40px;
-            & > span {
-            }
           }
           & > .row {
             gap: 60px;
             padding: 0px 25px 0px 25px;
             flex-wrap: wrap;
-            & > img {
-            }
             & > .textBlock {
               gap: 30px;
               & > h3 {
@@ -979,6 +964,9 @@
           width: 100%;
           gap: 50px;
   
+        & > .content {
+          width: 100%;
+          gap: 50px;
           & > h2 {
             font-size: 20px;
             & > span {
@@ -1002,13 +990,9 @@
               }
             }
             &.row1 {
-              & > .textBlock {
-              }
             }
             &.row2 {
               justify-content: flex-start;
-              & > .textBlock {
-              }
             }
             &.row3 {
               display: flex;
@@ -1018,11 +1002,7 @@
               }
             }
           }
-        }
-      }
-      & .numbersBlock {
-        & > .content {
-          display: flex;
+        } display: flex;
           flex-direction: column;
           width: 100%;
           padding: 80px 0px;
@@ -1194,7 +1174,6 @@
                 text-align: start;
                 width: 320px;
                 line-height: 103%;
-                width: 100%;
               }
   
               & > p {

@@ -493,8 +493,6 @@ export default function Quiz({ propModel }) {
                                 onClick={() => setSelectedModel(model.name)}
                             >
                                 <div className="sq"></div>
-                                {model.image && <img src={model.image} style={{width: '90px'}} alt="bmw" loading="lazy"/>}
-                                {!model.image && <div className='empty-image-for-other' style={{width: '90px'}}></div>}
                                 <span>{model.name}</span>
                             </div>
                             ))}
