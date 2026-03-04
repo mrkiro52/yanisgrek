@@ -55,6 +55,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
                 alt={`slide-${idx}`}
                 style={{ width: "auto", display: "block", cursor: "pointer" }}
                 onClick={() => handleImageClick(slide.src)}
+                loading="lazy"
               />
               {slide.caption && (
                 <p className={styles.embla__caption}>{slide.caption}</p>
@@ -82,7 +83,6 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
           ))}
         </div>
       </div>
-
       {/* Enlarged Image Overlay */}
       {enlargedImage && (
         <div className={styles.overlayEmbla} onClick={handleCloseOverlay}>
@@ -90,6 +90,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = (props) => {
             src={enlargedImage}
             alt="Enlarged view"
             className={styles.enlargedImageEmbla}
+            loading="lazy"
           />
         </div>
       )}

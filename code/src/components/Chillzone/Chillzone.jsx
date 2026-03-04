@@ -33,11 +33,11 @@ export default function Chillzone() {
                                     src={`/images/chillzone/${img}`}
                                     alt={`Chill ${i}`}
                                     className="Chillzone__image-content"
+                                    loading="lazy"
                                 />
                             </div>
                         ))}
                     </div>
-                </div>
                 <div className="Chillzone__right">
                     <div
                         className="Chillzone__right_image"
@@ -47,14 +47,15 @@ export default function Chillzone() {
                             src="/images/chillzone/image4.png"
                             alt="Chill area"
                             className="Chillzone__image-content"
+                            loading="lazy"
                         />
                     </div>
                 </div>
+                </div>
             </div>
-
             {fullscreenImage && (
                 <div className="Fullscreen" onClick={closeFullscreen}>
-                    <img src={fullscreenImage} alt="Fullscreen" className="Fullscreen__image" />
+                    <img src={fullscreenImage} alt="Fullscreen" className="Fullscreen__image" loading="lazy"/>
                 </div>
             )}
         </div>

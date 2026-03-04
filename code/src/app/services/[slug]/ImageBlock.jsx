@@ -95,7 +95,7 @@ export default function ImageBlock(props) {
       }}
     >
 
-    <img src={`/images/servicesImages/${props.image}.jpg`} alt="car" className="ImageBlock__overlay" />
+    <img src={`/images/servicesImages/${props.image}.jpg`} alt="car" className="ImageBlock__overlay" loading="lazy"/>
       
     </div>
   );

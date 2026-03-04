@@ -72,6 +72,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
         alt="Previous"
         className={styles.embla__button__svg}
         style={{ display: "block", width: "100%", height: "100%" }}
+        loading="lazy"
       />
       {children}
     </button>
@@ -98,6 +99,7 @@ export const NextButton: React.FC<PropType> = (props) => {
         alt="Previous"
         className={styles.embla__button__svg}
         style={{ display: "block", width: "100%", height: "100%" }}
+        loading="lazy"
       />
       {children}
     </button>

@@ -32,7 +32,7 @@ export default function Header() {
         <div className="Header">
             <div className={menuOpened ? "menu opened" : "menu closed"}>
                 <div className="content">
-                    <img src="/cross.svg" alt="cross" className="cross" onClick={() => setMenuOpened(false)}/>
+                    <img src="/cross.svg" alt="cross" className="cross" onClick={() => setMenuOpened(false)} loading="lazy"/>
                     <div className="links">
                         <div className="linksCol">
                             <Link className='linkTitle' href='/' onClick={() => handleLinkClick('/')}>ГЛАВНАЯ</Link>
@@ -67,7 +67,7 @@ export default function Header() {
                         <span>Вс: 11:00-18:00</span>
                         <Link href="/contacts" className='calcButton' onClick={() => handleLinkClick('/contacts')}>Оставить заявку</Link>
                     </div>
-                    <Link href="/"><img src="/logo.svg" alt="logo" className='logo'/></Link>
+                    <Link href="/"><img src="/logo.svg" alt="logo" className='logo' loading="lazy"/></Link>
                 </div>
             </div>
             <div className="content">
@@ -76,8 +76,9 @@ export default function Header() {
                     className="burger"
                     onClick={() => setMenuOpened(true)}
                     alt="burger"
+                    loading="lazy"
                 />
-                <Link href="/" className="logo"><img src="/logo.svg" alt="logo" /></Link>
+                <Link href="/" className="logo"><img src="/logo.svg" alt="logo" loading="lazy"/></Link>
                 <div className="info_col">
                     <span>Пн-Пт: 10:00-20:00</span>
                     <span>Сб: 11:00-20:00 Вс: 11:00-18:00</span>

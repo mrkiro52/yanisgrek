@@ -87,6 +87,7 @@ export default function Discounts() {
               className="Discounts__item"
               alt="discount"
               onClick={() => setActiveDiscount(discount)}
+              loading="lazy"
             />
           ))}
         </div>
