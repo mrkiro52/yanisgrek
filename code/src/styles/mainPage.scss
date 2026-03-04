@@ -119,70 +119,55 @@
       }
     }
     & .numbersBlock {
-      background-color: #d0d0d0;
+      background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
       display: flex;
       justify-content: center;
       overflow: hidden;
       & > .content {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         width: 1200px;
-        padding: 80px 0px;
-        gap: 80px;
-        & > .row1 {
-          display: flex;
-          padding-left: 80px;
-          justify-content: space-between;
-          & > .block1 {
-            position: relative;
-            & > span {
-              position: absolute;
-              bottom: 1px;
-              left: 45px;
-              color: black;
-              font-size: 20px;
-            }
-          }
-          & > .block2 {
+        padding: 100px 80px;
+        & > .stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 60px;
+          width: 100%;
+          & > .statItem {
             display: flex;
-            align-items: flex-end;
-            & > span {
-              text-wrap: nowrap;
-              color: black;
-              font-size: 20px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            cursor: pointer;
+            & > .statNumber {
+              font-family: 'Russo One', sans-serif;
+              font-size: 56px;
+              font-weight: 700;
+              color: #1a1a1a;
+              line-height: 1;
+              margin-bottom: 20px;
+              transition: all 0.3s ease;
+            }
+            & > .statText {
+              font-family: 'Helvetica', sans-serif;
+              font-size: 18px;
+              color: #1a1a1a;
+              line-height: 1.4;
               & > a {
-                transition: all 0.2s;
+                color: #1a1a1a;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border-bottom: 2px solid transparent;
                 &:hover {
                   color: #2b6eff;
+                  border-bottom-color: #2b6eff;
                 }
               }
             }
-          }
-        }
-        & > .row2 {
-          display: flex;
-          padding-right: 80px;
-          justify-content: space-between;
-          & > .block3 {
-            position: relative;
-            & > span {
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              color: black;
-              font-size: 20px;
-              text-wrap: nowrap;
-            }
-          }
-          & > .block4 {
-            position: relative;
-            & > span {
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              color: black;
-              font-size: 20px;
-              text-wrap: nowrap;
+            &:hover > .statNumber {
+              transform: translateY(-10px) scale(1.1);
+              color: #2b6eff;
             }
           }
         }
@@ -450,59 +435,38 @@
       & .numbersBlock {
         & > .content {
           display: flex;
-          flex-direction: column;
+          justify-content: center;
           width: 100%;
-          padding: 80px 0px;
-          gap: 80px;
-          & > .row1 {
-            padding-left: 25px;
-            padding-right: 25px;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            & > .block1 {
-              position: relative;
-              & > span {
+          padding: 80px 25px;
+          & > .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            width: 100%;
+            & > .statItem {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              text-align: center;
+              cursor: pointer;
+              & > .statNumber {
+                font-size: 44px;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
               }
-            }
-            & > .block2 {
-              & > span {
+              & > .statText {
+                font-size: 16px;
                 & > a {
-                  transition: all 0.2s;
                   &:hover {
                     color: #2b6eff;
+                    border-bottom-color: #2b6eff;
                   }
                 }
               }
-            }
-          }
-          & > .row2 {
-            display: flex;
-            padding-right: 25px;
-            padding-left: 25px;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            & > .block3 {
-              position: relative;
-              & > span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                color: black;
-                font-size: 20;
-                text-wrap: nowrap;
-              }
-            }
-            & > .block4 {
-              position: relative;
-              & > span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                color: black;
-                font-size: 20;
-                text-wrap: nowrap;
+              &:hover > .statNumber {
+                transform: translateY(-8px) scale(1.1);
+                color: #2b6eff;
               }
             }
           }
@@ -667,6 +631,19 @@
     }
   }
 
+    @media screen and (max-width: 650px) {
+    .Home {
+      & > .blackInfo {
+        & > .content {
+          width: 100%;
+          & > h2 {
+            font-size: 24px!important;
+          }
+        }
+      }
+    }
+    }
+
   @media screen and (max-width: 900px) {
     .Home {
       & > .startscreen {
@@ -717,57 +694,38 @@
       & .numbersBlock {
         & > .content {
           display: flex;
-          flex-direction: column;
+          justify-content: center;
           width: 100%;
-          padding: 80px 0px;
-          gap: 80px;
-          & > .row1 {
-            padding-left: 25px;
-            padding-right: 25px;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            & > .block1 {
-              position: relative;
-              & > span {
+          padding: 60px 15px;
+          & > .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            & > .statItem {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              text-align: center;
+              cursor: pointer;
+              & > .statNumber {
+                font-size: 32px;
+                margin-bottom: 10px;
+                transition: all 0.3s ease;
               }
-            }
-            & > .block2 {
-              & > span {
-                color: #2b6eff;
+              & > .statText {
+                font-size: 13px;
                 & > a {
-                  transition: all 0.2s;
+                  &:hover {
+                    color: #2b6eff;
+                    border-bottom-color: #2b6eff;
+                  }
                 }
               }
-            }
-          }
-          & > .row2 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            & > .block3 {
-              position: relative;
-              & > span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                color: black;
-                font-size: 20;
-                text-wrap: nowrap;
-              }
-            }
-            & > .block4 {
-              position: relative;
-              & > span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                color: black;
-                font-size: 20;
-                text-wrap: nowrap;
+              &:hover > .statNumber {
+                transform: translateY(-6px) scale(1.1);
+                color: #2b6eff;
               }
             }
           }
@@ -1254,8 +1212,43 @@
     to { opacity: 1; }
   }
 
+  .carModelLinkWrapper {
+    width: 1200px;
+    margin: 0px auto;
+    padding: 0px 0px;
+    box-sizing: border-box;
+  }
 
+  .carModelLink {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 80px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    opacity: 0.7;
+    transition: all 0.2s;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
 
+  @media screen and (max-width: 1200px) {
+    .carModelLinkWrapper {
+      width: 100%;
+      padding: 0px 24px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .carModelLink {
+      font-size: 16px;
+    }
+  }
 
   @media screen and (max-width: 500px) {
     .Home {

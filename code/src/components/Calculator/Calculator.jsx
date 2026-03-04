@@ -41,7 +41,7 @@ const models = [
   { id: 'M', name: 'M' },
   { id: 'i', name: 'i' },
   { id: 'z', name: 'z' },
-  { id: 'RR', name: 'Rolls Royce' },
+  { id: 'RR', name: 'Rolls' },
   { id: 'MINI', name: 'Mini' }
 ];
 
@@ -91,7 +91,7 @@ const submodels = {
     { id: 'z4', name: 'z4' },
   ],
   'RR': [
-    { id: 'RR', name: 'Rolls Royce' }
+    { id: 'RR', name: 'Rolls' }
   ],
   'MINI': [
     { id: 'MINI', name: 'Mini Cooper' }
@@ -311,7 +311,7 @@ export default function Calculator({ initialModel }) {
                 transition: 'opacity 0.3s ease'
               }}
             >
-              &gt; Страница {subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
+              &gt; Страница {subId === 'RR' ? 'Rolls' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
             </Link>
           )}
         </div>
@@ -465,28 +465,14 @@ export default function Calculator({ initialModel }) {
       </div>
 
       {seriesName && (
-        <Link 
-          href={`/cars/${getModelSlug(subId)}/${encodeURIComponent(generateSeriesSlug(seriesName))}`}
-          style={{
-            display: 'block',
-            marginTop: '0px',
-            marginBottom: '80px',
-            color: '#000',
-            fontWeight: 'bold',
-            fontSize: window.innerWidth > 800 ? '18px' : '16px',
-            textDecoration: 'none',
-            textAlign: 'left',
-            width: window.innerWidth >= 1200 ? '1200px' : '100%',
-            paddingLeft: window.innerWidth < 1200 ? '24px' : '0',
-            paddingRight: window.innerWidth < 1200 ? '24px' : '0',
-            opacity: 0.7,
-            transition: 'all 0.2s'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-          onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
-        >
-          Читать подробнее про модель {seriesName}
-        </Link>
+        <div className="carModelLinkWrapper">
+          <Link 
+            href={`/cars/${getModelSlug(subId)}/${encodeURIComponent(generateSeriesSlug(seriesName))}`}
+            className="carModelLink"
+          >
+            Читать подробнее про модель {seriesName}
+          </Link>
+        </div>
       )}      <div className="calculator_table">
         <div className="calculator_table__row--header">
           <div className="calculator_table__cell--first">Услуга</div>

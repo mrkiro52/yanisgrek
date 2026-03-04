@@ -4,61 +4,58 @@
     cursor: pointer;
   }
   display: flex;
-  gap: 20px;
   width: 100%;
-  margin: 0 auto;
   padding: 130px 0px;
-  align-items: stretch; // Важно: растягиваем элементы по высоте
   background-color: rgba(208, 208, 208, 1);
-  display: flex;
   justify-content: center;
 
   &__wrapper {
     width: 1200px;
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    gap: 48px;
   }
 
-  &__left {
-    flex: 1;
+  &__header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    
-    &_title {
-      font-family: 'Russo One', sans-serif;
-      font-weight: 400;
-      font-size: 24px;
-      color: rgba(38, 38, 38, 1);
-      margin-bottom: 16px;
-      line-height: 130%;
-    }
-    
-    &_text {
-      font-family: 'Helvetica', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
-      color: rgba(38, 38, 38, 1);
-      line-height: 130%;
-      margin-bottom: 24px;
-    }
+    gap: 16px;
   }
 
-  &__left_images {
-    display: flex;
-    flex-wrap: wrap;
+  &__title {
+    font-family: 'Russo One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(38, 38, 38, 1);
+    margin: 0;
+    line-height: 130%;
+  }
+
+  &__text {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: rgba(38, 38, 38, 1);
+    line-height: 130%;
+    margin: 0;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
 
-  &__image {
+  &__image-card {
     position: relative;
-    flex: 1 1 calc(50% - 10px);
-    max-width: calc(50% - 10px);
     overflow: hidden;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
 
-    &--full {
-      flex: 1 1 100%;
-      max-width: 100%;
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -66,42 +63,39 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  &__right {
-    flex: 1;
-    display: flex; // Добавляем flex
-  }
-
-  &__right_image {
-    position: relative;
-    width: 100%;
-    height: 100%; // Занимает всю высоту правого блока
-    min-height: 400px;
-    overflow: hidden;
-    display: flex; // Добавляем flex для растягивания
-  }
-
-  // Специальные стили для растягивания изображения в правом блоке
-  &__right_image .Chillzone__image-content {
-    width: 100%;
-    height: 100%; // Занимает всю высоту контейнера
-    object-fit: cover; // Сохраняет пропорции и заполняет контейнер
-    flex: 1; // Растягивается на всю доступную высоту
+    transition: transform 0.3s ease;
   }
 
   @media (max-width: 1200px) {
     padding: 80px 24px;
+
+    &__wrapper {
+      width: 100%;
+    }
   }
 
-  // Адаптивность для экранов меньше 800px
-  @media (max-width: 800px) {
-    &__wrapper {
-      flex-direction: column;
+  @media (max-width: 768px) {
+    &__gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 60px 16px;
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__gallery {
+      gap: 16px;
     }
   }
 }
-
 
 .Fullscreen {
   position: fixed;
@@ -117,5 +111,5 @@
 .Fullscreen__image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; // сохраняет пропорции
+  object-fit: contain;
 }
