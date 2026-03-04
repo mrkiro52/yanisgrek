@@ -693,6 +693,7 @@
             flex-wrap: wrap;
             & > .textBlock {
               gap: 30px;
+              width: 100%!important;
               & > h3 {
               }
               & > p {
