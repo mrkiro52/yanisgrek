@@ -54,7 +54,7 @@ export default async function Home() {
       <div className="startscreen">
         <div className="firstRow">
           <Image
-            src="/images/techCenter.png"
+            src="/images/techCenter.webp"
             alt="Логотип YANIS GREK - Технический центр по ремонту BMW"
             width={374}
             height={104}
@@ -87,7 +87,7 @@ export default async function Home() {
           </h2>
           <div className="row row1">
             <Image 
-              src="/images/blackInfoImg1.png" 
+              src="/images/blackInfoImg1.webp" 
               alt="Оригинальные запчасти BMW - обеспечение совместимости и надёжности"
               width={285} 
               height={380} 
@@ -103,7 +103,7 @@ export default async function Home() {
           </div>
           <div className="row row2">
             <Image 
-              src="/images/blackInfoImg2.png" 
+              src="/images/blackInfoImg2.webp" 
               alt="Сертифицированные мастера BMW с официальным обучением"
               width={489} 
               height={402} 
@@ -127,7 +127,7 @@ export default async function Home() {
               </p>
             </div>
             <Image 
-              src="/images/blackInfoImg3.png" 
+              src="/images/blackInfoImg3.webp" 
               alt="Прозрачные цены и подробный фотоотчёт о выполненных работах"
               width={387} 
               height={516}
