@@ -15,7 +15,7 @@ jobs:
 
       - name: Create archive
         run: |
-          mkdir deploy
+          mkdir -p deploy
           rsync -av --exclude='.git' --exclude='node_modules' --exclude='deploy' ./ deploy/
           tar -czf code.tar.gz -C deploy .
           rm -rf deploy
@@ -27,15 +27,53 @@ jobs:
 
       - name: Deploy via SSH
         run: |
-          scp -o StrictHostKeyChecking=no code.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:./yanisgrek-main/
+          scp -o StrictHostKeyChecking=no code.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/yanisgrek-main/
           
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd ./yanisgrek-main
-          tar -xzf code.tar.gz
-          rm code.tar.gz
-          
-          docker compose down -v
-          docker compose up -d --build
-          docker system prune -f
-          
+            set -e
+            cd ~/yanisgrek-main
+            tar -xzf code.tar.gz
+            rm code.tar.gz
+            
+            # Останавливаем всё
+            docker compose down -v 2>/dev/null || true
+            
+            # Запускаем и ловим ошибку
+            if ! docker compose up -d --build; then
+              echo "ОШИБКА: docker compose up провалился"
+              exit 1
+            fi
+            
+            # Ждём 10 секунд
+            sleep 10
+            
+            # ПРОВЕРКА: если хоть один контейнер не в статусе running - фейл
+            if docker compose ps --format "table {{.Name}}\t{{.Status}}" | grep -v "Running" | grep -q -E "Exited|Dead|Restarting|Created"; then
+              echo "ОШИБКА: Контейнеры не в статусе Running"
+              docker compose ps
+              docker compose logs --tail=50
+              exit 1
+            fi
+            
+            # ПРОВЕРКА: считаем running контейнеры
+            RUNNING=$(docker compose ps --format "table {{.Name}}\t{{.Status}}" | grep -c "Running" || true)
+            TOTAL=$(docker compose ps --format "table {{.Name}}" | tail -n +2 | wc -l)
+            
+            if [ "$RUNNING" -eq 0 ]; then
+              echo "ОШИБКА: Нет ни одного работающего контейнера (0 из $TOTAL)"
+              docker compose ps
+              docker compose logs --tail=50
+              exit 1
+            fi
+            
+            echo "✅ Запущено $RUNNING из $TOTAL контейнеров"
+            
+            # Очистка
+            docker system prune -af 2>/dev/null || true
           EOF
+          
+          # Проверяем код выхода SSH команды
+          if [ $? -ne 0 ]; then
+            echo "Деплой провалился!"
+            exit 1
+          fi
