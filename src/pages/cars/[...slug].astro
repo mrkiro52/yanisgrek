@@ -1,6 +1,8 @@
 ---
 // Кастомная 404 для любых несуществующих /cars/* путей
-export const prerender = false;
+export function getStaticPaths() {
+  return [];
+}
 ---
 
 <html style="background: black; min-height: 100vh;">
