@@ -15,11 +15,8 @@ jobs:
 
       - name: Create archive
         run: |
-          # Создаем папку для архивации
           mkdir deploy
-          # Копируем всё кроме мусора
           rsync -av --exclude='.git' --exclude='node_modules' --exclude='deploy' ./ deploy/
-          # Архивируем
           tar -czf code.tar.gz -C deploy .
           rm -rf deploy
 
@@ -36,8 +33,19 @@ jobs:
           cd ./yanisgrek-main
           tar -xzf code.tar.gz
           rm code.tar.gz
+          
+          # Останавливаем и удаляем старый контейнер
           docker compose down app
+          
+          # Удаляем старый образ
+          docker rmi yanisgrek-main-app 2>/dev/null || true
+          
+          # Собираем и запускаем заново
           docker compose build app --no-cache
           docker compose up -d app
-          docker image prune -f
+          
+          # Чистим всё: неиспользуемые образы, контейнеры, сети, build cache
+          docker system prune -af --volumes
+          
+          docker compose ps
           EOF
