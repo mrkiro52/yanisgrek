@@ -1,0 +1,966 @@
+---
+import ServiceCalc from './ServiceCalc';
+import './CustomSelect.astro';
+---
+
+<ServiceCalc client:load />
+
+<style>
+:global(.Calculator) {
+  background-color: rgb(208, 208, 208);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.calculator-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+:global(.calculator-title span) {
+  text-decoration: underline;
+}
+
+:global(.section-title) {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 20px;
+  color: #262626;
+  margin-bottom: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+:global(.refine-model h3) {
+  font-size: 20px;
+  color: #262626;
+  margin-bottom: 16px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.section-title-link) {
+  font-size: 16px;
+  font-weight: 400;
+  color: #262626;
+  text-decoration: none;
+  transition: opacity 0.3s;
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.section-title-link:hover) {
+  opacity: 0.7;
+}
+
+:global(.model-selection-wrapper) {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2%;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+:global(.model-selection) {
+  width: 70%;
+}
+
+:global(.selected-car-image) {
+  width: 28%;
+  height: auto;
+  object-fit: contain;
+}
+
+:global(.model-buttons),
+:global(.submodel-buttons) {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+:global(.model-buttons button),
+:global(.submodel-buttons button) {
+  background: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #262626;
+}
+
+:global(.model-buttons button.selected),
+:global(.submodel-buttons button.selected) {
+  background: black;
+  color: white;
+}
+
+:global(.car-grid) {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+  gap: 0;
+  overflow-x: auto;
+}
+
+:global(.car-grid::-webkit-scrollbar) {
+  display: none;
+}
+
+:global(.car-grid) {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+:global(.car-card) {
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 25%;
+  min-width: 25%;
+}
+
+:global(.car-card.selected) {
+  opacity: 1;
+}
+
+:global(.car-image-container) {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 10px;
+}
+
+:global(.car-card.selected .car-image-container) {
+  padding: 2px;
+}
+
+:global(.car-image) {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+:global(.car-card.selected .car-image) {
+  width: 95%;
+  height: 95%;
+}
+
+:global(.car-name) {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #262626;
+  text-align: center;
+}
+
+:global(.controls-row) {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+}
+
+:global(.control-group) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+:global(.control-group label),
+:global(.control-label) {
+  font-size: 16px;
+  color: #262626;
+  font-weight: 600;
+}
+
+:global(.control-group select),
+:global(.control-group input) {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: white;
+  cursor: pointer;
+}
+
+:global(.control-group select) {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23262626' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+:global(.mileage-wrapper) {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+:global(.mileage-wrapper input) {
+  width: 100%;
+  padding-right: 40px;
+}
+
+:global(.mileage-wrapper .unit) {
+  position: absolute;
+  right: 12px;
+  color: #666;
+}
+
+:global(.parts-buttons) {
+  flex-direction: row;
+  gap: 12px;
+}
+
+:global(.parts-buttons button) {
+  flex: 1;
+  background: white;
+  border: none;
+  padding: 0px 24px;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+:global(.parts-buttons button.selected) {
+  background: black;
+  color: white;
+}
+
+:global(.series-link-wrapper) {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+:global(.series-link) {
+  font-size: 16px;
+  font-weight: 400;
+  color: #262626;
+  text-decoration: none;
+  transition: opacity 0.3s;
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.series-link:hover) {
+  opacity: 0.7;
+}
+
+:global(.calculator_table) {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.calculator_table__row--header) {
+  background-color: transparent;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+:global(.calculator_table__row) {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+:global(.calculator_table__cell--first) {
+  width: 45%;
+  padding: 0px 30px;
+  background-color: #BABABA;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+:global(.calculator_table__cell) {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  font-size: 16px;
+  color: black;
+  align-items: center;
+  height: 60px;
+  font-family: Helvetica;
+}
+
+:global(.sq) {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 1px solid white;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+:global(.sq.selected) {
+  background-color: black;
+}
+
+:global(.calculator_table__cell--second) {
+  width: 45%;
+  display: flex;
+  height: 60px;
+}
+
+:global(.calculator_table__cell--second-left) {
+  height: 60px;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+:global(.calculator_table__cell--second-right) {
+  height: 60px;
+  flex: 1;
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.calculator_table__cell--first-summ) {
+  width: 55%;
+  background-color: transparent;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+:global(.calculator_table__cell--first-summ span) {
+  cursor: pointer;
+  background-color: #2B6EFF;
+  padding: 12px 24px;
+  color: white;
+}
+
+:global(.calculator_table__mobile) {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  :global(.Calculator) {
+    padding: 40px 20px;
+  }
+  
+  :global(.model-selection-wrapper) {
+    flex-direction: column;
+  }
+  
+  :global(.model-selection) {
+    width: 100%;
+  }
+  
+  :global(.selected-car-image) {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  :global(.controls-row) {
+    flex-direction: column;
+  }
+  
+  :global(.calculator_table) {
+    display: none;
+  }
+  
+  :global(.calculator_table__mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+}
+</style>
+
+<style>
+.Calculator {
+    background-color: rgba(208, 208, 208, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+.Calculator > .choose_model {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 1240px;
+    border-bottom: 1px solid white;
+    padding-bottom: 12px;
+}
+.Calculator > .choose_model > .title_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+.Calculator > .choose_model > .title_row > h2 {
+    color: #262626;
+    font-size: 24px;
+    font-family: 'Russo One';
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.Calculator > .choose_model > .title_row > h2 > span {
+    text-decoration: underline;
+    font-family: 'Russo One';
+}
+.Calculator > .choose_model > .buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.Calculator > .choose_model > .buttons > button {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica';
+    font-size: 24px;
+    color: #262626;
+    padding: 0px 32px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+.Calculator > .choose_model > .buttons > button.selected {
+    background-color: black;
+    color: white;
+}
+.Calculator > .choose_model > .buttons > button.label-button {
+    background-color: #bababa;
+    cursor: default;
+    pointer-events: none;
+    width: 120px;
+    min-width: 120px;
+}
+.Calculator > .choose_car_block {
+    width: 100%;
+    height: 287px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 80px;
+    padding-left: calc((100% - 1200px)/2);
+    overflow-x: scroll;
+}
+.Calculator > .choose_car_block::-webkit-scrollbar {
+    display: none;
+}
+.Calculator > .choose_car_block > .block {
+    cursor: pointer;
+    height: 175px;
+    width: 275px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    opacity: 0.5;
+}
+.Calculator > .choose_car_block > .block > span {
+    font-size: 20px;
+    color: rgba(38, 38, 38, 1);
+    font-family: 'Helvetica';
+}
+.Calculator > .choose_car_block > .block.selected {
+    width: 473px;
+    height: 287px;
+    opacity: 1;
+}
+.Calculator > .choose_special_model {
+    display: flex;
+    width: 1200px;
+    margin-bottom: 80px;
+    justify-content: space-between;
+}
+.Calculator > .choose_special_model > .model-select {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    height: 56px;
+    background: transparent;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+.Calculator > .choose_special_model > .model-select > .model-select__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #bababa;
+    color: #000;
+    font-size: 24px;
+    font-family: 'Helvetica', sans-serif;
+    padding: 0px 20px;
+}
+.Calculator > .choose_special_model > .model-select > .model-select__control {
+    width: 210px;
+    background-color: #e7e7e7;
+    position: relative;
+}
+.Calculator > .choose_special_model > .model-select > .model-select__control > .model-select__dropdown {
+    width: 100%;
+    height: 100%;
+    padding: 0 48px 0 24px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #6e6e6e;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+.Calculator > .choose_special_model > .model-select > .model-select__control > .model-select__dropdown:focus {
+    outline: none;
+}
+.Calculator > .choose_special_model > .model-select > .model-select__control > .model-select__icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #000;
+}
+.Calculator > .choose_special_model > .mileage-input {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    height: 56px;
+    font-family: sans-serif;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #bababa;
+    color: #000;
+    font-size: 24px;
+    font-family: 'Helvetica', sans-serif;
+    padding: 0px 20px;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__control {
+    position: relative;
+    background: #e6e6e6;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__control > .mileage-input__field {
+    width: 100%;
+    height: 100%;
+    padding: 0 48px 0 24px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #6e6e6e;
+    -moz-appearance: textfield;
+    appearance: none;
+    cursor: text;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__control > .mileage-input__field:focus {
+    outline: none;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__control > .mileage-input__field::placeholder {
+    color: #6e6e6e70;
+}
+.Calculator > .choose_special_model > .mileage-input > .mileage-input__control > .mileage-input__unit {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #6e6e6e;
+    pointer-events: none;
+}
+.Calculator > .choose_special_model > .buttons {
+    display: flex;
+    gap: 16px;
+}
+.Calculator > .choose_special_model > .buttons > button {
+    padding: 0px 32px;
+    height: 56px;
+    background-color: white;
+    color: black;
+    font-family: "Helvetica", sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+}
+.Calculator > .choose_special_model > .buttons > button.selected {
+    background-color: black;
+    color: white;
+}
+.Calculator > .calculator_table {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+}
+.Calculator > .calculator_table > .calculator_table__row--header {
+    background-color: transparent;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.Calculator > .calculator_table > .calculator_table__row--header > .calculator_table__cell--first {
+    width: 45%;
+    padding: 0px 30px;
+    color: #262626;
+    font-size: 16px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+}
+.Calculator > .calculator_table > .calculator_table__row--header > .calculator_table__cell {
+    flex: 1;
+    color: #262626;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-family: Helvetica;
+}
+.Calculator > .calculator_table > .calculator_table__row {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first-summ {
+    width: 55%;
+    background-color: transparent;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first-summ > span {
+    color: white;
+    cursor: pointer;
+    background-color: #2B6EFF;
+    padding: 12px 24px;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first {
+    width: 45%;
+    padding: 0px 30px;
+    background-color: #BABABA;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first > .sq {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 1px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first > .sq.selected {
+    background-color: black;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--first > span {
+    font-size: 20px;
+    line-height: 103%;
+    color: black;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    font-size: 16px;
+    color: black;
+    align-items: center;
+    height: 60px;
+    font-family: Helvetica;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--second {
+    width: 45%;
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--second > .calculator_table__cell--second-left {
+    height: 60px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+.Calculator > .calculator_table > .calculator_table__row > .calculator_table__cell--second > .calculator_table__cell--second-right {
+    height: 60px;
+    flex: 1;
+    background-color: white;
+    color: black;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Calculator > .calculator_table__mobile {
+    display: none;
+}
+
+.stepTitle {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .Calculator {
+        padding: 24px 0px;
+    }
+    .Calculator > .choose_model {
+        width: 100%;
+        margin-bottom: 28px;
+    }
+    .Calculator > .choose_model > .title_row {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 0px 24px;
+    }
+    .Calculator > .choose_model > .buttons {
+        overflow-x: scroll;
+        padding: 0px 24px;
+    }
+    .Calculator > .choose_model > .buttons::-webkit-scrollbar {
+        display: none;
+    }
+    .Calculator > .choose_car_block {
+        margin-bottom: 32px;
+        width: 100%;
+    }
+    .Calculator > .choose_special_model {
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding: 0px 24px;
+        margin-top: 28px;
+    }
+    .Calculator > .choose_special_model > .model-select {
+        width: 100%;
+    }
+    .Calculator > .choose_special_model > .model-select > .model-select__label {
+        width: 40%;
+    }
+    .Calculator > .choose_special_model > .model-select > .model-select__control {
+        flex: 1;
+    }
+    .Calculator > .choose_special_model > .mileage-input {
+        width: 100%;
+    }
+    .Calculator > .choose_special_model > .mileage-input > .mileage-input__label {
+        width: 40%;
+    }
+    .Calculator > .choose_special_model > .mileage-input > .mileage-input__control {
+        flex: 1;
+    }
+    .Calculator > .choose_special_model > .buttons {
+        width: 100%;
+    }
+    .Calculator > .choose_special_model > .buttons > button {
+        flex: 1;
+    }
+    .Calculator > .calculator_table {
+        display: none;
+    }
+    .Calculator > .calculator_table__mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        padding: 0px 24px;
+    }
+    .Calculator > .calculator_table__mobile > .card {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        padding: 24px;
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px solid rgba(154, 154, 154, 1);
+    }
+    .Calculator > .calculator_table__mobile > .card > .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+    }
+    .Calculator > .calculator_table__mobile > .card > .top > .sq {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border: 1px solid rgba(186, 186, 186, 1);
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.1s;
+    }
+    .Calculator > .calculator_table__mobile > .card > .top > .sq.selected {
+        background-color: black;
+        border: 1px solid transparent;
+    }
+    .Calculator > .calculator_table__mobile > .card > .top > .title {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 1);
+        font-family: 'Helvetica';
+        flex: 1;
+        line-height: 103%;
+    }
+    .Calculator > .calculator_table__mobile > .card > .top > .price {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Russo One';
+        color: black;
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .left > .title {
+        font-weight: 400;
+        color: rgba(138, 138, 138, 1);
+        font-size: 14px;
+        margin: 0;
+        font-family: 'Helvetica';
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .left > .price {
+        font-weight: 700;
+        font-size: 16px;
+        color: black;
+        margin: 0;
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .right > .title {
+        font-weight: 400;
+        color: rgba(138, 138, 138, 1);
+        font-size: 14px;
+        margin: 0;
+        font-family: 'Helvetica';
+    }
+    .Calculator > .calculator_table__mobile > .card > .bottom > .right > .price {
+        font-weight: 700;
+        font-size: 16px;
+        color: black;
+        margin: 0;
+    }
+    .Calculator > .calculator_table__mobile > .totalRow {
+        display: flex;
+        flex-direction: row;
+        height: 48px;
+        width: 100%;
+        margin-top: 12px;
+    }
+    .Calculator > .calculator_table__mobile > .totalRow > .textBlock {
+        height: 48px;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: 'Russo One';
+        text-transform: uppercase;
+        flex: 1;
+    }
+    .Calculator > .calculator_table__mobile > .totalRow > .sumBlock {
+        padding: 0px 32px;
+        height: 48px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Russo One';
+        text-transform: uppercase;
+    }
+    .Calculator > .calculator_table__mobile > span.mobileFormButton {
+        height: 50px;
+        background-color: #2B6EFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .stepTitle {
+        display: block;
+        font-size: 20px;
+        color: black;
+        width: 100%;
+        text-align: start;
+        padding: 0px 24px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Calculator > .choose_special_model > .buttons > button {
+        padding: 0!important;
+        font-size: 20px!important;
+    }
+}
+</style>

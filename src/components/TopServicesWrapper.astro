@@ -1,0 +1,249 @@
+---
+import TopServices from './TopServices';
+---
+
+<TopServices client:load />
+
+<style>
+:global(.TopServices) {
+  background-color: white;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.top-services-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+:global(.main-services) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 60px;
+}
+
+:global(.main-service-card) {
+  background: rgb(208, 208, 208);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+:global(.main-service-card:hover) {
+  background: black;
+}
+
+:global(.main-service-card h3) {
+  font-size: 28px;
+  color: #262626;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: 'Helvetica', sans-serif;
+  transition: all 0.3s;
+}
+
+:global(.main-service-card:hover h3) {
+  color: white;
+}
+
+:global(.main-service-card p) {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  transition: all 0.3s;
+}
+
+:global(.main-service-card:hover p) {
+  color: #ccc;
+}
+
+:global(.top-services-grid) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+}
+
+:global(.top-service-card) {
+  background: rgb(208, 208, 208);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+:global(.top-service-card:hover) {
+  background: black;
+  color: white;
+}
+
+:global(.service-number) {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #262626;
+  line-height: 1;
+  transition: all 0.3s;
+}
+
+:global(.top-service-card:hover .service-number) {
+  color: white;
+}
+
+:global(.top-service-card h3) {
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.top-service-card h4) {
+  font-size: 22px;
+  color: #262626;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: 'Helvetica', sans-serif;
+  transition: all 0.3s;
+}
+
+:global(.top-service-card:hover h4) {
+  color: white;
+}
+
+:global(.top-service-card p) {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  transition: all 0.3s;
+}
+
+:global(.top-service-card:hover p) {
+  color: #ccc;
+}
+
+:global(.services-button-wrapper) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:global(.services-button) {
+  padding: 20px 48px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+:global(.services-button:hover) {
+  background: #2b6eff;
+  color: white;
+}
+
+@media screen and (max-width: 1200px) {
+  :global(.TopServices) {
+    padding: 60px 20px;
+  }
+
+  :global(.top-services-title) {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  :global(.main-services) {
+    gap: 20px;
+  }
+
+  :global(.main-service-card) {
+    padding: 32px;
+  }
+
+  :global(.main-service-card h3) {
+    font-size: 24px;
+  }
+
+  :global(.top-services-grid) {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :global(.TopServices) {
+    padding: 40px 20px;
+  }
+
+  :global(.top-services-title) {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+
+  :global(.main-services) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  :global(.main-service-card) {
+    padding: 24px;
+  }
+
+  :global(.main-service-card h3) {
+    font-size: 22px;
+  }
+
+  :global(.main-service-card p) {
+    font-size: 14px;
+  }
+
+  :global(.top-services-grid) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  :global(.top-service-card) {
+    padding: 24px;
+  }
+
+  :global(.service-number) {
+    font-size: 40px;
+  }
+
+  :global(.top-service-card h4) {
+    font-size: 20px;
+  }
+
+  :global(.top-service-card p) {
+    font-size: 14px;
+  }
+
+  :global(.services-button) {
+    padding: 16px 32px;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

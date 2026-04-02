@@ -1,0 +1,283 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NumbersWrapper from '../../components/NumbersWrapper.astro';
+import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
+import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+import ScrollArrow from '../../components/ScrollArrow.astro';
+
+const title = 'Наши работы - YanisGrek';
+const description = 'Портфолио выполненных работ и проектов нашей команды. Посмотрите примеры качественного ремонта BMW.';
+
+const cases = [
+  {
+    id: 1,
+    title: 'Полный ремонт АКПП BMW 5 Series',
+    description: 'Диагностика, замена фильтра, промывка гидроблока, сброс адаптаций',
+    image: '/src/assets/images/case1.webp'
+  },
+  {
+    id: 2,
+    title: 'Замена цепи ГРМ BMW 3 Series',
+    description: 'Замена цепи, натяжителей и направляющих, настройка фаз газораспределения',
+    image: '/src/assets/images/case2.webp'
+  },
+  {
+    id: 3,
+    title: 'Ремонт рулевой рейки BMW X5',
+    description: 'Замена уплотнений, сальников, регулировка люфта, калибровка',
+    image: '/src/assets/images/case3.webp'
+  },
+  {
+    id: 4,
+    title: 'Замена подвески BMW 7 Series',
+    description: 'Замена амортизаторов, пружин, стабилизаторов, регулировка развал-схождения',
+    image: '/src/assets/images/case4.webp'
+  }
+];
+---
+
+<Layout {title} {description}>
+  <section class="works-hero">
+    <div class="works-hero-content">
+      <h1>Наши работы</h1>
+      <p>Портфолио и примеры выполненных работ нашей команды</p>
+    </div>
+    <ScrollArrow targetSelector=".cases-section" />
+  </section>
+
+  <section class="cases-section">
+    <div class="cases-container">
+      <h2 class="cases-title">Кейсы наших проектов</h2>
+      <div class="cases-grid">
+        {cases.map(caseItem => (
+          <div class="case-card">
+            <div class="case-image">
+              <div class="case-placeholder"></div>
+            </div>
+            <div class="case-content">
+              <h3 class="case-title">{caseItem.title}</h3>
+              <p class="case-description">{caseItem.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <NumbersWrapper />
+  <WhyUsWrapper />
+  <AdvantagesWrapper />
+</Layout>
+
+<style>
+  .works-hero {
+    background: #111;
+    color: #fff;
+    padding: 0 20px;
+    text-align: center;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .works-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .works-hero-content h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 60px;
+    color: #fff;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .works-hero-content p {
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  .cases-section {
+    background: white;
+    padding: 100px 20px;
+  }
+
+  .cases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cases-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 40px;
+    color: #262626;
+    text-align: center;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .case-card {
+    background: white;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .case-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .case-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: rgb(208, 208, 208);
+  }
+
+  .case-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgb(208, 208, 208) 0%, rgb(180, 180, 180) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 16px;
+  }
+
+  .case-content {
+    padding: 24px;
+  }
+
+  .case-title {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+  }
+
+  .case-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1024px) {
+    .works-hero-content h1 {
+      font-size: 48px;
+    }
+
+    .cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .cases-title {
+      font-size: 32px;
+      margin-bottom: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .works-hero {
+      padding: 80px 20px 60px;
+    }
+
+    .works-hero-content h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .works-hero-content p {
+      font-size: 16px;
+    }
+
+    .cases-section {
+      padding: 60px 20px;
+    }
+
+    .cases-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .cases-title {
+      font-size: 24px;
+      margin-bottom: 36px;
+    }
+
+    .case-image {
+      height: 200px;
+    }
+
+    .case-content {
+      padding: 18px;
+    }
+
+    .case-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .case-description {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .works-hero {
+      padding: 60px 15px 50px;
+    }
+
+    .works-hero-content h1 {
+      font-size: 28px;
+    }
+
+    .works-hero-content p {
+      font-size: 14px;
+    }
+
+    .cases-section {
+      padding: 40px 15px;
+    }
+
+    .cases-title {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    .case-image {
+      height: 160px;
+    }
+
+    .case-content {
+      padding: 14px;
+    }
+
+    .case-title {
+      font-size: 14px;
+    }
+
+    .case-description {
+      font-size: 12px;
+    }
+  }
+</style>

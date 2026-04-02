@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+import mainBg from '../assets/images/mainbg.webp';
+import techCenter from '../assets/images/techCenter.webp';
+import BtnGoCalc from './BtnGoCalc.astro';
+import BtnGoForm from './BtnGoForm.astro';
+---
+
+<div class="startscreen">
+  <div class="startscreen-bg">
+    <Image
+      src={mainBg}
+      alt="Фоновое изображение технического центра YanisGrek"
+      loading="eager"
+      quality="high"
+      width={1920}
+      height={1080}
+    />
+  </div>
+  <div class="startscreen-wrapper">
+    <div class="startscreen-content">
+      <div class="left-block">
+        <Image
+          src={techCenter}
+          alt="Логотип YANIS GREK - Технический центр по ремонту BMW"
+          width={374}
+          height={104}
+          loading="eager"
+        />
+        <div class="buttons">
+          <BtnGoCalc />
+          <BtnGoForm />
+        </div>
+      </div>
+      <div class="text-block">
+        <p>
+          Сертифицированное оборудование, фирменный инструмент и опыт команды —
+          для быстрого и качественного ремонта.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .startscreen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .startscreen-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .startscreen-bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .startscreen-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 60px;
+  }
+
+  .startscreen-content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+  }
+
+  .left-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 374px;
+  }
+
+  .left-block :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .buttons :global(button) {
+    width: 100%;
+  }
+
+  .text-block {
+    max-width: 600px;
+    text-align: right;
+  }
+
+  .text-block p {
+    font-size: 24px;
+    line-height: 1.3;
+    color: #fff;
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 1024px) {
+    .text-block p {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .startscreen-wrapper {
+      padding: 0 20px 60px;
+    }
+
+    .startscreen-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .left-block {
+      max-width: 100%;
+    }
+
+    .text-block {
+      max-width: 100%;
+    }
+
+    .text-block p {
+      font-size: 16px;
+    }
+  }
+</style>

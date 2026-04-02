@@ -1,0 +1,374 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DiscountsWrapper from '../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../components/ServicingWrapper.astro';
+import NumbersWrapper from '../../components/NumbersWrapper.astro';
+import servicesbg from '../../assets/images/servicesbg.webp';
+
+const title = 'Все услуги - YanisGrek';
+const description = 'Полный перечень услуг по ремонту и обслуживанию BMW: ремонт АКПП, ремонт двигателя, диагностика, ТО и многое другое';
+
+const transmissionServices = [
+  { name: 'Ремонт АКПП', price: 'от 5000 руб.', slug: 'remont-korobki-peredach' },
+  { name: 'Замена масла в АКПП', price: 'от 21.600 руб.', slug: 'zamena-masla-v-akpp' },
+  { name: 'Замена фильтра-картера АКПП', price: 'от 11.600 руб.', slug: 'zamena-filtra-karteram-akpp' },
+  { name: 'Замена масла в раздаточной коробке', price: 'от 4800 руб.', slug: 'zamena-masla-razdatochnyy' },
+  { name: 'Замена масла в редукторе (перед/зад)', price: 'от 2400 руб.', slug: 'zamena-masla-reduktor' },
+  { name: 'Сброс адаптаций АКПП', price: 'от 1500 руб.', slug: 'sbros-adaptaciy-akpp' },
+  { name: 'Диагностика АКПП', price: 'от 1500 руб.', slug: 'diagnostika-akpp' },
+  { name: 'Снятие/установка АКПП', price: 'от 16.800 руб.', slug: 'snyatie-ustanovka-akpp' },
+  { name: 'Снятие/установка раздаточной коробки', price: 'от 7800 руб.', slug: 'snyatie-ustanovka-razdatka' }
+];
+
+const engineServices = [
+  { name: 'Ремонт ДВС', price: 'от 0 руб.', slug: 'remont-dvigatelya' },
+  { name: 'Снятие/установка ДВС', price: 'от 35.000 руб.', slug: 'snyatie-ustanovka-dvs' },
+  { name: 'Замена цепи ГРМ', price: 'от 20.000 руб.', slug: 'zamena-cepi-grm' },
+  { name: 'Замена маслосъёмных колпачков', price: 'от 80.000 руб.', slug: 'zamena-maslousemnye-kolpaki' },
+  { name: 'Замена прокладок, сальников', price: 'от 5800 руб.', slug: 'zamena-prokladok-salniky' },
+  { name: 'Замена вкладышей', price: 'от 40.000 руб.', slug: 'zamena-vkladyshey' },
+  { name: 'Чистка впускного коллектора / каналов', price: 'от 4500 руб.', slug: 'chistka-vpusknoj-kollektor' },
+  { name: 'Притирка клапанов', price: 'от 15.000 руб.', slug: 'pritirka-klupanov' },
+  { name: 'Диагностика ДВС', price: 'от 1500 руб', slug: 'diagnostika-dvs' }
+];
+
+const maintenanceServices = [
+  { name: 'Замена масла ДВС', price: 'от 9000 руб.', slug: 'zamena-masla-dvs' },
+  { name: 'Замена воздушного фильтра', price: 'от 2200 руб.', slug: 'zamena-vozdushnyy-filter' },
+  { name: 'Замена топливного фильтра', price: 'от 3900 руб.', slug: 'zamena-toplivnyy-filter' },
+  { name: 'Замена салонного фильтра', price: 'от 6900 руб.', slug: 'zamena-salonnyy-filter' },
+  { name: 'Прокачка топливной системы', price: 'от 3600 руб', slug: 'prokachka-toplivnoj-sistemy' },
+  { name: 'Замена тормозных дисков', price: 'от 3900 руб.', slug: 'zamena-tormoznye-diski' },
+  { name: 'Замена тормозных колодок', price: 'от 2400 руб', slug: 'zamena-tormoznye-kolodki' }
+];
+
+const suspensionServices = [
+  { name: 'Замена передних амортизаторов', price: 'от 8000 руб.', slug: 'zamena-perednie-amortizatory' },
+  { name: 'Замена задних амортизаторов', price: 'от 6200 руб.', slug: 'zamena-zadnie-amortizatory' },
+  { name: 'Замена сайлентблоков передней подвески', price: 'от 5900 руб.', slug: 'zamena-saylentblok-podveska' },
+  { name: 'Замена задних поперечных рычагов', price: 'от 4600 руб.', slug: 'zamena-zadnie-poperechnye-rychagi' },
+  { name: 'Замена стоек стабилизатора (перед/зад)', price: 'от 2100 руб.', slug: 'zamena-stojki-stabilizator' },
+  { name: 'Замена пружин задней подвески', price: 'от 6000 руб.', slug: 'zamena-pruzhiny-zadnei' },
+  { name: 'Замена ступичных подшипников', price: 'от 4300 руб.', slug: 'zamena-stupichnye-podshipniki' },
+  { name: 'Замена подушек подрамника', price: 'от 8600 руб.', slug: 'zamena-podushki-podramnika' },
+  { name: 'Ремонт рулевой рейки', price: 'от 15.000 руб.', slug: 'remont-rulevoj-reyki' },
+  { name: 'Снятие/установка рулевой рейки', price: 'от 6000 руб.', slug: 'snyatie-etablka-rulevoj-reyki' }
+];
+
+const diagnosticsServices = [
+  { name: 'Компьютерная диагностика', price: 'от 1500 руб.', slug: 'kompyuternaya-diagnostika' },
+  { name: 'Обновление программного обеспечения', price: 'от 4500 руб.', slug: 'obnovlenie-programmnogo-obespecheniya' },
+  { name: 'Чип-тюнинг Stage 1 / Stage 2', price: 'от 10.000 руб.', slug: 'chip-tuning' },
+  { name: 'Калибровка пневмоподвески', price: 'от 1500 руб.', slug: 'kalibrovka-pnevmopodsveska' },
+  { name: 'Замена АКБ с регистрацией', price: 'от 3000 руб', slug: 'zamena-akb-registraciya' }
+];
+
+const coolingServices = [
+  { name: 'Вакуумирование и заправка кондиционера', price: 'от 6800 руб.', slug: 'vakuumirovanie-zapravka-kondicionera' },
+  { name: 'Антибактериальная обработка кондиционера', price: 'от 3900 руб.', slug: 'antibakterialnaya-obrabotka' },
+  { name: 'Замена насоса охлаждающей жидкости', price: 'от 6900 руб.', slug: 'zamena-nasos-ohlajdayuschaya' },
+  { name: 'Замена термостата', price: 'от 3900 руб.', slug: 'zamena-termostata' },
+  { name: 'Мойка радиаторов', price: 'от 5500 руб.', slug: 'mojka-radiatorov' }
+];
+
+const additionalServices = [
+  { name: 'Отключение и удаление EGR / DPF / AdBlue', price: 'от 15.000 руб.', slug: 'otklyuchenie-удаление-egr-dpf' },
+  { name: 'Профилактика дренажей подкапотного пространства', price: 'от 3000 руб.', slug: 'profilaktika-drenajey' },
+  { name: 'Чистка клапанов', price: 'от 12.000 руб.', slug: 'chistka-klapanov' },
+  { name: 'Удаление впуска / впускной системы', price: 'от 4500 руб', slug: 'udalenie-vpuska' }
+];
+---
+
+<Layout {title} {description}>
+  <div class="services-page">
+    <div class="services-hero">
+      <h1>Все услуги</h1>
+      <p>Полный спектр услуг по ремонту и обслуживанию BMW</p>
+      <a href="#services-list" class="services-cta">Перейти к услугам</a>
+    </div>
+
+    <div id="services-list" class="services-content">
+      <section id="transmission" class="service-section">
+        <h2>Ремонт коробки передач</h2>
+        <div class="service-grid">
+          {transmissionServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="engine" class="service-section">
+        <h2>Ремонт двигателя</h2>
+        <div class="service-grid">
+          {engineServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <h2>Техническое обслуживание</h2>
+        <div class="service-grid">
+          {maintenanceServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <h2>Ремонт подвески и рулевого управления</h2>
+        <div class="service-grid">
+          {suspensionServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <h2>Диагностика и электроника</h2>
+        <div class="service-grid">
+          {diagnosticsServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <h2>Система охлаждения и кондиционирования</h2>
+        <div class="service-grid">
+          {coolingServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <h2>Дополнительные услуги</h2>
+        <div class="service-grid">
+          {additionalServices.map(service => (
+            <a href={`/services/${service.slug}`} class="service-item">
+              <span class="service-name">{service.name}</span>
+              <span class="service-price">{service.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <DiscountsWrapper />
+    <ServicingWrapper />
+    <NumbersWrapper />
+  </div>
+</Layout>
+
+<style define:vars={{ servicesbg: `url(${servicesbg.src})` }}>
+.services-page {
+  min-height: 100vh;
+}
+
+.services-hero {
+  background-image: var(--servicesbg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+}
+
+.services-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.services-hero h1,
+.services-hero p,
+.services-hero .services-cta {
+  position: relative;
+  z-index: 2;
+}
+
+.services-hero h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.services-hero p {
+  font-size: 20px;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.services-cta {
+  display: inline-block;
+  padding: 16px 32px;
+  color: white;
+  border: 2px solid white;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.services-cta:hover {
+  background: white;
+  color: #262626;
+}
+
+.services-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.service-section {
+  margin-bottom: 80px;
+}
+
+.service-section h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.service-item {
+  background: rgb(208, 208, 208);
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+.service-item:hover {
+  background: black;
+}
+
+.service-name {
+  font-size: 18px;
+  color: #262626;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.service-item:hover .service-name {
+  color: white;
+}
+
+.service-price {
+  font-size: 18px;
+  color: #262626;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-left: 20px;
+  transition: all 0.3s;
+}
+
+.service-item:hover .service-price {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .services-hero {
+    padding: 100px 20px 60px;
+    min-height: 100vh;
+  }
+
+  .services-hero h1 {
+    font-size: 32px;
+  }
+
+  .services-hero p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .services-cta {
+    font-size: 16px;
+    padding: 14px 28px;
+  }
+
+  .services-content {
+    padding: 60px 20px;
+  }
+
+  .service-section {
+    margin-bottom: 60px;
+  }
+
+  .service-section h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-item {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .service-name {
+    font-size: 16px;
+  }
+
+  .service-price {
+    font-size: 16px;
+    margin-left: 0;
+  }
+}
+</style>

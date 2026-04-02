@@ -1,0 +1,183 @@
+---
+import { Menu } from 'lucide-react';
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.svg';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header class="header">
+  <div class="header-container">
+    <!-- Бургер меню -->
+    <button class="burger-menu" id="burgerBtn" aria-label="Открыть меню">
+      <Menu size={28} color="white" strokeWidth={2} client:load />
+    </button>
+
+    <!-- Логотип -->
+    <div class="logo">
+      <a href="/">
+        <Image src={logo} alt="YanisGrek" width={183} height={20} />
+      </a>
+    </div>
+
+    <!-- Расписание -->
+    <div class="schedule">
+      <div>Пн-Пт: 10:00-20:00</div>
+      <div>Сб: 11:00-20:00 Вс: 11:00-18:00</div>
+    </div>
+
+    <!-- Адрес -->
+    <div class="address">
+      <div>Москва</div>
+      <div>Высоковольтный проезд, 1, стр. 29</div>
+    </div>
+
+    <!-- Телефон -->
+    <a href="tel:+74957676500" class="phone">+7 495 76 76 500</a>
+  </div>
+</header>
+
+<MobileMenu />
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const menu = document.querySelector('.mobile-menu');
+
+  function closeMenu() {
+    menu.classList.remove('active');
+    burger.classList.remove('menu-open');
+    document.body.style.overflow = '';
+  }
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('active');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        menu.classList.add('active');
+        burger.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+
+  if (menu) {
+    // Закрыть меню при клике на ссылку
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+  }
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-container {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .burger-menu {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+    transition: transform 0.3s ease;
+  }
+
+  .burger-menu.menu-open {
+    transform: rotate(90deg);
+  }
+
+    .logo a {
+    display: block;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .logo img {
+    height: 40px;
+    display: block;
+  }
+
+  .schedule {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.6;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .schedule div {
+    white-space: nowrap;
+  }
+
+  .address {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.6;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .address div {
+    white-space: nowrap;
+  }
+
+  .phone {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1024px) {
+    .header-container {
+      width: 100%;
+    }
+
+    .schedule,
+    .address {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      width: 100%;
+    }
+
+    .schedule,
+    .address,
+    .phone {
+      display: none;
+    }
+
+    .header-container {
+      justify-content: space-between;
+      gap: 20px;
+    }
+  }
+</style>

@@ -1,0 +1,103 @@
+---
+import Numbers from './Numbers';
+---
+
+<Numbers client:load />
+
+<style>
+:global(.numbersBlock) {
+  background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+:global(.numbersBlock > .content) {
+  display: flex;
+  justify-content: center;
+  width: 1200px;
+  padding: 100px 80px;
+}
+
+:global(.numbersBlock > .content > .stats) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  width: 100%;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  cursor: pointer;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem > .statNumber) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem > .statText) {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem > .statText > a) {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem > .statText > a:hover) {
+  color: #2b6eff;
+  border-bottom-color: #2b6eff;
+}
+
+:global(.numbersBlock > .content > .stats > .statItem:hover > .statNumber) {
+  transform: translateY(-10px) scale(1.1);
+  color: #2b6eff;
+}
+
+@media screen and (max-width: 1200px) {
+  :global(.numbersBlock > .content) {
+    width: 100%;
+    padding: 80px 40px;
+  }
+
+  :global(.numbersBlock > .content > .stats) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :global(.numbersBlock > .content) {
+    padding: 60px 20px;
+  }
+
+  :global(.numbersBlock > .content > .stats) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  :global(.numbersBlock > .content > .stats > .statItem > .statNumber) {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  :global(.numbersBlock > .content > .stats > .statItem > .statText) {
+    font-size: 16px;
+  }
+}
+</style>

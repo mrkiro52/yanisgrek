@@ -1,0 +1,22 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'zf-6hp' } },
+    { params: { slug: 'zf-8hp' } },
+    { params: { slug: 'ga8f45m' } },
+    { params: { slug: 'a5s-390r' } },
+  ];
+}
+
+import Layout from '../../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+const title = `Ремонт АКПП ${slug} - YanisGrek`;
+const description = `Профессиональный ремонт коробки передач ${slug}. Диагностика и восстановление.`;
+---
+
+<Layout {title} {description}>
+  <main>
+    <h1>Страница коробки передач: {slug}</h1>
+  </main>
+</Layout>

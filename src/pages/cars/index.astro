@@ -1,0 +1,270 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TopServicesWrapper from '../../components/TopServicesWrapper.astro';
+
+const carModels = [
+  {
+    slug: 'bmw-1',
+    title: 'BMW 1 серия',
+    description: 'Компактный премиум-класс',
+  },
+  {
+    slug: 'bmw-2',
+    title: 'BMW 2 серия',
+    description: 'Спортивный премиум-класс',
+  },
+  {
+    slug: 'bmw-3',
+    title: 'BMW 3 серия',
+    description: 'Легендарный седан',
+  },
+  {
+    slug: 'bmw-4',
+    title: 'BMW 4 серия',
+    description: 'Премиум купе и кабриолет',
+  },
+  {
+    slug: 'bmw-5',
+    title: 'BMW 5 серия',
+    description: 'Премиум-седан для бизнеса',
+  },
+  {
+    slug: 'bmw-6',
+    title: 'BMW 6 серия',
+    description: 'Люксовое купе',
+  },
+  {
+    slug: 'bmw-7',
+    title: 'BMW 7 серия',
+    description: 'Королевский премиум-седан',
+  },
+  {
+    slug: 'bmw-m5',
+    title: 'BMW M5',
+    description: 'Легендарный спортсмен',
+  },
+  {
+    slug: 'bmw-x3',
+    title: 'BMW X3',
+    description: 'Компактный кроссовер',
+  },
+  {
+    slug: 'bmw-x5',
+    title: 'BMW X5',
+    description: 'Премиум-кроссовер',
+  },
+  {
+    slug: 'bmw-x6',
+    title: 'BMW X6',
+    description: 'Спортивный кроссовер',
+  },
+  {
+    slug: 'rolls-royce',
+    title: 'Rolls Royce',
+    description: 'Король роскоши',
+  },
+  {
+    slug: 'mini-cooper',
+    title: 'Mini Cooper',
+    description: 'Британский классик',
+  }
+];
+
+const title = 'Модели BMW - YanisGrek';
+const description = 'Каталог моделей BMW, доступных для обслуживания и ремонта в нашем техническом центре. Полный спектр услуг для всех моделей BMW и премиум-марок.';
+---
+
+<Layout {title} {description}>
+  <main class="cars-main">
+    <div class="cars-hero">
+      <div class="cars-hero-content">
+        <h1>Модели автомобилей</h1>
+        <p>Мы обслуживаем все модели BMW и премиум-марок</p>
+      </div>
+    </div>
+
+    <div class="cars-catalog">
+      <div class="catalog-container">
+        <h2>Выберите модель вашего автомобиля</h2>
+        <div class="cars-grid">
+          {carModels.map((car) => (
+            <a href={`/cars/${car.slug}`} class="car-card">
+              <div class="car-card-inner">
+                <h3>{car.title}</h3>
+                <p>{car.description}</p>
+                <span class="car-card-arrow">→</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <TopServicesWrapper />
+  </main>
+</Layout>
+
+<style>
+  .cars-main {
+    min-height: 100vh;
+    margin-top: 90px;
+  }
+
+  .cars-hero {
+    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    padding: 80px 20px;
+  }
+
+  .cars-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cars-hero h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 48px;
+    color: #262626;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .cars-hero p {
+    font-size: 20px;
+    color: #666;
+  }
+
+  .cars-catalog {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .catalog-container h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .car-card {
+    background: white;
+    border: 2px solid rgb(208, 208, 208);
+    padding: 32px 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .car-card:hover {
+    background: black;
+    border-color: #2b6eff;
+    transform: translateY(-8px);
+  }
+
+  .car-card-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .car-card h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    color: #262626;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .car-card:hover h3 {
+    color: #fff;
+  }
+
+  .car-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    transition: color 0.3s;
+  }
+
+  .car-card:hover p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .car-card-arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #262626;
+    transition: all 0.3s;
+  }
+
+  .car-card:hover .car-card-arrow {
+    color: #2b6eff;
+    right: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    .cars-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .car-card {
+      padding: 28px 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cars-hero h1 {
+      font-size: 32px;
+    }
+
+    .cars-hero p {
+      font-size: 16px;
+    }
+
+    .cars-catalog {
+      padding: 60px 20px;
+    }
+
+    .catalog-container h2 {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+
+    .cars-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .car-card {
+      padding: 24px 20px;
+    }
+
+    .car-card h3 {
+      font-size: 18px;
+    }
+
+    .car-card p {
+      font-size: 13px;
+    }
+
+    .car-card-arrow {
+      font-size: 20px;
+    }
+  }
+</style>

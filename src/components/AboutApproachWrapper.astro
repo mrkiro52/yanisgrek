@@ -1,0 +1,128 @@
+---
+import AboutApproach from './AboutApproach';
+---
+
+<AboutApproach client:load />
+
+<style>
+  :global(.about-approach) {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);
+    padding: 100px 20px;
+  }
+
+  :global(.about-approach__container) {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  :global(.about-approach__title) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 40px;
+    color: #262626;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  :global(.about-approach__blocks) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  :global(.about-approach__block) {
+    background: white;
+    padding: 32px;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+  }
+
+  :global(.about-approach__block-title) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: #262626;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  :global(.about-approach__block p) {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  :global(.about-approach__image) {
+    display: flex;
+    justify-content: center;
+  }
+
+  :global(.about-approach__placeholder) {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    background: #d0d0d0;
+  }
+
+  :global(.about-approach__quote) {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(208, 208, 208, 0.3);
+  }
+
+  :global(.about-approach__quote p) {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  :global(.about-approach__quote-author) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    color: #262626;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1024px) {
+    :global(.about-approach__container) {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    :global(.about-approach__title) {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.about-approach) {
+      padding: 60px 20px;
+    }
+
+    :global(.about-approach__title) {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+
+    :global(.about-approach__blocks) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    :global(.about-approach__block) {
+      padding: 24px;
+    }
+
+    :global(.about-approach__block-title) {
+      font-size: 14px;
+    }
+
+    :global(.about-approach__block p) {
+      font-size: 13px;
+    }
+  }
+</style>

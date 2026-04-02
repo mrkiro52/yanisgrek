@@ -1,0 +1,1306 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DiscountsWrapper from '../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../components/ServicingWrapper.astro';
+import NumbersWrapper from '../../components/NumbersWrapper.astro';
+import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
+import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+
+export async function getStaticPaths() {
+  const services = [
+    // Ремонт коробки передач
+    { slug: 'remont-korobki-peredach', category: 'transmission' },
+    { slug: 'zamena-masla-v-akpp', category: 'transmission' },
+    { slug: 'zamena-filtra-karteram-akpp', category: 'transmission' },
+    { slug: 'zamena-masla-razdatochnyy', category: 'transmission' },
+    { slug: 'zamena-masla-reduktor', category: 'transmission' },
+    { slug: 'sbros-adaptaciy-akpp', category: 'transmission' },
+    { slug: 'diagnostika-akpp', category: 'transmission' },
+    { slug: 'snyatie-ustanovka-akpp', category: 'transmission' },
+    { slug: 'snyatie-ustanovka-razdatka', category: 'transmission' },
+    
+    // Ремонт двигателя
+    { slug: 'remont-dvigatelya', category: 'engine' },
+    { slug: 'snyatie-ustanovka-dvs', category: 'engine' },
+    { slug: 'zamena-cepi-grm', category: 'engine' },
+    { slug: 'zamena-maslousemnye-kolpaki', category: 'engine' },
+    { slug: 'zamena-prokladok-salniky', category: 'engine' },
+    { slug: 'zamena-vkladyshey', category: 'engine' },
+    { slug: 'chistka-vpusknoj-kollektor', category: 'engine' },
+    { slug: 'pritirka-klupanov', category: 'engine' },
+    { slug: 'diagnostika-dvs', category: 'engine' },
+    
+    // Техническое обслуживание
+    { slug: 'zamena-masla-dvs', category: 'maintenance' },
+    { slug: 'zamena-vozdushnyy-filter', category: 'maintenance' },
+    { slug: 'zamena-toplivnyy-filter', category: 'maintenance' },
+    { slug: 'zamena-salonnyy-filter', category: 'maintenance' },
+    { slug: 'prokachka-toplivnoj-sistemy', category: 'maintenance' },
+    { slug: 'zamena-tormoznye-diski', category: 'maintenance' },
+    { slug: 'zamena-tormoznye-kolodki', category: 'maintenance' },
+    
+    // Ремонт подвески
+    { slug: 'zamena-perednie-amortizatory', category: 'suspension' },
+    { slug: 'zamena-zadnie-amortizatory', category: 'suspension' },
+    { slug: 'zamena-saylentblok-podveska', category: 'suspension' },
+    { slug: 'zamena-zadnie-poperechnye-rychagi', category: 'suspension' },
+    { slug: 'zamena-stojki-stabilizator', category: 'suspension' },
+    { slug: 'zamena-pruzhiny-zadnei', category: 'suspension' },
+    { slug: 'zamena-stupichnye-podshipniki', category: 'suspension' },
+    { slug: 'zamena-podushki-podramnika', category: 'suspension' },
+    { slug: 'remont-rulevoj-reyki', category: 'suspension' },
+    { slug: 'snyatie-etablka-rulevoj-reyki', category: 'suspension' },
+    
+    // Диагностика и электроника
+    { slug: 'kompyuternaya-diagnostika', category: 'diagnostics' },
+    { slug: 'obnovlenie-programmnogo-obespecheniya', category: 'diagnostics' },
+    { slug: 'chip-tuning', category: 'diagnostics' },
+    { slug: 'kalibrovka-pnevmopodsveska', category: 'diagnostics' },
+    { slug: 'zamena-akb-registraciya', category: 'diagnostics' },
+    
+    // Система охлаждения
+    { slug: 'vakuumirovanie-zapravka-kondicionera', category: 'cooling' },
+    { slug: 'antibakterialnaya-obrabotka', category: 'cooling' },
+    { slug: 'zamena-nasos-ohlajdayuschaya', category: 'cooling' },
+    { slug: 'zamena-termostata', category: 'cooling' },
+    { slug: 'mojka-radiatorov', category: 'cooling' },
+    
+    // Дополнительные услуги
+    { slug: 'otklyuchenie-удаление-egr-dpf', category: 'additional' },
+    { slug: 'profilaktika-drenajey', category: 'additional' },
+    { slug: 'chistka-klapanov', category: 'additional' },
+    { slug: 'udalenie-vpuska', category: 'additional' },
+  ];
+
+  return services.map(service => ({
+    params: { slug: service.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+
+const allServices: Record<string, {
+  title: string;
+  description: string;
+  content: string;
+  price: string;
+  features: string[];
+  category: string;
+}> = {
+  // РЕМОНТ КОРОБКИ ПЕРЕДАЧ
+  'remont-korobki-peredach': {
+    title: 'Ремонт коробки передач',
+    description: 'Профессиональный ремонт АКПП, МКПП, вариаторов и роботизированных коробок передач BMW',
+    content: 'Специализируемся на ремонте всех типов коробок передач для BMW: АКПП, МКПП, вариаторы, роботизированные коробки DCT, CVT и электрические трансмиссии EV. Используем только оригинальные запчасти и современное диагностическое оборудование.',
+    price: 'от 5000 руб.',
+    category: 'transmission',
+    features: [
+      'Диагностика АКПП на специализированном оборудовании',
+      'Замена масла и фильтров АКПП',
+      'Ремонт гидроблока и мехатроника',
+      'Замена сцепления и фрикционов',
+      'Сброс адаптаций и программирование',
+      'Гарантия на все работы'
+    ]
+  },
+  'zamena-masla-v-akpp': {
+    title: 'Замена масла в АКПП',
+    description: 'Профессиональная замена масла в автоматической коробке передач BMW',
+    content: 'Замена масла в АКПП - важная процедура для поддержания работоспособности автоматической коробки передач. Используем только оригинальные масла и фильтры, рекомендованные производителем.',
+    price: 'от 21600 руб.',
+    category: 'transmission',
+    features: [
+      'Использование оригинального масла BMW',
+      'Замена фильтра-картера АКПП',
+      'Промывка гидроблока (при необходимости)',
+      'Сброс адаптаций АКПП',
+      'Проверка уровня и качества масла',
+      'Тест-драйв после замены'
+    ]
+  },
+  'zamena-filtra-karteram-akpp': {
+    title: 'Замена фильтра-картера АКПП',
+    description: 'Профессиональная замена фильтра-картера автоматической коробки передач',
+    content: 'Фильтр-картер АКПП требует периодической замены для поддержания оптимальной работы коробки передач. Мы используем только оригинальные запчасти BMW.',
+    price: 'от 11.600 руб.',
+    category: 'transmission',
+    features: [
+      'Использование оригинального фильтра-картера BMW',
+      'Проверка состояния масла АКПП',
+      'Сброс адаптаций (при необходимости)',
+      'Диагностика работы АКПП',
+      'Гарантия на выполненные работы',
+      'Рекомендации по дальнейшему обслуживанию'
+    ]
+  },
+  'zamena-masla-razdatochnyy': {
+    title: 'Замена масла в раздаточной коробке',
+    description: 'Замена масла в раздаточной коробке BMW',
+    content: 'Раздаточная коробка требует регулярного обслуживания. Мы выполняем профессиональную замену масла с использованием оригинальных смазочных материалов.',
+    price: 'от 4800 руб.',
+    category: 'transmission',
+    features: [
+      'Слив отработанного масла',
+      'Промывка раздаточной коробки',
+      'Заправка оригинальным маслом BMW',
+      'Проверка герметичности',
+      'Тест-драйв после замены',
+      'Гарантия качества'
+    ]
+  },
+  'zamena-masla-reduktor': {
+    title: 'Замена масла в редукторе',
+    description: 'Замена масла в переднем и заднем редукторах BMW',
+    content: 'Регулярная замена масла в редукторах предотвращает износ и продлевает срок службы узлов. Выполняется с использованием оригинальных смазочных материалов.',
+    price: 'от 2400 руб.',
+    category: 'transmission',
+    features: [
+      'Замена масла в переднем редукторе',
+      'Замена масла в заднем редукторе',
+      'Проверка состояния шестерен',
+      'Герметизация редукторов',
+      'Диагностика трансмиссии',
+      'Рекомендации по дальнейшему уходу'
+    ]
+  },
+  'sbros-adaptaciy-akpp': {
+    title: 'Сброс адаптаций АКПП',
+    description: 'Сброс адаптаций автоматической коробки передач BMW',
+    content: 'Сброс адаптаций АКПП помогает восстановить оптимальные характеристики переключения после ремонта или замены компонентов.',
+    price: 'от 1500 руб.',
+    category: 'transmission',
+    features: [
+      'Компьютерный сброс адаптаций',
+      'Диагностика АКПП перед сбросом',
+      'Тест-драйв для проверки качества',
+      'Проверка ошибок коробки',
+      'Оптимизация переключений',
+      'Гарантия на выполненные работы'
+    ]
+  },
+  'diagnostika-akpp': {
+    title: 'Диагностика АКПП',
+    description: 'Комплексная диагностика автоматической коробки передач BMW',
+    content: 'Профессиональная компьютерная и механическая диагностика АКПП позволяет выявить неисправности на ранней стадии и предотвратить дорогостоящий ремонт.',
+    price: 'от 1500 руб.',
+    category: 'transmission',
+    features: [
+      'Компьютерная диагностика блока управления',
+      'Проверка качества и уровня масла',
+      'Тест-драйв с анализом переключений',
+      'Проверка давления в системе',
+      'Диагностика мехатроника и гидроблока',
+      'Подробный отчет о состоянии АКПП'
+    ]
+  },
+  'snyatie-ustanovka-akpp': {
+    title: 'Снятие/установка АКПП',
+    description: 'Профессиональное снятие и установка автоматической коробки передач',
+    content: 'Квалифицированное снятие и установка АКПП с использованием специального оборудования и соблюдением всех технологических процессов.',
+    price: 'от 16.800 руб.',
+    category: 'transmission',
+    features: [
+      'Диагностика перед работой',
+      'Аккуратное снятие АКПП',
+      'Осмотр и чистка компонентов',
+      'Установка с выравниванием',
+      'Программирование и адаптация',
+      'Тест-драйв для проверки'
+    ]
+  },
+  'snyatie-ustanovka-razdatka': {
+    title: 'Снятие/установка раздаточной коробки',
+    description: 'Профессиональное снятие и установка раздаточной коробки BMW',
+    content: 'Опытное проведение работ по снятию и установке раздаточной коробки с соблюдением технологии и использованием оригинальных запчастей.',
+    price: 'от 7800 руб.',
+    category: 'transmission',
+    features: [
+      'Полная диагностика раздаточной коробки',
+      'Аккуратное разъединение компонентов',
+      'Чистка и проверка',
+      'Установка и выравнивание',
+      'Герметизация соединений',
+      'Контрольный тест-драйв'
+    ]
+  },
+
+  // РЕМОНТ ДВИГАТЕЛЯ
+  'remont-dvigatelya': {
+    title: 'Ремонт двигателя',
+    description: 'Комплексный ремонт двигателей BMW всех типов и модификаций',
+    content: 'Выполняем капитальный и текущий ремонт бензиновых, дизельных, гибридных и электрических двигателей BMW. Наши специалисты имеют многолетний опыт работы с моторами всех серий.',
+    price: 'от 15000 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика двигателя и его систем',
+      'Замена цепи и ремня ГРМ',
+      'Ремонт головки блока цилиндров',
+      'Замена поршневой группы и вкладышей',
+      'Чистка клапанов и впускного коллектора',
+      'Восстановление компрессии'
+    ]
+  },
+  'snyatie-ustanovka-dvs': {
+    title: 'Снятие/установка ДВС',
+    description: 'Профессиональное снятие и установка двигателя BMW',
+    content: 'Опытное проведение работ по снятию и установке двигателя с использованием специального оборудования и соблюдением всех технологических требований.',
+    price: 'от 35.000 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика перед снятием',
+      'Отключение всех систем двигателя',
+      'Аккуратное снятие с подъемником',
+      'Осмотр подкапотного пространства',
+      'Установка нового/отремонтированного ДВС',
+      'Проверка всех систем'
+    ]
+  },
+  'zamena-cepi-grm': {
+    title: 'Замена цепи ГРМ',
+    description: 'Замена цепи газораспределительного механизма BMW',
+    content: 'Профессиональная замена цепи ГРМ предотвращает серьезные повреждения двигателя. Используем только оригинальные запчасти и специальный инструмент.',
+    price: 'от 20.000 руб.',
+    category: 'engine',
+    features: [
+      'Полная диагностика ГРМ',
+      'Аккуратное снятие защиты',
+      'Замена цепи на оригинальную',
+      'Замена натяжителей и направляющих',
+      'Настройка фаз газораспределения',
+      'Проверка работы двигателя'
+    ]
+  },
+  'zamena-maslousemnye-kolpaki': {
+    title: 'Замена маслосъёмных колпачков',
+    description: 'Замена маслосъёмных колпачков двигателя BMW',
+    content: 'Замена маслосъёмных колпачков предотвращает утечку масла и снижает расход масла двигателем. Выполняется с использованием оригинальных запчастей.',
+    price: 'от 80.000 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика утечек масла',
+      'Снятие головки блока цилиндров',
+      'Замена всех маслосъёмных колпачков',
+      'Замена прокладок и сальников',
+      'Проверка герметичности',
+      'Тест-драйв'
+    ]
+  },
+  'zamena-prokladok-salniky': {
+    title: 'Замена прокладок, сальников',
+    description: 'Замена прокладок и сальников двигателя BMW',
+    content: 'Регулярная замена изношенных прокладок и сальников предотвращает утечки масла и жидкостей, обеспечивая надежную работу двигателя.',
+    price: 'от 5800 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика состояния прокладок',
+      'Снятие поврежденных элементов',
+      'Чистка поверхностей соединения',
+      'Установка новых прокладок и сальников',
+      'Герметизация соединений',
+      'Проверка герметичности'
+    ]
+  },
+  'zamena-vkladyshey': {
+    title: 'Замена вкладышей',
+    description: 'Замена коренных и шатунных вкладышей двигателя BMW',
+    content: 'Профессиональная замена вкладышей коленчатого вала восстанавливает нормальную работу двигателя и предотвращает серьезные повреждения.',
+    price: 'от 40.000 руб.',
+    category: 'engine',
+    features: [
+      'Полная диагностика состояния вкладышей',
+      'Снятие поддона двигателя',
+      'Оценка состояния коленвала',
+      'Замена вкладышей на оригинальные',
+      'Правильная установка и затяжка',
+      'Проверка работоспособности'
+    ]
+  },
+  'chistka-vpusknoj-kollektor': {
+    title: 'Чистка впускного коллектора / каналов',
+    description: 'Чистка впускного коллектора и впускных каналов двигателя BMW',
+    content: 'Профессиональная чистка впускного коллектора улучшает мощность двигателя, снижает расход топлива и уменьшает выбросы вредных веществ.',
+    price: 'от 4500 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика состояния впускного коллектора',
+      'Снятие коллектора',
+      'Механическая и химическая чистка',
+      'Удаление отложений карбона',
+      'Установка и герметизация',
+      'Проверка работы двигателя'
+    ]
+  },
+  'pritirka-klupanov': {
+    title: 'Притирка клапанов',
+    description: 'Притирка и регулировка клапанов двигателя BMW',
+    content: 'Профессиональная притирка клапанов обеспечивает герметичность и оптимальную работу механизма газораспределения.',
+    price: 'от 15.000 руб.',
+    category: 'engine',
+    features: [
+      'Диагностика состояния клапанов',
+      'Снятие головки блока цилиндров',
+      'Механическая чистка клапанов',
+      'Притирка с использованием абразива',
+      'Регулировка зазоров клапанов',
+      'Проверка герметичности'
+    ]
+  },
+  'diagnostika-dvs': {
+    title: 'Диагностика ДВС',
+    description: 'Полная диагностика двигателя внутреннего сгорания BMW',
+    content: 'Комплексная диагностика двигателя включает компьютерную диагностику всех систем, измерение компрессии, проверку систем зажигания и топливоподачи.',
+    price: 'от 1500 руб.',
+    category: 'engine',
+    features: [
+      'Компьютерная диагностика блоков управления',
+      'Измерение компрессии в цилиндрах',
+      'Проверка системы зажигания',
+      'Диагностика топливной системы',
+      'Проверка системы охлаждения',
+      'Анализ работы двигателя на холостом ходу и под нагрузкой'
+    ]
+  },
+
+  // ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ
+  'zamena-masla-dvs': {
+    title: 'Замена масла ДВС',
+    description: 'Профессиональная замена масла двигателя BMW',
+    content: 'Регулярная замена масла - одна из самых важных процедур технического обслуживания. Используем только оригинальные масла и фильтры BMW.',
+    price: 'от 9000 руб.',
+    category: 'maintenance',
+    features: [
+      'Использование оригинального масла BMW',
+      'Замена масляного фильтра',
+      'Слив старого масла',
+      'Промывка масляной системы',
+      'Проверка уровня масла',
+      'Диагностика состояния двигателя'
+    ]
+  },
+  'zamena-vozdushnyy-filter': {
+    title: 'Замена воздушного фильтра',
+    description: 'Замена воздушного фильтра двигателя BMW',
+    content: 'Чистый воздушный фильтр улучшает мощность двигателя и снижает расход топлива. Регулярная замена предотвращает попадание грязи в двигатель.',
+    price: 'от 2200 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика состояния фильтра',
+      'Снятие старого фильтра',
+      'Чистка корпуса воздушного фильтра',
+      'Установка нового оригинального фильтра',
+      'Проверка герметичности',
+      'Запуск двигателя'
+    ]
+  },
+  'zamena-toplivnyy-filter': {
+    title: 'Замена топливного фильтра',
+    description: 'Замена топливного фильтра BMW',
+    content: 'Чистый топливный фильтр обеспечивает оптимальную работу топливной системы и предотвращает засорение форсунок.',
+    price: 'от 3900 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика состояния фильтра',
+      'Сброс давления в системе',
+      'Снятие старого фильтра',
+      'Установка нового оригинального фильтра',
+      'Проверка герметичности соединений',
+      'Проверка работы топливной системы'
+    ]
+  },
+  'zamena-salonnyy-filter': {
+    title: 'Замена салонного фильтра',
+    description: 'Замена салонного фильтра BMW',
+    content: 'Чистый салонный фильтр обеспечивает свежий воздух в салоне и защищает кондиционер от загрязнений.',
+    price: 'от 6900 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика состояния фильтра',
+      'Снятие защиты',
+      'Замена старого фильтра',
+      'Чистка воздуховодов',
+      'Установка нового оригинального фильтра',
+      'Проверка работы кондиционера'
+    ]
+  },
+  'prokachka-toplivnoj-sistemy': {
+    title: 'Прокачка топливной системы',
+    description: 'Прокачка и очистка топливной системы BMW',
+    content: 'Профессиональная очистка топливной системы улучшает работу двигателя, снижает расход топлива и восстанавливает мощность.',
+    price: 'от 3600 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика топливной системы',
+      'Подключение оборудования для прокачки',
+      'Промывка топливопроводов',
+      'Очистка форсунок',
+      'Прокачка топливного насоса',
+      'Проверка давления в системе'
+    ]
+  },
+  'zamena-tormoznye-diski': {
+    title: 'Замена тормозных дисков',
+    description: 'Замена тормозных дисков BMW',
+    content: 'Своевременная замена тормозных дисков обеспечивает безопасность и надежное торможение автомобиля.',
+    price: 'от 3900 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика состояния дисков',
+      'Снятие колеса и суппорта',
+      'Замена изношенных дисков',
+      'Очистка суппортов',
+      'Установка новых дисков',
+      'Проверка тормозной системы'
+    ]
+  },
+  'zamena-tormoznye-kolodki': {
+    title: 'Замена тормозных колодок',
+    description: 'Замена тормозных колодок BMW',
+    content: 'Регулярная замена тормозных колодок гарантирует эффективность торможения и безопасность вождения.',
+    price: 'от 2400 руб.',
+    category: 'maintenance',
+    features: [
+      'Диагностика состояния колодок',
+      'Снятие колеса',
+      'Замена на новые оригинальные колодки',
+      'Очистка тормозного механизма',
+      'Прокачка тормозной системы (при необходимости)',
+      'Тест-драйв'
+    ]
+  },
+
+  // РЕМОНТ ПОДВЕСКИ И РУЛЕВОГО УПРАВЛЕНИЯ
+  'zamena-perednie-amortizatory': {
+    title: 'Замена передних амортизаторов',
+    description: 'Замена передних амортизаторов BMW',
+    content: 'Профессиональная замена передних амортизаторов улучшает комфорт езды и управляемость автомобиля.',
+    price: 'от 8000 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния амортизаторов',
+      'Снятие передних колес',
+      'Демонтаж старых амортизаторов',
+      'Установка новых оригинальных амортизаторов',
+      'Регулировка развал-схождения',
+      'Тест-драйв'
+    ]
+  },
+  'zamena-zadnie-amortizatory': {
+    title: 'Замена задних амортизаторов',
+    description: 'Замена задних амортизаторов BMW',
+    content: 'Замена задних амортизаторов обеспечивает стабильность автомобиля и улучшает качество езды.',
+    price: 'от 6200 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния амортизаторов',
+      'Снятие задних колес',
+      'Демонтаж старых амортизаторов',
+      'Установка новых оригинальных амортизаторов',
+      'Проверка развал-схождения',
+      'Контрольный тест-драйв'
+    ]
+  },
+  'zamena-saylentblok-podveska': {
+    title: 'Замена сайлентблоков передней подвески',
+    description: 'Замена сайлентблоков передней подвески BMW',
+    content: 'Замена изношенных сайлентблоков улучшает управляемость и снижает шумность при движении.',
+    price: 'от 5900 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния сайлентблоков',
+      'Демонтаж рычагов подвески',
+      'Замена сайлентблоков на оригинальные',
+      'Регулировка развал-схождения',
+      'Проверка углов установки колес',
+      'Тест-драйв'
+    ]
+  },
+  'zamena-zadnie-poperechnye-rychagi': {
+    title: 'Замена задних поперечных рычагов',
+    description: 'Замена задних поперечных рычагов BMW',
+    content: 'Профессиональная замена задних рычагов улучшает управляемость и стабильность автомобиля.',
+    price: 'от 4600 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния рычагов',
+      'Демонтаж старых рычагов',
+      'Установка новых оригинальных рычагов',
+      'Регулировка развал-схождения',
+      'Проверка подвески',
+      'Контрольный тест-драйв'
+    ]
+  },
+  'zamena-stojki-stabilizator': {
+    title: 'Замена стоек стабилизатора',
+    description: 'Замена стоек (тяг) стабилизатора BMW',
+    content: 'Замена изношенных стоек стабилизатора улучшает качество управления и снижает крены при поворотах.',
+    price: 'от 2100 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния стоек',
+      'Снятие изношенных стоек',
+      'Установка новых оригинальных стоек',
+      'Регулировка углов установки колес',
+      'Проверка подвески',
+      'Тест-драйв'
+    ]
+  },
+  'zamena-pruzhiny-zadnei': {
+    title: 'Замена пружин задней подвески',
+    description: 'Замена пружин задней подвески BMW',
+    content: 'Профессиональная замена задних пружин восстанавливает высоту автомобиля и улучшает управляемость.',
+    price: 'от 6000 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния пружин',
+      'Снятие задних колес',
+      'Демонтаж амортизаторов (при необходимости)',
+      'Замена пружин на оригинальные',
+      'Регулировка подвески',
+      'Контрольный тест-драйв'
+    ]
+  },
+  'zamena-stupichnye-podshipniki': {
+    title: 'Замена ступичных подшипников',
+    description: 'Замена ступичных подшипников BMW',
+    content: 'Своевременная замена ступичных подшипников предотвращает повреждение ступицы и обеспечивает безопасность вождения.',
+    price: 'от 4300 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния подшипников',
+      'Снятие колеса и суппорта',
+      'Демонтаж старых подшипников',
+      'Установка новых оригинальных подшипников',
+      'Смазка и герметизация',
+      'Проверка работоспособности'
+    ]
+  },
+  'zamena-podushki-podramnika': {
+    title: 'Замена подушек подрамника',
+    description: 'Замена подушек подрамника BMW',
+    content: 'Замена изношенных подушек подрамника улучшает комфорт и снижает вибрацию от подвески.',
+    price: 'от 8600 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния подушек',
+      'Демонтаж подрамника (при необходимости)',
+      'Замена подушек на оригинальные',
+      'Установка подрамника',
+      'Регулировка подвески',
+      'Тест-драйв'
+    ]
+  },
+  'remont-rulevoj-reyki': {
+    title: 'Ремонт рулевой рейки',
+    description: 'Профессиональный ремонт рулевой рейки BMW',
+    content: 'Квалифицированный ремонт рулевой рейки восстанавливает точность управления и исключает люфты.',
+    price: 'от 15.000 руб.',
+    category: 'suspension',
+    features: [
+      'Диагностика состояния рейки',
+      'Демонтаж рулевой рейки',
+      'Диагностика и ремонт механизма',
+      'Замена уплотнений и сальников',
+      'Регулировка люфта',
+      'Установка и проверка'
+    ]
+  },
+  'snyatie-etablka-rulevoj-reyki': {
+    title: 'Снятие/установка рулевой рейки',
+    description: 'Профессиональное снятие и установка рулевой рейки BMW',
+    content: 'Опытное выполнение работ по замене рулевой рейки с соблюдением технологии и регулировочных параметров.',
+    price: 'от 6000 руб.',
+    category: 'suspension',
+    features: [
+      'Полная диагностика рулевой системы',
+      'Отключение электроники рулевой рейки',
+      'Аккуратное снятие рейки',
+      'Установка новой рейки',
+      'Регулировка и калибровка',
+      'Проверка управления'
+    ]
+  },
+
+  // ДИАГНОСТИКА И ЭЛЕКТРОНИКА
+  'kompyuternaya-diagnostika': {
+    title: 'Компьютерная диагностика',
+    description: 'Компьютерная диагностика всех систем BMW',
+    content: 'Полная компьютерная диагностика позволяет выявить неисправности в электронных системах автомобиля BMW.',
+    price: 'от 1500 руб.',
+    category: 'diagnostics',
+    features: [
+      'Сканирование всех систем управления',
+      'Чтение кодов ошибок',
+      'Анализ параметров двигателя',
+      'Проверка датчиков и исполнительных механизмов',
+      'Подробный отчет о состоянии',
+      'Рекомендации по устранению неисправностей'
+    ]
+  },
+  'obnovlenie-programmnogo-obespecheniya': {
+    title: 'Обновление программного обеспечения',
+    description: 'Обновление ПО блоков управления BMW',
+    content: 'Профессиональное обновление программного обеспечения электронных блоков управления улучшает производительность и стабильность работы автомобиля.',
+    price: 'от 4500 руб.',
+    category: 'diagnostics',
+    features: [
+      'Диагностика текущей версии ПО',
+      'Определение необходимого обновления',
+      'Загрузка актуального ПО',
+      'Установка обновления',
+      'Проверка корректности установки',
+      'Тест-драйв'
+    ]
+  },
+  'chip-tuning': {
+    title: 'Чип-тюнинг',
+    description: 'Чип-тюнинг двигателя BMW (Stage 1 / Stage 2)',
+    content: 'Профессиональный чип-тюнинг увеличивает мощность и крутящий момент двигателя BMW без механических изменений.',
+    price: 'от 10.000 руб.',
+    category: 'diagnostics',
+    features: [
+      'Диагностика текущих параметров',
+      'Выбор оптимальной стадии тюнинга',
+      'Модификация ПО ЭБУ',
+      'Проверка на динамометре',
+      'Гарантия на выполненные работы',
+      'Рекомендации по обслуживанию'
+    ]
+  },
+  'kalibrovka-pnevmopodsveska': {
+    title: 'Калибровка пневмоподвески',
+    description: 'Калибровка электроники пневматической подвески BMW',
+    content: 'Профессиональная калибровка системы пневмоподвески восстанавливает правильную работу и регулировку высоты.',
+    price: 'от 1500 руб.',
+    category: 'diagnostics',
+    features: [
+      'Диагностика системы пневмоподвески',
+      'Проверка датчиков и компрессора',
+      'Калибровка электроники',
+      'Проверка давления в пневмобаллонах',
+      'Регулировка высоты кузова',
+      'Тест-драйв'
+    ]
+  },
+  'zamena-akb-registraciya': {
+    title: 'Замена АКБ с регистрацией',
+    description: 'Замена аккумулятора BMW с регистрацией в системе',
+    content: 'Профессиональная замена аккумулятора с регистрацией в электронной системе автомобиля.',
+    price: 'от 3000 руб.',
+    category: 'diagnostics',
+    features: [
+      'Диагностика состояния аккумулятора',
+      'Безопасное отключение старой АКБ',
+      'Установка нового аккумулятора',
+      'Регистрация в системе BMS',
+      'Проверка электроники',
+      'Запуск двигателя'
+    ]
+  },
+
+  // СИСТЕМА ОХЛАЖДЕНИЯ И КОНДИЦИОНИРОВАНИЯ
+  'vakuumirovanie-zapravka-kondicionera': {
+    title: 'Вакуумирование и заправка кондиционера',
+    description: 'Профессиональное обслуживание кондиционера BMW',
+    content: 'Полное обслуживание системы кондиционирования: вакуумирование и заправка хладагентом.',
+    price: 'от 6800 руб.',
+    category: 'cooling',
+    features: [
+      'Диагностика системы кондиционирования',
+      'Проверка герметичности',
+      'Вакуумирование системы',
+      'Добавление масла в систему',
+      'Заправка хладагентом',
+      'Проверка работоспособности'
+    ]
+  },
+  'antibakterialnaya-obrabotka': {
+    title: 'Антибактериальная обработка кондиционера',
+    description: 'Дезинфекция системы кондиционирования BMW',
+    content: 'Профессиональная антибактериальная обработка кондиционера удаляет вредные микроорганизмы и неприятные запахи.',
+    price: 'от 3900 руб.',
+    category: 'cooling',
+    features: [
+      'Диагностика состояния системы',
+      'Очистка фильтра салона',
+      'Противомикробная обработка',
+      'Дезинфекция испарителя',
+      'Ароматизация салона (при желании)',
+      'Проверка работоспособности'
+    ]
+  },
+  'zamena-nasos-ohlajdayuschaya': {
+    title: 'Замена насоса охлаждающей жидкости',
+    description: 'Замена водяного насоса системы охлаждения BMW',
+    content: 'Своевременная замена насоса охлаждающей жидкости предотвращает перегрев двигателя.',
+    price: 'от 6900 руб.',
+    category: 'cooling',
+    features: [
+      'Диагностика состояния насоса',
+      'Слив охлаждающей жидкости',
+      'Демонтаж старого насоса',
+      'Установка нового оригинального насоса',
+      'Заправка охлаждающей жидкостью',
+      'Проверка герметичности'
+    ]
+  },
+  'zamena-termostata': {
+    title: 'Замена термостата',
+    description: 'Замена термостата системы охлаждения BMW',
+    content: 'Замена неисправного термостата нормализует температурный режим работы двигателя.',
+    price: 'от 3900 руб.',
+    category: 'cooling',
+    features: [
+      'Диагностика состояния термостата',
+      'Слив охлаждающей жидкости',
+      'Демонтаж старого термостата',
+      'Установка нового оригинального термостата',
+      'Заправка охлаждающей жидкостью',
+      'Проверка температурного режима'
+    ]
+  },
+  'mojka-radiatorov': {
+    title: 'Мойка радиаторов',
+    description: 'Профессиональная чистка радиаторов системы охлаждения BMW',
+    content: 'Чистые радиаторы обеспечивают оптимальное охлаждение двигателя и кондиционера.',
+    price: 'от 5500 руб.',
+    category: 'cooling',
+    features: [
+      'Диагностика состояния радиаторов',
+      'Снятие радиаторов (при необходимости)',
+      'Механическая чистка',
+      'Химическая промывка',
+      'Установка и герметизация',
+      'Проверка работоспособности'
+    ]
+  },
+
+  // ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ
+  'otklyuchenie-удаление-egr-dpf': {
+    title: 'Отключение и удаление EGR / DPF / AdBlue',
+    description: 'Отключение систем доочистки выхлопа BMW',
+    content: 'Профессиональное отключение и удаление EGR, DPF и AdBlue систем с программной модификацией.',
+    price: 'от 15.000 руб.',
+    category: 'additional',
+    features: [
+      'Диагностика систем',
+      'Физическое удаление компонентов',
+      'Программное отключение в ЭБУ',
+      'Модификация ПО двигателя',
+      'Проверка на ошибки',
+      'Гарантия на выполненные работы'
+    ]
+  },
+  'profilaktika-drenajey': {
+    title: 'Профилактика дренажей подкапотного пространства',
+    description: 'Чистка и профилактика дренажей подкапотного пространства BMW',
+    content: 'Профессиональная очистка дренажных систем предотвращает скопление воды в подкапотном пространстве.',
+    price: 'от 3000 руб.',
+    category: 'additional',
+    features: [
+      'Диагностика состояния дренажей',
+      'Очистка дренажных каналов',
+      'Удаление засоров и листвы',
+      'Проверка герметичности',
+      'Установка защитных сеток',
+      'Контрольная проверка'
+    ]
+  },
+  'chistka-klapanov': {
+    title: 'Чистка клапанов',
+    description: 'Чистка и промывка клапанов двигателя BMW',
+    content: 'Профессиональная чистка клапанов улучшает производительность двигателя и снижает выбросы.',
+    price: 'от 12.000 руб.',
+    category: 'additional',
+    features: [
+      'Диагностика состояния клапанов',
+      'Механическая очистка',
+      'Химическая промывка',
+      'Удаление карбонных отложений',
+      'Регулировка зазоров клапанов',
+      'Проверка компрессии'
+    ]
+  },
+  'udalenie-vpuska': {
+    title: 'Удаление впуска / впускной системы',
+    description: 'Удаление и переделка впускной системы BMW',
+    content: 'Профессиональное удаление и модификация впускной системы для улучшения производительности.',
+    price: 'от 4500 руб.',
+    category: 'additional',
+    features: [
+      'Диагностика впускной системы',
+      'Снятие впускного коллектора',
+      'Удаление ненужных компонентов',
+      'Установка оптимизированной системы',
+      'Программная адаптация',
+      'Проверка производительности'
+    ]
+  }
+};
+
+const serviceData = allServices[slug as string];
+
+if (!serviceData) {
+  return Astro.redirect('/404');
+}
+
+const title = `${serviceData.title} - YanisGrek`;
+const description = serviceData.description;
+---
+
+<Layout {title} {description}>
+  <div class="service-page">
+    <div class="service-hero">
+      <div class="service-hero-content">
+        <h1>{serviceData.title}</h1>
+        <p class="service-description">{serviceData.description}</p>
+        <div class="service-hero-buttons">
+          <div class="service-price">
+            <span class="price-label">Стоимость:</span>
+            <span class="price-value">{serviceData.price}</span>
+          </div>
+          <button class="service-btn-booking">Записаться</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-content">
+      <div class="service-about">
+        <h2>Об услуге</h2>
+        <p>{serviceData.content}</p>
+      </div>
+
+      <div class="service-features">
+        <h2>Что входит в услугу</h2>
+        <ul class="features-list">
+          {serviceData.features.map(feature => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="service-cta">
+        <button class="cta-button" onclick="smoothScroll()">Записаться на услугу</button>
+      </div>
+    </div>
+
+    <WhyUsWrapper />
+    <AdvantagesWrapper />
+    <DiscountsWrapper />
+    <ServicingWrapper />
+    <NumbersWrapper />
+  </div>
+</Layout>
+
+<script>
+  function smoothScroll() {
+    // Сначала пытаемся найти форму по id service-quiz (на этой же странице)
+    let element = document.getElementById('service-quiz');
+    
+    // Если не найдена, пытаемся найти форму заявки (обычно это контактная форма)
+    if (!element) {
+      element = document.querySelector('[data-form-section]');
+    }
+    
+    // Если всё ещё не найдена, пытаемся найти форму по классу или другому селектору
+    if (!element) {
+      element = document.getElementById('Form');
+    }
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
+  // Глобальная функция для использования на других страницах
+  (window as any).smoothScroll = smoothScroll;
+  
+  // Прикрепляем обработчик к кнопкам на странице
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.service-btn-booking, .cta-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', smoothScroll);
+    });
+  });
+</script>
+
+<style>
+.service-page {
+  min-height: 100vh;
+}
+
+.service-hero {
+  background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+  padding: 120px 20px 80px;
+}
+
+.service-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-hero h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  color: #262626;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.service-description {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.service-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  padding: 16px 32px;
+  color: white;
+  width: fit-content;
+  height: 60px;
+  gap: 12px;
+}
+
+.price-label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.price-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.service-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.service-btn-booking {
+  background: #2b6eff;
+  color: white;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.service-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.service-about {
+  margin-bottom: 60px;
+}
+
+.service-about h2,
+.service-features h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.service-about p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.service-features {
+  margin-bottom: 60px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.features-list li {
+  background: rgb(208, 208, 208);
+  padding: 20px 24px;
+  font-size: 16px;
+  color: #262626;
+  position: relative;
+  padding-left: 48px;
+}
+
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 700;
+  color: #262626;
+}
+
+.service-cta {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 20px 48px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  background: #2b6eff;
+}
+
+@media screen and (max-width: 1024px) {
+  .service-hero {
+    padding: 100px 20px 80px;
+  }
+
+  .service-hero h1 {
+    font-size: 40px;
+  }
+
+  .service-description {
+    font-size: 18px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    width: fit-content;
+  }
+
+  .service-price {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+  }
+
+  .service-content {
+    padding: 60px 20px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 28px;
+  }
+
+  .features-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-about p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .service-hero {
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+
+  .service-hero h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .service-description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .service-price {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 20px;
+    width: fit-content;
+    height: auto;
+  }
+
+  .price-label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .price-value {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+    padding: 12px 20px;
+    font-size: 14px;
+    height: auto;
+  }
+
+  .service-content {
+    padding: 40px 20px;
+  }
+
+  .service-about {
+    margin-bottom: 40px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .service-about p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .service-features {
+    margin-bottom: 40px;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .features-list li {
+    font-size: 13px;
+    padding: 14px 16px 14px 40px;
+  }
+
+  .features-list li::before {
+    left: 16px;
+    font-size: 18px;
+  }
+
+  .service-cta {
+    margin-bottom: 40px;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .service-hero {
+    padding: 80px 15px 50px;
+  }
+
+  .service-hero h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .service-description {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .service-price {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px;
+    width: fit-content;
+    height: auto;
+  }
+
+  .price-label {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .price-value {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+    padding: 10px 16px;
+    font-size: 13px;
+    height: auto;
+  }
+
+  .service-content {
+    padding: 30px 15px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .service-about p {
+    font-size: 13px;
+  }
+
+  .features-list li {
+    font-size: 12px;
+    padding: 12px 12px 12px 36px;
+  }
+
+  .features-list li::before {
+    left: 12px;
+    font-size: 16px;
+  }
+
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+</style>

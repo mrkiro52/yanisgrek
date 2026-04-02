@@ -1,0 +1,38 @@
+---
+// Компонент кнопки "Рассчитать стоимость"
+---
+
+<button class="btn-go-calc" onclick="handleCalcScroll()">
+  Рассчитать стоимость
+</button>
+
+<script>
+  function handleCalcScroll() {
+    // Ищем компонент калькулятора
+    const calcElement = document.querySelector('.ServiceCalc') || document.querySelector('.calculator');
+    if (calcElement) {
+      calcElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // Если калькулятора нет, переходим на главную
+      window.location.href = '/';
+    }
+  }
+  
+  // Прикрепляем функцию к window для доступа с других компонентов
+  (window as any).handleCalcScroll = handleCalcScroll;
+</script>
+
+<style>
+  .btn-go-calc {
+    padding: 16px 32px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: none;
+    font-family: 'Helvetica', sans-serif;
+  }
+</style>

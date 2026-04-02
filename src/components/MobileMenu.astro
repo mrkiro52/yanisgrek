@@ -1,0 +1,225 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.svg';
+---
+
+<nav class="mobile-menu">
+  <div class="menu-content">
+    <div class="menu-logo-section">
+      <Image src={logo} alt="YanisGrek" class="menu-logo" width={250} height={30} />
+    </div>
+
+    <div class="menu-grid">
+      <!-- Главная -->
+      <div class="menu-section">
+        <a href="/" class="menu-title">Главная</a>
+        <a href="/about" class="menu-link">О нас</a>
+        <a href="/cars" class="menu-link">Модели BMW</a>
+        <a href="/contacts" class="menu-link">Контакты</a>
+        <a href="/works" class="menu-link">Наши работы</a>
+      </div>
+
+      <!-- Услуги -->
+      <div class="menu-section">
+        <a href="/services" class="menu-title">Услуги Yanis Grek</a>
+        <a href="/services" class="menu-link">Все услуги</a>
+        <a href="/services/remont-korobki-peredach" class="menu-link">Ремонт коробки передач</a>
+        <a href="/services/remont-dvigatelya" class="menu-link">Ремонт двигателя</a>
+        <a href="/services/kompyuternaya-diagnostika" class="menu-link">Диагностика</a>
+      </div>
+
+      <!-- Контакты -->
+      <div class="menu-section">
+        <span class="menu-title">Контакты</span>
+        <a href="tel:+74957676500" class="menu-phone">+7 495 76 76 500</a>
+        <div class="menu-schedule">
+          <div>Пн-Пт: 10:00-20:00</div>
+          <div>Сб: 11:00-20:00</div>
+          <div>Вс: 11:00-18:00</div>
+        </div>
+        <button class="menu-btn-request">Оставить заявку</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .mobile-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 99;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding-top: 90px;
+  }
+
+  .mobile-menu.active {
+    left: 0;
+  }
+
+  .menu-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .menu-logo-section {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-logo {
+    width: 250px;
+    height: auto;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+  }
+
+  .menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .menu-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .menu-link {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s;
+  }
+
+  .menu-link:hover {
+    color: #fff;
+  }
+
+  .menu-phone {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .menu-schedule {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-family: 'Helvetica', sans-serif;
+    margin-bottom: 24px;
+  }
+
+  .menu-btn-request {
+    padding: 16px 32px;
+    background-color: black;
+    color: #fff;
+    border: 2px solid white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .menu-btn-request:hover {
+    background-color: #2b6eff;
+    border-color: #2b6eff;
+  }
+
+  @media (max-width: 1024px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .menu-logo {
+      width: 200px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .menu-content {
+      padding: 40px 20px 30px;
+      gap: 40px;
+    }
+
+    .menu-logo-section {
+      padding-bottom: 30px;
+    }
+
+    .menu-logo {
+      width: 180px;
+    }
+
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .menu-title {
+      font-size: 18px;
+    }
+
+    .menu-link {
+      font-size: 15px;
+    }
+
+    .menu-phone {
+      font-size: 16px;
+    }
+
+    .menu-schedule {
+      font-size: 13px;
+    }
+
+    .menu-btn-request {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .menu-content {
+      padding: 30px 15px;
+      gap: 30px;
+    }
+
+    .menu-logo {
+      width: 150px;
+    }
+
+    .menu-title {
+      font-size: 16px;
+    }
+
+    .menu-link {
+      font-size: 14px;
+    }
+  }
+</style>

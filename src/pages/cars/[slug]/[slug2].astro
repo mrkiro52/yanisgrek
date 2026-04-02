@@ -1,0 +1,533 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
+import NumbersWrapper from '../../../components/NumbersWrapper.astro';
+import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
+
+export async function getStaticPaths() {
+  return [
+    // BMW 1 серия
+    { params: { slug: 'bmw-1', slug2: 'e81' } },
+    { params: { slug: 'bmw-1', slug2: 'e87' } },
+    { params: { slug: 'bmw-1', slug2: 'e88' } },
+    { params: { slug: 'bmw-1', slug2: 'f20' } },
+    { params: { slug: 'bmw-1', slug2: 'f21' } },
+    // BMW 2 серия
+    { params: { slug: 'bmw-2', slug2: 'f22' } },
+    { params: { slug: 'bmw-2', slug2: 'f23' } },
+    // BMW 3 серия
+    { params: { slug: 'bmw-3', slug2: 'e90' } },
+    { params: { slug: 'bmw-3', slug2: 'e91' } },
+    { params: { slug: 'bmw-3', slug2: 'e92' } },
+    { params: { slug: 'bmw-3', slug2: 'e93' } },
+    { params: { slug: 'bmw-3', slug2: 'f30' } },
+    { params: { slug: 'bmw-3', slug2: 'f31' } },
+    { params: { slug: 'bmw-3', slug2: 'f34' } },
+    { params: { slug: 'bmw-3', slug2: 'g20' } },
+    // BMW 4 серия
+    { params: { slug: 'bmw-4', slug2: 'f32' } },
+    { params: { slug: 'bmw-4', slug2: 'f33' } },
+    { params: { slug: 'bmw-4', slug2: 'f36' } },
+    // BMW 5 серия
+    { params: { slug: 'bmw-5', slug2: 'e60' } },
+    { params: { slug: 'bmw-5', slug2: 'e61' } },
+    { params: { slug: 'bmw-5', slug2: 'f10' } },
+    { params: { slug: 'bmw-5', slug2: 'f11' } },
+    { params: { slug: 'bmw-5', slug2: 'g30' } },
+    { params: { slug: 'bmw-5', slug2: 'g31' } },
+    // BMW 6 серия
+    { params: { slug: 'bmw-6', slug2: 'e63' } },
+    { params: { slug: 'bmw-6', slug2: 'e64' } },
+    { params: { slug: 'bmw-6', slug2: 'f06' } },
+    { params: { slug: 'bmw-6', slug2: 'f12' } },
+    { params: { slug: 'bmw-6', slug2: 'f13' } },
+    { params: { slug: 'bmw-6', slug2: 'g32' } },
+    // BMW 7 серия
+    { params: { slug: 'bmw-7', slug2: 'f01' } },
+    { params: { slug: 'bmw-7', slug2: 'f02' } },
+    { params: { slug: 'bmw-7', slug2: 'g11' } },
+    { params: { slug: 'bmw-7', slug2: 'g12' } },
+    // BMW 8 серия
+    { params: { slug: 'bmw-8', slug2: 'g14' } },
+    { params: { slug: 'bmw-8', slug2: 'g15' } },
+    { params: { slug: 'bmw-8', slug2: 'g16' } },
+    // BMW M2
+    { params: { slug: 'bmw-m2', slug2: 'f87' } },
+    { params: { slug: 'bmw-m2', slug2: 'g87' } },
+    // BMW M3
+    { params: { slug: 'bmw-m3', slug2: 'f80' } },
+    { params: { slug: 'bmw-m3', slug2: 'g80' } },
+    { params: { slug: 'bmw-m3', slug2: 'g81' } },
+    // BMW M4
+    { params: { slug: 'bmw-m4', slug2: 'f82' } },
+    { params: { slug: 'bmw-m4', slug2: 'f83' } },
+    { params: { slug: 'bmw-m4', slug2: 'g82' } },
+    { params: { slug: 'bmw-m4', slug2: 'g83' } },
+    // BMW M5
+    { params: { slug: 'bmw-m5', slug2: 'f10' } },
+    { params: { slug: 'bmw-m5', slug2: 'f90' } },
+    // BMW M8
+    { params: { slug: 'bmw-m8', slug2: 'f91' } },
+    { params: { slug: 'bmw-m8', slug2: 'f92' } },
+    { params: { slug: 'bmw-m8', slug2: 'f93' } },
+    // BMW X1
+    { params: { slug: 'bmw-x1', slug2: 'e84' } },
+    { params: { slug: 'bmw-x1', slug2: 'f48' } },
+    // BMW X2
+    { params: { slug: 'bmw-x2', slug2: 'f39' } },
+    // BMW X3
+    { params: { slug: 'bmw-x3', slug2: 'f25' } },
+    { params: { slug: 'bmw-x3', slug2: 'g01' } },
+    // BMW X4
+    { params: { slug: 'bmw-x4', slug2: 'f26' } },
+    { params: { slug: 'bmw-x4', slug2: 'g02' } },
+    // BMW X5
+    { params: { slug: 'bmw-x5', slug2: 'e70' } },
+    { params: { slug: 'bmw-x5', slug2: 'f15' } },
+    { params: { slug: 'bmw-x5', slug2: 'f85' } },
+    { params: { slug: 'bmw-x5', slug2: 'g05' } },
+    // BMW X6
+    { params: { slug: 'bmw-x6', slug2: 'e71' } },
+    { params: { slug: 'bmw-x6', slug2: 'f16' } },
+    { params: { slug: 'bmw-x6', slug2: 'f86' } },
+    { params: { slug: 'bmw-x6', slug2: 'g06' } },
+    // BMW X7
+    { params: { slug: 'bmw-x7', slug2: 'g07' } },
+    // BMW Z3
+    { params: { slug: 'bmw-z3', slug2: 'e36/7' } },
+    { params: { slug: 'bmw-z3', slug2: 'e36/8' } },
+    // BMW Z4
+    { params: { slug: 'bmw-z4', slug2: 'e85' } },
+    { params: { slug: 'bmw-z4', slug2: 'e86' } },
+    { params: { slug: 'bmw-z4', slug2: 'e89' } },
+    { params: { slug: 'bmw-z4', slug2: 'g29' } },
+    // Mini
+    { params: { slug: 'mini-cooper', slug2: 'r50' } },
+    { params: { slug: 'mini-cooper', slug2: 'r53' } },
+    { params: { slug: 'mini-cooper', slug2: 'r56' } },
+    { params: { slug: 'mini-cooper', slug2: 'f55' } },
+    { params: { slug: 'mini-cooper', slug2: 'f56' } },
+    { params: { slug: 'mini-cooper', slug2: 'f54' } },
+    { params: { slug: 'mini-cooper', slug2: 'f60' } },
+    // Rolls-Royce
+    { params: { slug: 'rolls-royce', slug2: 'rr4' } },
+    { params: { slug: 'rolls-royce', slug2: 'rr5' } },
+    { params: { slug: 'rolls-royce', slug2: 'rr6' } },
+    { params: { slug: 'rolls-royce', slug2: 'rr11' } },
+    { params: { slug: 'rolls-royce', slug2: 'rr12' } },
+    { params: { slug: 'rolls-royce', slug2: 'rr31' } },
+  ];
+}
+
+const { slug, slug2 } = Astro.params;
+
+// Данные о серийных модификациях автомобилей
+const generationsData: Record<string, Record<string, {
+  title: string;
+  years: string;
+  description: string;
+  highlights: string[];
+}>> = {
+  'bmw-1': {
+    'e81': { title: 'BMW 1 Series (E81)', years: '2004 - 2011', description: 'Первое поколение 1 серии с трехдверным кузовом. Компактный премиум-класс, революционный для своего времени.', highlights: ['Инновационный дизайн', 'Турбированные двигатели', 'Спортивный характер', 'Передняя подвеска независимая'] },
+    'e87': { title: 'BMW 1 Series (E87)', years: '2004 - 2011', description: 'Пятидверная версия 1 серии. Практичнее трехдверки, но с тем же спортивным духом.', highlights: ['Практичный кузов', 'Достаточно места', 'Сохранен спортивный характер', 'Надежные двигатели'] },
+    'e88': { title: 'BMW 1 Series (E88)', years: '2008 - 2013', description: 'Кабриолет 1 серии. Уникальное сочетание компактности и открытого верха.', highlights: ['Электрический верх', 'Спортивность', 'Компактность', 'Премиум качество'] },
+    'f20': { title: 'BMW 1 Series (F20)', years: '2011 - 2019', description: 'Второе поколение с пятидверным кузовом. Более премиальный интерьер и улучшенные технологии.', highlights: ['Новая платформа', 'Турбо двигатели', 'Современная электроника', 'Лучший комфорт'] },
+    'f21': { title: 'BMW 1 Series (F21)', years: '2015 - 2019', description: 'Рестайлинг F20 с измененным дизайном и обновленной электроникой.', highlights: ['Новый дизайн', 'LED освещение', 'Обновленная электроника', 'Улучшенный интерьер'] }
+  },
+  'bmw-2': {
+    'f22': { title: 'BMW 2 Series (F22)', years: '2014 - 2021', description: 'Первое поколение 2 серии - спортивное купе с передними приводом.', highlights: ['Спортивный дизайн', 'Мощные двигатели', 'Агрессивный кузов', 'М-пакет опции'] },
+    'f23': { title: 'BMW 2 Series (F23)', years: '2014 - 2021', description: 'Кабриолет 2 серии. Спортивный характер с возможностью открытого вождения.', highlights: ['Электрический верх', 'Спортивность', 'Премиум качество', 'Открытое вождение'] }
+  },
+  'bmw-3': {
+    'e90': { title: 'BMW 3 Series (E90)', years: '2004 - 2011', description: 'Четвертое поколение 3 серии - седан с современным дизайном нулевых годов.', highlights: ['Современный дизайн', 'Турбированные двигатели', 'Продвинутая электроника', 'Комфортная подвеска'] },
+    'e91': { title: 'BMW 3 Series (E91)', years: '2004 - 2012', description: 'Универсал на базе E90. Практичнее седана, но с сохранением спортивности.', highlights: ['Большой багажник', 'Практичность', 'Спортивный характер', 'Семейный автомобиль'] },
+    'e92': { title: 'BMW 3 Series (E92)', years: '2006 - 2013', description: 'Купе 3 серии. Агрессивный дизайн и спортивные характеристики.', highlights: ['Спортивный дизайн', 'Мощные двигатели', 'Отличная управляемость', 'Премиум-класс купе'] },
+    'e93': { title: 'BMW 3 Series (E93)', years: '2007 - 2013', description: 'Кабриолет 3 серии. Открытое вождение с премиальным уровнем комфорта.', highlights: ['Электрический верх', 'Спортивность', 'Премиум салон', 'Надежность'] },
+    'f30': { title: 'BMW 3 Series (F30)', years: '2011 - 2018', description: 'Пятое поколение 3 серии. Инновационные технологии и улучшенная эффективность.', highlights: ['Инновационный дизайн', 'Эконом двигатели', 'LED освещение', 'Продвинутая электроника'] },
+    'f31': { title: 'BMW 3 Series (F31)', years: '2012 - 2018', description: 'Универсал F30. Практичность с современными технологиями.', highlights: ['Просторный кузов', 'Современные технологии', 'Экономичность', 'Практичность'] },
+    'f34': { title: 'BMW 3 Series (F34)', years: '2012 - 2019', description: 'Gran Turismo версия 3 серии. Компромисс между седаном и внедорожником.', highlights: ['Высокая посадка', 'Просторный салон', 'Универсальность', 'Современный стиль'] },
+    'g20': { title: 'BMW 3 Series (G20)', years: '2018 - н.в.', description: 'Шестое поколение 3 серии. Последние технологии и дизайн.', highlights: ['Авангардный дизайн', 'Гибридные опции', 'Продвинутая AI система', 'Высокая безопасность'] }
+  },
+  'bmw-4': {
+    'f32': { title: 'BMW 4 Series (F32)', years: '2013 - 2020', description: 'Первое поколение 4 серии - спортивное купе на платформе F30.', highlights: ['Спортивный купе', 'Мощные двигатели', 'Дерзкий дизайн', 'М-пакет опции'] },
+    'f33': { title: 'BMW 4 Series (F33)', years: '2013 - 2020', description: 'Кабриолет 4 серии. Открытое вождение со спортивным характером.', highlights: ['Электрический верх', 'Спортивность', 'Премиум качество', 'Дерзкий дизайн'] },
+    'f36': { title: 'BMW 4 Series (F36)', years: '2014 - 2021', description: 'Gran Coupe версия 4 серии. Четырехдверный купе с практичностью.', highlights: ['Четыре двери', 'Спортивный дизайн', 'Практичность', 'Мощные двигатели'] }
+  },
+  'bmw-5': {
+    'e60': { title: 'BMW 5 Series (E60)', years: '2003 - 2010', description: 'Пятое поколение 5 серии. Техничный премиум-седан нулевых.', highlights: ['Инновационная электроника', 'Мощные двигатели', 'Премиум-класс', 'Надежность'] },
+    'e61': { title: 'BMW 5 Series (E61)', years: '2003 - 2010', description: 'Универсал E60. Практичность премиум-класса.', highlights: ['Большой багажник', 'Практичность', 'Премиум качество', 'Семейный автомобиль'] },
+    'f10': { title: 'BMW 5 Series (F10)', years: '2010 - 2016', description: 'Шестое поколение 5 серии. Легче и экономичнее предшественника.', highlights: ['Облегченная конструкция', 'Эффективность', 'Современный дизайн', 'Продвинутая электроника'] },
+    'f11': { title: 'BMW 5 Series (F11)', years: '2010 - 2017', description: 'Универсал F10. Баланс между практичностью и премиальностью.', highlights: ['Объемный кузов', 'Премиум качество', 'Эффективность', 'Практичность'] },
+    'g30': { title: 'BMW 5 Series (G30)', years: '2016 - н.в.', description: 'Седьмое поколение 5 серии. Современный интеллектуальный седан.', highlights: ['Авангардный дизайн', 'AI технологии', 'Гибридные опции', 'Высокая автоматизация'] },
+    'g31': { title: 'BMW 5 Series (G31)', years: '2017 - н.в.', description: 'Универсал G30. Практичность с передовыми технологиями.', highlights: ['Просторный кузов', 'Современные системы', 'Интеллектуальные опции', 'Премиум сегмент'] }
+  },
+  'bmw-6': {
+    'e63': { title: 'BMW 6 Series (E63)', years: '2003 - 2010', description: 'Первое поколение 6 серии - люксовое купе с V8 двигателем.', highlights: ['Люксовое купе', 'V8 двигатель', 'Премиум-класс', 'Дизайнерское решение'] },
+    'e64': { title: 'BMW 6 Series (E64)', years: '2004 - 2010', description: 'Кабриолет E63. Роскошное открытое вождение.', highlights: ['Электрический верх', 'V8 двигатель', 'Люксовый салон', 'Премиум-класс'] },
+    'f06': { title: 'BMW 6 Series (F06)', years: '2011 - 2018', description: 'Gran Coupe версия 6 серии. Четырехдверный люксовый купе.', highlights: ['Четыре двери', 'Люксовый дизайн', 'Мощные двигатели', 'Практичность'] },
+    'f12': { title: 'BMW 6 Series (F12)', years: '2011 - 2018', description: 'Кабриолет F-серии. Инновационный электрический верх.', highlights: ['Инновационный верх', 'Мощные двигатели', 'Люксовый салон', 'Современный дизайн'] },
+    'f13': { title: 'BMW 6 Series (F13)', years: '2011 - 2018', description: 'Купе F-серии. Спортивное и элегантное.', highlights: ['Спортивный дизайн', 'Мощные двигатели', 'Премиум салон', 'Отличная управляемость'] },
+    'g32': { title: 'BMW 6 Series (G32)', years: '2018 - н.в.', description: 'Gran Turismo 6 серии. Современный люксовый автомобиль.', highlights: ['Высокая посадка', 'Продвинутые технологии', 'Люксовый интерьер', 'Универсальность'] }
+  },
+  'bmw-7': {
+    'f01': { title: 'BMW 7 Series (F01)', years: '2008 - 2015', description: 'Пятое поколение 7 серии. Техничный флагман с V8 и V12.', highlights: ['Флагманский статус', 'V8/V12 двигатели', 'Продвинутая электроника', 'Люксовый уровень'] },
+    'f02': { title: 'BMW 7 Series (F02)', years: '2008 - 2015', description: 'Удлиненная версия F01. Максимум пространства для пассажиров.', highlights: ['Удлиненный кузов', 'Максимум комфорта', 'V8/V12 двигатели', 'Люксовый интерьер'] },
+    'g11': { title: 'BMW 7 Series (G11)', years: '2015 - н.в.', description: 'Шестое поколение 7 серии. Высокотехнологичный флагман.', highlights: ['Авангардный дизайн', 'AI технологии', 'Полная автоматизация', 'Люксовый-класс'] },
+    'g12': { title: 'BMW 7 Series (G12)', years: '2015 - н.в.', description: 'Удлиненная версия G11. Максимум роскоши и пространства.', highlights: ['Максимум пространства', 'Люксовый салон', 'Передовые системы', 'Премиум-класс'] }
+  },
+  'bmw-8': {
+    'g14': { title: 'BMW 8 Series (G14)', years: '2018 - н.в.', description: 'Возрождение 8 серии как люксового купе с V8 двигателем.', highlights: ['Люксовое купе', 'V8 двигатель', 'Спортивный характер', 'Премиум-класс'] },
+    'g15': { title: 'BMW 8 Series (G15)', years: '2018 - н.в.', description: 'Кабриолет 8 серии. Открытое вождение с люксовым уровнем.', highlights: ['Электрический верх', 'V8 двигатель', 'Спортивность', 'Люксовый салон'] },
+    'g16': { title: 'BMW 8 Series (G16)', years: '2020 - н.в.', description: 'Gran Coupe версия 8 серии. Четырехдверный люксовый купе.', highlights: ['Четыре двери', 'Люксовый дизайн', 'V8 двигатель', 'Практичность'] }
+  },
+  'bmw-m2': {
+    'f87': { title: 'BMW M2 (F87)', years: '2015 - 2023', description: 'Первое поколение M2 - компактный спортсмен с 3.0L турбо двигателем.', highlights: ['Турбо 3.0L', 'Спортивная подвеска', 'Карбон тормоза', 'М-ДНК'] },
+    'g87': { title: 'BMW M2 (G87)', years: '2023 - н.в.', description: 'Второе поколение M2 с новым 3.0L турбо двигателем.', highlights: ['Новый турбо двигатель', 'Обновленная электроника', 'Усиленная подвеска', 'М производительность'] }
+  },
+  'bmw-m3': {
+    'f80': { title: 'BMW M3 (F80)', years: '2014 - 2020', description: 'Четвертое поколение M3 - спортивный седан с турбо двигателем.', highlights: ['Турбо 3.0L', 'Спортивная подвеска', 'Карбон тормоза', 'М-производительность'] },
+    'g80': { title: 'BMW M3 (G80)', years: '2020 - н.в.', description: 'Пятое поколение M3 с полным приводом и новой электроникой.', highlights: ['Полный привод xDrive M', 'Турбо 3.0L', 'Обновленная электроника', 'Высокая производительность'] },
+    'g81': { title: 'BMW M3 (G81)', years: '2021 - н.в.', description: 'Универсал M3 - спортивный универсал для активного вождения.', highlights: ['Спортивный универсал', 'Полный привод M', 'Мощный двигатель', 'Практичность'] }
+  },
+  'bmw-m4': {
+    'f82': { title: 'BMW M4 (F82)', years: '2014 - 2020', description: 'Третье поколение M4 - спортивное купе с турбо двигателем.', highlights: ['Турбо 3.0L', 'Спортивный дизайн', 'Карбон тормоза', 'М-ДНК купе'] },
+    'f83': { title: 'BMW M4 (F83)', years: '2015 - 2020', description: 'Кабриолет M4 - открытое спортивное вождение.', highlights: ['Электрический верх', 'Турбо 3.0L', 'Спортивность', 'Открытое вождение'] },
+    'g82': { title: 'BMW M4 (G82)', years: '2020 - н.в.', description: 'Четвертое поколение M4 с полным приводом xDrive M.', highlights: ['Полный привод M', 'Турбо 3.0L', 'Новая электроника', 'Высокая производительность'] },
+    'g83': { title: 'BMW M4 (G83)', years: '2021 - н.в.', description: 'Кабриолет G-серии - современный спортивный кабриолет.', highlights: ['Электрический верх', 'Полный привод M', 'Мощный двигатель', 'Премиум кабриолет'] }
+  },
+  'bmw-m5': {
+    'f10': { title: 'BMW M5 (F10)', years: '2011 - 2016', description: 'Четвертое поколение M5 - суперседан с V8 двигателем и полным приводом.', highlights: ['V8 с мощностью 560 л.с.', 'Полный привод xDrive M', 'Спортивная подвеска', 'М производительность'] },
+    'f90': { title: 'BMW M5 (F90)', years: '2017 - н.в.', description: 'Пятое поколение M5 - еще более мощный суперседан с турбо двигателем.', highlights: ['Турбо V8 с мощностью 625 л.с.', 'Полный привод M', 'Обновленная электроника', 'Экстремальная производительность'] }
+  },
+  'bmw-m8': {
+    'f91': { title: 'BMW M8 (F91)', years: '2020 - 2023', description: 'Первое поколение современного M8 - люксовый спортсмен с V8 двигателем.', highlights: ['V8 турбо 625 л.с.', 'Полный привод xDrive M', 'Карбон-керамические тормоза', 'Люксовый спортсмен'] },
+    'f92': { title: 'BMW M8 (F92)', years: '2024 - н.в.', description: 'Второе поколение M8 с рестайлингом и гибридными опциями.', highlights: ['V8 турбо 625 л.с.', 'Гибридная опция', 'Обновленная подвеска', 'Новый дизайн'] },
+    'f93': { title: 'BMW M8 (F93)', years: '2024 - н.в.', description: 'Кабриолет M8 - открытый люксовый спортсмен.', highlights: ['Электрический верх', 'V8 турбо', 'Полный привод M', 'Премиум спортсмен'] }
+  },
+  'bmw-x1': {
+    'e84': { title: 'BMW X1 (E84)', years: '2009 - 2015', description: 'Первое поколение X1 - компактный кроссовер для города.', highlights: ['Компактный кроссовер', 'Полный привод', 'Маневренность', 'Городской размер'] },
+    'f48': { title: 'BMW X1 (F48)', years: '2015 - н.в.', description: 'Второе поколение X1 с обновленной платформой и дизайном.', highlights: ['Новая платформа', 'Более просторный', 'Современный дизайн', 'Развитая электроника'] }
+  },
+  'bmw-x2': {
+    'f39': { title: 'BMW X2 (F39)', years: '2018 - н.в.', description: 'Первое поколение X2 - стильный спортивный кроссовер.', highlights: ['Спортивный дизайн', 'Компактный размер', 'Полный привод', 'Современный стиль'] }
+  },
+  'bmw-x3': {
+    'f25': { title: 'BMW X3 (F25)', years: '2010 - 2017', description: 'Второе поколение X3 - премиум-кроссовер среднего размера.', highlights: ['Премиум-класс', 'Просторный салон', 'Мощные двигатели', 'Полный привод'] },
+    'g01': { title: 'BMW X3 (G01)', years: '2017 - н.в.', description: 'Третье поколение X3 с новой платформой и дизайном.', highlights: ['Новый дизайн', 'Гибридные опции', 'Продвинутая электроника', 'Просторность'] }
+  },
+  'bmw-x4': {
+    'f26': { title: 'BMW X4 (F26)', years: '2014 - 2018', description: 'Первое поколение X4 - кроссовер-купе с агрессивным дизайном.', highlights: ['Кроссовер-купе', 'Спортивный дизайн', 'Мощные двигатели', 'Полный привод'] },
+    'g02': { title: 'BMW X4 (G02)', years: '2018 - н.в.', description: 'Второе поколение X4 с обновленным дизайном и технологиями.', highlights: ['Обновленный дизайн', 'Гибридные опции', 'Современная электроника', 'Спортивность'] }
+  },
+  'bmw-x5': {
+    'e70': { title: 'BMW X5 (E70)', years: '2006 - 2013', description: 'Второе поколение X5 - люксовый внедорожник премиум-класса.', highlights: ['Люксовый внедорожник', 'V8 двигатель', 'Премиум салон', 'Полный привод'] },
+    'f15': { title: 'BMW X5 (F15)', years: '2013 - 2018', description: 'Третье поколение X5 с облегченной конструкцией и новой электроникой.', highlights: ['Облегченная конструкция', 'Эффективные двигатели', 'Премиум технологии', 'Полный привод'] },
+    'f85': { title: 'BMW X5M (F85)', years: '2015 - 2018', description: 'М-версия F15 - спортивный внедорожник экстра-класса.', highlights: ['V8 турбо', 'Спортивная подвеска', 'М производительность', 'Полный привод M'] },
+    'g05': { title: 'BMW X5 (G05)', years: '2018 - н.в.', description: 'Четвертое поколение X5 - современный люксовый внедорожник.', highlights: ['Авангардный дизайн', 'Гибридные опции', 'Продвинутая электроника', 'Высокий комфорт'] }
+  },
+  'bmw-x6': {
+    'e71': { title: 'BMW X6 (E71)', years: '2008 - 2014', description: 'Первое поколение X6 - инновационный кроссовер-купе.', highlights: ['Уникальный дизайн', 'V8 двигатель', 'Полный привод', 'Премиум-класс'] },
+    'f16': { title: 'BMW X6 (F16)', years: '2014 - 2019', description: 'Второе поколение X6 с обновленным дизайном.', highlights: ['Обновленный дизайн', 'Мощные двигатели', 'Полный привод', 'Спортивность'] },
+    'f86': { title: 'BMW X6M (F86)', years: '2015 - 2019', description: 'М-версия F16 - экстремальный кроссовер-купе.', highlights: ['V8 турбо', 'Спортивная подвеска', 'М производительность', 'Агрессивный дизайн'] },
+    'g06': { title: 'BMW X6 (G06)', years: '2019 - н.в.', description: 'Третье поколение X6 с современными технологиями.', highlights: ['Новый дизайн', 'Гибридные опции', 'Продвинутая электроника', 'Люксовый кроссовер'] }
+  },
+  'bmw-x7': {
+    'g07': { title: 'BMW X7 (G07)', years: '2018 - н.в.', description: 'Флагман семейства X - полноразмерный люксовый внедорожник.', highlights: ['Флагманский статус', 'Полноразмерный кузов', 'V8/V12 двигатели', 'Максимум комфорта'] }
+  },
+  'bmw-z3': {
+    'e36/7': { title: 'BMW Z3 (E36/7)', years: '1995 - 2002', description: 'Первое поколение Z3 - спортивный родстер середины 90-х.', highlights: ['Классический родстер', '6-цилиндровый двигатель', 'Открытое вождение', 'Легендарный статус'] },
+    'e36/8': { title: 'BMW Z3M (E36/8)', years: '1998 - 2002', description: 'М-версия Z3 с мощным двигателем.', highlights: ['V8 двигатель', 'Спортивная подвеска', 'М производительность', 'Коллекционный статус'] }
+  },
+  'bmw-z4': {
+    'e85': { title: 'BMW Z4 (E85)', years: '2002 - 2008', description: 'Первое поколение Z4 - современный спортивный родстер.', highlights: ['Современный родстер', 'Различные двигатели', 'Электрический верх', 'Спортивный характер'] },
+    'e86': { title: 'BMW Z4 (E86)', years: '2006 - 2008', description: 'Купе-версия Z4. Спортивное купе с открытым верхом.', highlights: ['Трансформер верх', 'Спортивный дизайн', 'Мощные двигатели', 'Уникальность'] },
+    'e89': { title: 'BMW Z4 (E89)', years: '2009 - 2016', description: 'Второе поколение Z4 с электрическим верхом.', highlights: ['Электрический верх', 'Современный дизайн', 'Мощные двигатели', 'Премиум родстер'] },
+    'g29': { title: 'BMW Z4 (G29)', years: '2018 - н.в.', description: 'Третье поколение Z4 с современными технологиями.', highlights: ['Авангардный дизайн', 'Гибридные опции', 'Продвинутая электроника', 'Открытое спортивное вождение'] }
+  },
+  'mini-cooper': {
+    'r50': { title: 'Mini Cooper (R50)', years: '2001 - 2006', description: 'Первое поколение современного Mini - компактный автомобиль с характером.', highlights: ['Компактный размер', 'Игривый дизайн', 'Маневренность', 'Британский стиль'] },
+    'r53': { title: 'Mini Cooper S (R53)', years: '2002 - 2006', description: 'Спортивная версия R50 с турбокомпрессором.', highlights: ['Турбокомпрессор', 'Спортивный характер', 'Компактность', 'Динамичность'] },
+    'r56': { title: 'Mini Cooper (R56)', years: '2006 - 2014', description: 'Второе поколение Mini - больше места, новая платформа.', highlights: ['Новая платформа', 'Больше пространства', 'Современный дизайн', 'Улучшенный комфорт'] },
+    'f55': { title: 'Mini Cooper (F55)', years: '2014 - н.в.', description: 'Третье поколение Mini - переднеприводная платформа.', highlights: ['Новая платформа', 'Передний привод', 'Продвинутая электроника', 'Современный стиль'] },
+    'f56': { title: 'Mini Cooper (F56)', years: '2014 - 2023', description: 'Хэтчбек F-серии Mini.', highlights: ['Компактный хэтчбек', 'Современный дизайн', 'Игривый характер', 'Практичность'] },
+    'f54': { title: 'Mini Clubman (F54)', years: '2015 - н.в.', description: 'Удлиненная версия Mini - больше входов и багажника.', highlights: ['Четыре двери', 'Больше багажника', 'Практичность', 'Британский стиль'] },
+    'f60': { title: 'Mini Countryman (F60)', years: '2017 - н.в.', description: 'Кроссовер Mini - компактный внедорожник.', highlights: ['Компактный кроссовер', 'Полный привод', 'Маневренность', 'Современный дизайн'] }
+  },
+  'rolls-royce': {
+    'rr4': { title: 'Rolls-Royce Phantom (RR4)', years: '2003 - 2017', description: 'Флагман Rolls-Royce - апофеоз роскоши и мастерства.', highlights: ['V12 двигатель', 'Люксовый интерьер', 'Ручная сборка', 'Королевский статус'] },
+    'rr5': { title: 'Rolls-Royce Ghost (RR5)', years: '2009 - 2020', description: 'Спортивный Rolls-Royce - быстрый люксовый седан.', highlights: ['V12 двигатель', 'Спортивный характер', 'Люксовый уровень', 'Производительность'] },
+    'rr6': { title: 'Rolls-Royce Wraith (RR6)', years: '2013 - 2023', description: 'Купе Rolls-Royce - открытое вождение класса люкс.', highlights: ['V12 двигатель', 'Спортивное купе', 'Люксовый интерьер', 'Эксклюзивность'] },
+    'rr11': { title: 'Rolls-Royce Phantom (RR11)', years: '2017 - н.в.', description: 'Новое поколение Phantom - вершина роскоши.', highlights: ['Новая платформа', 'Полная алюминиевая конструкция', 'Продвинутые технологии', 'Абсолютная роскошь'] },
+    'rr12': { title: 'Rolls-Royce Ghost (RR12)', years: '2020 - н.в.', description: 'Новое поколение Ghost - спортивный люкс.', highlights: ['Новая платформа', 'V12 двигатель', 'Спортивный характер', 'Современные системы'] },
+    'rr31': { title: 'Rolls-Royce Cullinan (RR31)', years: '2018 - н.в.', description: 'Люксовый SUV Rolls-Royce - внедорожник высочайшего класса.', highlights: ['Люксовый SUV', 'V12 двигатель', 'Полный привод', 'Максимум комфорта'] }
+  }
+};
+
+const generationInfo = generationsData[slug]?.[slug2];
+
+if (!generationInfo) {
+  return Astro.redirect('/404');
+}
+
+const title = `${generationInfo.title} - Ремонт и обслуживание - YanisGrek`;
+const description = `${generationInfo.description}`;
+---
+
+<Layout {title} {description}>
+  <div class="generation-page">
+    <div class="generation-hero">
+      <div class="generation-hero-content">
+        <h1>{generationInfo.title}</h1>
+        <p class="generation-years">{generationInfo.years}</p>
+        <p class="generation-description">{generationInfo.description}</p>
+      </div>
+    </div>
+
+    <div class="generation-content">
+      <div class="highlights-section">
+        <h2>Характеристики поколения</h2>
+        <div class="highlights-grid">
+          {generationInfo.highlights.map(highlight => (
+            <div class="highlight-item">
+              <div class="highlight-icon">✓</div>
+              <p>{highlight}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="services-section">
+        <h2>Специализированное обслуживание</h2>
+        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию {generationInfo.title}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
+        <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
+      </div>
+    </div>
+
+    <WhyUsWrapper />
+    <NumbersWrapper />
+    <AdvantagesWrapper />
+  </div>
+</Layout>
+
+<style>
+  .generation-page {
+    min-height: 100vh;
+    margin-top: 90px;
+  }
+
+  .generation-hero {
+    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    padding: 80px 20px 60px;
+  }
+
+  .generation-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .generation-hero h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 48px;
+    color: #262626;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .generation-years {
+    font-size: 18px;
+    color: #2b6eff;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .generation-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .generation-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .highlights-section {
+    margin-bottom: 80px;
+  }
+
+  .highlights-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .highlight-item {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: rgb(245, 245, 245);
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+
+  .highlight-item:hover {
+    background: rgb(235, 235, 235);
+    transform: translateY(-4px);
+  }
+
+  .highlight-icon {
+    width: 32px;
+    height: 32px;
+    background: #2b6eff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .highlight-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #262626;
+    line-height: 1.6;
+  }
+
+  .services-section {
+    text-align: center;
+    padding: 60px 40px;
+    background: rgb(245, 245, 245);
+    border-radius: 12px;
+  }
+
+  .services-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 24px;
+  }
+
+  .services-section p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+
+  .cta-button:hover {
+    background: #2b6eff;
+  }
+
+  @media (max-width: 1024px) {
+    .highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .generation-hero {
+      padding: 60px 20px 40px;
+    }
+
+    .generation-hero h1 {
+      font-size: 32px;
+    }
+
+    .generation-description {
+      font-size: 16px;
+    }
+
+    .generation-content {
+      padding: 60px 20px;
+    }
+
+    .highlights-section h2,
+    .services-section h2 {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .highlight-item {
+      padding: 20px 16px;
+    }
+
+    .highlight-item p {
+      font-size: 14px;
+    }
+
+    .services-section {
+      padding: 40px 20px;
+    }
+
+    .services-section p {
+      font-size: 16px;
+    }
+
+    .cta-button {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .generation-page {
+      margin-top: 70px;
+    }
+
+    .generation-hero h1 {
+      font-size: 24px;
+    }
+
+    .generation-years {
+      font-size: 14px;
+    }
+
+    .generation-description {
+      font-size: 14px;
+    }
+
+    .highlight-item {
+      gap: 12px;
+      padding: 16px 12px;
+    }
+
+    .services-section {
+      padding: 30px 15px;
+    }
+  }
+</style>

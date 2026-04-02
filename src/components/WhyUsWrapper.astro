@@ -1,0 +1,156 @@
+---
+import WhyUs from './WhyUs';
+---
+
+<WhyUs client:load />
+
+<style>
+:global(.WhyUs) {
+  background-color: rgb(208, 208, 208);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.whyus-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+:global(.whyus-subtitle) {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+:global(.advantages-grid) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+:global(.advantage-card) {
+  background: rgb(208, 208, 208);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+:global(.advantage-card:hover) {
+  background: black;
+}
+
+:global(.advantage-icon) {
+  color: #262626;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+:global(.advantage-card:hover .advantage-icon) {
+  color: white;
+}
+
+:global(.advantage-title) {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+:global(.advantage-card:hover .advantage-title) {
+  color: white;
+}
+
+:global(.advantage-description) {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  transition: all 0.3s;
+}
+
+:global(.advantage-card:hover .advantage-description) {
+  color: #ccc;
+}
+
+@media screen and (max-width: 1024px) {
+  :global(.WhyUs) {
+    padding: 60px 20px;
+  }
+
+  :global(.whyus-title) {
+    font-size: 28px;
+  }
+
+  :global(.whyus-subtitle) {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  :global(.advantages-grid) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  :global(.advantage-card) {
+    padding: 32px 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :global(.WhyUs) {
+    padding: 40px 20px;
+  }
+
+  :global(.whyus-title) {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  :global(.whyus-subtitle) {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  :global(.advantages-grid) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  :global(.advantage-card) {
+    padding: 24px 20px;
+  }
+
+  :global(.advantage-icon) {
+    margin-bottom: 16px;
+  }
+
+  :global(.advantage-icon svg) {
+    width: 32px;
+    height: 32px;
+  }
+
+  :global(.advantage-title) {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  :global(.advantage-description) {
+    font-size: 14px;
+  }
+}
+</style>

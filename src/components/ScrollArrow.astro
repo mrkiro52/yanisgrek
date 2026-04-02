@@ -1,0 +1,70 @@
+---
+// Компонент анимированной стрелочки для прокрутки
+interface Props {
+  targetSelector?: string;
+}
+
+const { targetSelector = '.ContactForm' } = Astro.props;
+---
+
+<div class="scroll-arrow" onclick="scrollToTarget()">
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 16V8M12 16L7 11M12 16L17 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<script define:vars={{ targetSelector }}>
+  function scrollToTarget() {
+    let targetElement = document.querySelector(targetSelector);
+    
+    // Если первый селектор не сработал, пробуем альтернативные
+    if (!targetElement) {
+      targetElement = document.getElementById('Form');
+    }
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
+  window.scrollToTarget = scrollToTarget;
+</script>
+
+<style>
+  .scroll-arrow {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    animation: float 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .scroll-arrow:hover {
+    color: #2b6eff;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(-50%) translateY(12px);
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .scroll-arrow svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .scroll-arrow {
+      bottom: 20px;
+    }
+  }
+</style>

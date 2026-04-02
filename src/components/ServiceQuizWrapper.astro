@@ -1,0 +1,231 @@
+---
+import ServiceQuiz from './ServiceQuiz';
+import './CustomSelect.astro';
+---
+
+<div id="service-quiz" data-form-section>
+  <ServiceQuiz client:load />
+</div>
+
+<style>
+:global(.ServiceQuiz) {
+  background-color: white;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.quiz-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+:global(.quiz-title span) {
+  font-style: normal;
+}
+
+:global(.quiz-progress) {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+:global(.progress-step) {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(208, 208, 208);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.3s;
+}
+
+:global(.progress-step.active) {
+  background: black;
+  color: white;
+}
+
+:global(.quiz-content) {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 400px;
+  margin-bottom: 40px;
+}
+
+:global(.quiz-step) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+:global(.step-title) {
+  font-size: 24px;
+  color: #262626;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.substep-title) {
+  font-size: 20px;
+  color: #262626;
+  font-weight: 600;
+  margin-top: 24px;
+}
+
+:global(.step-description) {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin: -12px 0;
+}
+
+:global(.quiz-step .model-buttons),
+:global(.quiz-step .submodel-buttons) {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+:global(.quiz-step .model-buttons button),
+:global(.quiz-step .submodel-buttons button) {
+  background: rgb(208, 208, 208);
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #262626;
+}
+
+:global(.quiz-step .model-buttons button.selected),
+:global(.quiz-step .submodel-buttons button.selected) {
+  background: black;
+  color: white;
+}
+
+:global(.series-select) {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+:global(.series-select .custom-select) {
+  width: 100%;
+}
+
+:global(.series-select .custom-select__trigger) {
+  background: rgb(208, 208, 208);
+  padding: 12px 40px 12px 12px;
+  font-size: 18px;
+}
+
+:global(.services-grid) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+:global(.services-grid button) {
+  background: rgb(208, 208, 208);
+  border: none;
+  padding: 16px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #262626;
+  text-align: left;
+}
+
+:global(.services-grid button.selected) {
+  background: black;
+  color: white;
+}
+
+:global(.quiz-step input) {
+  padding: 16px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: rgb(208, 208, 208);
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+:global(.quiz-buttons) {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+:global(.quiz-buttons button) {
+  padding: 16px 48px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+:global(.btn-back) {
+  background: rgb(208, 208, 208);
+  color: #262626;
+}
+
+:global(.btn-back:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:global(.btn-next) {
+  background: black;
+  color: white;
+}
+
+:global(.btn-next:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+  :global(.ServiceQuiz) {
+    padding: 40px 20px;
+  }
+
+  :global(.quiz-title) {
+    font-size: 24px;
+  }
+
+  :global(.services-grid) {
+    grid-template-columns: 1fr;
+  }
+
+  :global(.quiz-buttons) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  :global(.quiz-buttons button) {
+    width: 100%;
+  }
+
+  :global(.series-select select) {
+    min-width: 100%;
+  }
+}
+</style>

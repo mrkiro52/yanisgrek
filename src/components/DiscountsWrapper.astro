@@ -1,0 +1,168 @@
+---
+import Discounts from './Discounts';
+---
+
+<Discounts client:load />
+
+<style>
+:global(.Discounts) {
+  background-color: rgb(208, 208, 208);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.discounts-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+:global(.discounts-grid) {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+:global(.discount-card) {
+  width: 50%;
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+:global(.discount-card:hover) {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+:global(.discount-card img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+:global(.discount-overlay) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+:global(.discount-modal) {
+  background: white;
+  padding: 40px;
+  border-radius: 0;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+:global(.modal-close) {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #262626;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.modal-close:hover) {
+  opacity: 0.7;
+}
+
+:global(.modal-title) {
+  font-size: 24px;
+  color: #262626;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+:global(.modal-description) {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+:global(.modal-form) {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:global(.modal-form input) {
+  padding: 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+:global(.modal-form input:focus) {
+  border-color: #262626;
+}
+
+:global(.btn-submit) {
+  padding: 16px;
+  font-size: 18px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-weight: 600;
+}
+
+:global(.btn-submit:hover) {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  :global(.Discounts) {
+    padding: 40px 20px;
+  }
+
+  :global(.discounts-title) {
+    font-size: 24px;
+  }
+
+  :global(.discounts-grid) {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  :global(.discount-card) {
+    width: 100%;
+  }
+
+  :global(.discount-modal) {
+    padding: 24px;
+  }
+
+  :global(.modal-title) {
+    font-size: 20px;
+  }
+}
+</style>

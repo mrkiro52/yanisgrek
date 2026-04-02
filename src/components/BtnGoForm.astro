@@ -1,0 +1,38 @@
+---
+// Компонент кнопки "Оставить заявку"
+---
+
+<button class="btn-go-form" onclick="handleFormScroll()">
+  Оставить заявку
+</button>
+
+<script>
+  function handleFormScroll() {
+    // Ищем форму заявки
+    const formElement = document.getElementById('Form') || document.getElementById('service-quiz');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // Если формы нет на этой странице, переходим на главную с якорем
+      window.location.href = '/#service-quiz';
+    }
+  }
+  
+  // Прикрепляем функцию к window для доступа с других компонентов
+  (window as any).handleFormScroll = handleFormScroll;
+</script>
+
+<style>
+  .btn-go-form {
+    padding: 16px 32px;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: none;
+    font-family: 'Helvetica', sans-serif;
+  }
+</style>

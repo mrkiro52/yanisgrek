@@ -1,0 +1,23 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'n52b30' } },
+    { params: { slug: 'n55b30' } },
+    { params: { slug: 'b58b30' } },
+    { params: { slug: 'm50' } },
+    { params: { slug: 'm52' } },
+  ];
+}
+
+import Layout from '../../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+const title = `Ремонт двигателя ${slug} - YanisGrek`;
+const description = `Профессиональный ремонт двигателя ${slug}. Диагностика, замена деталей, чистка.`;
+---
+
+<Layout {title} {description}>
+  <main>
+    <h1>Страница двигателя: {slug}</h1>
+  </main>
+</Layout>

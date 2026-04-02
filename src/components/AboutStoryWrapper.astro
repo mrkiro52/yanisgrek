@@ -1,0 +1,123 @@
+---
+import AboutStory from './AboutStory';
+---
+
+<AboutStory client:load />
+
+<style>
+  :global(.about-story) {
+    background: #fff;
+    padding: 100px 20px;
+  }
+
+  :global(.about-story__container) {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  :global(.about-story__image) {
+    display: flex;
+    justify-content: center;
+  }
+
+  :global(.about-story__placeholder) {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    background: #d0d0d0;
+  }
+
+  :global(.about-story__img) {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  :global(.about-story__title) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 40px;
+    color: #262626;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  :global(.about-story__subtitle) {
+    font-size: 18px;
+    color: #2b6eff;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  :global(.about-story__text) {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  :global(.about-story__text p) {
+    margin-bottom: 16px;
+  }
+
+  :global(.about-story__highlight) {
+    font-weight: 700;
+    color: #262626;
+    font-size: 18px;
+    display: block;
+    margin: 24px 0;
+  }
+
+  :global(.about-story__year) {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  :global(.about-story__year-number) {
+    font-family: 'Russo One', sans-serif;
+    font-size: 56px;
+    color: #2b6eff;
+    line-height: 1;
+  }
+
+  :global(.about-story__year-text) {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    :global(.about-story__container) {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    :global(.about-story__title) {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.about-story) {
+      padding: 60px 20px;
+    }
+
+    :global(.about-story__title) {
+      font-size: 24px;
+    }
+
+    :global(.about-story__text) {
+      font-size: 15px;
+    }
+
+    :global(.about-story__year-number) {
+      font-size: 48px;
+    }
+  }
+</style>

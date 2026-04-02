@@ -1,0 +1,110 @@
+---
+import Servicing from './Servicing';
+---
+
+<Servicing client:load />
+
+<style>
+:global(.Servicing) {
+  background-color: white;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:global(.servicing-title) {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+:global(.servicing-content) {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+:global(.servicing-block) {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+:global(.servicing-block.reverse) {
+  flex-direction: row-reverse;
+}
+
+:global(.servicing-image) {
+  flex: 1;
+  max-width: 50%;
+}
+
+:global(.servicing-image img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+:global(.servicing-text) {
+  flex: 1;
+  max-width: 50%;
+}
+
+:global(.servicing-text h3) {
+  font-size: 28px;
+  color: #262626;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: 'Helvetica', sans-serif;
+}
+
+:global(.servicing-text p) {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  :global(.Servicing) {
+    padding: 40px 20px;
+  }
+
+  :global(.servicing-title) {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  :global(.servicing-content) {
+    gap: 40px;
+  }
+
+  :global(.servicing-block),
+  :global(.servicing-block.reverse) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  :global(.servicing-image),
+  :global(.servicing-text) {
+    max-width: 100%;
+  }
+
+  :global(.servicing-text h3) {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  :global(.servicing-text p) {
+    font-size: 16px;
+  }
+}
+</style>

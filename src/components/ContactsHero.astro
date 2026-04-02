@@ -1,0 +1,87 @@
+---
+// Компонент стартового экрана для страницы Контакты
+import ScrollArrow from './ScrollArrow.astro';
+---
+
+<section class="contacts-hero">
+  <div class="contacts-hero-content">
+    <h1 class="contacts-hero-title">Контакты</h1>
+    <ScrollArrow targetSelector=".ContactForm" />
+  </div>
+</section>
+
+<style>
+  .contacts-hero {
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contacts-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .contacts-hero-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 80px;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+  }
+
+  @media (max-width: 1024px) {
+    .contacts-hero-title {
+      font-size: 64px;
+    }
+
+    .contacts-hero-content {
+      gap: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contacts-hero-title {
+      font-size: 48px;
+    }
+
+    .contacts-hero-content {
+      gap: 40px;
+    }
+
+    .scroll-arrow {
+      bottom: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contacts-hero-title {
+      font-size: 36px;
+      letter-spacing: 1px;
+    }
+
+    .contacts-hero-content {
+      gap: 30px;
+    }
+
+    .scroll-arrow {
+      bottom: 20px;
+    }
+
+    .scroll-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
