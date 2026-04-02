@@ -1,12 +1,6 @@
 ---
 // Кастомная 404 для любых несуществующих /cars/* путей
-export function getStaticPaths() {
-  return [
-    { params: { slug: [] } },
-  ];
-}
-
-const { slug } = Astro.params;
+export const prerender = false;
 ---
 
 <html style="background: black; min-height: 100vh;">
