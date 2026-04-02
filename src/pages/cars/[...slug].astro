@@ -1,0 +1,52 @@
+---
+// Кастомная 404 для любых несуществующих /cars/* путей
+export function getStaticPaths() {
+  return [
+    { params: { slug: [] } },
+  ];
+}
+
+const { slug } = Astro.params;
+---
+
+<html style="background: black; min-height: 100vh;">
+  <head>
+    <title>404 - Страница не найдена</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body style="
+    color: #fff;
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  ">
+    <h1 style="
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      margin-top: 0;
+    ">404</h1>
+    <p style="
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    ">Страница не найдена</p>
+    <a href="/" style="
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+    " onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">На главную</a>
+  </body>
+</html>
