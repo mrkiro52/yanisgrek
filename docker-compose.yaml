@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: ./code
+      context: .
       dockerfile: Dockerfile
     container_name: yanisgrek-app
     restart: unless-stopped
