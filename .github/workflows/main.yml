@@ -15,9 +15,13 @@ jobs:
 
       - name: Create archive
         run: |
-          # Копируем всё, кроме гита и мусора
-          tar --exclude='.git' --exclude='node_modules' --exclude='.vscode' --exclude='.DS_Store' \
-              -czf code.tar.gz .
+          # Создаем папку для архивации
+          mkdir deploy
+          # Копируем всё кроме мусора
+          rsync -av --exclude='.git' --exclude='node_modules' --exclude='deploy' ./ deploy/
+          # Архивируем
+          tar -czf code.tar.gz -C deploy .
+          rm -rf deploy
 
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.7.0
