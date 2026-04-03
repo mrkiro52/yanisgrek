@@ -2,8 +2,8 @@ export default function AboutStory() {
   return (
     <div className="about-story">
       <div className="about-story__container">
-        <img 
-          src="/src/assets/images/yearthrow.webp"
+        <img
+          src="/images/yearthrow.webp"
           alt="14 лет опыта"
           className="about-story__img"
         />

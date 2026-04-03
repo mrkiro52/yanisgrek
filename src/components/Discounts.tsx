@@ -12,13 +12,13 @@ interface Discount {
 const discounts: Discount[] = [
   {
     id: 1,
-    image: '/src/assets/images/discounts/banner1.webp',
+    image: '/images/discounts/banner1.webp',
     title: 'Чистка/Мойка впускного коллектора',
     description: 'Специальное предложение на чистку и мойку впускного коллектора. Улучшите работу двигателя и снизьте расход топлива.'
   },
   {
     id: 2,
-    image: '/src/assets/images/discounts/banner2.webp',
+    image: '/images/discounts/banner2.webp',
     title: 'Мойка радиаторов системы охлаждения',
     description: 'Профессиональная мойка радиаторов системы охлаждения. Предотвратите перегрев двигателя и продлите срок службы системы.'
   }

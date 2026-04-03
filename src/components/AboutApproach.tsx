@@ -1,5 +1,3 @@
-import workerpc from "../assets/images/workerpc.webp";
-
 export default function AboutApproach() {
   return (
     <div className="about-approach">
@@ -32,7 +30,7 @@ export default function AboutApproach() {
 
         <div className="about-approach__image">
           <img 
-            src={workerpc.src} 
+            src="/images/workerpc.webp" 
             alt="Работа за компьютером" 
             style={{ maxWidth: '500px', width: '100%', aspectRatio: '1', objectFit: 'cover', background: '#d0d0d0' }}
           />

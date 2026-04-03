@@ -178,15 +178,8 @@ export default function ServiceCalc() {
     return `bmw-${subId.toLowerCase()}`;
   };
 
-  const getImagePath = (subId: string) => {
-    let fileName = `bmw-${subId.toLowerCase()}`;
-    if (modelId === 'RR') {
-      fileName = 'rolls-royce';
-    } else if (modelId === 'MINI') {
-      fileName = 'mini-cooper';
-    }
-    // Используем относительный путь для импорта из src/assets
-    return `/src/assets/images/cars/${fileName}.png`;
+  const getCarImage = (fileName: string) => {
+    return `/images/cars/${fileName}.png`;
   };
 
   return (
@@ -256,7 +249,7 @@ export default function ServiceCalc() {
         {subId && (
           <img 
             className="selected-car-image"
-            src={`/src/assets/images/cars/${getModelSlug(subId)}.png`}
+            src={`/images/cars/${getModelSlug(subId)}.png`}
             alt={subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
           />
         )}

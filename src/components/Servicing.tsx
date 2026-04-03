@@ -2,21 +2,21 @@ export default function Servicing() {
   const services = [
     {
       id: 1,
-      image: '/src/assets/images/servicing1.webp',
+      image: '/images/servicing1.webp',
       title: 'Оригинальные запчасти BMW',
       description: 'Мы используем только оригинальные комплектующие, одобренные производителем. Это гарантирует максимальную совместимость, надёжность и долговечность каждого узла вашего автомобиля.',
       imagePosition: 'left'
     },
     {
       id: 2,
-      image: '/src/assets/images/servicing2.webp',
+      image: '/images/servicing2.webp',
       title: 'Сертифицированные мастера',
       description: 'Наши специалисты прошли официальное обучение и сертификацию BMW. Они досконально знают особенности каждой модели и работают строго по регламентам завода-изготовителя.',
       imagePosition: 'right'
     },
     {
       id: 3,
-      image: '/src/assets/images/servicing3.webp',
+      image: '/images/servicing3.webp',
       title: 'Прозрачные цены и фотоотчёт',
       description: 'Перед началом работ вы получаете точную смету. В процессе — фотоотчёт с каждым этапом. Никаких скрытых платежей, только честный сервис и открытость.',
       imagePosition: 'left'

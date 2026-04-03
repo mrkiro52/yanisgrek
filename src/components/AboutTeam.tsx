@@ -6,15 +6,15 @@ export default function AboutTeam() {
   const [isAutoplay, setIsAutoplay] = useState(true);
 
   const team = [
-    { name: 'Александр', role: 'Директор автосервиса', image: '/src/assets/images/workers/worker1.webp' },
-    { name: 'Максим', role: 'Мастер приемщик', image: '/src/assets/images/workers/worker2.webp' },
-    { name: 'Сергей', role: 'Механик', image: '/src/assets/images/workers/worker3.webp' },
-    { name: 'Дмитрий', role: 'Мастер приемщик', image: '/src/assets/images/workers/worker4.webp' },
-    { name: 'Александр', role: 'Механик', image: '/src/assets/images/workers/worker5.webp' },
-    { name: 'Тимур', role: 'Мастер приемщик', image: '/src/assets/images/workers/worker6.webp' },
-    { name: 'Гайрат', role: 'Механик', image: '/src/assets/images/workers/worker7.webp' },
-    { name: 'Олег', role: 'Механик', image: '/src/assets/images/workers/worker8.webp' },
-    { name: 'Виталий', role: 'Механик', image: '/src/assets/images/workers/worker9.webp' },
+    { name: 'Александр', role: 'Директор автосервиса', image: '/images/workers/worker1.webp' },
+    { name: 'Максим', role: 'Мастер приемщик', image: '/images/workers/worker2.webp' },
+    { name: 'Сергей', role: 'Механик', image: '/images/workers/worker3.webp' },
+    { name: 'Дмитрий', role: 'Мастер приемщик', image: '/images/workers/worker4.webp' },
+    { name: 'Александр', role: 'Механик', image: '/images/workers/worker5.webp' },
+    { name: 'Тимур', role: 'Мастер приемщик', image: '/images/workers/worker6.webp' },
+    { name: 'Гайрат', role: 'Механик', image: '/images/workers/worker7.webp' },
+    { name: 'Олег', role: 'Механик', image: '/images/workers/worker8.webp' },
+    { name: 'Виталий', role: 'Механик', image: '/images/workers/worker9.webp' },
   ];
 
   useEffect(() => {
