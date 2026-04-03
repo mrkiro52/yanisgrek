@@ -1,5 +1,3 @@
-import logo from '../assets/images/logo.svg';
-
 export default function Footer() {
   const services = [
     { name: 'Ремонт коробки передач', href: '/remontAkpp' },
@@ -52,7 +50,7 @@ export default function Footer() {
       <div className="footer-main">
         <div className="footer-container">
           <div className="footer-column">
-            <img src={logo.src} alt="Yanis Grek" className="footer-logo" />
+            <img src="/images/logo.svg" alt="Yanis Grek" className="footer-logo" />
             <p className="footer-desc">Первый автосервис BMW с человеческим подходом.</p>
             <div className="footer-info">
               <p><a href="https://yandex.com/maps/-/CPbhAKnt" target="_blank" rel="noopener noreferrer">Москва, Высоковольтный проезд, 1, стр. 29</a></p>

@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import DiscountsWrapper from '../../components/DiscountsWrapper.astro';
 import ServicingWrapper from '../../components/ServicingWrapper.astro';
 import NumbersWrapper from '../../components/NumbersWrapper.astro';
-import servicesbg from '../../assets/images/servicesbg.webp';
 
 const title = 'Все услуги - YanisGrek';
 const description = 'Полный перечень услуг по ремонту и обслуживанию BMW: ремонт АКПП, ремонт двигателя, диагностика, ТО и многое другое';
@@ -179,13 +178,13 @@ const additionalServices = [
   </div>
 </Layout>
 
-<style define:vars={{ servicesbg: `url(${servicesbg.src})` }}>
+<style>
 .services-page {
   min-height: 100vh;
 }
 
 .services-hero {
-  background-image: var(--servicesbg);
+  background-image: url('/images/servicesbg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

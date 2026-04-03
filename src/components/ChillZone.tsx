@@ -1,9 +1,11 @@
-import image1 from '../assets/images/chillzone/image1.webp';
-import image2 from '../assets/images/chillzone/image2.webp';
-import image3 from '../assets/images/chillzone/image3.webp';
-import image4 from '../assets/images/chillzone/image4.webp';
-
 export default function ChillZone() {
+  const images = {
+    image1: '/images/chillzone/image1.webp',
+    image2: '/images/chillzone/image2.webp',
+    image3: '/images/chillzone/image3.webp',
+    image4: '/images/chillzone/image4.webp'
+  };
+
   return (
     <div className="ChillZone">
       <div className="chillzone-content">
@@ -17,21 +19,21 @@ export default function ChillZone() {
         <div className="chillzone-gallery">
           <div className="gallery-left">
             <div className="image-wrapper">
-              <img src={image1.src} alt="Зона отдыха" />
+              <img src={images.image1} alt="Зона отдыха" />
             </div>
           </div>
           <div className="gallery-right">
             <div className="gallery-top">
               <div className="image-wrapper">
-                <img src={image2.src} alt="Зона отдыха" />
+                <img src={images.image2} alt="Зона отдыха" />
               </div>
             </div>
             <div className="gallery-bottom">
               <div className="image-wrapper">
-                <img src={image3.src} alt="Зона отдыха" />
+                <img src={images.image3} alt="Зона отдыха" />
               </div>
               <div className="image-wrapper">
-                <img src={image4.src} alt="Зона отдыха" />
+                <img src={images.image4} alt="Зона отдыха" />
               </div>
             </div>
           </div>

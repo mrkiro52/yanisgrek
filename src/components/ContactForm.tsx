@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Calendar } from 'lucide-react';
-import formbg from '../assets/images/formbg.webp';
 import { sendToTelegram } from '../utils/telegram';
 import SuccessPopup from './SuccessPopup';
 
@@ -100,7 +99,7 @@ export default function ContactForm() {
     <div 
       className="ContactForm"
       style={{
-        backgroundImage: `url(${formbg.src})`,
+        backgroundImage: `url('/images/formbg.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
