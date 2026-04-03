@@ -1,42 +1,43 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
-import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
-import { engines, getEngineById } from '../../assets/engineData';
+import Layout from '../../../layouts/Layout.astro';
+import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
+import NumbersWrapper from '../../../components/NumbersWrapper.astro';
+import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
+import { transmissions, getTransmissionById } from '../../../assets/transmissionData';
 
 export async function getStaticPaths() {
-  return engines.map(engine => ({
-    params: { slug: engine.id }
+  return transmissions.map(transmission => ({
+    params: { slug: transmission.id }
   }));
 }
 
 const { slug } = Astro.params;
-const engine = getEngineById(slug);
+const transmission = getTransmissionById(slug);
 
-if (!engine) {
+if (!transmission) {
   return Astro.redirect('/404');
 }
 
-const title = `Ремонт ${engine.name} BMW - YanisGrek`;
-const description = `${engine.description}`;
+const title = `Ремонт ${transmission.name} BMW - YanisGrek`;
+const description = `${transmission.description}`;
 ---
 
 <Layout {title} {description}>
-  <div class="engine-page">
-    <div class="engine-hero">
-      <div class="engine-hero-content">
-        <h1>{engine.name}</h1>
-        <p class="engine-type">Тип: {engine.type === 'benzine' ? 'Бензиновый двигатель' : engine.type === 'diesel' ? 'Дизельный двигатель' : 'Гибридный/Электрический'}</p>
-        <p class="engine-models">{engine.models}</p>
-        <p class="engine-description">{engine.description}</p>
+  <div class="transmission-page">
+    <div class="transmission-hero">
+      <div class="transmission-hero-content">
+        <h1>{transmission.name}</h1>
+        <p class="transmission-type">Тип: {transmission.type === 'mkpp' ? 'Механическая коробка' : transmission.type === 'akpp' ? 'Автоматическая коробка' : transmission.type === 'dct' ? 'Коробка с двойным сцеплением' : 'Электрический редуктор'}</p>
+        <p class="transmission-models">{transmission.models}</p>
+        <p class="transmission-description">{transmission.description}</p>
       </div>
     </div>
 
-    <div class="engine-content">
+    <div class="transmission-content">
       <div class="highlights-section">
         <h2>Характеристики</h2>
         <div class="highlights-grid">
-          {engine.highlights.map(highlight => (
+          {transmission.highlights.map(highlight => (
             <div class="highlight-item">
               <div class="highlight-icon">✓</div>
               <p>{highlight}</p>
@@ -47,33 +48,34 @@ const description = `${engine.description}`;
 
       <div class="services-section">
         <h2>Специализированное обслуживание</h2>
-        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию двигателя {engine.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
+        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию коробки передач {transmission.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
         <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
       </div>
     </div>
 
     <WhyUsWrapper />
+    <NumbersWrapper />
     <AdvantagesWrapper />
   </div>
 </Layout>
 
 <style>
-  .engine-page {
+  .transmission-page {
     min-height: 100vh;
     margin-top: 90px;
   }
 
-  .engine-hero {
+  .transmission-hero {
     background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
     padding: 80px 20px 60px;
   }
 
-  .engine-hero-content {
+  .transmission-hero-content {
     max-width: 1200px;
     margin: 0 auto;
   }
 
-  .engine-hero h1 {
+  .transmission-hero h1 {
     font-family: 'Russo One', sans-serif;
     font-size: 48px;
     color: #262626;
@@ -81,28 +83,28 @@ const description = `${engine.description}`;
     text-transform: uppercase;
   }
 
-  .engine-type {
+  .transmission-type {
     font-size: 16px;
     color: #2b6eff;
     font-weight: 600;
     margin-bottom: 8px;
   }
 
-  .engine-models {
+  .transmission-models {
     font-size: 18px;
     color: #666;
     font-weight: 500;
     margin-bottom: 20px;
   }
 
-  .engine-description {
+  .transmission-description {
     font-size: 18px;
     color: #666;
     line-height: 1.8;
     margin: 0;
   }
 
-  .engine-content {
+  .transmission-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px;
@@ -208,19 +210,19 @@ const description = `${engine.description}`;
   }
 
   @media (max-width: 768px) {
-    .engine-hero {
+    .transmission-hero {
       padding: 60px 20px 40px;
     }
 
-    .engine-hero h1 {
+    .transmission-hero h1 {
       font-size: 32px;
     }
 
-    .engine-description {
+    .transmission-description {
       font-size: 16px;
     }
 
-    .engine-content {
+    .transmission-content {
       padding: 60px 20px;
     }
 
@@ -259,23 +261,23 @@ const description = `${engine.description}`;
   }
 
   @media (max-width: 480px) {
-    .engine-page {
+    .transmission-page {
       margin-top: 70px;
     }
 
-    .engine-hero h1 {
+    .transmission-hero h1 {
       font-size: 24px;
     }
 
-    .engine-type {
+    .transmission-type {
       font-size: 14px;
     }
 
-    .engine-models {
+    .transmission-models {
       font-size: 14px;
     }
 
-    .engine-description {
+    .transmission-description {
       font-size: 14px;
     }
 

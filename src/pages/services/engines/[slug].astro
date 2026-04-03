@@ -1,8 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
-import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
-import { engines, getEngineById } from '../../assets/engineData';
+import Layout from '../../../layouts/Layout.astro';
+import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
+import NumbersWrapper from '../../../components/NumbersWrapper.astro';
+import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
+import { engines, getEngineById } from '../../../assets/engineData';
 
 export async function getStaticPaths() {
   return engines.map(engine => ({
@@ -53,6 +54,7 @@ const description = `${engine.description}`;
     </div>
 
     <WhyUsWrapper />
+    <NumbersWrapper />
     <AdvantagesWrapper />
   </div>
 </Layout>

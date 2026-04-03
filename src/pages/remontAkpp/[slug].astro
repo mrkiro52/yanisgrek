@@ -1,22 +1,297 @@
 ---
+import Layout from '../../layouts/Layout.astro';
+import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
+import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+import { transmissions, getTransmissionById } from '../../assets/transmissionData';
+
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'zf-6hp' } },
-    { params: { slug: 'zf-8hp' } },
-    { params: { slug: 'ga8f45m' } },
-    { params: { slug: 'a5s-390r' } },
-  ];
+  return transmissions.map(transmission => ({
+    params: { slug: transmission.id }
+  }));
 }
 
-import Layout from '../../layouts/Layout.astro';
-
 const { slug } = Astro.params;
-const title = `Ремонт АКПП ${slug} - YanisGrek`;
-const description = `Профессиональный ремонт коробки передач ${slug}. Диагностика и восстановление.`;
+const transmission = getTransmissionById(slug);
+
+if (!transmission) {
+  return Astro.redirect('/404');
+}
+
+const title = `Ремонт ${transmission.name} BMW - YanisGrek`;
+const description = `${transmission.description}`;
 ---
 
 <Layout {title} {description}>
-  <main>
-    <h1>Страница коробки передач: {slug}</h1>
-  </main>
+  <div class="transmission-page">
+    <div class="transmission-hero">
+      <div class="transmission-hero-content">
+        <h1>{transmission.name}</h1>
+        <p class="transmission-type">Тип: {transmission.type === 'mkpp' ? 'Механическая коробка' : transmission.type === 'akpp' ? 'Автоматическая коробка' : transmission.type === 'dct' ? 'Коробка с двойным сцеплением' : 'Электрический редуктор'}</p>
+        <p class="transmission-models">{transmission.models}</p>
+        <p class="transmission-description">{transmission.description}</p>
+      </div>
+    </div>
+
+    <div class="transmission-content">
+      <div class="highlights-section">
+        <h2>Характеристики</h2>
+        <div class="highlights-grid">
+          {transmission.highlights.map(highlight => (
+            <div class="highlight-item">
+              <div class="highlight-icon">✓</div>
+              <p>{highlight}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="services-section">
+        <h2>Специализированное обслуживание</h2>
+        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию коробки передач {transmission.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
+        <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
+      </div>
+    </div>
+
+    <WhyUsWrapper />
+    <AdvantagesWrapper />
+  </div>
 </Layout>
+
+<style>
+  .transmission-page {
+    min-height: 100vh;
+    margin-top: 90px;
+  }
+
+  .transmission-hero {
+    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    padding: 80px 20px 60px;
+  }
+
+  .transmission-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .transmission-hero h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 48px;
+    color: #262626;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .transmission-type {
+    font-size: 16px;
+    color: #2b6eff;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .transmission-models {
+    font-size: 18px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .transmission-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .transmission-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .highlights-section {
+    margin-bottom: 80px;
+  }
+
+  .highlights-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    background: rgb(245, 245, 245);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .highlight-item:hover {
+    background: rgb(235, 235, 235);
+    transform: translateY(-4px);
+  }
+
+  .highlight-icon {
+    width: 40px;
+    height: 40px;
+    background: #2b6eff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .highlight-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #262626;
+    line-height: 1.6;
+  }
+
+  .services-section {
+    text-align: center;
+    padding: 60px 40px;
+    background: rgb(245, 245, 245);
+    border-radius: 12px;
+  }
+
+  .services-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 24px;
+  }
+
+  .services-section p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+
+  .cta-button:hover {
+    background: #2b6eff;
+  }
+
+  @media (max-width: 1024px) {
+    .highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .transmission-hero {
+      padding: 60px 20px 40px;
+    }
+
+    .transmission-hero h1 {
+      font-size: 32px;
+    }
+
+    .transmission-description {
+      font-size: 16px;
+    }
+
+    .transmission-content {
+      padding: 60px 20px;
+    }
+
+    .highlights-section h2,
+    .services-section h2 {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+
+    .highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .highlight-item {
+      padding: 16px 12px;
+    }
+
+    .highlight-item p {
+      font-size: 14px;
+    }
+
+    .services-section {
+      padding: 40px 20px;
+    }
+
+    .services-section p {
+      font-size: 16px;
+    }
+
+    .cta-button {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .transmission-page {
+      margin-top: 70px;
+    }
+
+    .transmission-hero h1 {
+      font-size: 24px;
+    }
+
+    .transmission-type {
+      font-size: 14px;
+    }
+
+    .transmission-models {
+      font-size: 14px;
+    }
+
+    .transmission-description {
+      font-size: 14px;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-item {
+      padding: 12px 10px;
+    }
+
+    .services-section {
+      padding: 30px 15px;
+    }
+  }
+</style>

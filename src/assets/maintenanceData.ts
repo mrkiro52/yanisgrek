@@ -206,20 +206,20 @@ export const maintenanceData: { [subId: string]: ModelSeries[] } = {
 
 // Определения моделей и подмоделей
 export const models = [
-  { id: '1', name: '1' },
-  { id: '2', name: '2' },
-  { id: '3', name: '3' },
-  { id: '4', name: '4' },
-  { id: '5', name: '5' },
-  { id: '6', name: '6' },
-  { id: '7', name: '7' },
-  { id: '8', name: '8' },
-  { id: 'X', name: 'X' },
-  { id: 'M', name: 'M' },
-  { id: 'i', name: 'i' },
-  { id: 'z', name: 'z' },
+  { id: '1', name: '1 серия' },
+  { id: '2', name: '2 серия' },
+  { id: '3', name: '3 серия' },
+  { id: '4', name: '4 серия' },
+  { id: '5', name: '5 серия' },
+  { id: '6', name: '6 серия' },
+  { id: '7', name: '7 серия' },
+  { id: 'X', name: 'X серия' },
+  { id: 'M', name: 'M серия' },
+  { id: 'i', name: 'i серия' },
+  { id: 'z', name: 'z серия' },
   { id: 'RR', name: 'Rolls' },
-  { id: 'MINI', name: 'Mini' }
+  { id: 'MINI', name: 'Mini' },
+  { id: 'OTHER', name: 'Другая' }
 ];
 
 export const submodels: { [key: string]: { id: string; name: string }[] } = {
@@ -257,5 +257,8 @@ export const submodels: { [key: string]: { id: string; name: string }[] } = {
   ],
   'MINI': [
     { id: 'MINI', name: 'Mini Cooper' }
+  ],
+  'OTHER': [
+    { id: 'OTHER', name: 'Другая' }
   ]
 };

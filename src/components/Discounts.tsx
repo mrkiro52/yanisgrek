@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { sendToTelegram } from '../utils/telegram';
+import SuccessPopup from './SuccessPopup';
 
 interface Discount {
   id: number;
@@ -26,12 +28,27 @@ export default function Discounts() {
   const [selectedDiscount, setSelectedDiscount] = useState<Discount | null>(null);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ discount: selectedDiscount?.title, name, phone });
-    alert('Заявка отправлена!');
-    handleClose();
+    
+    const success = await sendToTelegram({
+      type: 'discount',
+      data: {
+        discount: selectedDiscount?.title || '',
+        name: name,
+        phone: phone
+      },
+      url: window.location.href
+    });
+
+    if (success) {
+      setShowSuccessPopup(true);
+      handleClose();
+    } else {
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    }
   };
 
   const handleClose = () => {
@@ -106,6 +123,8 @@ export default function Discounts() {
           </div>
         </div>
       )}
+
+      <SuccessPopup isOpen={showSuccessPopup} onClose={() => setShowSuccessPopup(false)} />
     </>
   );
 }

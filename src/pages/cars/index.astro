@@ -75,13 +75,14 @@ const description = 'Каталог моделей BMW, доступных дл�
 ---
 
 <Layout {title} {description}>
-  <main class="cars-main">
-    <div class="cars-hero">
+    <main class="cars-main">
+    <section class="cars-hero">
       <div class="cars-hero-content">
         <h1>Модели автомобилей</h1>
         <p>Мы обслуживаем все модели BMW и премиум-марок</p>
+        <button class="hero-button" onclick="scrollToForm()">Записаться</button>
       </div>
-    </div>
+    </section>
 
     <div class="cars-catalog">
       <div class="catalog-container">
@@ -103,6 +104,16 @@ const description = 'Каталог моделей BMW, доступных дл�
     <TopServicesWrapper />
   </main>
 </Layout>
+
+<script>
+  function scrollToForm() {
+    const contactForm = document.querySelector('.ContactForm');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  (window as any).scrollToForm = scrollToForm;
+</script>
 
 <style>
   .cars-main {
@@ -132,6 +143,23 @@ const description = 'Каталог моделей BMW, доступных дл�
   .cars-hero p {
     font-size: 20px;
     color: #666;
+    margin-bottom: 32px;
+  }
+
+  .hero-button {
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .hero-button:hover {
+    background: #2b6eff;
   }
 
   .cars-catalog {

@@ -636,6 +636,7 @@ const description = carData.description;
       <div class="car-hero-content">
         <h1>{carData.title}</h1>
         <p class="car-description">{carData.description}</p>
+        <button class="hero-button" onclick="scrollToForm()">Записаться</button>
       </div>
     </div>
 
@@ -655,7 +656,7 @@ const description = carData.description;
       </div>
 
       <div class="car-cta">
-        <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
+        <a onclick="scrollToForm()" class="cta-button" style="cursor: pointer;">Записаться на обслуживание</a>
       </div>
     </div>
 
@@ -666,6 +667,16 @@ const description = carData.description;
     <NumbersWrapper />
   </div>
 </Layout>
+
+<script>
+  function scrollToForm() {
+    const contactForm = document.querySelector('.ContactForm');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  (window as any).scrollToForm = scrollToForm;
+</script>
 
 <style>
 .car-page {
@@ -697,6 +708,22 @@ const description = carData.description;
   color: #666;
   margin-bottom: 32px;
   line-height: 1.6;
+}
+
+.hero-button {
+  padding: 16px 48px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.hero-button:hover {
+  background: #2b6eff;
 }
 
 .car-content {

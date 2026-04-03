@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import formbg from '../assets/images/formbg.webp';
+import { sendToTelegram } from '../utils/telegram';
+import SuccessPopup from './SuccessPopup';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ export default function ContactForm() {
     phone: '',
     datetime: ''
   });
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^а-яА-ЯёЁa-zA-Z\s]/g, '');
@@ -35,7 +38,7 @@ export default function ContactForm() {
     setErrors({ ...errors, phone: '' });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const newErrors = {
@@ -64,9 +67,32 @@ export default function ContactForm() {
     setErrors(newErrors);
 
     if (!newErrors.name && !newErrors.phone && !newErrors.datetime) {
-      console.log('Form submitted:', formData);
-      // Здесь отправка формы
-      alert('Заявка отправлена!');
+      const datetime = new Date(formData.datetime);
+      const formattedDateTime = datetime.toLocaleString('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const success = await sendToTelegram({
+        type: 'contact-form',
+        data: {
+          name: formData.name,
+          phone: formData.phone,
+          vin: formData.vin || 'Не указан',
+          datetime: formattedDateTime
+        },
+        url: window.location.href
+      });
+
+      if (success) {
+        setShowSuccessPopup(true);
+        setFormData({ name: '', phone: '', vin: '', datetime: '' });
+      } else {
+        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+      }
     }
   };
 
@@ -182,6 +208,8 @@ export default function ContactForm() {
         </div>
         </div>
       </div>
+
+      <SuccessPopup isOpen={showSuccessPopup} onClose={() => setShowSuccessPopup(false)} />
     </div>
   );
 }

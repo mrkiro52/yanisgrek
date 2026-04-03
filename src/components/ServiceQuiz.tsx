@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { maintenanceData, models, submodels } from '../assets/maintenanceData';
 import CustomSelect from './CustomSelect';
+import { sendToTelegram } from '../utils/telegram';
+import SuccessPopup from './SuccessPopup';
 
 const services = [
   'Диагностика Авто',
@@ -23,6 +25,7 @@ export default function ServiceQuiz() {
   const [selectedService, setSelectedService] = useState<string[]>([]);
   const [vin, setVin] = useState('');
   const [phone, setPhone] = useState('');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const subsList = useMemo(() => {
     if (!modelId) return [];
@@ -39,6 +42,11 @@ export default function ServiceQuiz() {
 
   const handleNext = () => {
     if (step === 1 && !subId) return;
+    // Пропускаем шаг 2 если выбрана "Другая"
+    if (step === 1 && modelId === 'OTHER') {
+      setStep(3);
+      return;
+    }
     if (step === 2 && !seriesName) return;
     if (step === 3 && selectedService.length === 0) return;
     if (step === 5 && !phone) return;
@@ -52,14 +60,38 @@ export default function ServiceQuiz() {
 
   const handleBack = () => {
     if (step > 1) {
-      setStep(step - 1);
+      // Если мы на шаге 3 и выбрана "Другая", возвращаемся на шаг 1
+      if (step === 3 && modelId === 'OTHER') {
+        setStep(1);
+      } else {
+        setStep(step - 1);
+      }
     }
   };
 
-  const handleSubmit = () => {
-    // Здесь логика отправки формы
-    console.log({ modelId, subId, seriesName, selectedService, vin, phone });
-    alert('Расчет отправлен!');
+  const handleSubmit = async () => {
+    const success = await sendToTelegram({
+      type: 'service-quiz',
+      data: {
+        model: `${subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}`,
+        series: seriesName,
+        services: selectedService,
+        vin: vin || 'Не указан',
+        phone: phone
+      },
+      url: window.location.href
+    });
+
+    if (success) {
+      setShowSuccessPopup(true);
+      // Сбрасываем форму
+      setStep(1);
+      setSelectedService([]);
+      setVin('');
+      setPhone('');
+    } else {
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    }
   };
 
   const toggleService = (service: string) => {
@@ -107,7 +139,7 @@ export default function ServiceQuiz() {
                     }
                   }}
                 >
-                  BMW {m.name === 'Rolls' ? 'Rolls Royce' : m.name === 'Mini' ? 'Mini Cooper' : m.name}
+                  {m.id === 'OTHER' ? m.name : `BMW ${m.name === 'Rolls' ? 'Rolls Royce' : m.name === 'Mini' ? 'Mini Cooper' : m.name}`}
                 </button>
               ))}
             </div>
@@ -247,6 +279,8 @@ export default function ServiceQuiz() {
           {step === 5 ? 'Отправить' : 'Дальше'}
         </button>
       </div>
+
+      <SuccessPopup isOpen={showSuccessPopup} onClose={() => setShowSuccessPopup(false)} />
     </div>
   );
 }

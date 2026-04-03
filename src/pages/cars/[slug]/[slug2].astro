@@ -277,16 +277,14 @@ const description = `${generationInfo.description}`;
 <Layout {title} {description}>
   <div class="generation-page">
     <div class="generation-hero">
-      <div class="generation-hero-content">
-        <h1>{generationInfo.title}</h1>
-        <p class="generation-years">{generationInfo.years}</p>
-        <p class="generation-description">{generationInfo.description}</p>
-      </div>
-    </div>
-
-    <div class="generation-content">
-      <div class="highlights-section">
-        <h2>Характеристики поколения</h2>
+      <div class="generation-hero-container">
+        <div class="generation-hero-content">
+          <h1>{generationInfo.title}</h1>
+          <p class="generation-years">{generationInfo.years}</p>
+          <p class="generation-description">{generationInfo.description}</p>
+          <button class="hero-button" onclick="scrollToForm()">Записаться</button>
+        </div>
+        
         <div class="highlights-grid">
           {generationInfo.highlights.map(highlight => (
             <div class="highlight-item">
@@ -296,7 +294,9 @@ const description = `${generationInfo.description}`;
           ))}
         </div>
       </div>
+    </div>
 
+    <div class="generation-content">
       <div class="services-section">
         <h2>Специализированное обслуживание</h2>
         <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию {generationInfo.title}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
@@ -310,6 +310,16 @@ const description = `${generationInfo.description}`;
   </div>
 </Layout>
 
+<script>
+  function scrollToForm() {
+    const contactForm = document.querySelector('.ContactForm');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  (window as any).scrollToForm = scrollToForm;
+</script>
+
 <style>
   .generation-page {
     min-height: 100vh;
@@ -321,9 +331,18 @@ const description = `${generationInfo.description}`;
     padding: 80px 20px 60px;
   }
 
-  .generation-hero-content {
+  .generation-hero-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .generation-hero-content {
+    display: flex;
+    flex-direction: column;
   }
 
   .generation-hero h1 {
@@ -345,7 +364,24 @@ const description = `${generationInfo.description}`;
     font-size: 18px;
     color: #666;
     line-height: 1.8;
-    margin: 0;
+    margin: 0 0 32px 0;
+  }
+
+  .hero-button {
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Helvetica', sans-serif;
+    align-self: flex-start;
+  }
+
+  .hero-button:hover {
+    background: #2b6eff;
   }
 
   .generation-content {
@@ -354,37 +390,23 @@ const description = `${generationInfo.description}`;
     padding: 80px 20px;
   }
 
-  .highlights-section {
-    margin-bottom: 80px;
-  }
-
-  .highlights-section h2 {
-    font-family: 'Helvetica', sans-serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: #262626;
-    margin-bottom: 48px;
-    text-align: center;
-  }
-
   .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   .highlight-item {
     display: flex;
     gap: 16px;
     padding: 24px;
-    background: rgb(245, 245, 245);
+    background: white;
     border-radius: 8px;
     transition: all 0.3s;
   }
 
   .highlight-item:hover {
-    background: rgb(235, 235, 235);
+    background: rgb(245, 245, 245);
     transform: translateY(-4px);
   }
 
@@ -447,15 +469,23 @@ const description = `${generationInfo.description}`;
   }
 
   @media (max-width: 1024px) {
+    .generation-hero-container {
+      gap: 40px;
+    }
+
     .highlights-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 768px) {
     .generation-hero {
       padding: 60px 20px 40px;
+    }
+
+    .generation-hero-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
 
     .generation-hero h1 {
@@ -470,7 +500,6 @@ const description = `${generationInfo.description}`;
       padding: 60px 20px;
     }
 
-    .highlights-section h2,
     .services-section h2 {
       font-size: 24px;
       margin-bottom: 32px;
