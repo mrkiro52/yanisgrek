@@ -8,6 +8,26 @@ export default defineConfig({
   output: 'static',
   integrations: [react()],
   image: {
-    formats: ['image/webp', 'image/avif'],
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+  },
+  build: {
+    inlineStylesheets: 'auto',
+  },
+  compressHTML: true,
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      minify: 'terser',
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
   },
 });

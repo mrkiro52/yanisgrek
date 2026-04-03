@@ -64,9 +64,10 @@ export default function AboutTeam() {
                 >
                   <div className="about-team__card">
                     <img 
-                      src={member.image} 
+                      src={member.image}
                       alt={member.name}
                       className="about-team__image"
+                      loading="lazy"
                     />
                     <h3 className="about-team__name">{member.name}</h3>
                     <p className="about-team__role">{member.role}</p>

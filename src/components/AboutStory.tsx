@@ -6,6 +6,7 @@ export default function AboutStory() {
           src="/images/yearthrow.webp"
           alt="14 лет опыта"
           className="about-story__img"
+          loading="lazy"
         />
         <div className="about-story__content">
           <h2 className="about-story__title">Опыт сквозь года</h2>

@@ -24,7 +24,7 @@ export default function Advantages() {
         {advantages.map((advantage, index) => (
           <div key={index} className="advantage-item">
             <div className="advantage-image">
-              <img src={advantage.image} alt={`Преимущество ${index + 1}`} />
+              <img src={advantage.image} alt={`Преимущество ${index + 1}`} loading="lazy" />
             </div>
             <div className="advantage-text">
               <p>{advantage.text}</p>
