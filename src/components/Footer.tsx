@@ -2,22 +2,21 @@ import logo from '../assets/images/logo.svg';
 
 export default function Footer() {
   const services = [
-    'Ремонт АКПП',
-    'Ремонт МКПП',
-    'Ремонт ДВС',
-    'Замена воздушного фильтра',
-    'Замена тормозных дисков',
-    'Диагностика ДВС',
-    'Мойка радиаторов',
-    'Замена масла ДВС'
+    { name: 'Ремонт коробки передач', href: '/remontAkpp' },
+    { name: 'Ремонт двигателя', href: '/remontDvs' },
+    { name: 'Замена воздушного фильтра', href: '/services' },
+    { name: 'Замена тормозных дисков', href: '/services' },
+    { name: 'Диагностика ДВС', href: '/services' },
+    { name: 'Мойка радиаторов', href: '/services' },
+    { name: 'Замена масла ДВС', href: '/services' }
   ];
 
   const links = [
     { name: 'О нас', href: '/about' },
     { name: 'Контакты', href: '/contacts' },
-    { name: 'Яндекс карты', href: 'https://yandex.ru/maps/-/CDdkeFw7' },
-    { name: 'Google карты', href: 'https://maps.google.com' },
-    { name: '2 Gis', href: 'https://2gis.ru' }
+    { name: 'Яндекс карты', href: 'https://yandex.com/maps/-/CPbhAKnt' },
+    { name: 'Google карты', href: 'https://maps.app.goo.gl/wGbEbWdCZSv5PxGf6' },
+    { name: '2 Gis', href: 'https://2gis.ru/moscow/search/%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%2C%201%2C%20%D1%81%D1%82%D1%80.%2029/geo/4504235283155127/37.59441%2C55.875886?m=37.62017%2C55.753911%2F10.79' }
   ];
 
   const socialLinks = [
@@ -56,8 +55,8 @@ export default function Footer() {
             <img src={logo.src} alt="Yanis Grek" className="footer-logo" />
             <p className="footer-desc">Первый автосервис BMW с человеческим подходом.</p>
             <div className="footer-info">
-              <p>Москва, Высоковольтный проезд, 1, стр. 29</p>
-              <p>+7 495 76 76 500</p>
+              <p><a href="https://yandex.com/maps/-/CPbhAKnt" target="_blank" rel="noopener noreferrer">Москва, Высоковольтный проезд, 1, стр. 29</a></p>
+              <p><a href="tel:+74957676500">+7 495 76 76 500</a></p>
               <p>Пн-Пт: 10:00-20:00</p>
               <p>Сб: 11:00-20:00</p>
               <p>Вс: 11:00-18:00</p>
@@ -68,7 +67,7 @@ export default function Footer() {
             <h3>Услуги</h3>
             <ul className="footer-links">
               {services.map((service, index) => (
-                <li key={index}><a href="/services">{service}</a></li>
+                <li key={index}><a href={service.href}>{service.name}</a></li>
               ))}
             </ul>
           </div>

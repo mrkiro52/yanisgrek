@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { maintenanceData, models, submodels } from '../assets/maintenanceData';
 import CustomSelect from './CustomSelect';
+import { sendToTelegram } from '../utils/telegram';
+import SuccessPopup from './SuccessPopup';
 
 export default function ServiceCalc() {
   // Инициализируем с null/дефолтными значениями для SSR
@@ -12,6 +14,7 @@ export default function ServiceCalc() {
   const [filteredServices, setFilteredServices] = useState<any[]>([]);
   const [selectedRows, setSelectedRows] = useState<boolean[]>([]);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   // Загружаем из localStorage после гидрации
   useEffect(() => {
@@ -121,13 +124,46 @@ export default function ServiceCalc() {
   , [filteredServices, selectedRows]);
 
   const scrollToBottom = () => {
-    const formEl = document.getElementById('Form');
-    if (formEl) {
-      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const contactForm = document.querySelector('.ContactForm');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const subsList = useMemo(() => submodels[modelId] || [], [modelId]);
+  const sendCalculatorData = async () => {
+    const selectedServices = filteredServices
+      .filter((s, idx) => selectedRows[idx])
+      .map(s => ({
+        name: s.name,
+        partPrice: Number(s.part_price),
+        laborPrice: Number(s.labor_price),
+        total: Number(s.part_price) + Number(s.labor_price)
+      }));
+
+    if (selectedServices.length === 0) {
+      alert('Пожалуйста, выберите хотя бы одну услугу');
+      return;
+    }
+
+    const success = await sendToTelegram({
+      type: 'calculator',
+      data: {
+        model: `${subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}`,
+        series: seriesName,
+        mileage: mileage,
+        partType: partType,
+        services: selectedServices,
+        totalSum: totalSum
+      },
+      url: window.location.href
+    });
+
+    if (success) {
+      setShowSuccessPopup(true);
+    } else {
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    }
+  };  const subsList = useMemo(() => submodels[modelId] || [], [modelId]);
   const seriesList = useMemo(() => {
     if (!subId) return [];
     return (maintenanceData[subId] || []).map(item => {
@@ -154,7 +190,7 @@ export default function ServiceCalc() {
   };
 
   return (
-    <div className="Calculator">
+    <div className="Calculator ServiceCalc">
       <h2 className="calculator-title">
         Рассчитайте стоимость <span>ТО</span>, не выходя из дома
       </h2>
@@ -363,6 +399,8 @@ export default function ServiceCalc() {
         </span>
       </div>
       )}
+
+      <SuccessPopup isOpen={showSuccessPopup} onClose={() => setShowSuccessPopup(false)} />
     </div>
   );
 }

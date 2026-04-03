@@ -1,13 +1,484 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import DiscountsWrapper from '../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../components/ServicingWrapper.astro';
+import NumbersWrapper from '../../components/NumbersWrapper.astro';
+import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
+import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+import EngineSelectorWrapper from '../../components/EngineSelectorWrapper.astro';
 
-const title = 'Ремонт двигателя BMW - YanisGrek';
-const description = 'Ремонт и диагностика двигателей BMW. Замена деталей, чистка, повышение производительности.';
+const serviceData = {
+  title: 'Ремонт двигателя',
+  description: 'Комплексный ремонт двигателей BMW всех типов и модификаций',
+  content: 'Выполняем капитальный и текущий ремонт бензиновых, дизельных, гибридных и электрических двигателей BMW. Наши специалисты имеют многолетний опыт работы с моторами всех серий.',
+  price: 'от 15000 руб.',
+  features: [
+    'Диагностика двигателя и его систем',
+    'Замена цепи и ремня ГРМ',
+    'Ремонт головки блока цилиндров',
+    'Замена поршневой группы и вкладышей',
+    'Чистка клапанов и впускного коллектора',
+    'Восстановление компрессии'
+  ]
+};
+
+const title = `${serviceData.title} - YanisGrek`;
+const description = serviceData.description;
 ---
 
 <Layout {title} {description}>
-  <main>
-    <h1>Ремонт двигателя</h1>
-    <p>Услуги по ремонту двигателя</p>
-  </main>
+  <div class="service-page">
+    <div class="service-hero">
+      <div class="service-hero-content">
+        <h1>{serviceData.title}</h1>
+        <p class="service-description">{serviceData.description}</p>
+        <div class="service-hero-buttons">
+          <div class="service-price">
+            <span class="price-label">Стоимость:</span>
+            <span class="price-value">{serviceData.price}</span>
+          </div>
+          <button class="service-btn-booking">Записаться</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-content">
+      <div class="service-about">
+        <h2>Об услуге</h2>
+        <p>{serviceData.content}</p>
+      </div>
+
+      <div class="service-features">
+        <h2>Что входит в услугу</h2>
+        <ul class="features-list">
+          {serviceData.features.map(feature => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="service-cta">
+        <button class="cta-button" onclick="smoothScroll()">Записаться на услугу</button>
+      </div>
+    </div>
+
+    <section id="engines">
+      <EngineSelectorWrapper />
+    </section>
+
+    <WhyUsWrapper />
+    <AdvantagesWrapper />
+    <DiscountsWrapper />
+    <ServicingWrapper />
+    <NumbersWrapper />
+  </div>
 </Layout>
+
+<script>
+  function smoothScroll() {
+    let element = document.getElementById('service-quiz');
+    
+    if (!element) {
+      element = document.querySelector('[data-form-section]');
+    }
+    
+    if (!element) {
+      element = document.getElementById('Form');
+    }
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
+  (window as any).smoothScroll = smoothScroll;
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.service-btn-booking, .cta-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', smoothScroll);
+    });
+  });
+</script>
+
+<style>
+.service-page {
+  min-height: 100vh;
+}
+
+.service-hero {
+  background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+  padding: 120px 20px 80px;
+}
+
+.service-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-hero h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  color: #262626;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.service-description {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.service-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  padding: 16px 32px;
+  color: white;
+  width: fit-content;
+  height: 60px;
+  gap: 12px;
+}
+
+.price-label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.price-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.service-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.service-btn-booking {
+  background: #2b6eff;
+  color: white;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.service-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.service-about {
+  margin-bottom: 60px;
+}
+
+.service-about h2,
+.service-features h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.service-about p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.service-features {
+  margin-bottom: 60px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.features-list li {
+  background: rgb(208, 208, 208);
+  padding: 20px 24px;
+  font-size: 16px;
+  color: #262626;
+  position: relative;
+  padding-left: 48px;
+}
+
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 700;
+  color: #262626;
+}
+
+.service-cta {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 20px 48px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  background: #2b6eff;
+}
+
+@media screen and (max-width: 1024px) {
+  .service-hero {
+    padding: 100px 20px 80px;
+  }
+
+  .service-hero h1 {
+    font-size: 40px;
+  }
+
+  .service-description {
+    font-size: 18px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    width: fit-content;
+  }
+
+  .service-price {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+  }
+
+  .service-content {
+    padding: 60px 20px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 28px;
+  }
+
+  .features-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-about p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .service-hero {
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+
+  .service-hero h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .service-description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .service-price {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 20px;
+    width: fit-content;
+    height: auto;
+  }
+
+  .price-label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .price-value {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+    padding: 12px 20px;
+    font-size: 14px;
+    height: auto;
+  }
+
+  .service-content {
+    padding: 40px 20px;
+  }
+
+  .service-about {
+    margin-bottom: 40px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .service-about p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .service-features {
+    margin-bottom: 40px;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .features-list li {
+    font-size: 13px;
+    padding: 14px 16px 14px 40px;
+  }
+
+  .features-list li::before {
+    left: 16px;
+    font-size: 18px;
+  }
+
+  .service-cta {
+    margin-bottom: 40px;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .service-hero {
+    padding: 80px 15px 50px;
+  }
+
+  .service-hero h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .service-description {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .service-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .service-price {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px;
+    width: fit-content;
+    height: auto;
+  }
+
+  .price-label {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .price-value {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .service-btn-booking {
+    width: fit-content;
+    padding: 10px 16px;
+    font-size: 13px;
+    height: auto;
+  }
+
+  .service-content {
+    padding: 30px 15px;
+  }
+
+  .service-about h2,
+  .service-features h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .service-about p {
+    font-size: 13px;
+  }
+
+  .features-list li {
+    font-size: 12px;
+    padding: 12px 12px 12px 36px;
+  }
+
+  .features-list li::before {
+    left: 12px;
+    font-size: 16px;
+  }
+
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+</style>

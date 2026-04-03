@@ -49,6 +49,24 @@ import AboutHero from './AboutHero';
     color: #fff;
     line-height: 1.6;
     font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  :global(.about-hero__button) {
+    padding: 16px 48px;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  :global(.about-hero__button:hover) {
+    background: #2b6eff;
+    color: white;
   }
 
   @media (max-width: 1024px) {

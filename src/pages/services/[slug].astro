@@ -5,6 +5,8 @@ import ServicingWrapper from '../../components/ServicingWrapper.astro';
 import NumbersWrapper from '../../components/NumbersWrapper.astro';
 import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
 import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+import TransmissionSelectorWrapper from '../../components/TransmissionSelectorWrapper.astro';
+import EngineSelectorWrapper from '../../components/EngineSelectorWrapper.astro';
 
 export async function getStaticPaths() {
   const services = [
@@ -882,6 +884,18 @@ const description = serviceData.description;
         <button class="cta-button" onclick="smoothScroll()">Записаться на услугу</button>
       </div>
     </div>
+
+    {slug === 'remont-korobki-peredach' && (
+      <section id="transmissions">
+        <TransmissionSelectorWrapper />
+      </section>
+    )}
+
+    {slug === 'remont-dvigatelya' && (
+      <section id="engines">
+        <EngineSelectorWrapper />
+      </section>
+    )}
 
     <WhyUsWrapper />
     <AdvantagesWrapper />

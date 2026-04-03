@@ -41,6 +41,7 @@ const cases = [
     <div class="works-hero-content">
       <h1>Наши работы</h1>
       <p>Портфолио и примеры выполненных работ нашей команды</p>
+      <button class="hero-button" onclick="scrollToForm()">Записаться</button>
     </div>
     <ScrollArrow targetSelector=".cases-section" />
   </section>
@@ -68,6 +69,16 @@ const cases = [
   <WhyUsWrapper />
   <AdvantagesWrapper />
 </Layout>
+
+<script>
+  function scrollToForm() {
+    const contactForm = document.querySelector('.ContactForm');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  (window as any).scrollToForm = scrollToForm;
+</script>
 
 <style>
   .works-hero {
@@ -102,6 +113,24 @@ const cases = [
     color: #fff;
     line-height: 1.6;
     opacity: 0.85;
+    margin-bottom: 32px;
+  }
+
+  .hero-button {
+    padding: 16px 48px;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .hero-button:hover {
+    background: #2b6eff;
+    color: white;
   }
 
   .cases-section {
