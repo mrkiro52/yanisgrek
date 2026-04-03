@@ -33,6 +33,7 @@ export default function AboutApproach() {
             src="/images/workerpc.webp" 
             alt="Работа за компьютером" 
             style={{ maxWidth: '500px', width: '100%', aspectRatio: '1', objectFit: 'cover', background: '#d0d0d0' }}
+            loading="lazy"
           />
         </div>
       </div>

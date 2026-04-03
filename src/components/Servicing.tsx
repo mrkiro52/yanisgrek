@@ -37,7 +37,7 @@ export default function Servicing() {
             className={`servicing-block ${service.imagePosition === 'right' ? 'reverse' : ''}`}
           >
             <div className="servicing-image">
-              <img src={service.image} alt={service.title} />
+              <img src={service.image} alt={service.title} loading="lazy" />
             </div>
             <div className="servicing-text">
               <h3>{service.title}</h3>

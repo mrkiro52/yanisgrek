@@ -69,7 +69,7 @@ export default function Discounts() {
               className="discount-card"
               onClick={() => setSelectedDiscount(discount)}
             >
-              <img src={discount.image} alt={discount.title} />
+              <img src={discount.image} alt={discount.title} loading="lazy" />
             </div>
           ))}
         </div>

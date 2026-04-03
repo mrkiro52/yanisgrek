@@ -179,7 +179,7 @@ export default function ServiceCalc() {
   };
 
   const getCarImage = (fileName: string) => {
-    return `/images/cars/${fileName}.png`;
+    return `/images/cars/${fileName}.webp`;
   };
 
   return (
@@ -249,8 +249,9 @@ export default function ServiceCalc() {
         {subId && (
           <img 
             className="selected-car-image"
-            src={`/images/cars/${getModelSlug(subId)}.png`}
+            src={`/images/cars/${getModelSlug(subId)}.webp`}
             alt={subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
+            loading="lazy"
           />
         )}
       </div>
