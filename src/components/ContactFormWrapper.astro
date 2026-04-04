@@ -3,15 +3,49 @@ import ContactForm from './ContactForm';
 ---
 
 <div id="Form" data-form-section>
+  <div class="contact-form-bg">
+    <picture>
+      <source media="(max-width: 768px)" srcset="/images/formbgmobi.webp" />
+      <img
+        src="/images/formbg.webp"
+        alt="Фон формы контактов"
+        loading="lazy"
+        width="1920"
+        height="1080"
+      />
+    </picture>
+  </div>
   <ContactForm client:load />
 </div>
 
 <style>
+#Form {
+  position: relative;
+}
+
+.contact-form-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.contact-form-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 :global(.ContactForm) {
   padding: 80px 20px;
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 1;
 }
 
 :global(.contact-content) {
@@ -173,9 +207,27 @@ import ContactForm from './ContactForm';
   margin: 0;
 }
 
+@media screen and (max-width: 1280px) {
+  :global(.ContactForm) {
+    padding: 70px 40px;
+  }
+
+  :global(.contact-content) {
+    gap: 36px;
+  }
+
+  :global(.contact-title) {
+    font-size: 34px;
+  }
+
+  :global(.form-label) {
+    font-size: 17px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   :global(.ContactForm) {
-    padding: 60px 20px;
+    padding: 60px 30px;
   }
 
   :global(.contact-content) {

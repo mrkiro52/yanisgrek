@@ -2,7 +2,7 @@
 import AboutTeam from './AboutTeam';
 ---
 
-<AboutTeam client:load />
+<AboutTeam client:visible />
 
 <style>
   :global(.about-team) {
@@ -145,6 +145,28 @@ import AboutTeam from './AboutTeam';
   :global(.about-team__dot.active) {
     background: #2b6eff;
     width: 36px;
+  }
+
+  @media (max-width: 1280px) {
+    :global(.about-team) {
+      padding: 90px 40px;
+    }
+
+    :global(.about-team__title) {
+      font-size: 36px;
+    }
+
+    :global(.about-team__slide) {
+      flex: 0 0 calc(25% - 18px);
+    }
+
+    :global(.about-team__button--prev) {
+      left: -60px;
+    }
+
+    :global(.about-team__button--next) {
+      right: -60px;
+    }
   }
 
   @media (max-width: 1024px) {

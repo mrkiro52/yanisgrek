@@ -2,7 +2,7 @@
 import YandexMap from './YandexMap';
 ---
 
-<YandexMap client:load />
+<YandexMap client:visible />
 
 <style>
 :global(.yandex_map) {
@@ -13,6 +13,12 @@ import YandexMap from './YandexMap';
 
 :global(.yandex_map iframe) {
   display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  :global(.yandex_map) {
+    height: 450px;
+  }
 }
 
 @media screen and (max-width: 768px) {

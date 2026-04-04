@@ -18,7 +18,7 @@ export default function ChillZone() {
 
         <div className="chillzone-gallery">
           <div className="gallery-left">
-            <div className="left-side">
+            <div className="image-wrapper">
               <img src={images.image1} alt="Зона отдыха" loading="lazy" />
             </div>
           </div>

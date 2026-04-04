@@ -315,7 +315,7 @@ import './CustomSelect.astro';
   width: 20px;
   height: 20px;
   min-width: 20px;
-  border: 1px solid white;
+  border: 1px solid black;
   background-color: transparent;
   cursor: pointer;
   transition: all 0.1s;
@@ -323,6 +323,7 @@ import './CustomSelect.astro';
 
 :global(.sq.selected) {
   background-color: black;
+  border: 1px solid black;
 }
 
 :global(.calculator_table__cell--second) {
@@ -373,9 +374,90 @@ import './CustomSelect.astro';
   display: none;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   :global(.Calculator) {
-    padding: 40px 20px;
+    padding: 70px 40px;
+  }
+
+  :global(.calculator-title) {
+    font-size: 30px;
+    margin-bottom: 36px;
+  }
+
+  :global(.section-title) {
+    font-size: 19px;
+  }
+
+  :global(.model-selection-wrapper) {
+    margin-bottom: 36px;
+  }
+
+  :global(.model-buttons button),
+  :global(.submodel-buttons button) {
+    padding: 11px 22px;
+    font-size: 17px;
+  }
+
+  :global(.controls-row) {
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :global(.Calculator) {
+    padding: 60px 30px;
+  }
+
+  :global(.calculator-title) {
+    font-size: 28px;
+  }
+
+  :global(.model-selection-wrapper) {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  :global(.model-selection) {
+    width: 100%;
+  }
+
+  :global(.selected-car-image) {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  :global(.controls-row) {
+    flex-wrap: wrap;
+  }
+
+  :global(.control-group) {
+    flex: 1 1 45%;
+  }
+
+  :global(.parts-buttons) {
+    flex: 1 1 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  :global(.Calculator) {
+    padding: 50px 20px;
+  }
+  
+  :global(.calculator-title) {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+
+  :global(.section-title) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  :global(.section-title-link) {
+    font-size: 14px;
   }
   
   :global(.model-selection-wrapper) {
@@ -393,6 +475,16 @@ import './CustomSelect.astro';
   
   :global(.controls-row) {
     flex-direction: column;
+    gap: 16px;
+  }
+
+  :global(.control-group) {
+    width: 100%;
+    flex: none;
+  }
+
+  :global(.parts-buttons) {
+    width: 100%;
   }
   
   :global(.calculator_table) {
@@ -404,6 +496,110 @@ import './CustomSelect.astro';
     flex-direction: column;
     gap: 12px;
     width: 100%;
+  }
+
+  :global(.calculator_table__mobile .card) {
+    background: white;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.calculator_table__mobile .card .top) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  :global(.calculator_table__mobile .card .top .title) {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  :global(.calculator_table__mobile .card .top .price) {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  :global(.calculator_table__mobile .card .bottom) {
+    padding-top: 12px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  :global(.calculator_table__mobile .card .bottom .left) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  :global(.calculator_table__mobile .card .bottom .right) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  :global(.calculator_table__mobile .mobileFormButton) {
+    width: 100%;
+    background: #2b6eff;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  :global(.calculator_table__mobile .totalRow) {
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  :global(.calculator_table__mobile .totalRow .textBlock) {
+    width: 50% !important;
+    height: 48px;
+    background-color: black !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    text-transform: uppercase;
+    flex: none;
+  }
+
+  :global(.calculator_table__mobile .totalRow .sumBlock) {
+    width: 50% !important;
+    height: 48px;
+    background-color: white !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    text-transform: uppercase;
+    flex: none;
+    padding: 0;
+  }
+
+  :global(.calculator_table__mobile .mobileFormButton:hover) {
+    background: #1a5ce6;
   }
 }
 </style>
@@ -909,8 +1105,9 @@ import './CustomSelect.astro';
         margin-top: 12px;
     }
     .Calculator > .calculator_table__mobile > .totalRow > .textBlock {
+        width: 50% !important;
         height: 48px;
-        background-color: black;
+        background-color: black !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -920,12 +1117,12 @@ import './CustomSelect.astro';
         font-weight: 700;
         font-family: 'Russo One';
         text-transform: uppercase;
-        flex: 1;
+        flex: none;
     }
     .Calculator > .calculator_table__mobile > .totalRow > .sumBlock {
-        padding: 0px 32px;
+        width: 50% !important;
         height: 48px;
-        background-color: white;
+        background-color: white !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -935,6 +1132,8 @@ import './CustomSelect.astro';
         font-weight: 700;
         font-family: 'Russo One';
         text-transform: uppercase;
+        flex: none;
+        padding: 0;
     }
     .Calculator > .calculator_table__mobile > span.mobileFormButton {
         height: 50px;

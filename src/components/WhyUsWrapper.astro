@@ -2,7 +2,7 @@
 import WhyUs from './WhyUs';
 ---
 
-<WhyUs client:load />
+<WhyUs client:visible />
 
 <style>
 :global(.WhyUs) {
@@ -87,9 +87,32 @@ import WhyUs from './WhyUs';
   color: #ccc;
 }
 
+@media screen and (max-width: 1280px) {
+  :global(.WhyUs) {
+    padding: 70px 40px;
+  }
+
+  :global(.whyus-title) {
+    font-size: 30px;
+  }
+
+  :global(.whyus-subtitle) {
+    font-size: 17px;
+    margin-bottom: 50px;
+  }
+
+  :global(.advantages-grid) {
+    gap: 28px;
+  }
+
+  :global(.advantage-card) {
+    padding: 36px 28px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   :global(.WhyUs) {
-    padding: 60px 20px;
+    padding: 60px 30px;
   }
 
   :global(.whyus-title) {

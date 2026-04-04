@@ -80,6 +80,7 @@ import './CustomSelect.astro';
   color: #262626;
   font-weight: 600;
   margin-top: 24px;
+  font-family: 'Helvetica', sans-serif;
 }
 
 :global(.step-description) {
@@ -202,6 +203,36 @@ import './CustomSelect.astro';
   cursor: not-allowed;
 }
 
+@media screen and (max-width: 1024px) {
+  :global(.ServiceQuiz) {
+    padding: 60px 30px;
+  }
+
+  :global(.quiz-title) {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  :global(.step-title) {
+    font-size: 22px;
+  }
+
+  :global(.quiz-step .model-buttons button),
+  :global(.quiz-step .submodel-buttons button) {
+    padding: 10px 20px;
+    font-size: 17px;
+  }
+
+  :global(.services-grid) {
+    gap: 14px;
+  }
+
+  :global(.services-grid button) {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   :global(.ServiceQuiz) {
     padding: 40px 20px;
@@ -218,6 +249,7 @@ import './CustomSelect.astro';
   :global(.quiz-buttons) {
     flex-direction: column;
     width: 100%;
+    gap: 8px;
   }
 
   :global(.quiz-buttons button) {

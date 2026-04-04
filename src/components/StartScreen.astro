@@ -5,13 +5,17 @@ import BtnGoForm from './BtnGoForm.astro';
 
 <div class="startscreen">
   <div class="startscreen-bg">
-    <img
-      src="/images/mainbg.webp"
-      alt="Фоновое изображение технического центра YanisGrek"
-      loading="eager"
-      width="1920"
-      height="1080"
-    />
+    <picture>
+      <source media="(max-width: 768px)" srcset="/images/mainbgmobi.webp" />
+      <img
+        src="/images/mainbg.webp"
+        alt="Фоновое изображение технического центра YanisGrek"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1080"
+      />
+    </picture>
   </div>
   <div class="startscreen-wrapper">
     <div class="startscreen-content">
@@ -22,6 +26,7 @@ import BtnGoForm from './BtnGoForm.astro';
           width="374"
           height="104"
           loading="eager"
+          fetchpriority="high"
         />
         <div class="buttons">
           <BtnGoCalc />
@@ -119,7 +124,29 @@ import BtnGoForm from './BtnGoForm.astro';
     opacity: 0.8;
   }
 
+  @media (max-width: 1280px) {
+    .startscreen-wrapper {
+      padding: 0 40px 60px;
+    }
+
+    .startscreen-content {
+      gap: 50px;
+    }
+
+    .text-block p {
+      font-size: 22px;
+    }
+  }
+
   @media (max-width: 1024px) {
+    .startscreen-wrapper {
+      padding: 0 30px 60px;
+    }
+
+    .startscreen-content {
+      gap: 40px;
+    }
+
     .text-block p {
       font-size: 20px;
     }
