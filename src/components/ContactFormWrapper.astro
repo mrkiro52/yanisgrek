@@ -104,10 +104,15 @@ import ContactForm from './ContactForm';
   flex-direction: column;
   gap: 8px;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 :global(.datetime-wrapper) {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 :global(.calendar-icon) {
@@ -128,6 +133,8 @@ import ContactForm from './ContactForm';
   outline: none;
   font-family: 'Helvetica', sans-serif;
   transition: all 0.3s;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 :global(.form-input:focus) {
