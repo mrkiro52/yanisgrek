@@ -139,6 +139,21 @@ import Discounts from './Discounts';
   opacity: 0.8;
 }
 
+@media screen and (max-width: 1024px) {
+  :global(.Discounts) {
+    padding: 60px 40px;
+  }
+
+  :global(.discounts-title) {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  :global(.discounts-grid) {
+    gap: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   :global(.Discounts) {
     padding: 40px 20px;

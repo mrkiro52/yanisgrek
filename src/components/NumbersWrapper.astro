@@ -2,7 +2,7 @@
 import Numbers from './Numbers';
 ---
 
-<Numbers client:load />
+<Numbers client:visible />
 
 <style>
 :global(.numbersBlock) {
@@ -69,7 +69,26 @@ import Numbers from './Numbers';
   color: #2b6eff;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
+  :global(.numbersBlock > .content) {
+    width: 100%;
+    padding: 90px 60px;
+  }
+
+  :global(.numbersBlock > .content > .stats) {
+    gap: 50px;
+  }
+
+  :global(.numbersBlock > .content > .stats > .statItem > .statNumber) {
+    font-size: 52px;
+  }
+
+  :global(.numbersBlock > .content > .stats > .statItem > .statText) {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   :global(.numbersBlock > .content) {
     width: 100%;
     padding: 80px 40px;
@@ -79,6 +98,10 @@ import Numbers from './Numbers';
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
+
+  :global(.numbersBlock > .content > .stats > .statItem > .statNumber) {
+    font-size: 50px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -87,17 +110,17 @@ import Numbers from './Numbers';
   }
 
   :global(.numbersBlock > .content > .stats) {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   :global(.numbersBlock > .content > .stats > .statItem > .statNumber) {
-    font-size: 48px;
-    margin-bottom: 16px;
+    font-size: 40px;
+    margin-bottom: 12px;
   }
 
   :global(.numbersBlock > .content > .stats > .statItem > .statText) {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 </style>

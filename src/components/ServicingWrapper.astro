@@ -2,7 +2,7 @@
 import Servicing from './Servicing';
 ---
 
-<Servicing client:load />
+<Servicing client:visible />
 
 <style>
 :global(.Servicing) {
@@ -71,6 +71,33 @@ import Servicing from './Servicing';
   color: #666;
   line-height: 1.6;
   margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  :global(.Servicing) {
+    padding: 60px 40px;
+  }
+
+  :global(.servicing-title) {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  :global(.servicing-content) {
+    gap: 50px;
+  }
+
+  :global(.servicing-block) {
+    gap: 32px;
+  }
+
+  :global(.servicing-text h3) {
+    font-size: 26px;
+  }
+
+  :global(.servicing-text p) {
+    font-size: 17px;
+  }
 }
 
 @media screen and (max-width: 768px) {

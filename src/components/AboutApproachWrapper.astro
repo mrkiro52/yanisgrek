@@ -2,7 +2,7 @@
 import AboutApproach from './AboutApproach';
 ---
 
-<AboutApproach client:load />
+<AboutApproach client:visible />
 
 <style>
   :global(.about-approach) {
@@ -85,6 +85,30 @@ import AboutApproach from './AboutApproach';
     font-size: 18px;
     color: #262626;
     text-transform: uppercase;
+  }
+
+  @media (max-width: 1280px) {
+    :global(.about-approach) {
+      padding: 90px 40px;
+    }
+
+    :global(.about-approach__container) {
+      gap: 70px;
+    }
+
+    :global(.about-approach__title) {
+      font-size: 36px;
+      margin-bottom: 44px;
+    }
+
+    :global(.about-approach__blocks) {
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    :global(.about-approach__block) {
+      padding: 28px;
+    }
   }
 
   @media (max-width: 1024px) {

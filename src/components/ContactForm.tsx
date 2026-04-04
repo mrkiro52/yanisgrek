@@ -96,15 +96,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div 
-      className="ContactForm"
-      style={{
-        backgroundImage: `url('/images/formbg.webp')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <div className="ContactForm">
       <div className="contact-content">
         <div className="contact-left">
           <h2 className="contact-title">

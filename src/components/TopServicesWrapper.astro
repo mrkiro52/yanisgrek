@@ -2,7 +2,7 @@
 import TopServices from './TopServices';
 ---
 
-<TopServices client:load />
+<TopServices client:visible />
 
 <style>
 :global(.TopServices) {
@@ -162,9 +162,45 @@ import TopServices from './TopServices';
   color: white;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   :global(.TopServices) {
-    padding: 60px 20px;
+    padding: 70px 40px;
+  }
+
+  :global(.top-services-title) {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  :global(.main-services) {
+    gap: 20px;
+    margin-bottom: 50px;
+  }
+
+  :global(.main-service-card) {
+    padding: 36px;
+  }
+
+  :global(.main-service-card h3) {
+    font-size: 26px;
+  }
+
+  :global(.main-service-card p) {
+    font-size: 15px;
+  }
+
+  :global(.top-services-grid) {
+    gap: 20px;
+  }
+
+  :global(.top-service-card) {
+    padding: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :global(.TopServices) {
+    padding: 60px 30px;
   }
 
   :global(.top-services-title) {
@@ -185,6 +221,7 @@ import TopServices from './TopServices';
   }
 
   :global(.top-services-grid) {
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 }

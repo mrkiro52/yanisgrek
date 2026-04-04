@@ -7,13 +7,13 @@ import MobileMenu from './MobileMenu.astro';
   <div class="header-container">
     <!-- Бургер меню -->
     <button class="burger-menu" id="burgerBtn" aria-label="Открыть меню">
-      <Menu size={28} color="white" strokeWidth={2} client:load />
+      <Menu size={28} color="white" strokeWidth={2} client:idle />
     </button>
 
     <!-- Логотип -->
     <div class="logo">
       <a href="/">
-        <img src="/images/logo.svg" alt="YanisGrek" width="183" height="20" />
+        <img src="/images/logo.svg" alt="YanisGrek" width="183" height="20" loading="eager" fetchpriority="high" />
       </a>
     </div>
 
@@ -153,20 +153,47 @@ import MobileMenu from './MobileMenu.astro';
     font-weight: 600;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1280px) {
     .header-container {
       width: 100%;
+      padding: 0 40px;
+      gap: 30px;
+    }
+
+    .schedule,
+    .address {
+      font-size: 13px;
+    }
+
+    .phone {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .header-container {
+      padding: 0 30px;
+      gap: 24px;
     }
 
     .schedule,
     .address {
       font-size: 12px;
     }
+
+    .phone {
+      font-size: 14px;
+    }
   }
 
   @media (max-width: 768px) {
+    .header {
+      height: 70px;
+    }
+
     .header-container {
       width: 100%;
+      padding: 0 20px;
     }
 
     .schedule,
@@ -178,6 +205,10 @@ import MobileMenu from './MobileMenu.astro';
     .header-container {
       justify-content: space-between;
       gap: 20px;
+    }
+
+    .logo img {
+      height: 32px;
     }
   }
 </style>

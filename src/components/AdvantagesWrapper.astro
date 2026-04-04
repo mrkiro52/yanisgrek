@@ -2,7 +2,7 @@
 import Advantages from './Advantages';
 ---
 
-<Advantages client:load />
+<Advantages client:visible />
 
 <style>
 :global(.Advantages) {
@@ -68,9 +68,31 @@ import Advantages from './Advantages';
   font-weight: 500;
 }
 
+@media screen and (max-width: 1280px) {
+  :global(.Advantages) {
+    padding: 70px 40px;
+  }
+
+  :global(.advantages-list) {
+    gap: 28px;
+  }
+
+  :global(.advantage-image) {
+    height: 280px;
+  }
+
+  :global(.advantage-text) {
+    padding: 28px;
+  }
+
+  :global(.advantage-text p) {
+    font-size: 17px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   :global(.Advantages) {
-    padding: 60px 20px;
+    padding: 60px 30px;
   }
 
   :global(.advantages-list) {

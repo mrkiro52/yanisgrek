@@ -2,7 +2,7 @@
 import AboutStory from './AboutStory';
 ---
 
-<AboutStory client:load />
+<AboutStory client:visible />
 
 <style>
   :global(.about-story) {
@@ -90,6 +90,24 @@ import AboutStory from './AboutStory';
     font-size: 16px;
     color: #666;
     margin-bottom: 4px;
+  }
+
+  @media (max-width: 1280px) {
+    :global(.about-story) {
+      padding: 90px 40px;
+    }
+
+    :global(.about-story__container) {
+      gap: 70px;
+    }
+
+    :global(.about-story__title) {
+      font-size: 36px;
+    }
+
+    :global(.about-story__year-number) {
+      font-size: 52px;
+    }
   }
 
   @media (max-width: 1024px) {

@@ -2,7 +2,7 @@
 import Footer from './Footer';
 ---
 
-<Footer client:load />
+<Footer client:idle />
 
 <style>
 :global(.Footer) {
@@ -129,9 +129,19 @@ import Footer from './Footer';
   display: block;
 }
 
+@media screen and (max-width: 1280px) {
+  :global(.footer-main) {
+    padding: 50px 40px;
+  }
+
+  :global(.footer-container) {
+    gap: 50px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   :global(.footer-main) {
-    padding: 40px 20px;
+    padding: 40px 30px;
   }
 
   :global(.footer-container) {

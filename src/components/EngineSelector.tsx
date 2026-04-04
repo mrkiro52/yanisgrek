@@ -217,6 +217,35 @@ export default function EngineSelector() {
           gap: 10px;
         }
 
+        @media (max-width: 1280px) {
+          .engine-selector {
+            padding: 90px 40px;
+          }
+
+          .type-selector {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 80px;
+          }
+
+          .type-button {
+            padding: 38px 28px;
+          }
+
+          .type-name {
+            font-size: 22px;
+          }
+
+          .section-title {
+            font-size: 32px;
+            margin-bottom: 54px;
+          }
+
+          .engines-grid {
+            gap: 20px;
+          }
+        }
+
         @media (max-width: 1024px) {
           .type-selector {
             grid-template-columns: repeat(3, 1fr);
