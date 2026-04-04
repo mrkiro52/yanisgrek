@@ -6,7 +6,7 @@ import BtnGoForm from './BtnGoForm.astro';
 <div class="startscreen">
   <div class="startscreen-bg">
     <picture>
-      <source media="(max-width: 768px)" srcset="/images/mainbgmobi.webp" />
+      <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
       <img
         src="/images/mainbg.webp"
         alt="Фоновое изображение технического центра YanisGrek"
@@ -19,6 +19,13 @@ import BtnGoForm from './BtnGoForm.astro';
   </div>
   <div class="startscreen-wrapper">
     <div class="startscreen-content">
+      <img 
+        src="/images/mainimg.webp" 
+        alt="BMW автомобиль" 
+        class="mobile-car-image"
+        loading="eager"
+        fetchpriority="high"
+      />
       <div class="left-block">
         <img
           src="/images/techCenter.webp"
@@ -67,6 +74,10 @@ import BtnGoForm from './BtnGoForm.astro';
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .mobile-car-image {
+    display: none;
   }
 
   .startscreen-wrapper {
@@ -153,6 +164,21 @@ import BtnGoForm from './BtnGoForm.astro';
   }
 
   @media (max-width: 768px) {
+    .startscreen {
+      background-color: #000000;
+    }
+
+    .startscreen-bg {
+      display: none;
+    }
+
+    .mobile-car-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0;
+    }
+
     .startscreen-wrapper {
       padding: 0 20px 60px;
     }
