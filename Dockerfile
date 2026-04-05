@@ -1,16 +1,17 @@
-FROM node:22-alpine
+FROM node:22-alpine AS builder
 WORKDIR /app
-
-RUN npm install -g serve
 
 COPY package.json package-lock.json astro.config.mjs tsconfig.json ./
 COPY public ./public
 COPY src ./src
 
 RUN npm ci
-
 RUN npm run build
 
-EXPOSE 3000
+FROM nginx:alpine
 
-CMD ["serve", "-s", "dist", "-l", "3000"]
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]
