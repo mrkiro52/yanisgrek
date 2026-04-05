@@ -17,4 +17,4 @@ COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
-CMD ["sirv", "dist", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["sirv", "dist", "--host", "0.0.0.0", "--port", "3000", "--etag", "--max-age", "31536000"]
