@@ -1,24 +1,8 @@
 services:
-  app:
+  nginx:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: yanisgrek-app
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-    networks:
-      - app-network
-    ports:
-      - "3000:3000"
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 1.5G
-
-  nginx:
-    image: nginx:alpine
     container_name: yanisgrek-nginx
     restart: unless-stopped
     ports:
@@ -27,15 +11,9 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
-      - nginx_cache:/var/cache/nginx
-    depends_on:
-      - app
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  nginx_cache:
