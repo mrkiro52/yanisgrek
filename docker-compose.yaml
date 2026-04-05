@@ -1,8 +1,12 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: yanisgrek-app
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
     networks:
       - app-network
     ports:
