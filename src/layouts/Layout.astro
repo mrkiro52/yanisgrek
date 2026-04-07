@@ -61,18 +61,20 @@ const {
 			crossorigin 
 		/>
 		
-		<!-- Preload главного фонового изображения для LCP -->
-		<link 
-			rel="preload" 
-			as="image" 
-			href="/images/mainbgmobi.webp"
-			media="(max-width: 768px)"
-		/>
+		<!-- Preload главного фонового изображения для LCP (только десктоп) -->
 		<link 
 			rel="preload" 
 			as="image" 
 			href="/images/mainbg.webp"
 			media="(min-width: 769px)"
+		/>
+		
+		<!-- Preload мобильного изображения -->
+		<link 
+			rel="preload" 
+			as="image" 
+			href="/images/mainimg.webp"
+			media="(max-width: 768px)"
 		/>
 
 		<!-- Preconnect для внешних сервисов -->

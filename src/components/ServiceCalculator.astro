@@ -77,18 +77,26 @@ import './CustomSelect.astro';
   width: 28%;
   height: auto;
   object-fit: contain;
+  animation: carImageFadeIn 0.5s ease-in-out;
 }
 
-:global(.model-buttons),
-:global(.submodel-buttons) {
+@keyframes carImageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+:global(.model-buttons) {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 16px;
 }
 
-:global(.model-buttons button),
-:global(.submodel-buttons button) {
+:global(.model-buttons button) {
   background: white;
   border: none;
   padding: 12px 24px;
@@ -98,8 +106,7 @@ import './CustomSelect.astro';
   color: #262626;
 }
 
-:global(.model-buttons button.selected),
-:global(.submodel-buttons button.selected) {
+:global(.model-buttons button.selected) {
   background: black;
   color: white;
 }
@@ -286,6 +293,19 @@ import './CustomSelect.astro';
   height: 60px;
   display: flex;
   align-items: center;
+  animation: tableRowFadeIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes tableRowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :global(.calculator_table__cell--first) {
@@ -425,6 +445,7 @@ import './CustomSelect.astro';
   :global(.selected-car-image) {
     width: 60%;
     margin: 0 auto;
+    animation: carImageFadeIn 0.5s ease-in-out;
   }
 
   :global(.controls-row) {
@@ -459,6 +480,18 @@ import './CustomSelect.astro';
   :global(.section-title-link) {
     font-size: 14px;
   }
+
+  :global(.model-buttons) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  :global(.model-buttons button) {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
   
   :global(.model-selection-wrapper) {
     flex-direction: column;
@@ -471,6 +504,7 @@ import './CustomSelect.astro';
   :global(.selected-car-image) {
     width: 100%;
     margin-top: 20px;
+    animation: carImageFadeIn 0.5s ease-in-out;
   }
   
   :global(.controls-row) {
@@ -503,6 +537,8 @@ import './CustomSelect.astro';
     padding: 20px;
     border-radius: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: tableRowFadeIn 0.4s ease-out forwards;
+    opacity: 0;
   }
 
   :global(.calculator_table__mobile .card .top) {

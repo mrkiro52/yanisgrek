@@ -19,29 +19,23 @@ const services = [
 
 export default function ServiceQuiz() {
   const [step, setStep] = useState(1);
-  const [modelId, setModelId] = useState('M');
-  const [subId, setSubId] = useState('M8');
+  const [modelId, setModelId] = useState('1');
   const [seriesName, setSeriesName] = useState('');
   const [selectedService, setSelectedService] = useState<string[]>([]);
   const [vin, setVin] = useState('');
   const [phone, setPhone] = useState('');
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const subsList = useMemo(() => {
-    if (!modelId) return [];
-    return submodels[modelId] || [];
-  }, [modelId]);
-
   const seriesList = useMemo(() => {
-    if (!subId) return [];
-    return (maintenanceData[subId] || []).map(item => {
+    if (!modelId) return [];
+    return (maintenanceData[modelId] || []).map(item => {
       const name = Object.keys(item)[0];
       return { id: name, name };
     });
-  }, [subId]);
+  }, [modelId]);
 
   const handleNext = () => {
-    if (step === 1 && !subId) return;
+    if (step === 1 && !modelId) return;
     // Пропускаем шаг 2 если выбрана "Другая"
     if (step === 1 && modelId === 'OTHER') {
       setStep(3);
@@ -70,11 +64,16 @@ export default function ServiceQuiz() {
   };
 
   const handleSubmit = async () => {
+    const modelName = modelId === 'RR' ? 'Rolls Royce' 
+      : modelId === 'MINI' ? 'Mini Cooper' 
+      : modelId === 'OTHER' ? 'Другая' 
+      : `BMW ${modelId}`;
+    
     const success = await sendToTelegram({
       type: 'service-quiz',
       data: {
-        model: `${subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}`,
-        series: seriesName,
+        model: modelName,
+        series: seriesName || 'Не указана',
         services: selectedService,
         vin: vin || 'Не указан',
         phone: phone
@@ -100,12 +99,6 @@ export default function ServiceQuiz() {
         ? prev.filter(s => s !== service)
         : [...prev, service]
     );
-  };
-
-  const getModelSlug = (subId: string) => {
-    if (subId === 'RR') return 'rolls-royce';
-    if (subId === 'MINI') return 'mini-cooper';
-    return `bmw-${subId.toLowerCase()}`;
   };
 
   return (
@@ -134,49 +127,20 @@ export default function ServiceQuiz() {
                   onClick={() => {
                     if (m.id !== modelId) {
                       setModelId(m.id);
-                      setSubId('');
                       setSeriesName('');
+                      // Если выбрана не "Другая", автоматически выбираем первую серию
+                      if (m.id !== 'OTHER') {
+                        const list = maintenanceData[m.id] || [];
+                        const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
+                        setSeriesName(defaultSeries);
+                      }
                     }
                   }}
                 >
-                  {m.id === 'OTHER' ? m.name : `BMW ${m.name === 'Rolls' ? 'Rolls Royce' : m.name === 'Mini' ? 'Mini Cooper' : m.name}`}
+                  {m.id === 'RR' ? 'Rolls Royce' : m.id === 'MINI' ? 'Mini Cooper' : m.id === 'OTHER' ? 'Другая' : `BMW ${m.name}`}
                 </button>
               ))}
             </div>
-
-            {['X', 'M', 'i', 'z'].includes(modelId) && subsList.length > 0 && (
-              <>
-                <h4 className="substep-title">Уточните модель</h4>
-                <div className="submodel-buttons">
-                  {subsList.map(sm => (
-                    <button
-                      key={sm.id}
-                      className={sm.id === subId ? 'selected' : ''}
-                      onClick={() => {
-                        if (sm.id !== subId) {
-                          setSubId(sm.id);
-                          setSeriesName('');
-                        }
-                      }}
-                    >
-                      {sm.name}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {!['X', 'M', 'i', 'z'].includes(modelId) && modelId && subsList.length > 0 && (
-              <>
-                {(() => {
-                  const autoSubId = subsList[0]?.id;
-                  if (autoSubId && subId !== autoSubId) {
-                    setSubId(autoSubId);
-                  }
-                  return null;
-                })()}
-              </>
-            )}
           </div>
         )}
 
@@ -187,10 +151,7 @@ export default function ServiceQuiz() {
               <CustomSelect
                 value={seriesName}
                 onChange={setSeriesName}
-                options={[
-                  { value: '', label: 'Выберите серию' },
-                  ...seriesList.map(s => ({ value: s.name, label: s.name }))
-                ]}
+                options={seriesList.map(s => ({ value: s.name, label: s.name }))}
                 placeholder="Выберите серию"
               />
             </div>
@@ -270,7 +231,7 @@ export default function ServiceQuiz() {
           className="btn-next" 
           onClick={handleNext}
           disabled={
-            (step === 1 && !subId) ||
+            (step === 1 && !modelId) ||
             (step === 2 && !seriesName) ||
             (step === 3 && selectedService.length === 0) ||
             (step === 5 && !phone)
