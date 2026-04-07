@@ -16,25 +16,31 @@ export async function sendToTelegram(message: TelegramMessage): Promise<boolean>
 
     const formattedMessage = formatMessage(message);
     
-    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: formattedMessage,
-        parse_mode: 'HTML',
-      }),
+    // Используем URLSearchParams для отправки как form data
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const params = new URLSearchParams({
+      chat_id: TELEGRAM_CHAT_ID,
+      text: formattedMessage,
+      parse_mode: 'HTML',
     });
+
+    const response = await fetch(`${url}?${params.toString()}`, {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      console.error('Ошибка HTTP:', response.status);
+      return false;
+    }
 
     const result = await response.json();
     
     if (!result.ok) {
       console.error('Ошибка Telegram API:', result);
+      return false;
     }
     
-    return result.ok;
+    return true;
   } catch (error) {
     console.error('Ошибка отправки в Telegram:', error);
     return false;

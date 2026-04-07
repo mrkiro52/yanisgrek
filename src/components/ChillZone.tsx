@@ -17,25 +17,17 @@ export default function ChillZone() {
         </div>
 
         <div className="chillzone-gallery">
-          <div className="gallery-left">
-            <div className="image-wrapper">
-              <img src={images.image1} alt="Зона отдыха" loading="lazy" />
-            </div>
+          <div className="image-wrapper">
+            <img src={images.image1} alt="Зона отдыха" loading="lazy" />
           </div>
-          <div className="gallery-right">
-            <div className="gallery-top">
-              <div className="image-wrapper">
-                <img src={images.image2} alt="Зона отдыха" loading="lazy" />
-              </div>
-            </div>
-            <div className="gallery-bottom">
-              <div className="image-wrapper">
-                <img src={images.image3} alt="Зона отдыха" loading="lazy" />
-              </div>
-              <div className="image-wrapper">
-                <img src={images.image4} alt="Зона отдыха" loading="lazy" />
-              </div>
-            </div>
+          <div className="image-wrapper">
+            <img src={images.image2} alt="Зона отдыха" loading="lazy" />
+          </div>
+          <div className="image-wrapper">
+            <img src={images.image3} alt="Зона отдыха" loading="lazy" />
+          </div>
+          <div className="image-wrapper">
+            <img src={images.image4} alt="Зона отдыха" loading="lazy" />
           </div>
         </div>
       </div>

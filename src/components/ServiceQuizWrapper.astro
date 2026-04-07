@@ -137,8 +137,7 @@ import './CustomSelect.astro';
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 :global(.services-grid button) {
@@ -240,6 +239,20 @@ import './CustomSelect.astro';
 
   :global(.quiz-title) {
     font-size: 24px;
+  }
+
+  :global(.quiz-step .model-buttons),
+  :global(.quiz-step .submodel-buttons) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  :global(.quiz-step .model-buttons button),
+  :global(.quiz-step .submodel-buttons button) {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
   }
 
   :global(.services-grid) {

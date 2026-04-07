@@ -5,9 +5,8 @@ import { sendToTelegram } from '../utils/telegram';
 import SuccessPopup from './SuccessPopup';
 
 export default function ServiceCalc() {
-  // Инициализируем с null/дефолтными значениями для SSR
-  const [modelId, setModelId] = useState('M');
-  const [subId, setSubId] = useState('M8');
+  // Инициализируем с null для SSR, чтобы избежать дергания
+  const [modelId, setModelId] = useState<string>('');
   const [seriesName, setSeriesName] = useState('');
   const [mileage, setMileage] = useState(100000);
   const [partType, setPartType] = useState<'Оригинал' | 'Аналог'>('Оригинал');
@@ -19,14 +18,29 @@ export default function ServiceCalc() {
   // Загружаем из localStorage после гидрации
   useEffect(() => {
     const savedModelId = localStorage.getItem('selectedCarModelId');
-    const savedSubId = localStorage.getItem('selectedCarSubId');
+    const savedSeriesName = localStorage.getItem('selectedCarSeriesName');
     
-    if (savedSubId) {
-      setSubId(savedSubId);
-      // Если есть сохраненная подмодель, определяем правильный modelId
-      if (savedModelId) {
-        setModelId(savedModelId);
+    // Сначала проверяем localStorage, если нет - берем первую модель
+    let initialModelId = savedModelId || '1';
+    setModelId(initialModelId);
+    
+    // Если серия сохранена и она есть в текущей модели - используем её
+    // Иначе выбираем первую серию для модели
+    if (savedSeriesName) {
+      const list = maintenanceData[initialModelId] || [];
+      const seriesExists = list.some(item => Object.keys(item)[0] === savedSeriesName);
+      if (seriesExists) {
+        setSeriesName(savedSeriesName);
+      } else {
+        // Если сохраненная серия не подходит, выбираем первую
+        const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
+        setSeriesName(defaultSeries);
       }
+    } else {
+      // Если серия не сохранена, выбираем первую для модели
+      const list = maintenanceData[initialModelId] || [];
+      const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
+      setSeriesName(defaultSeries);
     }
     
     setIsHydrated(true);
@@ -39,17 +53,17 @@ export default function ServiceCalc() {
     }
   }, [modelId, isHydrated]);
 
-  // Сохраняем выбранную подмодель в localStorage при её изменении (только после гидрации)
+  // Сохраняем выбранную серию в localStorage при её изменении (только после гидрации)
   useEffect(() => {
-    if (isHydrated) {
-      localStorage.setItem('selectedCarSubId', subId);
+    if (isHydrated && seriesName) {
+      localStorage.setItem('selectedCarSeriesName', seriesName);
     }
-  }, [subId, isHydrated]);
+  }, [seriesName, isHydrated]);
 
   // Обновление услуг при изменении параметров
   useEffect(() => {
-    if (subId && seriesName) {
-      const list = maintenanceData[subId] || [];
+    if (modelId && seriesName) {
+      const list = maintenanceData[modelId] || [];
       const entry = list.find(item => Object.keys(item)[0] === seriesName);
       if (entry) {
         const data = entry[seriesName];
@@ -84,34 +98,7 @@ export default function ServiceCalc() {
       setFilteredServices([]);
       setSelectedRows([]);
     }
-  }, [subId, seriesName, mileage, partType]);
-
-  // Автовыбор подмодели при смене модели
-  useEffect(() => {
-    if (!modelId) return;
-    const subs = submodels[modelId] || [];
-    
-    // Проверяем, есть ли сохраненный subId в списке подмоделей текущей модели
-    const savedSubId = localStorage.getItem('selectedCarSubId');
-    if (savedSubId && subs.some((sm: any) => sm.id === savedSubId)) {
-      setSubId(savedSubId);
-    } else {
-      // Если нет, выбираем первую подмодель
-      const defaultSub = subs.length > 0 ? subs[0].id : '';
-      setSubId(defaultSub);
-    }
-  }, [modelId]);
-
-  // Автовыбор серии при смене подмодели
-  useEffect(() => {
-    if (!subId) {
-      setSeriesName('');
-      return;
-    }
-    const list = maintenanceData[subId] || [];
-    const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
-    setSeriesName(defaultSeries);
-  }, [subId]);
+  }, [modelId, seriesName, mileage, partType]);
 
   const toggleRow = (idx: number) => {
     setSelectedRows(prev => prev.map((v, i) => i === idx ? !v : v));
@@ -148,7 +135,7 @@ export default function ServiceCalc() {
     const success = await sendToTelegram({
       type: 'calculator',
       data: {
-        model: `${subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}`,
+        model: `${modelId === 'RR' ? 'Rolls Royce' : modelId === 'MINI' ? 'Mini Cooper' : `BMW ${modelId}`}`,
         series: seriesName,
         mileage: mileage,
         partType: partType,
@@ -163,24 +150,28 @@ export default function ServiceCalc() {
     } else {
       alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
     }
-  };  const subsList = useMemo(() => submodels[modelId] || [], [modelId]);
-  const seriesList = useMemo(() => {
-    if (!subId) return [];
-    return (maintenanceData[subId] || []).map(item => {
+  };  const seriesList = useMemo(() => {
+    if (!modelId) return [];
+    return (maintenanceData[modelId] || []).map(item => {
       const name = Object.keys(item)[0];
       return { id: name, name };
     });
-  }, [subId]);
+  }, [modelId]);
 
-  const getModelSlug = (subId: string) => {
-    if (subId === 'RR') return 'rolls-royce';
-    if (subId === 'MINI') return 'mini-cooper';
-    return `bmw-${subId.toLowerCase()}`;
+  const getModelSlug = (modelId: string) => {
+    if (modelId === 'RR') return 'rolls-royce';
+    if (modelId === 'MINI') return 'mini-cooper';
+    return `bmw-${modelId.toLowerCase()}`;
   };
 
   const getCarImage = (fileName: string) => {
     return `/images/cars/${fileName}.webp`;
   };
+
+  // Не отрисовываем компонент до гидрации, чтобы избежать дергания
+  if (!isHydrated || !modelId) {
+    return null;
+  }
 
   return (
     <div className="Calculator ServiceCalc">
@@ -190,14 +181,6 @@ export default function ServiceCalc() {
 
       <h3 className="section-title">
         <span>Выберите модель</span>
-        {subId && (
-          <a 
-            href={`/cars/${getModelSlug(subId)}`}
-            className="section-title-link"
-          >
-            Перейти на страницу {subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
-          </a>
-        )}
       </h3>
 
       <div className="model-selection-wrapper">
@@ -210,47 +193,25 @@ export default function ServiceCalc() {
                 onClick={() => {
                   if (m.id !== modelId) {
                     setModelId(m.id);
-                    setSubId('');
-                    setSeriesName('');
+                    // Автоматически выбираем первую серию для новой модели
+                    const list = maintenanceData[m.id] || [];
+                    const defaultSeries = list.length > 0 ? Object.keys(list[0])[0] : '';
+                    setSeriesName(defaultSeries);
                   }
                 }}
               >
-                BMW {m.name === 'Rolls' ? 'Rolls Royce' : m.name === 'Mini' ? 'Mini Cooper' : m.name}
+                {m.id === 'RR' ? 'Rolls Royce' : m.id === 'MINI' ? 'Mini Cooper' : `BMW ${m.name}`}
               </button>
             ))}
           </div>
-          
-          {/* Второй ряд для X, M, i */}
-          {['X', 'M', 'i', 'z'].includes(modelId) && subsList.length > 0 && (
-            <>
-              <h3 className="section-title" style={{ marginTop: '24px' }}>
-                <span>Уточните модель</span>
-              </h3>
-              <div className="submodel-buttons">
-                {subsList.map(sm => (
-                  <button
-                    key={sm.id}
-                    className={sm.id === subId ? 'selected' : ''}
-                    onClick={() => {
-                      if (sm.id !== subId) {
-                        setSubId(sm.id);
-                        setSeriesName('');
-                      }
-                    }}
-                  >
-                    {sm.name}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
         </div>
 
-        {subId && (
+        {modelId && (
           <img 
+            key={modelId}
             className="selected-car-image"
-            src={`/images/cars/${getModelSlug(subId)}.webp`}
-            alt={subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`}
+            src={`/images/cars/${getModelSlug(modelId)}.webp`}
+            alt={modelId === 'RR' ? 'Rolls Royce' : modelId === 'MINI' ? 'Mini Cooper' : `BMW ${modelId}`}
             loading="lazy"
           />
         )}
@@ -262,10 +223,7 @@ export default function ServiceCalc() {
           <CustomSelect
             value={seriesName}
             onChange={setSeriesName}
-            options={[
-              { value: '', label: 'Выберите серию' },
-              ...seriesList.map(s => ({ value: s.name, label: s.name }))
-            ]}
+            options={seriesList.map(s => ({ value: s.name, label: s.name }))}
             placeholder="Выберите серию"
           />
         </div>
@@ -299,31 +257,23 @@ export default function ServiceCalc() {
         </div>
       </div>
 
-      {subId && seriesName && (
-        <div className="series-link-wrapper">
-          <a 
-            href={`/cars/${getModelSlug(subId)}/${seriesName.toLowerCase().replace(/\s+/g, '-')}`}
-            className="series-link"
-          >
-            Перейти на страницу {subId === 'RR' ? 'Rolls Royce' : subId === 'MINI' ? 'Mini Cooper' : `BMW ${subId}`} {seriesName}
-          </a>
-        </div>
-      )}
-
-      {subId && seriesName && mileage > 0 && (
-        <div className="calculator_table">
-          <div className="calculator_table__row--header">
+      <div className="calculator_table">
+        <div className="calculator_table__row--header">
           <div className="calculator_table__cell--first">Услуга</div>
           <div className="calculator_table__cell">Стоимость запчастей</div>
           <div className="calculator_table__cell">Стоимость работ</div>
           <div className="calculator_table__cell">Общая стоимость</div>
         </div>
-        {filteredServices
+        {modelId && seriesName && mileage > 0 && filteredServices
           .filter(s => Number(s.part_price) !== 0 || Number(s.labor_price) !== 0)
           .map((s, idx) => {
             const total = Number(s.part_price) + Number(s.labor_price);
             return (
-              <div className="calculator_table__row" key={idx}>
+              <div 
+                className="calculator_table__row" 
+                key={idx}
+                style={{ animationDelay: `${idx * 0.05}s` }}
+              >
                 <div 
                   className="calculator_table__cell--first"
                   onClick={() => toggleRow(idx)}
@@ -356,16 +306,19 @@ export default function ServiceCalc() {
           </div>
         </div>
       </div>
-      )}
 
-      {subId && seriesName && mileage > 0 && (
-        <div className="calculator_table__mobile">
-        {filteredServices
+      <div className="calculator_table__mobile">
+          {modelId && seriesName && mileage > 0 && filteredServices
           .filter(s => Number(s.part_price) !== 0 || Number(s.labor_price) !== 0)
           .map((s, idx) => {
             const total = Number(s.part_price) + Number(s.labor_price);
             return (
-              <div className="card" key={idx} onClick={() => toggleRow(idx)}>
+              <div 
+                className="card" 
+                key={idx} 
+                onClick={() => toggleRow(idx)}
+                style={{ animationDelay: `${idx * 0.05}s` }}
+              >
                 <div className="top">
                   <div className={`sq ${selectedRows[idx] ? 'selected' : ''}`}></div>
                   <span className="title">{s.name}</span>
@@ -392,7 +345,6 @@ export default function ServiceCalc() {
           Записаться через форму
         </span>
       </div>
-      )}
 
       <SuccessPopup isOpen={showSuccessPopup} onClose={() => setShowSuccessPopup(false)} />
     </div>

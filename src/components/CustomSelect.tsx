@@ -5,9 +5,10 @@ interface CustomSelectProps {
   onChange: (value: string) => void;
   options: { value: string; label: string }[];
   placeholder?: string;
+  disabled?: boolean;
 }
 
-export default function CustomSelect({ value, onChange, options, placeholder = 'Выберите' }: CustomSelectProps) {
+export default function CustomSelect({ value, onChange, options, placeholder = 'Выберите', disabled = false }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -27,8 +28,8 @@ export default function CustomSelect({ value, onChange, options, placeholder = '
   return (
     <div className="custom-select" ref={selectRef}>
       <div 
-        className="custom-select__trigger"
-        onClick={() => setIsOpen(!isOpen)}
+        className={`custom-select__trigger ${disabled ? 'disabled' : ''}`}
+        onClick={() => !disabled && setIsOpen(!isOpen)}
       >
         <span>{selectedOption ? selectedOption.label : placeholder}</span>
         <svg

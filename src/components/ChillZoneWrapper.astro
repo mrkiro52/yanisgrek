@@ -42,47 +42,16 @@ import ChillZone from './ChillZone';
 
 :global(.chillzone-gallery) {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   width: 100%;
-  max-width: 1224px;
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-:global(.gallery-left) {
-  width: 100%;
-  aspect-ratio: 1;
-  position: relative;
-}
-
-:global(.gallery-left .image-wrapper) {
-  width: 100%;
-  height: 100%;
-}
-
-:global(.gallery-right) {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-}
-
-:global(.gallery-top) {
-  width: 100%;
-  aspect-ratio: 600/288;
-}
-
-:global(.gallery-bottom) {
-  width: 100%;
-  aspect-ratio: 600/288;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
 }
 
 :global(.image-wrapper) {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1;
   overflow: hidden;
   position: relative;
 }
