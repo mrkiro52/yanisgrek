@@ -980,6 +980,23 @@ export const models = [
   { id: 'z', name: 'z серия' },
   { id: 'RR', name: 'Rolls Royce' },
   { id: 'MINI', name: 'Mini Cooper' },
+];
+
+// Модели для формы "Получите расчет конкретной услуги" (включает "Другая")
+export const modelsWithOther = [
+  { id: '1', name: '1 серия' },
+  { id: '2', name: '2 серия' },
+  { id: '3', name: '3 серия' },
+  { id: '4', name: '4 серия' },
+  { id: '5', name: '5 серия' },
+  { id: '6', name: '6 серия' },
+  { id: '7', name: '7 серия' },
+  { id: 'X', name: 'X серия' },
+  { id: 'M', name: 'M серия' },
+  { id: 'i', name: 'i серия' },
+  { id: 'z', name: 'z серия' },
+  { id: 'RR', name: 'Rolls Royce' },
+  { id: 'MINI', name: 'Mini Cooper' },
   { id: 'OTHER', name: 'Другая' },
 ];
 

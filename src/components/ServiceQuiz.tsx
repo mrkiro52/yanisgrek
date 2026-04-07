@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { maintenanceData, models, submodels } from '../assets/maintenanceData';
+import { maintenanceData, modelsWithOther, submodels } from '../assets/maintenanceData';
 import CustomSelect from './CustomSelect';
 import { sendToTelegram } from '../utils/telegram';
 import SuccessPopup from './SuccessPopup';
@@ -120,7 +120,7 @@ export default function ServiceQuiz() {
           <div className="quiz-step">
             <h3 className="step-title">Шаг 1: Выберите модель вашей машины</h3>
             <div className="model-buttons">
-              {models.map(m => (
+              {modelsWithOther.map(m => (
                 <button
                   key={m.id}
                   className={m.id === modelId ? 'selected' : ''}
