@@ -5,6 +5,8 @@ import YandexMapWrapper from '../components/YandexMapWrapper.astro';
 import FooterWrapper from '../components/FooterWrapper.astro';
 import '../styles/global.css';
 
+import CallButton from '../components/CallButton.astro';
+
 interface Props {
   title?: string;
   description?: string;
@@ -96,13 +98,14 @@ const {
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header />
-		<main class="main-content">
-			<slot />
-		</main>
-		<ContactFormWrapper />
-		<YandexMapWrapper />
-		<FooterWrapper />
+			<Header />
+			<main class="main-content">
+				<slot />
+			</main>
+			<ContactFormWrapper />
+			<YandexMapWrapper />
+			<FooterWrapper />
+			<CallButton />
 	</body>
 </html>
 
