@@ -98,6 +98,9 @@ export default function Footer() {
             ))}
           </div>
         </div>
+        <div className="footer-disclaimer" style={{fontSize: '11px', color: '#888', marginTop: '12px', textAlign: 'center', lineHeight: '1.5'}}>
+          Не является публичной офертой. Цены могут меняться, уточните информацию по телефону. Акция не является публичной офертой.
+        </div>
       </div>
     </footer>
   );

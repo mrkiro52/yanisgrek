@@ -21,8 +21,8 @@ export default function Numbers() {
             </div>
           </div>
           <div className="statItem">
-            <div className="statNumber">2</div>
-            <div className="statText">года гарантии</div>
+            <div className="statNumber">до 2</div>
+            <div className="statText">лет гарантии</div>
           </div>
           <div className="statItem">
             <div className="statNumber">8000+</div>
