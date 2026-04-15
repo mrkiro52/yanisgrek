@@ -6,15 +6,15 @@ export default function AboutTeam() {
   const [isAutoplay, setIsAutoplay] = useState(true);
 
   const team = [
-    { name: 'Александр', role: 'Директор автосервиса', image: '/images/workers/worker1.webp' },
-    { name: 'Максим', role: 'Мастер приемщик', image: '/images/workers/worker2.webp' },
-    { name: 'Сергей', role: 'Механик', image: '/images/workers/worker3.webp' },
-    { name: 'Дмитрий', role: 'Мастер приемщик', image: '/images/workers/worker4.webp' },
-    { name: 'Александр', role: 'Механик', image: '/images/workers/worker5.webp' },
-    { name: 'Тимур', role: 'Мастер приемщик', image: '/images/workers/worker6.webp' },
-    { name: 'Гайрат', role: 'Механик', image: '/images/workers/worker7.webp' },
-    { name: 'Олег', role: 'Механик', image: '/images/workers/worker8.webp' },
-    { name: 'Виталий', role: 'Механик', image: '/images/workers/worker9.webp' },
+    { name: 'Александр', role: 'Директор автосервиса', image: 'https://s3.regru.cloud/yanis-grek/workers/worker1.webp' },
+    { name: 'Максим', role: 'Мастер приемщик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker2.webp' },
+    { name: 'Сергей', role: 'Механик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker3.webp' },
+    { name: 'Дмитрий', role: 'Мастер приемщик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker4.webp' },
+    { name: 'Александр', role: 'Механик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker5.webp' },
+    { name: 'Тимур', role: 'Мастер приемщик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker6.webp' },
+    { name: 'Гайрат', role: 'Механик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker7.webp' },
+    { name: 'Олег', role: 'Механик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker8.webp' },
+    { name: 'Виталий', role: 'Механик', image: 'https://s3.regru.cloud/yanis-grek/workers/worker9.webp' },
   ];
 
   useEffect(() => {

@@ -2,24 +2,18 @@
 // Компонент кнопки "Оставить заявку"
 ---
 
-<button class="btn-go-form" onclick="handleFormScroll()">
+<button class="btn-go-form" id="btn-go-form">
   Оставить заявку
 </button>
 
 <script>
-  function handleFormScroll() {
-    // Ищем форму заявки
-    const formElement = document.getElementById('Form') || document.getElementById('service-quiz');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      // Если формы нет на этой странице, переходим на главную с якорем
-      window.location.href = '/#service-quiz';
-    }
+  const button = document.getElementById('btn-go-form');
+  if (button) {
+    button.addEventListener('click', () => {
+      // Диспатчим событие для открытия попапа
+      window.dispatchEvent(new CustomEvent('openQuickRequest'));
+    });
   }
-  
-  // Прикрепляем функцию к window для доступа с других компонентов
-  (window as any).handleFormScroll = handleFormScroll;
 </script>
 
 <style>
