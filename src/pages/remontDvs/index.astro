@@ -58,7 +58,7 @@ const description = serviceData.description;
       </div>
 
       <div class="service-cta">
-        <button class="cta-button" onclick="smoothScroll()">Записаться на услугу</button>
+        <button class="cta-button" onclick="openQuickRequest()">Записаться на услугу</button>
       </div>
     </div>
 
@@ -75,28 +75,16 @@ const description = serviceData.description;
 </Layout>
 
 <script>
-  function smoothScroll() {
-    let element = document.getElementById('service-quiz');
-    
-    if (!element) {
-      element = document.querySelector('[data-form-section]');
-    }
-    
-    if (!element) {
-      element = document.getElementById('Form');
-    }
-    
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  function openQuickRequest() {
+    window.dispatchEvent(new CustomEvent('openQuickRequest'));
   }
   
-  (window as any).smoothScroll = smoothScroll;
+  (window as any).openQuickRequest = openQuickRequest;
   
   document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.service-btn-booking, .cta-button');
     buttons.forEach(button => {
-      button.addEventListener('click', smoothScroll);
+      button.addEventListener('click', openQuickRequest);
     });
   });
 </script>

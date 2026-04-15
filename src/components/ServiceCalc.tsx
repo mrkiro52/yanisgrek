@@ -111,10 +111,7 @@ export default function ServiceCalc() {
   , [filteredServices, selectedRows]);
 
   const scrollToBottom = () => {
-    const contactForm = document.querySelector('.ContactForm');
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.dispatchEvent(new CustomEvent('openQuickRequest'));
   };
 
   const sendCalculatorData = async () => {
@@ -165,7 +162,23 @@ export default function ServiceCalc() {
   };
 
   const getCarImage = (fileName: string) => {
-    return `/images/cars/${fileName}.webp`;
+    const imageMap: { [key: string]: string } = {
+      'bmw-1': 'https://s3.regru.cloud/yanis-grek/cars/bmw-1.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=a5n8Z6E6T09sE7TR1xFUptcpDFo%3D&Expires=1776872787',
+      'bmw-2': 'https://s3.regru.cloud/yanis-grek/cars/bmw-2.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n5Ty%2FmaS8%2BsGj0kJ3%2FXmxkQqAzI%3D&Expires=1776872803',
+      'bmw-3': 'https://s3.regru.cloud/yanis-grek/cars/bmw-3.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=pCoL8wX5BR%2BkVOKt7NvkpxA63zY%3D&Expires=1776872844',
+      'bmw-4': 'https://s3.regru.cloud/yanis-grek/cars/bmw-4.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=bTiOy3ZmtjjEwXf7hzFISe99CvY%3D&Expires=1776872856',
+      'bmw-5': 'https://s3.regru.cloud/yanis-grek/cars/bmw-5.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=fNLCfrqex9UmlgDR4qNN1QqmReA%3D&Expires=1776872874',
+      'bmw-6': 'https://s3.regru.cloud/yanis-grek/cars/bmw-6.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=7QAKSqVYwCgGzL1O2CUDUkAC8tA%3D&Expires=1776872887',
+      'bmw-7': 'https://s3.regru.cloud/yanis-grek/cars/bmw-7.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=uiuI2H3je3ci%2BzSV4d28jlN9fEo%3D&Expires=1776872896',
+      'bmw-8': 'https://s3.regru.cloud/yanis-grek/cars/bmw-7.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=uiuI2H3je3ci%2BzSV4d28jlN9fEo%3D&Expires=1776872896',
+      'bmw-x': 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934',
+      'bmw-m': 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917',
+      'bmw-i': 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904',
+      'bmw-z': 'https://s3.regru.cloud/yanis-grek/cars/bmw-z.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=tHzm3YTMKZcoiyw5MPelo1AqbBw%3D&Expires=1776872944',
+      'mini-cooper': 'https://s3.regru.cloud/yanis-grek/cars/mini-cooper.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Uy1QaiUqFu48h09ekTWOk%2BXiymw%3D&Expires=1776872956',
+      'rolls-royce': 'https://s3.regru.cloud/yanis-grek/cars/rolls-royce.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=p0RLEJEQswBK3dEQ%2BedV4P8YHmc%3D&Expires=1776873015'
+    };
+    return imageMap[fileName] || '/images/cars/' + fileName + '.webp';
   };
 
   // Не отрисовываем компонент до гидрации, чтобы избежать дергания
@@ -210,7 +223,7 @@ export default function ServiceCalc() {
           <img 
             key={modelId}
             className="selected-car-image"
-            src={`/images/cars/${getModelSlug(modelId)}.webp`}
+            src={getCarImage(getModelSlug(modelId))}
             alt={modelId === 'RR' ? 'Rolls Royce' : modelId === 'MINI' ? 'Mini Cooper' : `BMW ${modelId}`}
             loading="lazy"
           />

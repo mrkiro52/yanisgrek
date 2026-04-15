@@ -2,7 +2,7 @@ const TELEGRAM_BOT_TOKEN = '8432413502:AAGc6KyVjREe9J1384idB9URnJpo_gjfy_k';
 const TELEGRAM_CHAT_ID = '-4730139718';
 
 interface TelegramMessage {
-  type: 'calculator' | 'service-quiz' | 'discount' | 'contact-form';
+  type: 'calculator' | 'service-quiz' | 'discount' | 'contact-form' | 'quick-request';
   data: Record<string, any>;
   url: string;
 }
@@ -110,6 +110,16 @@ ${data.vin ? `🔢 <b>VIN:</b> ${data.vin}` : ''}
 📱 <b>Телефон:</b> ${data.phone}
 ${data.vin ? `🔢 <b>VIN:</b> ${data.vin}` : ''}
 📅 <b>Дата и время:</b> ${data.datetime}
+`;
+      break;
+
+    case 'quick-request':
+      text = `
+📞 <b>БЫСТРАЯ ЗАЯВКА</b>
+
+📍 <b>Страница:</b> ${url}
+
+📱 <b>Телефон:</b> ${data.phone}
 `;
       break;
   }

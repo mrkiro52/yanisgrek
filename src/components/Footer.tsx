@@ -1,12 +1,12 @@
 export default function Footer() {
   const services = [
-    { name: 'Ремонт коробки передач', href: '/remontAkpp' },
-    { name: 'Ремонт двигателя', href: '/remontDvs' },
-    { name: 'Замена воздушного фильтра', href: '/services' },
-    { name: 'Замена тормозных дисков', href: '/services' },
-    { name: 'Диагностика ДВС', href: '/services' },
-    { name: 'Мойка радиаторов', href: '/services' },
-    { name: 'Замена масла ДВС', href: '/services' }
+    { name: 'Ремонт коробки передач', href: '/services/remont-korobki-peredach' },
+    { name: 'Ремонт двигателя', href: '/services/remont-dvigatelya' },
+    { name: 'Замена воздушного фильтра', href: '/services/zamena-vozdushnyy-filter' },
+    { name: 'Замена тормозных дисков', href: '/services/zamena-tormoznye-diski' },
+    { name: 'Диагностика ДВС', href: '/services/diagnostika-dvs' },
+    { name: 'Мойка радиаторов', href: '/services/mojka-radiatorov' },
+    { name: 'Замена масла ДВС', href: '/services/zamena-masla-dvs' }
   ];
 
   const links = [

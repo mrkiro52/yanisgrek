@@ -1,298 +1,634 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import TopServicesWrapper from '../../components/TopServicesWrapper.astro';
+import DiscountsWrapper from '../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../components/ServicingWrapper.astro';
+import NumbersWrapper from '../../components/NumbersWrapper.astro';
+import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
 
-const carModels = [
-  {
-    slug: 'bmw-1',
-    title: 'BMW 1 серия',
-    description: 'Компактный премиум-класс',
-  },
-  {
-    slug: 'bmw-2',
-    title: 'BMW 2 серия',
-    description: 'Спортивный премиум-класс',
-  },
-  {
-    slug: 'bmw-3',
-    title: 'BMW 3 серия',
-    description: 'Легендарный седан',
-  },
-  {
-    slug: 'bmw-4',
-    title: 'BMW 4 серия',
-    description: 'Премиум купе и кабриолет',
-  },
-  {
-    slug: 'bmw-5',
-    title: 'BMW 5 серия',
-    description: 'Премиум-седан для бизнеса',
-  },
-  {
-    slug: 'bmw-6',
-    title: 'BMW 6 серия',
-    description: 'Люксовое купе',
-  },
-  {
-    slug: 'bmw-7',
-    title: 'BMW 7 серия',
-    description: 'Королевский премиум-седан',
-  },
-  {
-    slug: 'bmw-m5',
-    title: 'BMW M5',
-    description: 'Легендарный спортсмен',
-  },
-  {
-    slug: 'bmw-x3',
-    title: 'BMW X3',
-    description: 'Компактный кроссовер',
-  },
-  {
-    slug: 'bmw-x5',
-    title: 'BMW X5',
-    description: 'Премиум-кроссовер',
-  },
-  {
-    slug: 'bmw-x6',
-    title: 'BMW X6',
-    description: 'Спортивный кроссовер',
-  },
-  {
-    slug: 'rolls-royce',
-    title: 'Rolls Royce',
-    description: 'Король роскоши',
-  },
-  {
-    slug: 'mini-cooper',
-    title: 'Mini Cooper',
-    description: 'Британский классик',
-  }
+const title = 'Ремонт всех моделей BMW, Mini Cooper, Rolls Royce - YanisGrek';
+const description = 'Профессиональный ремонт и обслуживание всех моделей BMW: седаны, кроссоверы, купе, электромобили, M-серия и i-серия. Также обслуживаем Mini Cooper и Rolls Royce. Качественный сервис с гарантией.';
+
+const bmwModels = [
+  // Стандартные серии
+  { name: 'BMW 1 серия', slug: 'bmw-1', type: 'Компактный хэтчбек', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-1.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=a5n8Z6E6T09sE7TR1xFUptcpDFo%3D&Expires=1776872787' },
+  { name: 'BMW 2 серия', slug: 'bmw-2', type: 'Спортивный хэтчбек', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-2.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n5Ty%2FmaS8%2BsGj0kJ3%2FXmxkQqAzI%3D&Expires=1776872803' },
+  { name: 'BMW 3 серия', slug: 'bmw-3', type: 'Премиум-седан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-3.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=pCoL8wX5BR%2BkVOKt7NvkpxA63zY%3D&Expires=1776872844' },
+  { name: 'BMW 4 серия', slug: 'bmw-4', type: 'Купе / Кабриолет', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-4.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=bTiOy3ZmtjjEwXf7hzFISe99CvY%3D&Expires=1776872856' },
+  { name: 'BMW 5 серия', slug: 'bmw-5', type: 'Премиум-седан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-5.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=fNLCfrqex9UmlgDR4qNN1QqmReA%3D&Expires=1776872874' },
+  { name: 'BMW 6 серия', slug: 'bmw-6', type: 'Люксовое купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-6.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=7QAKSqVYwCgGzL1O2CUDUkAC8tA%3D&Expires=1776872887' },
+  { name: 'BMW 7 серия', slug: 'bmw-7', type: 'Королевский седан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-7.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=uiuI2H3je3ci%2BzSV4d28jlN9fEo%3D&Expires=1776872896' },
+  { name: 'BMW 8 серия', slug: 'bmw-8', type: 'Люксовое купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-7.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=uiuI2H3je3ci%2BzSV4d28jlN9fEo%3D&Expires=1776872896' },
+  
+  // X серии
+  { name: 'BMW X1', slug: 'bmw-x1', type: 'Компактный кроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X2', slug: 'bmw-x2', type: 'Спортивный кроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X3', slug: 'bmw-x3', type: 'Спортивный кроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X3M', slug: 'bmw-x3m', type: 'М-кроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW X4', slug: 'bmw-x4', type: 'Кроссовер-купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X4M', slug: 'bmw-x4m', type: 'М-кроссовер-купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW X5', slug: 'bmw-x5', type: 'Премиум-внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X5M', slug: 'bmw-x5m', type: 'М-внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW X6', slug: 'bmw-x6', type: 'Спортивный внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW X6M', slug: 'bmw-x6m', type: 'М-внедорожник-купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW X7', slug: 'bmw-x7', type: 'Люксовый внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-x.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=n15T2Veap8IpLOTuQS9mLDs08jo%3D&Expires=1776872934' },
+  { name: 'BMW XM', slug: 'bmw-xm', type: 'Гибридный M-внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  
+  // M серии
+  { name: 'BMW M2', slug: 'bmw-m2', type: 'Спортивный купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW M3', slug: 'bmw-m3', type: 'Спортивный седан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW M4', slug: 'bmw-m4', type: 'Спортивное купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW M5', slug: 'bmw-m5', type: 'Спортивный суперседан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  { name: 'BMW M8', slug: 'bmw-m8', type: 'Спортивное люксовое купе', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-m.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Wf5KiJrOQdy%2FUgjPZqcjnkRW934%3D&Expires=1776872917' },
+  
+  // i серия (электрические)
+  { name: 'BMW i3', slug: 'bmw-i3', type: 'Электромобиль', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW i4', slug: 'bmw-i4', type: 'Электроседан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW i7', slug: 'bmw-i7', type: 'Люксовый электроседан', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW i8', slug: 'bmw-i8', type: 'Гибридный спортсмен', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW iX', slug: 'bmw-ix', type: 'Люксовый электрокроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW iX2', slug: 'bmw-ix2', type: 'Компактный электрокроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW iX3', slug: 'bmw-ix3', type: 'Электрокроссовер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  { name: 'BMW iX5', slug: 'bmw-ix5', type: 'Люксовый электро-внедорожник', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-i.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=kgDqyP7VZToeeQNbI458a%2BZiC6g%3D&Expires=1776872904' },
+  
+  // Z серия
+  { name: 'BMW Z3', slug: 'bmw-z3', type: 'Классический родстер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-z.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=tHzm3YTMKZcoiyw5MPelo1AqbBw%3D&Expires=1776872944' },
+  { name: 'BMW Z4', slug: 'bmw-z4', type: 'Современный родстер', image: 'https://s3.regru.cloud/yanis-grek/cars/bmw-z.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=tHzm3YTMKZcoiyw5MPelo1AqbBw%3D&Expires=1776872944' }
 ];
 
-const title = 'Модели BMW - YanisGrek';
-const description = 'Каталог моделей BMW, доступных для обслуживания и ремонта в нашем техническом центре. Полный спектр услуг для всех моделей BMW и премиум-марок.';
+const luxuryModels = [
+  { name: 'Rolls Royce', slug: 'rolls-royce', type: 'Люксовый премиум-седан', image: 'https://s3.regru.cloud/yanis-grek/cars/rolls-royce.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=p0RLEJEQswBK3dEQ%2BedV4P8YHmc%3D&Expires=1776873015' },
+  { name: 'Mini Cooper', slug: 'mini-cooper', type: 'Компактный городской автомобиль', image: 'https://s3.regru.cloud/yanis-grek/cars/mini-cooper.webp?response-content-disposition=attachment&AWSAccessKeyId=A34BKYHPZC4DLUPNMRCI&Signature=Uy1QaiUqFu48h09ekTWOk%2BXiymw%3D&Expires=1776872956' }
+];
 ---
 
 <Layout {title} {description}>
-    <main class="cars-main">
-    <section class="cars-hero">
+  <div class="cars-page">
+    {/* Hero Section */}
+    <div class="cars-hero">
       <div class="cars-hero-content">
-        <h1>Модели автомобилей</h1>
-        <p>Мы обслуживаем все модели BMW и премиум-марок</p>
-        <button class="hero-button" onclick="scrollToForm()">Записаться</button>
-      </div>
-    </section>
-
-    <div class="cars-catalog">
-      <div class="catalog-container">
-        <h2>Выберите модель вашего автомобиля</h2>
-        <div class="cars-grid">
-          {carModels.map((car) => (
-            <a href={`/cars/${car.slug}`} class="car-card">
-              <div class="car-card-inner">
-                <h3>{car.title}</h3>
-                <p>{car.description}</p>
-                <span class="car-card-arrow">→</span>
-              </div>
-            </a>
-          ))}
-        </div>
+        <h1>Ремонт всех моделей BMW, Mini Cooper и Rolls Royce</h1>
+        <p class="hero-subtitle">Профессиональное обслуживание премиум-автомобилей любых моделей и поколений</p>
+        <p class="hero-description">
+          В техническом центре YanisGrek мы специализируемся на комплексном ремонте и обслуживании всех моделей BMW: от компактной 1 серии до люксового 7 серии, спортивных M-моделей, инновационных i-серии электромобилей, полного спектра X-серии кроссоверов и классических Z-серии родстеров. Кроме того, мы проводим профессиональный сервис для премиум-марок Mini Cooper и Rolls Royce. Используем только оригинальные запчасти, передовое диагностическое оборудование и методики BMW для обеспечения максимальной надежности и безопасности вашего автомобиля.
+        </p>
+        <a href="#models" class="cars-cta">Выбрать модель</a>
       </div>
     </div>
 
-    <TopServicesWrapper />
-  </main>
+    {/* Models Grid */}
+    <div id="models" class="cars-content">
+      {/* BMW and Luxury Models Combined Section */}
+      <section class="models-section">
+        <div class="section-header">
+          <h2>Модели автомобилей</h2>
+          <p>Полный спектр услуг для всех серий, поколений BMW и люксовых марок</p>
+        </div>
+        <div class="models-grid combined-grid">
+          {bmwModels.map(model => (
+            <a href={`/cars/${model.slug}`} class="model-card">
+              <div class="model-card-overlay"></div>
+              <div class="model-card-content">
+                <h3>{model.name}</h3>
+                <p>{model.type}</p>
+              </div>
+              <div class="model-card-icon">→</div>
+            </a>
+          ))}
+          {luxuryModels.map(model => (
+            <a href={`/cars/${model.slug}`} class="model-card luxury-card">
+              <div class="model-card-overlay"></div>
+              <div class="model-card-content">
+                <h3>{model.name}</h3>
+                <p>{model.type}</p>
+              </div>
+              <div class="model-card-icon">→</div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+
+
+      {/* Models Overview Section */}
+      <section class="models-overview">
+        <h2>Что мы ремонтируем?</h2>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h3>Седаны</h3>
+            <p>BMW 3, 5, 7 серии и другие премиум-седаны - диагностика, ремонт двигателей, трансмиссий, электроники</p>
+          </div>
+          <div class="overview-item">
+            <h3>Спортивные модели</h3>
+            <p>BMW M-серия (M2, M3, M4, M5, M8) - специализированный ремонт мощных двигателей и спортивных трансмиссий</p>
+          </div>
+          <div class="overview-item">
+            <h3>Электромобили</h3>
+            <p>BMW i-серия (i3, i4, i7, iX и другие) - диагностика и ремонт электрических систем, батарей, моторов</p>
+          </div>
+          <div class="overview-item">
+            <h3>Кроссоверы и внедорожники</h3>
+            <p>Полный спектр X-серии - диагностика xDrive, ремонт двигателей, трансмиссий, систем полного привода</p>
+          </div>
+          <div class="overview-item">
+            <h3>Купе и кабриолеты</h3>
+            <p>BMW 4, 6, 8 серии - ремонт двигателей, гидравлики крыши кабриолетов, спортивных систем</p>
+          </div>
+          <div class="overview-item">
+            <h3>Люксовые марки</h3>
+            <p>Rolls Royce и Mini Cooper - премиум-сервис для особых автомобилей с максимальным вниманием к деталям</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Overview */}
+      <section class="services-overview">
+        <h2>Спектр услуг</h2>
+        <p class="services-intro">Для всех моделей BMW, Mini Cooper и Rolls Royce мы предоставляем:</p>
+        <div class="services-overview-grid">
+          <div class="service-overview-item">Плановое техническое обслуживание (ТО-1, ТО-2, ТО-3)</div>
+          <div class="service-overview-item">Полная компьютерная диагностика</div>
+          <div class="service-overview-item">Ремонт двигателя и турбокомпрессоров</div>
+          <div class="service-overview-item">Ремонт АКПП, МКПП и вариаторов</div>
+          <div class="service-overview-item">Диагностика и ремонт электроники</div>
+          <div class="service-overview-item">Обслуживание систем полного привода xDrive</div>
+          <div class="service-overview-item">Ремонт подвески и амортизаторов</div>
+          <div class="service-overview-item">Сервис тормозной системы</div>
+          <div class="service-overview-item">Обслуживание кондиционера и системы охлаждения</div>
+          <div class="service-overview-item">Работы с электромобилями и гибридами</div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section class="cars-cta-section">
+        <h2>Готовы доверить свой автомобиль профессионалам?</h2>
+        <p>Запишитесь на диагностику или техническое обслуживание прямо сейчас</p>
+        <a href="tel:+74957676500" class="cta-button primary">Позвонить: +7 495 76 76 500</a>
+        <button class="cta-button secondary" onclick="window.dispatchEvent(new CustomEvent('openQuickRequest'))">Быстрая заявка</button>
+      </section>
+    </div>
+
+    <WhyUsWrapper />
+    <DiscountsWrapper />
+    <ServicingWrapper />
+    <NumbersWrapper />
+  </div>
 </Layout>
 
-<script>
-  function scrollToForm() {
-    const contactForm = document.querySelector('.ContactForm');
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-  (window as any).scrollToForm = scrollToForm;
-</script>
-
 <style>
-  .cars-main {
-    min-height: 100vh;
-    margin-top: 90px;
+.cars-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.cars-hero {
+  background: linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
+  padding: 120px 20px 80px;
+  padding-top: 210px;
+  margin-top: 0;
+  color: white;
+  text-align: center;
+}
+
+.cars-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cars-hero h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2b6eff;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: #ccc;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cars-cta {
+  display: inline-block;
+  padding: 16px 48px;
+  background: #2b6eff;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.cars-cta:hover {
+  background: #1e4fbf;
+  transform: translateY(-2px);
+}
+
+/* Content */
+.cars-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+/* Models Section */
+.models-section {
+  margin-bottom: 100px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  font-size: 18px;
+  color: #666;
+}
+
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.model-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 24px;
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+  min-height: auto;
+  overflow: hidden;
+}
+
+.model-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.model-card:hover {
+  border-color: #2b6eff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(43, 110, 255, 0.15);
+}
+}
+
+.model-card-content {
+  flex: 1;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.model-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.model-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.model-card-icon {
+  font-size: 24px;
+  color: #2b6eff;
+  margin-left: 20px;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.model-card:hover .model-card-icon {
+  transform: translateX(4px);
+}
+
+.luxury-section {
+  margin-top: 100px;
+  padding-top: 100px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.luxury-grid {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.luxury-card {
+  background-blend-mode: darken;
+  border-color: #d0d0d0;
+}
+
+.luxury-card:hover {
+  border-color: #ff6b35;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
+}
+
+.luxury-card:hover .model-card-icon {
+  color: #ff6b35;
+}
+
+.combined-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Info Section */
+.cars-info-section {
+  margin-top: 100px;
+  padding: 60px 40px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cars-info-section h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 60px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.info-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.info-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.info-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.info-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Models Overview */
+.models-overview {
+  margin-top: 100px;
+}
+
+.models-overview h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #262626;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.overview-item {
+  padding: 30px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.overview-item:hover {
+  border-color: #2b6eff;
+  box-shadow: 0 8px 24px rgba(43, 110, 255, 0.1);
+}
+
+.overview-item h3 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.overview-item p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Services Overview */
+.services-overview {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.services-overview h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 20px;
+}
+
+.services-intro {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.services-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.service-overview-item {
+  padding: 16px 20px;
+  background: #f5f5f5;
+  border-left: 4px solid #2b6eff;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #262626;
+  font-weight: 500;
+}
+
+/* CTA Section */
+.cars-cta-section {
+  margin-top: 100px;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+}
+
+.cars-cta-section h2 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.cars-cta-section p {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 16px 48px;
+  margin: 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cta-button.primary {
+  background: #2b6eff;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background: #1e4fbf;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid #2b6eff;
+}
+
+.cta-button.secondary:hover {
+  background: #2b6eff;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cars-hero h1 {
+    font-size: 32px;
   }
 
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .models-grid,
+  .luxury-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header h2,
+  .cars-info-section h2,
+  .models-overview h2 {
+    font-size: 28px;
+  }
+
+  .cars-cta-section h2 {
+    font-size: 24px;
+  }
+
+  .cta-button {
+    display: block;
+    margin: 12px 0;
+  }
+
+  .info-grid,
+  .overview-grid,
+  .services-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
   .cars-hero {
-    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
-    padding: 80px 20px;
-  }
-
-  .cars-hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
+    padding: 100px 16px 60px;
   }
 
   .cars-hero h1 {
-    font-family: 'Russo One', sans-serif;
-    font-size: 48px;
-    color: #262626;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-  }
-
-  .cars-hero p {
-    font-size: 20px;
-    color: #666;
-    margin-bottom: 32px;
-  }
-
-  .hero-button {
-    padding: 16px 48px;
-    background: black;
-    color: white;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Helvetica', sans-serif;
-  }
-
-  .hero-button:hover {
-    background: #2b6eff;
-  }
-
-  .cars-catalog {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 20px;
-  }
-
-  .catalog-container h2 {
-    font-family: 'Helvetica', sans-serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: #262626;
-    margin-bottom: 48px;
-    text-align: center;
-  }
-
-  .cars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 60px;
-  }
-
-  .car-card {
-    background: white;
-    border: 2px solid rgb(208, 208, 208);
-    padding: 32px 24px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .car-card:hover {
-    background: black;
-    border-color: #2b6eff;
-    transform: translateY(-8px);
-  }
-
-  .car-card-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  .car-card h3 {
-    font-family: 'Russo One', sans-serif;
-    font-size: 20px;
-    color: #262626;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .car-card:hover h3 {
-    color: #fff;
-  }
-
-  .car-card p {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
-    transition: color 0.3s;
-  }
-
-  .car-card:hover p {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .car-card-arrow {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
     font-size: 24px;
-    color: #262626;
-    transition: all 0.3s;
   }
 
-  .car-card:hover .car-card-arrow {
-    color: #2b6eff;
-    right: 20px;
+  .hero-subtitle {
+    font-size: 16px;
   }
 
-  @media (max-width: 1024px) {
-    .cars-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .car-card {
-      padding: 28px 20px;
-    }
+  .hero-description {
+    font-size: 14px;
   }
 
-  @media (max-width: 768px) {
-    .cars-hero h1 {
-      font-size: 32px;
-    }
-
-    .cars-hero p {
-      font-size: 16px;
-    }
-
-    .cars-catalog {
-      padding: 60px 20px;
-    }
-
-    .catalog-container h2 {
-      font-size: 24px;
-      margin-bottom: 32px;
-    }
-
-    .cars-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .car-card {
-      padding: 24px 20px;
-    }
-
-    .car-card h3 {
-      font-size: 18px;
-    }
-
-    .car-card p {
-      font-size: 13px;
-    }
-
-    .car-card-arrow {
-      font-size: 20px;
-    }
+  .model-card {
+    padding: 16px;
   }
+
+  .model-card h3 {
+    font-size: 16px;
+  }
+
+  .cars-content {
+    padding: 40px 16px;
+  }
+}
 </style>

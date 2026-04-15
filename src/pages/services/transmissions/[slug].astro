@@ -49,7 +49,7 @@ const description = `${transmission.description}`;
       <div class="services-section">
         <h2>Специализированное обслуживание</h2>
         <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию коробки передач {transmission.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
-        <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
+        <a onclick="openQuickRequest()" class="cta-button" style="cursor: pointer;">Записаться на обслуживание</a>
       </div>
     </div>
 
@@ -294,3 +294,10 @@ const description = `${transmission.description}`;
     }
   }
 </style>
+
+<script>
+  function openQuickRequest() {
+    window.dispatchEvent(new CustomEvent('openQuickRequest'));
+  }
+  (window as any).openQuickRequest = openQuickRequest;
+</script>

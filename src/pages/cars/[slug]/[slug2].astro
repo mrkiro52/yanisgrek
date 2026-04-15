@@ -282,7 +282,7 @@ const description = `${generationInfo.description}`;
           <h1>{generationInfo.title}</h1>
           <p class="generation-years">{generationInfo.years}</p>
           <p class="generation-description">{generationInfo.description}</p>
-          <button class="hero-button" onclick="scrollToForm()">Записаться</button>
+          <button class="hero-button" onclick="openQuickRequest()">Записаться</button>
         </div>
         
         <div class="highlights-grid">
@@ -300,7 +300,7 @@ const description = `${generationInfo.description}`;
       <div class="services-section">
         <h2>Специализированное обслуживание</h2>
         <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию {generationInfo.title}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
-        <a href="/#service-quiz" class="cta-button">Записаться на обслуживание</a>
+        <a onclick="openQuickRequest()" class="cta-button" style="cursor: pointer;">Записаться на обслуживание</a>
       </div>
     </div>
 
@@ -311,13 +311,10 @@ const description = `${generationInfo.description}`;
 </Layout>
 
 <script>
-  function scrollToForm() {
-    const contactForm = document.querySelector('.ContactForm');
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: 'smooth' });
-    }
+  function openQuickRequest() {
+    window.dispatchEvent(new CustomEvent('openQuickRequest'));
   }
-  (window as any).scrollToForm = scrollToForm;
+  (window as any).openQuickRequest = openQuickRequest;
 </script>
 
 <style>
