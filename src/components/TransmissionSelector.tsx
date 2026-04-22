@@ -5,7 +5,7 @@ import type { TransmissionModel } from '../assets/transmissionData';
 type TransmissionType = 'mkpp' | 'akpp' | 'dct' | 'elektro';
 
 export default function TransmissionSelector() {
-  const [selectedType, setSelectedType] = useState<TransmissionType>('akpp');
+  const [selectedType, setSelectedType] = useState<TransmissionType>('mkpp');
   const selectedTransmissions = getTransmissionsByType(selectedType);
 
   const types: TransmissionType[] = ['mkpp', 'akpp', 'dct', 'elektro'];
@@ -35,16 +35,23 @@ export default function TransmissionSelector() {
               href={`/services/remont-korobki-peredach/${transmission.id}`}
               className="transmission-card"
             >
-              <div className="card-header">
-                <h3>{transmission.name}</h3>
+              <div className="card-left">
+                <div className="card-header">
+                  <h3>{transmission.name}</h3>
+                </div>
+                <div className="card-body">
+                  <p className="card-models">Данная коробка стоит в: {transmission.models}</p>
+                  <p className="card-description">{transmission.description}</p>
+                </div>
+                <div className="card-footer">
+                  <span className="card-link">Подробнее →</span>
+                </div>
               </div>
-              <div className="card-body">
-                <p className="card-models">Данная коробка стоит в: {transmission.models}</p>
-                <p className="card-description">{transmission.description}</p>
-              </div>
-              <div className="card-footer">
-                <span className="card-link">Подробнее →</span>
-              </div>
+              {transmission.type !== 'elektro' && transmission.type !== 'akpp' && (
+                <div className="card-right">
+                  <div className="card-image-placeholder" style={{backgroundImage: transmission.imageUrl ? `url('${transmission.imageUrl}')` : 'none', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
+                </div>
+              )}
             </a>
           ))}
         </div>
@@ -130,18 +137,47 @@ export default function TransmissionSelector() {
 
         .transmission-card {
           display: flex;
-          flex-direction: column;
+          gap: 24px;
           padding: 32px;
           background: rgb(208, 208, 208);
           text-decoration: none;
           color: inherit;
           transition: all 0.3s;
           cursor: pointer;
+          align-items: stretch;
+        }
+
+        .transmission-card:has(.card-right) {
+          flex-direction: row;
+        }
+
+        .transmission-card:not(:has(.card-right)) {
+          flex-direction: column;
         }
 
         .transmission-card:hover {
           background: black;
           color: white;
+        }
+
+        .card-left {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .card-right {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .card-image-placeholder {
+          width: 100%;
+          aspect-ratio: 1;
+          background: white;
+          border-radius: 0;
         }
 
         .card-header {
@@ -290,6 +326,11 @@ export default function TransmissionSelector() {
 
           .transmission-card {
             padding: 24px;
+            flex-direction: column;
+          }
+
+          .card-right {
+            min-height: 300px;
           }
 
           .card-header h3 {

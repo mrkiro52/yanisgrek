@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
 import NumbersWrapper from '../../../components/NumbersWrapper.astro';
 import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
+import DiscountsWrapper from '../../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../../components/ServicingWrapper.astro';
 import { transmissions, getTransmissionById } from '../../../assets/transmissionData';
 
 export async function getStaticPaths() {
@@ -23,13 +25,21 @@ const description = `${transmission.description}`;
 ---
 
 <Layout {title} {description}>
-  <div class="transmission-page">
+  <div class="transmission-page" data-type={transmission.type}>
     <div class="transmission-hero">
       <div class="transmission-hero-content">
-        <h1>{transmission.name}</h1>
-        <p class="transmission-type">Тип: {transmission.type === 'mkpp' ? 'Механическая коробка' : transmission.type === 'akpp' ? 'Автоматическая коробка' : transmission.type === 'dct' ? 'Коробка с двойным сцеплением' : 'Электрический редуктор'}</p>
-        <p class="transmission-models">{transmission.models}</p>
-        <p class="transmission-description">{transmission.description}</p>
+        <div class="transmission-hero-left">
+          <h1>{transmission.name}</h1>
+          <p class="transmission-type">Тип: {transmission.type === 'mkpp' ? 'Механическая коробка' : transmission.type === 'akpp' ? 'Автоматическая коробка' : transmission.type === 'dct' ? 'Коробка с двойным сцеплением' : 'Электрический редуктор'}</p>
+          <p class="transmission-models">{transmission.models}</p>
+          <p class="transmission-description">{transmission.description}</p>
+          <button class="transmission-btn" onclick="openQuickRequest()" style="cursor: pointer;">Записаться на диагностику</button>
+        </div>
+        <div class="transmission-hero-right">
+          {transmission.type !== 'elektro' && transmission.type !== 'akpp' && (
+            <div class="transmission-image-placeholder" style={transmission.imageUrl ? `background-image: url('${transmission.imageUrl}'); background-size: cover; background-position: center;` : ''}></div>
+          )}
+        </div>
       </div>
     </div>
 
@@ -46,14 +56,143 @@ const description = `${transmission.description}`;
         </div>
       </div>
 
-      <div class="services-section">
-        <h2>Специализированное обслуживание</h2>
-        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию коробки передач {transmission.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
-        <a onclick="openQuickRequest()" class="cta-button" style="cursor: pointer;">Записаться на обслуживание</a>
+      <div class="problems-section">
+        <div class="problems-left">
+          <h2>Частые проблемы</h2>
+          <div class="problems-list">
+            {transmission.type === 'mkpp' && (
+              <>
+                <div class="problem-item">
+                  <h4>Износ синхронизаторов</h4>
+                  <p>Синхронизаторы отвечают за плавное включение передач. При износе возникают характерные звуки скрежета при переключении. Замена требуется при сложном включении передач или их самопроизвольном выключении.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Трудное включение передач</h4>
+                  <p>Может быть вызвано износом синхронизаторов, низким уровнем масла или проблемами с выжимным подшипником. Требует диагностики для определения точной причины.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Течи масла из сальников</h4>
+                  <p>Сальники изнашиваются со временем, что приводит к утечкам трансмиссионного масла. Это может привести к недостаточной смазке внутренних компонентов и их повреждению. Требует замены сальников.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Выход из строя подшипников</h4>
+                  <p>Подшипники коробки подвергаются постоянным нагрузкам. При их износе появляется характерный гул, особенно при движении. Требует полной замены поврежденных подшипников.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Проблемы при холодном пуске</h4>
+                  <p>В холодную погоду масло становится гуще, что затрудняет включение первой передачи. Используйте масло правильной вязкости и прогревайте автомобиль перед началом движения.</p>
+                </div>
+              </>
+            )}
+            {transmission.type === 'akpp' && (
+              <>
+                <div class="problem-item">
+                  <h4>Рывки при переключении</h4>
+                  <p>Рывки указывают на проблемы с гидротрансформатором, износом фрикционов или низким уровнем масла. Требует немедленной диагностики для предотвращения дальнейшего повреждения коробки.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Перегрев трансмиссии</h4>
+                  <p>Перегрев может быть вызван интенсивной ездой, буксировкой или проблемами с охлаждением масла. При температурах выше нормы коробка переходит в режим защиты, что снижает производительность.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Проблемы гидротрансформатора</h4>
+                  <p>Гидротрансформатор передает крутящий момент через трансмиссионное масло. При его поломке возникают пробуксовки, рывки или отсутствие тяги. Требует специализированного ремонта.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Износ фрикционов</h4>
+                  <p>Фрикционы обеспечивают передачу крутящего момента. При износе коробка начинает пробуксовывать, особенно при ускорении. Требует замены фрикционных дисков и планетарного механизма.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Ошибки датчиков</h4>
+                  <p>Неисправные датчики могут вызвать ошибки в работе коробки, неправильное переключение или отсутствие реакции на движения водителя. Требует компьютерной диагностики и замены датчика.</p>
+                </div>
+              </>
+            )}
+            {transmission.type === 'dct' && (
+              <>
+                <div class="problem-item">
+                  <h4>Рывки и толчки при переключении</h4>
+                  <p>DCT коробки склонны к рывкам при переключении, особенно на начальных версиях. Это может быть обусловлено программным обеспечением или механическим износом сцепления.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Проблемы сцепления</h4>
+                  <p>В коробке DCT два независимых сцепления. При выходе одного из строя коробка переходит в аварийный режим. Требует замены всего узла сцепления.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Перегрев при интенсивной езде</h4>
+                  <p>DCT коробки генерируют больше тепла, чем традиционные АКПП. При драйв-езде или в режиме Sport+ может произойти перегрев масла. Требует качественного охлаждения.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Задержки переключения</h4>
+                  <p>Коробка может «думать» перед переключением передачи, что приводит к задержкам ускорения. Часто решается обновлением программного обеспечения коробки.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Ошибки электроники</h4>
+                  <p>Сложная электроника коробки может давать ошибки, приводящие к отключению режима Sport или полной блокировке коробки. Требует компьютерной диагностики.</p>
+                </div>
+              </>
+            )}
+            {transmission.type === 'elektro' && (
+              <>
+                <div class="problem-item">
+                  <h4>Перегрев редуктора</h4>
+                  <p>При интенсивной эксплуатации или в жарком климате редуктор может перегреться. Требует качественного масла и функционирующей системы охлаждения. При перегреве срабатывает защита.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Люфт валов</h4>
+                  <p>Люфт может появиться при износе подшипников валов редуктора. Это приводит к шумам при ускорении и торможении. Требует замены поврежденных подшипников.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Износ подшипников</h4>
+                  <p>Подшипники редуктора испытывают постоянные нагрузки от электромотора. При износе появляется гул и вибрация. Требует профессионального разбора редуктора и замены подшипников.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Проблемы охлаждения</h4>
+                  <p>Система охлаждения масла редуктора критична для его долговечности. При неправильной работе масло перегревается, ускоряя износ компонентов.</p>
+                </div>
+                <div class="problem-item">
+                  <h4>Утечки масла редуктора</h4>
+                  <p>Со временем уплотнения редуктора изнашиваются, вызывая утечки масла. Требует замены сальников и уплотнителей. Без масла редуктор выходит из строя.</p>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+        <div class="problems-right">
+          <img src="https://s3.regru.cloud/yanis-grek/transmission/oftenproblems.png" alt="Частые проблемы трансмиссии" />
+        </div>
+      </div>
+
+      <div class="services-grid-section">
+        <h2>Услуги ремонта {transmission.name}</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service1.png" alt="Компьютерная диагностика" class="service-card-image" />
+            <h3>Компьютерная диагностика</h3>
+            <p>Полная диагностика коробки передач на профессиональном оборудовании</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service2.png" alt="Ремонт и восстановление" class="service-card-image" />
+            <h3>Ремонт и восстановление</h3>
+            <p>Специализированный ремонт с заменой износившихся деталей</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service3.png" alt="Замена масла и фильтра" class="service-card-image" />
+            <h3>Замена масла и фильтра</h3>
+            <p>Регулярное обслуживание с использованием оригинального масла</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service4.png" alt="Промывка и чистка" class="service-card-image" />
+            <h3>Промывка и чистка</h3>
+            <p>Профилактическая промывка системы для продления срока службы</p>
+          </div>
+        </div>
       </div>
     </div>
 
+    <DiscountsWrapper />
     <WhyUsWrapper />
+    <ServicingWrapper />
     <NumbersWrapper />
     <AdvantagesWrapper />
   </div>
@@ -73,6 +212,36 @@ const description = `${transmission.description}`;
   .transmission-hero-content {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .transmission-page[data-type='elektro'] .transmission-hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .transmission-page[data-type='akpp'] .transmission-hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .transmission-hero-left {
+    flex: 1;
+  }
+
+  .transmission-hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .transmission-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 0;
   }
 
   .transmission-hero h1 {
@@ -101,7 +270,22 @@ const description = `${transmission.description}`;
     font-size: 18px;
     color: #666;
     line-height: 1.8;
-    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .transmission-btn {
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .transmission-btn:hover {
+    background: #2b6eff;
   }
 
   .transmission-content {
@@ -111,7 +295,7 @@ const description = `${transmission.description}`;
   }
 
   .highlights-section {
-    margin-bottom: 80px;
+    margin-bottom: 100px;
   }
 
   .highlights-section h2 {
@@ -127,7 +311,6 @@ const description = `${transmission.description}`;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-bottom: 60px;
   }
 
   .highlight-item {
@@ -166,40 +349,111 @@ const description = `${transmission.description}`;
     line-height: 1.6;
   }
 
-  .services-section {
-    text-align: center;
+  .problems-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 100px;
     padding: 60px 40px;
-    background: rgb(245, 245, 245);
+    background: white;
+    border: 1px solid #e0e0e0;
   }
 
-  .services-section h2 {
+  .problems-left h2 {
     font-family: 'Helvetica', sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 24px;
-  }
-
-  .services-section p {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.8;
     margin-bottom: 32px;
   }
 
-  .cta-button {
-    display: inline-block;
-    padding: 16px 48px;
-    background: black;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
+  .problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .cta-button:hover {
-    background: #2b6eff;
+  .problem-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .problem-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    color: #262626;
+    margin: 0;
+  }
+
+  .problem-item p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .problems-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .services-grid-section {
+    margin-bottom: 0;
+  }
+
+  .services-grid-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    border-color: #2b6eff;
+    box-shadow: 0 8px 24px rgba(43, 110, 255, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .service-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    color: #262626;
+    margin: 16px 16px 8px 16px;
+  }
+
+  .service-card p {
+    font-size: 16px;
+    color: #000;
+    line-height: 120%;
+    margin: 0 16px 16px 16px;
   }
 
   @media (max-width: 1024px) {
@@ -207,11 +461,29 @@ const description = `${transmission.description}`;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
+
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .problems-section {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
 
   @media (max-width: 768px) {
     .transmission-hero {
       padding: 60px 20px 40px;
+    }
+
+    .transmission-hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .transmission-image-placeholder {
+      min-height: 250px;
     }
 
     .transmission-hero h1 {
@@ -227,7 +499,7 @@ const description = `${transmission.description}`;
     }
 
     .highlights-section h2,
-    .services-section h2 {
+    .services-grid-section h2 {
       font-size: 24px;
       margin-bottom: 32px;
     }
@@ -245,18 +517,42 @@ const description = `${transmission.description}`;
       font-size: 14px;
     }
 
-    .services-section {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card-image {
+      height: 150px;
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      margin: 12px 12px 6px 12px;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      margin: 0 12px 12px 12px;
+    }
+
+    .problems-section {
       padding: 40px 20px;
     }
 
-    .services-section p {
-      font-size: 16px;
+    .problems-right img {
+      height: 300px;
     }
 
-    .cta-button {
-      width: 100%;
-      padding: 14px 24px;
-      font-size: 14px;
+    .problems-left h2 {
+      font-size: 24px;
+    }
+
+    .problem-item h4 {
+      font-size: 15px;
+    }
+
+    .problem-item p {
+      font-size: 13px;
     }
   }
 
@@ -289,8 +585,24 @@ const description = `${transmission.description}`;
       padding: 12px 10px;
     }
 
-    .services-section {
-      padding: 30px 15px;
+    .transmission-content {
+      padding: 40px 16px;
+    }
+
+    .problem-item h4 {
+      font-size: 14px;
+    }
+
+    .service-card {
+      border: 1px solid #e0e0e0;
+    }
+
+    .service-card-image {
+      height: 120px;
+    }
+
+    .service-card h3 {
+      font-size: 14px;
     }
   }
 </style>

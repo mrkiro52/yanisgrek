@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import NumbersWrapper from '../../components/NumbersWrapper.astro';
 import WhyUsWrapper from '../../components/WhyUsWrapper.astro';
 import AdvantagesWrapper from '../../components/AdvantagesWrapper.astro';
+import ChillZoneWrapper from '../../components/ChillZoneWrapper.astro';
 import ScrollArrow from '../../components/ScrollArrow.astro';
 
 const title = 'Наши работы - YanisGrek';
@@ -85,6 +86,7 @@ const cases = [
   </section>
 
   <NumbersWrapper />
+  <ChillZoneWrapper />
   <WhyUsWrapper />
   <AdvantagesWrapper />
 </Layout>
@@ -102,8 +104,6 @@ const cases = [
     color: #fff;
     padding: 0 20px;
     text-align: center;
-    min-height: 100vh;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +113,7 @@ const cases = [
   .works-hero-content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 140px 0;
   }
 
   .works-hero-content h1 {
@@ -141,7 +142,7 @@ const cases = [
   }
 
   .company-info {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin: 40px 0 40px 0;
