@@ -1,0 +1,11 @@
+---
+import ServiceStages from './ServiceStages';
+
+interface Props {
+  stages?: Array<{ image: string; name: string; description: string }>;
+}
+
+const { stages }: Props = Astro.props;
+---
+
+<ServiceStages client:load {stages} />

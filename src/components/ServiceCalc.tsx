@@ -111,7 +111,10 @@ export default function ServiceCalc() {
   , [filteredServices, selectedRows]);
 
   const scrollToBottom = () => {
-    window.dispatchEvent(new CustomEvent('openQuickRequest'));
+    const formElement = document.querySelector('.ContactForm');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const sendCalculatorData = async () => {

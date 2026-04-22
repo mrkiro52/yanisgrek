@@ -12,9 +12,9 @@ export default function Footer() {
   const links = [
     { name: 'О нас', href: '/about' },
     { name: 'Контакты', href: '/contacts' },
-    { name: 'Яндекс карты', href: 'https://yandex.com/maps/-/CPbhAKnt' },
-    { name: 'Google карты', href: 'https://maps.app.goo.gl/wGbEbWdCZSv5PxGf6' },
-    { name: '2 Gis', href: 'https://2gis.ru/moscow/search/%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%2C%201%2C%20%D1%81%D1%82%D1%80.%2029/geo/4504235283155127/37.59441%2C55.875886?m=37.62017%2C55.753911%2F10.79' }
+    { name: 'Яндекс карты', href: 'https://yandex.com/maps/-/CPC7q-mx' },
+    { name: 'Google карты', href: 'https://maps.app.goo.gl/3r84JcsxWtkG5g139' },
+    { name: '2 Gis', href: 'https://go.2gis.com/DdVIr' }
   ];
 
   const socialLinks = [
@@ -53,11 +53,17 @@ export default function Footer() {
             <img src="/images/logo.svg" alt="Yanis Grek" className="footer-logo" />
             <p className="footer-desc">Первый автосервис BMW с человеческим подходом.</p>
             <div className="footer-info">
-              <p><a href="https://yandex.com/maps/-/CPbhAKnt" target="_blank" rel="noopener noreferrer">Москва, Высоковольтный проезд, 1, стр. 29</a></p>
-              <p><a href="tel:+79852707575">+7 985 270 75 75</a></p>
+              <p><a href="https://yandex.com/maps/-/CPC7q-mx" target="_blank" rel="noopener noreferrer">Москва, Высоковольтный проезд, 1, стр. 29</a></p>
+              <p><a href="tel:+74957676500">+7 495 76 76 500</a></p>
               <p>Пн-Пт: 10:00-20:00</p>
               <p>Сб: 11:00-20:00</p>
               <p>Вс: 11:00-18:00</p>
+              <div style={{marginTop: '16px', fontSize: '15px', color: '#fff'}}>
+                Написать нам в{' '}
+                <b><a href="https://max.ru/u/f9LHodD0cOIUh8SYqoNqwZ_Kff9bTcJs0_tyGhqUJDVnxYS7JE8D_eIURm0" target="_blank" rel="noopener noreferrer" className="messenger-link" style={{color:'#fff'}}><span>MAX</span></a></b><span style={{color:'#fff'}}>{' / '}</span>
+                <b><a href="https://t.me/+79852707575" target="_blank" rel="noopener noreferrer" className="messenger-link" style={{color:'#fff'}}><span>Telegram</span></a></b><span style={{color:'#fff'}}>{' / '}</span>
+                <b><a href="https://wa.me/79852707575" target="_blank" rel="noopener noreferrer" className="messenger-link" style={{color:'#fff'}}><span>WhatsApp</span></a></b>
+              </div>
             </div>
           </div>
 
@@ -87,7 +93,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="footer-container">
-          <p className="footer-copyright">© 2008-2026 «Yanis Grek» автомобильный техцентр. Все права защищены.</p>
+          <p className="footer-copyright">© 2008-{new Date().getFullYear()} «Yanis Grek» автомобильный техцентр. Все права защищены.</p>
           <div className="footer-social">
             {socialLinks.map((social, index) => (
               <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>

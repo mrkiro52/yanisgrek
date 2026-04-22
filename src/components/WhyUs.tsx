@@ -3,34 +3,34 @@ import { Package, Wrench, Award, DollarSign, ShieldCheck, Calendar } from 'lucid
 export default function WhyUs() {
   const advantages = [
     {
+      type: 'content',
       icon: Package,
-      title: 'Запчасти',
-      description: 'Только оригинальные BMW детали и сертифицированные аналоги.'
+      title: 'Запчасти и оборудование',
+      description: 'Только оригинальные BMW детали и сертифицированные аналоги. Современное диагностическое оборудование.'
     },
     {
-      icon: Wrench,
-      title: 'Оборудование',
-      description: 'Современное диагностическое оборудование и инструменты BMW.'
+      type: 'placeholder',
+      image: 'https://s3.regru.cloud/yanis-grek/auto-service/why1.png'
     },
     {
+      type: 'content',
       icon: Award,
-      title: 'Опыт',
-      description: 'Наши мастера специализируются на BMW более 10 лет.'
+      title: 'Опыт и честная цена',
+      description: 'Наши мастера специализируются на BMW более 10 лет. Прозрачное ценообразование без скрытых платежей.'
     },
     {
-      icon: DollarSign,
-      title: 'Честная цена',
-      description: 'Прозрачное ценообразование без скрытых платежей.'
+      type: 'placeholder',
+      image: 'https://s3.regru.cloud/yanis-grek/auto-service/why2.png'
     },
     {
+      type: 'content',
       icon: ShieldCheck,
-      title: 'Гарантия',
-      description: 'Предоставляем гарантию на все виды работ и запчасти.'
+      title: 'Гарантия и быстрая запись',
+      description: 'Предоставляем гарантию на все виды работ и запчасти. Онлайн-запись 24/7, удобное время обслуживания.'
     },
     {
-      icon: Calendar,
-      title: 'Быстрая запись',
-      description: 'Онлайн-запись 24/7, удобное время обслуживания.'
+      type: 'placeholder',
+      image: 'https://s3.regru.cloud/yanis-grek/auto-service/why3.png'
     }
   ];
 
@@ -43,11 +43,24 @@ export default function WhyUs() {
       
       <div className="advantages-grid">
         {advantages.map((advantage, index) => {
-          const Icon = advantage.icon;
+          if (advantage.type === 'placeholder') {
+            return (
+              <div key={index} className="advantage-card advantage-placeholder">
+                <img 
+                  src={(advantage as any).image} 
+                  alt={`Преимущество ${index + 1}`}
+                  className="placeholder-image" 
+                  loading="lazy"
+                />
+              </div>
+            );
+          }
+          
+          const Icon = advantage.icon as any;
           return (
             <div key={index} className="advantage-card">
               <div className="advantage-icon">
-                <Icon size={40} strokeWidth={1.5} />
+                {Icon && <Icon size={40} strokeWidth={1.5} />}
               </div>
               <h3 className="advantage-title">{advantage.title}</h3>
               <p className="advantage-description">{advantage.description}</p>

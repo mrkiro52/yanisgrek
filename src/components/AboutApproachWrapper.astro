@@ -60,6 +60,68 @@ import AboutApproach from './AboutApproach';
     justify-content: center;
   }
 
+  :global(.about-approach__slider) {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    background: #222;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  :global(.about-approach__img-slide) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  :global(.about-approach__img-slide.active) {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  :global(.about-approach__slider-dots) {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  :global(.about-approach__slider-dot) {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: none;
+    color: #222;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    outline: none;
+    opacity: 0.7;
+  }
+
+  :global(.about-approach__slider-dot.active) {
+    background: #2b6eff;
+    color: #fff;
+    opacity: 1;
+  }
+
   :global(.about-approach__placeholder) {
     width: 100%;
     max-width: 500px;
@@ -68,6 +130,7 @@ import AboutApproach from './AboutApproach';
   }
 
   :global(.about-approach__quote) {
+    display: none;
     text-align: center;
     margin-top: 60px;
     padding-top: 40px;

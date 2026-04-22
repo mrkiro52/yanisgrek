@@ -22,122 +22,88 @@ import TopServices from './TopServices';
   text-transform: uppercase;
 }
 
-:global(.main-services) {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  width: 100%;
-  max-width: 1200px;
-  margin-bottom: 60px;
+:global(.service-image) {
+  height: 220px;
+  object-fit: cover;
+  margin: -12px -12px 0 -12px;
+  max-width: none;
 }
 
-:global(.main-service-card) {
-  background: rgb(208, 208, 208);
-  padding: 40px;
+:global(.service-content) {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s;
+  gap: 12px;
+  padding-top: 16px;
+  flex: 1;
 }
 
-:global(.main-service-card:hover) {
-  background: black;
-}
-
-:global(.main-service-card h3) {
-  font-size: 28px;
+:global(.service-content h3) {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
   color: #262626;
   margin: 0;
-  font-weight: 600;
-  line-height: 1.2;
-  font-family: 'Helvetica', sans-serif;
-  transition: all 0.3s;
+  line-height: 1.3;
 }
 
-:global(.main-service-card:hover h3) {
-  color: white;
-}
-
-:global(.main-service-card p) {
-  font-size: 16px;
+:global(.service-content p) {
+  font-size: 14px;
   color: #666;
   margin: 0;
-  line-height: 1.5;
-  transition: all 0.3s;
+  line-height: 1.4;
+  flex: 1;
 }
 
-:global(.main-service-card:hover p) {
-  color: #ccc;
+:global(.service-footer) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+:global(.price-from) {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2b6eff;
+}
+
+:global(.service-details-btn) {
+  padding: 8px 16px;
+  background: #2b6eff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: none;
+}
+
+:global(.service-details-btn:hover) {
+  background: #2b6eff;
+  color: white;
+  transform: none;
 }
 
 :global(.top-services-grid) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
   width: 100%;
   max-width: 1200px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 :global(.top-service-card) {
-  background: rgb(208, 208, 208);
-  padding: 32px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: all 0.3s;
-  cursor: pointer;
+  padding: 12px;
+  transition: none;
+  cursor: default;
   text-decoration: none;
-}
-
-:global(.top-service-card:hover) {
-  background: black;
-  color: white;
-}
-
-:global(.service-number) {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: #262626;
-  line-height: 1;
-  transition: all 0.3s;
-}
-
-:global(.top-service-card:hover .service-number) {
-  color: white;
-}
-
-:global(.top-service-card h3) {
-  font-family: 'Helvetica', sans-serif;
-}
-
-:global(.top-service-card h4) {
-  font-size: 22px;
-  color: #262626;
-  margin: 0;
-  font-weight: 600;
-  line-height: 1.2;
-  font-family: 'Helvetica', sans-serif;
-  transition: all 0.3s;
-}
-
-:global(.top-service-card:hover h4) {
-  color: white;
-}
-
-:global(.top-service-card p) {
-  font-size: 16px;
-  color: #666;
-  margin: 0;
-  line-height: 1.5;
-  transition: all 0.3s;
-}
-
-:global(.top-service-card:hover p) {
-  color: #ccc;
 }
 
 :global(.services-button-wrapper) {
@@ -172,29 +138,29 @@ import TopServices from './TopServices';
     margin-bottom: 50px;
   }
 
-  :global(.main-services) {
-    gap: 20px;
-    margin-bottom: 50px;
+  :global(.top-services-grid) {
+    gap: 24px;
   }
 
-  :global(.main-service-card) {
-    padding: 36px;
+  :global(.service-image-placeholder) {
+    height: 200px;
   }
 
-  :global(.main-service-card h3) {
-    font-size: 26px;
+  :global(.service-content h3) {
+    font-size: 18px;
   }
 
-  :global(.main-service-card p) {
+  :global(.service-content p) {
+    font-size: 13px;
+  }
+
+  :global(.price-from) {
     font-size: 15px;
   }
 
-  :global(.top-services-grid) {
-    gap: 20px;
-  }
-
-  :global(.top-service-card) {
-    padding: 28px;
+  :global(.service-details-btn) {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 
@@ -208,21 +174,13 @@ import TopServices from './TopServices';
     margin-bottom: 40px;
   }
 
-  :global(.main-services) {
-    gap: 20px;
-  }
-
-  :global(.main-service-card) {
-    padding: 32px;
-  }
-
-  :global(.main-service-card h3) {
-    font-size: 24px;
-  }
-
   :global(.top-services-grid) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+  }
+
+  :global(.service-image-placeholder) {
+    height: 180px;
   }
 }
 
@@ -236,44 +194,22 @@ import TopServices from './TopServices';
     margin-bottom: 32px;
   }
 
-  :global(.main-services) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  :global(.main-service-card) {
-    padding: 24px;
-  }
-
-  :global(.main-service-card h3) {
-    font-size: 22px;
-  }
-
-  :global(.main-service-card p) {
-    font-size: 14px;
-  }
-
   :global(.top-services-grid) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-bottom: 32px;
   }
 
-  :global(.top-service-card) {
-    padding: 24px;
+  :global(.service-image-placeholder) {
+    height: 160px;
   }
 
-  :global(.service-number) {
-    font-size: 40px;
+  :global(.service-content h3) {
+    font-size: 17px;
   }
 
-  :global(.top-service-card h4) {
-    font-size: 20px;
-  }
-
-  :global(.top-service-card p) {
-    font-size: 14px;
+  :global(.service-content p) {
+    font-size: 13px;
   }
 
   :global(.services-button) {

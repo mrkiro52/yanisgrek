@@ -1,8 +1,9 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
 import NumbersWrapper from '../../../components/NumbersWrapper.astro';
 import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
+import DiscountsWrapper from '../../../components/DiscountsWrapper.astro';
+import ServicingWrapper from '../../../components/ServicingWrapper.astro';
 import { engines, getEngineById } from '../../../assets/engineData';
 
 export async function getStaticPaths() {
@@ -20,16 +21,58 @@ if (!engine) {
 
 const title = `Ремонт ${engine.name} BMW - YanisGrek`;
 const description = `${engine.description}`;
+
+// Динамические проблемы по типу двигателя
+const problems = {
+  benzine: [
+    { title: 'Прогорание клапанов', description: 'Клапаны изнашиваются и теряют герметичность при высоких температурах, что приводит к потере компрессии и снижению мощности. Требуется замена клапанов и притирка седел.' },
+    { title: 'Неисправность свечей зажигания', description: 'Загрязнение или износ свечей приводит к нестабильной работе двигателя, проблемам с пуском и повышенному расходу топлива. Требуется замена свечей и проверка системы зажигания.' },
+    { title: 'Течь масла из сальников', description: 'Сальники теряют эластичность, что приводит к утечкам масла. При недостаточной смазке возрастает износ компонентов. Требуется замена сальников и уплотнений.' },
+    { title: 'Проблемы с турбокомпрессором', description: 'Турбо может загрязняться углеродом или иметь механические повреждения. Это приводит к потере мощности и черному дыму из выхлопа. Требуется чистка или замена турбины.' },
+    { title: 'Перегрев двигателя', description: 'Перегрев вызывается проблемами с системой охлаждения, засорением радиатора или неисправностью термостата. Это может привести к серьезным повреждениям ДВС. Требуется диагностика и замена компонентов охлаждения.' }
+  ],
+  diesel: [
+    { title: 'Загрязнение форсунок', description: 'Дизельные форсунки засоряются топливными отложениями, что приводит к неровной работе, дымности и потере мощности. Требуется промывка или замена форсунок.' },
+    { title: 'Проблемы с ТНВД', description: 'Топливный насос высокого давления критичен для дизелей. При его износе падает давление топлива и двигатель работает нестабильно. Требуется профессиональная диагностика и ремонт.' },
+    { title: 'Жесткая работа двигателя', description: 'Жесткость может быть вызвана неправильным топливом, неисправностью распределителя или проблемами с топливной системой. Требуется комплексная диагностика.' },
+    { title: 'Повышенный расход масла', description: 'В дизельных двигателях расход масла может быть выше из-за конструктивных особенностей. Если расход критичен, может быть изношены кольца или клапаны. Требуется диагностика.' },
+    { title: 'Проблемы с системой SCR', description: 'SCR система уменьшает вредные выбросы. При ее неисправности горит лампа и двигатель может перейти в аварийный режим. Требуется очистка или замена катализатора.' }
+  ],
+  hybrid: [
+    { title: 'Проблемы с аккумулятором', description: 'Высоковольтный аккумулятор гибридов имеет ограниченный ресурс. При деградации снижается запас хода и гибридная система работает неправильно. Требуется замена батареи.' },
+    { title: 'Неисправность электромотора', description: 'Электромотор может иметь неисправность в обмотке или подшипниках. Это приводит к потере мощности и невозможности переключения между режимами. Требуется ремонт или замена.' },
+    { title: 'Сбои в системе управления', description: 'Гибридная система имеет сложную электронику. Ошибки в работе приводят к нестабильности и переходу в аварийный режим. Требуется компьютерная диагностика.' },
+    { title: 'Перегрев системы охлаждения', description: 'В гибридах система охлаждения более сложная. Перегрев может быть вызван проблемами с электровентилятором или забитым радиатором. Требуется проверка всей системы.' },
+    { title: 'Неисправность генератора', description: 'Генератор отвечает за зарядку батареи. При его поломке гибридная система не может нормально работать. Требуется диагностика и замена генератора.' }
+  ]
+};
+
+const engineProblems = problems[engine.type] || problems.benzine;
+
+const services = [
+  { title: 'Компьютерная диагностика', description: 'Полная диагностика всех систем двигателя на профессиональном оборудовании', image: 'https://s3.regru.cloud/yanis-grek/transmission/service1.png?w=400&h=300&fit=crop' },
+  { title: 'Капитальный ремонт', description: 'Полная разборка, проверка и восстановление компонентов двигателя', image: 'https://s3.regru.cloud/yanis-grek/engine/service2.png?w=400&h=300&fit=crop' },
+  { title: 'Замена деталей', description: 'Замена износившихся компонентов оригинальными запчастями', image: 'https://s3.regru.cloud/yanis-grek/engine/service3.png?w=400&h=300&fit=crop' },
+  { title: 'Промывка и очистка', description: 'Профилактическая промывка системы для улучшения производительности', image: 'https://s3.regru.cloud/yanis-grek/transmission/service4.png?w=400&h=300&fit=crop' }
+];
 ---
 
 <Layout {title} {description}>
-  <div class="engine-page">
+  <div class="engine-page" data-type={engine.type}>
     <div class="engine-hero">
       <div class="engine-hero-content">
-        <h1>{engine.name}</h1>
-        <p class="engine-type">Тип: {engine.type === 'benzine' ? 'Бензиновый двигатель' : engine.type === 'diesel' ? 'Дизельный двигатель' : 'Гибридный/Электрический'}</p>
-        <p class="engine-models">{engine.models}</p>
-        <p class="engine-description">{engine.description}</p>
+        <div class="engine-hero-left">
+          <h1>{engine.name}</h1>
+          <p class="engine-type">Тип: {engine.type === 'benzine' ? 'Бензиновый двигатель' : engine.type === 'diesel' ? 'Дизельный двигатель' : 'Гибридный/Электрический'}</p>
+          <p class="engine-models">{engine.models}</p>
+          <p class="engine-description">{engine.description}</p>
+          <button class="engine-btn" onclick="openQuickRequest()" style="cursor: pointer;">Записаться на диагностику</button>
+        </div>
+        <div class="engine-hero-right">
+          {engine.type !== 'hybrid' && (
+            <div class="engine-image-placeholder" style={`background-image: url('https://images.unsplash.com/photo-1486262715933-57adde3d5f4e?w=600&h=400&fit=crop'); background-size: cover; background-position: center;`}></div>
+          )}
+        </div>
       </div>
     </div>
 
@@ -46,14 +89,39 @@ const description = `${engine.description}`;
         </div>
       </div>
 
-      <div class="services-section">
-        <h2>Специализированное обслуживание</h2>
-        <p>Наш сервис предоставляет полный спектр услуг по диагностике, ремонту и обслуживанию двигателя {engine.name}. Мы используем оригинальные запчасти и современное оборудование для обеспечения высочайшего качества работ.</p>
-        <a onclick="openQuickRequest()" class="cta-button" style="cursor: pointer;">Записаться на обслуживание</a>
+      <div class="problems-section">
+        <div class="problems-left">
+          <h2>Частые проблемы</h2>
+          <div class="problems-list">
+            {engineProblems.map((problem) => (
+              <div class="problem-item">
+                <h4>{problem.title}</h4>
+                <p>{problem.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="problems-right">
+          <img src="https://s3.regru.cloud/yanis-grek/engine/oftenproblems.png" alt="Диагностика двигателя" />
+        </div>
+      </div>
+
+      <div class="services-grid-section">
+        <h2>Услуги ремонта {engine.name}</h2>
+        <div class="services-grid">
+          {services.map((service) => (
+            <div class="service-card">
+              <img src={service.image} alt={service.title} class="service-card-image" />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
 
-    <WhyUsWrapper />
+    <DiscountsWrapper />
+    <ServicingWrapper />
     <NumbersWrapper />
     <AdvantagesWrapper />
   </div>
@@ -73,6 +141,28 @@ const description = `${engine.description}`;
   .engine-hero-content {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .engine-hero-left {
+    flex: 1;
+  }
+
+  .engine-hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .engine-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 0;
   }
 
   .engine-hero h1 {
@@ -101,7 +191,22 @@ const description = `${engine.description}`;
     font-size: 18px;
     color: #666;
     line-height: 1.8;
-    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .engine-btn {
+    padding: 16px 48px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .engine-btn:hover {
+    background: #2b6eff;
   }
 
   .engine-content {
@@ -111,7 +216,7 @@ const description = `${engine.description}`;
   }
 
   .highlights-section {
-    margin-bottom: 80px;
+    margin-bottom: 100px;
   }
 
   .highlights-section h2 {
@@ -127,7 +232,6 @@ const description = `${engine.description}`;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-bottom: 60px;
   }
 
   .highlight-item {
@@ -166,40 +270,115 @@ const description = `${engine.description}`;
     line-height: 1.6;
   }
 
-  .services-section {
-    text-align: center;
+  .problems-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 100px;
     padding: 60px 40px;
-    background: rgb(245, 245, 245);
+    background: white;
+    border: 1px solid #e0e0e0;
   }
 
-  .services-section h2 {
+  .problems-left h2 {
     font-family: 'Helvetica', sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 24px;
-  }
-
-  .services-section p {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.8;
     margin-bottom: 32px;
   }
 
-  .cta-button {
-    display: inline-block;
-    padding: 16px 48px;
-    background: black;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
+  .problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .cta-button:hover {
-    background: #2b6eff;
+  .problem-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .problem-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    color: #262626;
+    margin: 0;
+  }
+
+  .problem-item p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .problems-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .services-grid-section {
+    margin-bottom: 0;
+  }
+
+  .services-grid-section h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    border-color: #2b6eff;
+    box-shadow: 0 8px 24px rgba(43, 110, 255, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .service-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    color: #262626;
+    margin: 16px 16px 8px 16px;
+  }
+
+  .service-card p {
+    font-size: 16px;
+    color: #000;
+    line-height: 120%;
+    margin: 0 16px 16px 16px;
+  }
+
+  .engine-page[data-type='hybrid'] .engine-hero-content {
+    grid-template-columns: 1fr;
   }
 
   @media (max-width: 1024px) {
@@ -207,11 +386,29 @@ const description = `${engine.description}`;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
+
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .problems-section {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
 
   @media (max-width: 768px) {
     .engine-hero {
       padding: 60px 20px 40px;
+    }
+
+    .engine-hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .engine-image-placeholder {
+      min-height: 250px;
     }
 
     .engine-hero h1 {
@@ -227,7 +424,7 @@ const description = `${engine.description}`;
     }
 
     .highlights-section h2,
-    .services-section h2 {
+    .services-grid-section h2 {
       font-size: 24px;
       margin-bottom: 32px;
     }
@@ -245,18 +442,42 @@ const description = `${engine.description}`;
       font-size: 14px;
     }
 
-    .services-section {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card-image {
+      height: 150px;
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      margin: 12px 12px 6px 12px;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      margin: 0 12px 12px 12px;
+    }
+
+    .problems-section {
       padding: 40px 20px;
     }
 
-    .services-section p {
-      font-size: 16px;
+    .problems-right img {
+      height: 300px;
     }
 
-    .cta-button {
-      width: 100%;
-      padding: 14px 24px;
-      font-size: 14px;
+    .problems-left h2 {
+      font-size: 24px;
+    }
+
+    .problem-item h4 {
+      font-size: 15px;
+    }
+
+    .problem-item p {
+      font-size: 13px;
     }
   }
 
@@ -289,8 +510,24 @@ const description = `${engine.description}`;
       padding: 12px 10px;
     }
 
-    .services-section {
-      padding: 30px 15px;
+    .engine-content {
+      padding: 40px 16px;
+    }
+
+    .problem-item h4 {
+      font-size: 14px;
+    }
+
+    .service-card {
+      border: 1px solid #e0e0e0;
+    }
+
+    .service-card-image {
+      height: 120px;
+    }
+
+    .service-card h3 {
+      font-size: 14px;
     }
   }
 </style>

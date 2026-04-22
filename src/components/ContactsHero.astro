@@ -23,20 +23,13 @@ import ScrollArrow from './ScrollArrow.astro';
       </div>
     </div>
 
-    <button class="contact-button" id="contactButton">Связаться</button>
+    <a href="#contact-form" class="contact-button" style="display:inline-block;" onclick="event.preventDefault();document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});">Связаться</a>
     
     <ScrollArrow targetSelector=".ContactForm" />
   </div>
 </section>
 
-<script>
-  const contactButton = document.getElementById('contactButton');
-  if (contactButton) {
-    contactButton.addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('openQuickRequest'));
-    });
-  }
-</script>
+
 
 <style>
   .contacts-hero {

@@ -8,73 +8,73 @@ const title = 'Все услуги - YanisGrek';
 const description = 'Полный перечень услуг по ремонту и обслуживанию BMW: ремонт АКПП, ремонт двигателя, диагностика, ТО и многое другое';
 
 const transmissionServices = [
-  { name: 'Ремонт АКПП', price: 'от 5000 руб.', slug: 'remont-korobki-peredach' },
-  { name: 'Замена масла в АКПП', price: 'от 21.600 руб.', slug: 'zamena-masla-v-akpp' },
-  { name: 'Замена фильтра-картера АКПП', price: 'от 11.600 руб.', slug: 'zamena-filtra-karteram-akpp' },
-  { name: 'Замена масла в раздаточной коробке', price: 'от 4800 руб.', slug: 'zamena-masla-razdatochnyy' },
-  { name: 'Замена масла в редукторе (перед/зад)', price: 'от 2400 руб.', slug: 'zamena-masla-reduktor' },
-  { name: 'Сброс адаптаций АКПП', price: 'от 1500 руб.', slug: 'sbros-adaptaciy-akpp' },
-  { name: 'Диагностика АКПП', price: 'от 1500 руб.', slug: 'diagnostika-akpp' },
-  { name: 'Снятие/установка АКПП', price: 'от 16.800 руб.', slug: 'snyatie-ustanovka-akpp' },
-  { name: 'Снятие/установка раздаточной коробки', price: 'от 7800 руб.', slug: 'snyatie-ustanovka-razdatka' }
+  { name: 'Ремонт АКПП', price: 'от 5000 руб.', slug: 'remont-korobki-peredach', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/remontAkpp%201.png' },
+  { name: 'Замена масла в АКПП', price: 'от 21.600 руб.', slug: 'zamena-masla-v-akpp', mainphoto: '' },
+  { name: 'Замена фильтра-картера АКПП', price: 'от 11.600 руб.', slug: 'zamena-filtra-karteram-akpp', mainphoto: '' },
+  { name: 'Замена масла в раздаточной коробке', price: 'от 4800 руб.', slug: 'zamena-masla-razdatochnyy', mainphoto: '' },
+  { name: 'Замена масла в редукторе (перед/зад)', price: 'от 2400 руб.', slug: 'zamena-masla-reduktor', mainphoto: '' },
+  { name: 'Сброс адаптаций АКПП', price: 'от 1500 руб.', slug: 'sbros-adaptaciy-akpp', mainphoto: '' },
+  { name: 'Диагностика АКПП', price: 'от 1500 руб.', slug: 'diagnostika-akpp', mainphoto: '' },
+  { name: 'Снятие/установка АКПП', price: 'от 16.800 руб.', slug: 'snyatie-ustanovka-akpp', mainphoto: '' },
+  { name: 'Снятие/установка раздаточной коробки', price: 'от 7800 руб.', slug: 'snyatie-ustanovka-razdatka', mainphoto: '' }
 ];
 
 const engineServices = [
-  { name: 'Ремонт ДВС', price: 'от 0 руб.', slug: 'remont-dvigatelya' },
-  { name: 'Снятие/установка ДВС', price: 'от 35.000 руб.', slug: 'snyatie-ustanovka-dvs' },
-  { name: 'Замена цепи ГРМ', price: 'от 20.000 руб.', slug: 'zamena-cepi-grm' },
-  { name: 'Замена маслосъёмных колпачков', price: 'от 80.000 руб.', slug: 'zamena-maslousemnye-kolpaki' },
-  { name: 'Замена прокладок, сальников', price: 'от 5800 руб.', slug: 'zamena-prokladok-salniky' },
-  { name: 'Замена вкладышей', price: 'от 40.000 руб.', slug: 'zamena-vkladyshey' },
-  { name: 'Чистка впускного коллектора / каналов', price: 'от 4500 руб.', slug: 'chistka-vpusknoj-kollektor' },
-  { name: 'Притирка клапанов', price: 'от 15.000 руб.', slug: 'pritirka-klupanov' },
-  { name: 'Диагностика ДВС', price: 'от 1500 руб', slug: 'diagnostika-dvs' }
+  { name: 'Ремонт ДВС', price: 'от 0 руб.', slug: 'remont-dvigatelya', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/remontDvs%201.png' },
+  { name: 'Снятие/установка ДВС', price: 'от 35.000 руб.', slug: 'snyatie-ustanovka-dvs', mainphoto: '' },
+  { name: 'Замена цепи ГРМ', price: 'от 20.000 руб.', slug: 'zamena-cepi-grm', mainphoto: '' },
+  { name: 'Замена маслосъёмных колпачков', price: 'от 80.000 руб.', slug: 'zamena-maslousemnye-kolpaki', mainphoto: '' },
+  { name: 'Замена прокладок, сальников', price: 'от 5800 руб.', slug: 'zamena-prokladok-salniky', mainphoto: '' },
+  { name: 'Замена вкладышей', price: 'от 40.000 руб.', slug: 'zamena-vkladyshey', mainphoto: '' },
+  { name: 'Чистка впускного коллектора / каналов', price: 'от 4500 руб.', slug: 'chistka-vpusknoj-kollektor', mainphoto: '' },
+  { name: 'Притирка клапанов', price: 'от 15.000 руб.', slug: 'pritirka-klupanov', mainphoto: '' },
+  { name: 'Диагностика ДВС', price: 'от 1500 руб', slug: 'diagnostika-dvs', mainphoto: '' }
 ];
 
 const maintenanceServices = [
-  { name: 'Замена масла ДВС', price: 'от 9000 руб.', slug: 'zamena-masla-dvs' },
-  { name: 'Замена воздушного фильтра', price: 'от 2200 руб.', slug: 'zamena-vozdushnyy-filter' },
-  { name: 'Замена топливного фильтра', price: 'от 3900 руб.', slug: 'zamena-toplivnyy-filter' },
-  { name: 'Замена салонного фильтра', price: 'от 6900 руб.', slug: 'zamena-salonnyy-filter' },
-  { name: 'Прокачка топливной системы', price: 'от 3600 руб', slug: 'prokachka-toplivnoj-sistemy' },
-  { name: 'Замена тормозных дисков', price: 'от 3900 руб.', slug: 'zamena-tormoznye-diski' },
-  { name: 'Замена тормозных колодок', price: 'от 2400 руб', slug: 'zamena-tormoznye-kolodki' }
+  { name: 'Замена масла ДВС', price: 'от 9000 руб.', slug: 'zamena-masla-dvs', mainphoto: '' },
+  { name: 'Замена воздушного фильтра', price: 'от 2200 руб.', slug: 'zamena-vozdushnyy-filter', mainphoto: '' },
+  { name: 'Замена топливного фильтра', price: 'от 3900 руб.', slug: 'zamena-toplivnyy-filter', mainphoto: '' },
+  { name: 'Замена салонного фильтра', price: 'от 6900 руб.', slug: 'zamena-salonnyy-filter', mainphoto: '' },
+  { name: 'Прокачка топливной системы', price: 'от 3600 руб', slug: 'prokachka-toplivnoj-sistemy', mainphoto: '' },
+  { name: 'Замена тормозных дисков', price: 'от 3900 руб.', slug: 'zamena-tormoznye-diski', mainphoto: '' },
+  { name: 'Замена тормозных колодок', price: 'от 2400 руб', slug: 'zamena-tormoznye-kolodki', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/zamena-tormoznye-kolodki%201.png' }
 ];
 
 const suspensionServices = [
-  { name: 'Замена передних амортизаторов', price: 'от 8000 руб.', slug: 'zamena-perednie-amortizatory' },
-  { name: 'Замена задних амортизаторов', price: 'от 6200 руб.', slug: 'zamena-zadnie-amortizatory' },
-  { name: 'Замена сайлентблоков передней подвески', price: 'от 5900 руб.', slug: 'zamena-saylentblok-podveska' },
-  { name: 'Замена задних поперечных рычагов', price: 'от 4600 руб.', slug: 'zamena-zadnie-poperechnye-rychagi' },
-  { name: 'Замена стоек стабилизатора (перед/зад)', price: 'от 2100 руб.', slug: 'zamena-stojki-stabilizator' },
-  { name: 'Замена пружин задней подвески', price: 'от 6000 руб.', slug: 'zamena-pruzhiny-zadnei' },
-  { name: 'Замена ступичных подшипников', price: 'от 4300 руб.', slug: 'zamena-stupichnye-podshipniki' },
-  { name: 'Замена подушек подрамника', price: 'от 8600 руб.', slug: 'zamena-podushki-podramnika' },
-  { name: 'Ремонт рулевой рейки', price: 'от 15.000 руб.', slug: 'remont-rulevoj-reyki' },
-  { name: 'Снятие/установка рулевой рейки', price: 'от 6000 руб.', slug: 'snyatie-etablka-rulevoj-reyki' }
+  { name: 'Замена передних амортизаторов', price: 'от 8000 руб.', slug: 'zamena-perednie-amortizatory', mainphoto: '' },
+  { name: 'Замена задних амортизаторов', price: 'от 6200 руб.', slug: 'zamena-zadnie-amortizatory', mainphoto: '' },
+  { name: 'Замена сайлентблоков передней подвески', price: 'от 5900 руб.', slug: 'zamena-saylentblok-podveska', mainphoto: '' },
+  { name: 'Замена задних поперечных рычагов', price: 'от 4600 руб.', slug: 'zamena-zadnie-poperechnye-rychagi', mainphoto: '' },
+  { name: 'Замена стоек стабилизатора (перед/зад)', price: 'от 2100 руб.', slug: 'zamena-stojki-stabilizator', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/zamena-stojki-stabilizator%201.png' },
+  { name: 'Замена пружин задней подвески', price: 'от 6000 руб.', slug: 'zamena-pruzhiny-zadnei', mainphoto: '' },
+  { name: 'Замена ступичных подшипников', price: 'от 4300 руб.', slug: 'zamena-stupichnye-podshipniki', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/zamena-stupichnye-podshipniki%201.png' },
+  { name: 'Замена подушек подрамника', price: 'от 8600 руб.', slug: 'zamena-podushki-podramnika', mainphoto: '' },
+  { name: 'Ремонт рулевой рейки', price: 'от 15.000 руб.', slug: 'remont-rulevoj-reyki', mainphoto: '' },
+  { name: 'Снятие/установка рулевой рейки', price: 'от 6000 руб.', slug: 'snyatie-estabelka-rulevoj-reyki', mainphoto: '' }
 ];
 
 const diagnosticsServices = [
-  { name: 'Компьютерная диагностика', price: 'от 1500 руб.', slug: 'kompyuternaya-diagnostika' },
-  { name: 'Обновление программного обеспечения', price: 'от 4500 руб.', slug: 'obnovlenie-programmnogo-obespecheniya' },
-  { name: 'Чип-тюнинг Stage 1 / Stage 2', price: 'от 10.000 руб.', slug: 'chip-tuning' },
-  { name: 'Калибровка пневмоподвески', price: 'от 1500 руб.', slug: 'kalibrovka-pnevmopodsveska' },
-  { name: 'Замена АКБ с регистрацией', price: 'от 3000 руб', slug: 'zamena-akb-registraciya' }
+  { name: 'Компьютерная диагностика', price: 'от 1500 руб.', slug: 'kompyuternaya-diagnostika', mainphoto: 'https://s3.regru.cloud/yanis-grek/services/kompyuternaya-diagnostika%201.png' },
+  { name: 'Обновление программного обеспечения', price: 'от 4500 руб.', slug: 'obnovlenie-programmnogo-obespecheniya', mainphoto: '' },
+  { name: 'Чип-тюнинг Stage 1 / Stage 2', price: 'от 10.000 руб.', slug: 'chip-tuning', mainphoto: '' },
+  { name: 'Калибровка пневмоподвески', price: 'от 1500 руб.', slug: 'kalibrovka-pnevmopodsveska', mainphoto: '' },
+  { name: 'Замена АКБ с регистрацией', price: 'от 3000 руб', slug: 'zamena-akb-registraciya', mainphoto: '' }
 ];
 
 const coolingServices = [
-  { name: 'Вакуумирование и заправка кондиционера', price: 'от 6800 руб.', slug: 'vakuumirovanie-zapravka-kondicionera' },
-  { name: 'Антибактериальная обработка кондиционера', price: 'от 3900 руб.', slug: 'antibakterialnaya-obrabotka' },
-  { name: 'Замена насоса охлаждающей жидкости', price: 'от 6900 руб.', slug: 'zamena-nasos-ohlajdayuschaya' },
-  { name: 'Замена термостата', price: 'от 3900 руб.', slug: 'zamena-termostata' },
-  { name: 'Мойка радиаторов', price: 'от 5500 руб.', slug: 'mojka-radiatorov' }
+  { name: 'Вакуумирование и заправка кондиционера', price: 'от 6800 руб.', slug: 'vakuumirovanie-zapravka-kondicionera', mainphoto: '' },
+  { name: 'Антибактериальная обработка кондиционера', price: 'от 3900 руб.', slug: 'antibakterialnaya-obrabotka', mainphoto: '' },
+  { name: 'Замена насоса охлаждающей жидкости', price: 'от 6900 руб.', slug: 'zamena-nasos-ohlajdayuschaya', mainphoto: '' },
+  { name: 'Замена термостата', price: 'от 3900 руб.', slug: 'zamena-termostata', mainphoto: '' },
+  { name: 'Мойка радиаторов', price: 'от 5500 руб.', slug: 'mojka-radiatorov', mainphoto: '' }
 ];
 
 const additionalServices = [
-  { name: 'Отключение и удаление EGR / DPF / AdBlue', price: 'от 15.000 руб.', slug: 'otklyuchenie-удаление-egr-dpf' },
-  { name: 'Профилактика дренажей подкапотного пространства', price: 'от 3000 руб.', slug: 'profilaktika-drenajey' },
-  { name: 'Чистка клапанов', price: 'от 12.000 руб.', slug: 'chistka-klapanov' },
-  { name: 'Удаление впуска / впускной системы', price: 'от 4500 руб', slug: 'udalenie-vpuska' }
+  { name: 'Отключение и удаление EGR / DPF / AdBlue', price: 'от 15.000 руб.', slug: 'otklyuchenie-удаление-egr-dpf', mainphoto: '' },
+  { name: 'Профилактика дренажей подкапотного пространства', price: 'от 3000 руб.', slug: 'profilaktika-drenajey', mainphoto: '' },
+  { name: 'Чистка клапанов', price: 'от 12.000 руб.', slug: 'chistka-klapanov', mainphoto: '' },
+  { name: 'Удаление впуска / впускной системы', price: 'от 4500 руб', slug: 'udalenie-vpuska', mainphoto: '' }
 ];
 ---
 
@@ -83,7 +83,10 @@ const additionalServices = [
     <div class="services-hero">
       <h1>Все услуги</h1>
       <p>Полный спектр услуг по ремонту и обслуживанию BMW</p>
-      <a href="#services-list" class="services-cta">Перейти к услугам</a>
+      <div class="services-cta-buttons">
+        <a href="#services-list" class="services-cta">Перейти к услугам</a>
+        <button class="services-cta services-cta-signup" onclick="openQuickRequest()">Записаться</button>
+      </div>
     </div>
 
     <div id="services-list" class="services-content">
@@ -178,6 +181,13 @@ const additionalServices = [
   </div>
 </Layout>
 
+<script>
+  function openQuickRequest() {
+    window.dispatchEvent(new CustomEvent('openQuickRequest'));
+  }
+  (window as any).openQuickRequest = openQuickRequest;
+</script>
+
 <style>
 .services-page {
   min-height: 100vh;
@@ -247,6 +257,27 @@ const additionalServices = [
 .services-cta:hover {
   background: white;
   color: #262626;
+}
+
+.services-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.services-cta-signup {
+  border: 2px solid white;
+  color: white;
+  background: white;
+  color: #262626;
+  transition: all 0.3s ease;
+}
+
+.services-cta-signup:hover {
+  background: #2b6eff;
+  border-color: #2b6eff;
+  color: white;
 }
 
 .services-content {
