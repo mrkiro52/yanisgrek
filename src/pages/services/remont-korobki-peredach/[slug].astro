@@ -20,32 +20,141 @@ if (!transmission) {
   return Astro.redirect('/404');
 }
 
+const typeLabel = transmission.type === 'mkpp'
+  ? 'Механическая коробка передач'
+  : transmission.type === 'akpp'
+  ? 'Автоматическая коробка передач'
+  : transmission.type === 'dct'
+  ? 'Роботизированная коробка (DCT)'
+  : 'Электрический редуктор';
+
+const repairOptions = transmission.type === 'mkpp' ? [
+  { name: 'Диагностика МКПП', desc: 'Компьютерная и механическая диагностика', price: 'от 1 500 руб.' },
+  { name: 'Замена масла', desc: 'Оригинальное масло BMW MTF, промывка', price: 'от 4 800 руб.' },
+  { name: 'Ремонт синхронизаторов', desc: 'Разборка, замена синхронизаторов и вилок', price: 'от 18 000 руб.' },
+  { name: 'Капитальный ремонт', desc: 'Полная разборка и восстановление коробки', price: transmission.priceRange ?? 'от 20 000 руб.' },
+] : transmission.type === 'akpp' ? [
+  { name: 'Диагностика АКПП', desc: 'Компьютерная диагностика на BMW ICOM', price: 'от 1 500 руб.' },
+  { name: 'Замена масла и фильтра', desc: 'Оригинальное масло ATF 9, замена фильтра-картера', price: 'от 21 600 руб.' },
+  { name: 'Ремонт гидроблока', desc: 'Диагностика и восстановление мехатроника', price: 'от 25 000 руб.' },
+  { name: 'Капитальный ремонт', desc: 'Полная разборка и восстановление АКПП', price: transmission.priceRange ?? 'от 35 000 руб.' },
+] : transmission.type === 'dct' ? [
+  { name: 'Диагностика DCT', desc: 'Компьютерная диагностика и адаптация сцепления', price: 'от 1 500 руб.' },
+  { name: 'Замена масла DCT', desc: 'Оригинальное масло BMW DCT Fluid', price: 'от 18 000 руб.' },
+  { name: 'Замена сцепления', desc: 'Замена фрикционных дисков DCT', price: 'от 35 000 руб.' },
+  { name: 'Капитальный ремонт', desc: 'Полное восстановление коробки DCT', price: transmission.priceRange ?? 'от 40 000 руб.' },
+] : [
+  { name: 'Диагностика редуктора EV', desc: 'Диагностика на BMW ICOM Next', price: 'от 2 000 руб.' },
+  { name: 'Замена масла редуктора', desc: 'Оригинальное SAF-XO Electric Gear Oil', price: 'от 5 000 руб.' },
+  { name: 'Замена подшипников', desc: 'Разборка редуктора, замена подшипников', price: 'от 18 000 руб.' },
+  { name: 'Капитальный ремонт', desc: 'Полное восстановление редуктора EV', price: transmission.priceRange ?? 'от 25 000 руб.' },
+];
+
+const faqItems = transmission.type === 'mkpp' ? [
+  { q: 'Как часто нужно менять масло в МКПП BMW?', a: `Рекомендованный интервал — каждые ${transmission.maintenanceInterval ?? '60 000–80 000 км'}. При активном стиле езды или трековых выездах — каждые 40 000 км. Своевременная замена масла напрямую влияет на ресурс синхронизаторов и подшипников.` },
+  { q: 'Как понять, что пора ремонтировать МКПП?', a: 'Основные симптомы: хруст или скрежет при включении передач, тугое включение 2-й или 3-й передачи, самопроизвольное выключение передач, шум в области коробки при движении, течь масла под автомобилем. При любом из этих симптомов — немедленно записывайтесь на диагностику.' },
+  { q: 'Сколько времени займёт ремонт?', a: 'Стандартный ремонт синхронизаторов занимает 2–3 рабочих дня. Капитальный ремонт — 3–5 дней. На период ремонта мы можем предложить подменный автомобиль (уточняйте при записи).' },
+  { q: 'Что будет, если затянуть с ремонтом?', a: 'Износ синхронизаторов прогрессирует. Металлическая стружка попадает в масло и ускоряет износ шестерён и подшипников. То, что сегодня стоит 15 000 руб. на синхронизаторы, через 20 000 км может превратиться в капитальный ремонт за 60 000+ руб.' },
+  { q: 'Даёте ли гарантию на ремонт МКПП?', a: 'Да, мы предоставляем гарантию 12 месяцев на все выполненные работы и установленные запчасти. Гарантия распространяется на стоимость работ и запасных частей.' },
+  { q: `Используете ли оригинальные запчасти BMW для ${transmission.name}?`, a: 'Только оригинальные запчасти BMW или сертифицированные аналоги производителей первой комплектации (OEM) — Getrag, ZF. Устанавливаем исключительно масла с допусками BMW.' },
+] : transmission.type === 'akpp' ? [
+  { q: 'Как часто нужно менять масло в АКПП BMW?', a: `Рекомендованный интервал для ${transmission.name} — каждые ${transmission.maintenanceInterval ?? '40 000–60 000 км'}. Несмотря на заявление BMW о "необслуживаемой АКПП" — это маркетинг. Регулярная замена масла увеличивает ресурс коробки в 2–3 раза.` },
+  { q: 'Что означают рывки при переключении?', a: 'Рывки или толчки при переключении — признак износа фрикционов или проблем с гидроблоком. Требуется немедленная диагностика. Продолжение эксплуатации ускоряет износ и превращает ремонт гидроблока в полный капремонт АКПП.' },
+  { q: 'Можно ли ездить с горящей лампой АКПП?', a: 'Категорически нет. Аварийный режим или лампа АКПП означают активную проблему. Продолжение езды в аварийном режиме может вызвать полное разрушение коробки. Приезжайте или вызывайте эвакуатор.' },
+  { q: 'Сколько времени займёт ремонт АКПП?', a: 'Замена масла и фильтра — 3–4 часа. Ремонт гидроблока — 1–2 дня. Капитальный ремонт — 3–7 рабочих дней в зависимости от сложности.' },
+  { q: 'Есть ли гарантия на ремонт?', a: 'Да, гарантия 12 месяцев на все выполненные работы и запасные части. На замену масла и фильтра — 6 месяцев или 15 000 км.' },
+  { q: 'Что дешевле — ремонт или замена АКПП?', a: 'В большинстве случаев качественный ремонт значительно дешевле замены. Мы всегда проводим полную диагностику перед ремонтом и честно оцениваем целесообразность.' },
+] : transmission.type === 'dct' ? [
+  { q: `Почему ${transmission.name} дёргается при трогании?`, a: 'Рывки при трогании — характерная особенность первых поколений DCT. Обычно решается обновлением программного обеспечения блока управления коробкой на BMW ICOM. Если не помогает — диагностика адаптации сцепления.' },
+  { q: 'Как часто нужно обслуживать DCT?', a: `Рекомендуем каждые ${transmission.maintenanceInterval ?? '30 000–40 000 км'}. DCT требует более частого обслуживания, чем АКПП, из-за особенностей работы сцепления.` },
+  { q: 'Сколько служит сцепление DCT?', a: 'При правильном стиле вождения (плавное трогание, избегание пробок) — 100 000–150 000 км. При городской езде в пробках или агрессивном вождении — 60 000–80 000 км.' },
+  { q: 'Опасно ли долго ехать в пробке на DCT?', a: 'Нежелательно. DCT предназначен для динамичной езды, не для длительного ползания в пробках. Перегрев сцепления в пробке ускоряет его износ. Рекомендуем при возможности переходить в нейтраль.' },
+  { q: 'Есть ли гарантия на ремонт DCT?', a: 'Да, 12 месяцев на все работы и запасные части.' },
+  { q: 'Можно ли обновить ПО DCT самостоятельно?', a: 'Нет. Обновление программного обеспечения блока управления DCT требует профессионального оборудования BMW ICOM и лицензии BMW Software. Самостоятельное обновление невозможно и опасно.' },
+] : [
+  { q: 'Нужно ли менять масло в редукторе электромобиля?', a: `Да, несмотря на мнение об "обслуживании электромобилей". Рекомендованный интервал для ${transmission.name} — каждые ${transmission.maintenanceInterval ?? '80 000–100 000 км'}. Масло редуктора стареет и загрязняется.` },
+  { q: 'Что означает шум при ускорении электромобиля?', a: 'Шум при ускорении электромобиля BMW (вместо обычной тишины) — признак износа подшипников редуктора. Требуется диагностика. Своевременный ремонт подшипников значительно дешевле замены редуктора.' },
+  { q: 'Может ли редуктор EV быть отремонтирован?', a: 'Да, в большинстве случаев редуктор электромобиля поддаётся ремонту: замена подшипников, уплотнений, шестерён. Полная замена редуктора требуется только при серьёзных механических повреждениях.' },
+  { q: 'Требуется ли специальное оборудование для ремонта EV?', a: 'Да. Работа с высоковольтными системами BMW EV требует сертифицированного персонала и специализированного оборудования. Наши специалисты имеют допуск к работе с HV-системами BMW.' },
+  { q: 'Есть ли гарантия на ремонт редуктора?', a: 'Да, гарантия 12 месяцев на все выполненные работы и запасные части.' },
+  { q: 'Как часто проверять уровень масла редуктора?', a: 'Рекомендуем проверять при каждом ТО. Уровень масла редуктора критичен для долговечности подшипников и шестерён.' },
+];
+
 const title = `Ремонт ${transmission.name} BMW - YanisGrek`;
-const description = `${transmission.description}`;
+const description = transmission.description;
 ---
 
 <Layout {title} {description}>
   <div class="transmission-page" data-type={transmission.type}>
+
+    <!-- HERO -->
     <div class="transmission-hero">
       <div class="transmission-hero-content">
         <div class="transmission-hero-left">
+          <span class="transmission-type-badge">{typeLabel}</span>
           <h1>{transmission.name}</h1>
-          <p class="transmission-type">Тип: {transmission.type === 'mkpp' ? 'Механическая коробка' : transmission.type === 'akpp' ? 'Автоматическая коробка' : transmission.type === 'dct' ? 'Коробка с двойным сцеплением' : 'Электрический редуктор'}</p>
           <p class="transmission-models">{transmission.models}</p>
           <p class="transmission-description">{transmission.description}</p>
-          <button class="transmission-btn" onclick="openQuickRequest()" style="cursor: pointer;">Записаться на диагностику</button>
+          <div class="hero-actions">
+            {transmission.priceRange && (
+              <div class="hero-price">
+                <span class="hero-price-label">Ремонт</span>
+                <span class="hero-price-value">{transmission.priceRange}</span>
+              </div>
+            )}
+            <button class="hero-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
+          </div>
         </div>
         <div class="transmission-hero-right">
-          {transmission.type !== 'elektro' && transmission.type !== 'akpp' && (
-            <div class="transmission-image-placeholder" style={transmission.imageUrl ? `background-image: url('${transmission.imageUrl}'); background-size: cover; background-position: center;` : ''}></div>
+          {(transmission.type === 'mkpp' || transmission.type === 'dct') && transmission.imageUrl && (
+            <div
+              class="transmission-image"
+              style={`background-image: url('${transmission.imageUrl}'); background-size: cover; background-position: center;`}
+            ></div>
           )}
         </div>
       </div>
     </div>
 
+    <!-- SPECS BAR -->
+    {transmission.specs && (
+      <div class="specs-bar">
+        <div class="specs-bar-inner">
+          <div class="spec-item">
+            <span class="spec-label">Ступеней</span>
+            <span class="spec-value">{transmission.specs.gears}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Макс. момент</span>
+            <span class="spec-value">{transmission.specs.maxTorque}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Объём масла</span>
+            <span class="spec-value">{transmission.specs.oilCapacity}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Тип масла</span>
+            <span class="spec-value">{transmission.specs.oilType}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Производитель</span>
+            <span class="spec-value">{transmission.specs.manufacturer}</span>
+          </div>
+          {transmission.maintenanceInterval && (
+            <div class="spec-item">
+              <span class="spec-label">Интервал ТО</span>
+              <span class="spec-value">{transmission.maintenanceInterval}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+
     <div class="transmission-content">
+
+      <!-- HIGHLIGHTS -->
       <div class="highlights-section">
-        <h2>Характеристики</h2>
+        <h2>Ключевые характеристики</h2>
         <div class="highlights-grid">
           {transmission.highlights.map(highlight => (
             <div class="highlight-item">
@@ -56,135 +165,114 @@ const description = `${transmission.description}`;
         </div>
       </div>
 
-      <div class="problems-section">
-        <div class="problems-left">
-          <h2>Частые проблемы</h2>
-          <div class="problems-list">
-            {transmission.type === 'mkpp' && (
-              <>
-                <div class="problem-item">
-                  <h4>Износ синхронизаторов</h4>
-                  <p>Синхронизаторы отвечают за плавное включение передач. При износе возникают характерные звуки скрежета при переключении. Замена требуется при сложном включении передач или их самопроизвольном выключении.</p>
+      <!-- SPECIFIC PROBLEMS (from data) -->
+      {transmission.issues && transmission.issues.length > 0 && (
+        <div class="issues-section">
+          <div class="issues-left">
+            <h2>Известные проблемы {transmission.name}</h2>
+            <p class="issues-subtitle">Специфические неисправности данной модели коробки передач, о которых должен знать каждый владелец</p>
+            <div class="issues-list">
+              {transmission.issues.map(issue => (
+                <div class={`issue-item issue-${issue.severity}`}>
+                  <div class="issue-header">
+                    <span class={`issue-severity severity-${issue.severity}`}>
+                      {issue.severity === 'high' ? 'Важно' : issue.severity === 'medium' ? 'Умеренно' : 'Незначительно'}
+                    </span>
+                    <h4>{issue.title}</h4>
+                  </div>
+                  <p class="issue-desc">{issue.description}</p>
+                  <div class="issue-solution">
+                    <span class="solution-label">Решение:</span>
+                    <span class="solution-text">{issue.solution}</span>
+                  </div>
                 </div>
-                <div class="problem-item">
-                  <h4>Трудное включение передач</h4>
-                  <p>Может быть вызвано износом синхронизаторов, низким уровнем масла или проблемами с выжимным подшипником. Требует диагностики для определения точной причины.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Течи масла из сальников</h4>
-                  <p>Сальники изнашиваются со временем, что приводит к утечкам трансмиссионного масла. Это может привести к недостаточной смазке внутренних компонентов и их повреждению. Требует замены сальников.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Выход из строя подшипников</h4>
-                  <p>Подшипники коробки подвергаются постоянным нагрузкам. При их износе появляется характерный гул, особенно при движении. Требует полной замены поврежденных подшипников.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Проблемы при холодном пуске</h4>
-                  <p>В холодную погоду масло становится гуще, что затрудняет включение первой передачи. Используйте масло правильной вязкости и прогревайте автомобиль перед началом движения.</p>
-                </div>
-              </>
-            )}
-            {transmission.type === 'akpp' && (
-              <>
-                <div class="problem-item">
-                  <h4>Рывки при переключении</h4>
-                  <p>Рывки указывают на проблемы с гидротрансформатором, износом фрикционов или низким уровнем масла. Требует немедленной диагностики для предотвращения дальнейшего повреждения коробки.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Перегрев трансмиссии</h4>
-                  <p>Перегрев может быть вызван интенсивной ездой, буксировкой или проблемами с охлаждением масла. При температурах выше нормы коробка переходит в режим защиты, что снижает производительность.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Проблемы гидротрансформатора</h4>
-                  <p>Гидротрансформатор передает крутящий момент через трансмиссионное масло. При его поломке возникают пробуксовки, рывки или отсутствие тяги. Требует специализированного ремонта.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Износ фрикционов</h4>
-                  <p>Фрикционы обеспечивают передачу крутящего момента. При износе коробка начинает пробуксовывать, особенно при ускорении. Требует замены фрикционных дисков и планетарного механизма.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Ошибки датчиков</h4>
-                  <p>Неисправные датчики могут вызвать ошибки в работе коробки, неправильное переключение или отсутствие реакции на движения водителя. Требует компьютерной диагностики и замены датчика.</p>
-                </div>
-              </>
-            )}
-            {transmission.type === 'dct' && (
-              <>
-                <div class="problem-item">
-                  <h4>Рывки и толчки при переключении</h4>
-                  <p>DCT коробки склонны к рывкам при переключении, особенно на начальных версиях. Это может быть обусловлено программным обеспечением или механическим износом сцепления.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Проблемы сцепления</h4>
-                  <p>В коробке DCT два независимых сцепления. При выходе одного из строя коробка переходит в аварийный режим. Требует замены всего узла сцепления.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Перегрев при интенсивной езде</h4>
-                  <p>DCT коробки генерируют больше тепла, чем традиционные АКПП. При драйв-езде или в режиме Sport+ может произойти перегрев масла. Требует качественного охлаждения.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Задержки переключения</h4>
-                  <p>Коробка может «думать» перед переключением передачи, что приводит к задержкам ускорения. Часто решается обновлением программного обеспечения коробки.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Ошибки электроники</h4>
-                  <p>Сложная электроника коробки может давать ошибки, приводящие к отключению режима Sport или полной блокировке коробки. Требует компьютерной диагностики.</p>
-                </div>
-              </>
-            )}
-            {transmission.type === 'elektro' && (
-              <>
-                <div class="problem-item">
-                  <h4>Перегрев редуктора</h4>
-                  <p>При интенсивной эксплуатации или в жарком климате редуктор может перегреться. Требует качественного масла и функционирующей системы охлаждения. При перегреве срабатывает защита.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Люфт валов</h4>
-                  <p>Люфт может появиться при износе подшипников валов редуктора. Это приводит к шумам при ускорении и торможении. Требует замены поврежденных подшипников.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Износ подшипников</h4>
-                  <p>Подшипники редуктора испытывают постоянные нагрузки от электромотора. При износе появляется гул и вибрация. Требует профессионального разбора редуктора и замены подшипников.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Проблемы охлаждения</h4>
-                  <p>Система охлаждения масла редуктора критична для его долговечности. При неправильной работе масло перегревается, ускоряя износ компонентов.</p>
-                </div>
-                <div class="problem-item">
-                  <h4>Утечки масла редуктора</h4>
-                  <p>Со временем уплотнения редуктора изнашиваются, вызывая утечки масла. Требует замены сальников и уплотнителей. Без масла редуктор выходит из строя.</p>
-                </div>
-              </>
-            )}
+              ))}
+            </div>
+          </div>
+          <div class="issues-right">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/oftenproblems.png" alt={`Проблемы ${transmission.name}`} />
+            <div class="issues-cta-block">
+              <p>Заметили один из этих симптомов?</p>
+              <button class="issues-cta-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
+            </div>
           </div>
         </div>
-        <div class="problems-right">
-          <img src="https://s3.regru.cloud/yanis-grek/transmission/oftenproblems.png" alt="Частые проблемы трансмиссии" />
+      )}
+
+      <!-- REPAIR OPTIONS / PRICES -->
+      <div class="repair-section">
+        <h2>Услуги по ремонту {transmission.name}</h2>
+        <p class="section-subtitle">Стоимость основных работ — точная цена определяется после диагностики</p>
+        <div class="repair-grid">
+          {repairOptions.map((option, idx) => (
+            <div class={`repair-card ${idx === repairOptions.length - 1 ? '' : ''}`}>
+              <div class="repair-number">{(idx + 1).toString().padStart(2, '0')}</div>
+              <h3>{option.name}</h3>
+              <p>{option.desc}</p>
+              <div class="repair-price">{option.price}</div>
+              <button class="repair-btn" onclick="openQuickRequest()">Записаться</button>
+            </div>
+          ))}
         </div>
       </div>
 
+      <!-- SERVICE CARDS GRID -->
       <div class="services-grid-section">
-        <h2>Услуги ремонта {transmission.name}</h2>
+        <h2>Полный спектр работ с {transmission.name}</h2>
         <div class="services-grid">
           <div class="service-card">
             <img src="https://s3.regru.cloud/yanis-grek/transmission/service1.png" alt="Компьютерная диагностика" class="service-card-image" />
             <h3>Компьютерная диагностика</h3>
-            <p>Полная диагностика коробки передач на профессиональном оборудовании</p>
+            <p>Полная диагностика на профессиональном оборудовании BMW ICOM A2+C с расшифровкой всех кодов ошибок</p>
           </div>
           <div class="service-card">
             <img src="https://s3.regru.cloud/yanis-grek/transmission/service2.png" alt="Ремонт и восстановление" class="service-card-image" />
             <h3>Ремонт и восстановление</h3>
-            <p>Специализированный ремонт с заменой износившихся деталей</p>
+            <p>Специализированный ремонт с заменой изношенных деталей оригинальными запчастями BMW</p>
           </div>
           <div class="service-card">
             <img src="https://s3.regru.cloud/yanis-grek/transmission/service3.png" alt="Замена масла и фильтра" class="service-card-image" />
             <h3>Замена масла и фильтра</h3>
-            <p>Регулярное обслуживание с использованием оригинального масла</p>
+            <p>Регулярное обслуживание с использованием оригинального масла BMW и фильтра-картера</p>
           </div>
           <div class="service-card">
             <img src="https://s3.regru.cloud/yanis-grek/transmission/service4.png" alt="Промывка и чистка" class="service-card-image" />
             <h3>Промывка и чистка</h3>
-            <p>Профилактическая промывка системы для продления срока службы</p>
+            <p>Профилактическая промывка гидравлической системы для продления ресурса коробки</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUARANTEE BLOCK -->
+    <div class="guarantee-block">
+      <div class="guarantee-inner">
+        <div class="guarantee-item">
+          <div class="guarantee-icon">12</div>
+          <div class="guarantee-text">
+            <strong>Гарантия 12 месяцев</strong>
+            <span>на все виды работ и запчасти</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">OEM</div>
+          <div class="guarantee-text">
+            <strong>Оригинальные запчасти BMW</strong>
+            <span>или сертифицированные OEM</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">BMW</div>
+          <div class="guarantee-text">
+            <strong>Специалисты BMW</strong>
+            <span>10+ лет опыта с BMW</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">0₽</div>
+          <div class="guarantee-text">
+            <strong>Без скрытых доплат</strong>
+            <span>итоговая цена = цена в договоре</span>
           </div>
         </div>
       </div>
@@ -194,6 +282,27 @@ const description = `${transmission.description}`;
     <WhyUsWrapper />
     <ServicingWrapper />
     <NumbersWrapper />
+
+    <!-- FAQ SECTION -->
+    <div class="faq-section">
+      <div class="faq-inner">
+        <h2>Часто задаваемые вопросы</h2>
+        <p class="faq-subtitle">Ответы на популярные вопросы о ремонте {transmission.name}</p>
+        <div class="faq-list">
+          {faqItems.map((item, idx) => (
+            <details class="faq-item" open={idx === 0}>
+              <summary class="faq-question">{item.q}</summary>
+              <p class="faq-answer">{item.a}</p>
+            </details>
+          ))}
+        </div>
+        <div class="faq-cta">
+          <p>Остались вопросы? Позвоните нам или запишитесь на бесплатную консультацию</p>
+          <button class="faq-cta-btn" onclick="openQuickRequest()">Получить консультацию</button>
+        </div>
+      </div>
+    </div>
+
     <AdvantagesWrapper />
   </div>
 </Layout>
@@ -204,6 +313,7 @@ const description = `${transmission.description}`;
     margin-top: 90px;
   }
 
+  /* HERO */
   .transmission-hero {
     background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
     padding: 80px 20px 60px;
@@ -218,84 +328,153 @@ const description = `${transmission.description}`;
     align-items: center;
   }
 
+  .transmission-page[data-type='akpp'] .transmission-hero-content,
   .transmission-page[data-type='elektro'] .transmission-hero-content {
     grid-template-columns: 1fr;
   }
 
-  .transmission-page[data-type='akpp'] .transmission-hero-content {
-    grid-template-columns: 1fr;
-  }
-
   .transmission-hero-left {
-    flex: 1;
-  }
-
-  .transmission-hero-right {
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .transmission-image-placeholder {
-    width: 100%;
-    aspect-ratio: 1;
-    background: white;
-    border-radius: 0;
+  .transmission-type-badge {
+    display: inline-block;
+    background: #2b6eff;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content;
   }
 
   .transmission-hero h1 {
     font-family: 'Russo One', sans-serif;
     font-size: 48px;
     color: #262626;
-    margin-bottom: 12px;
+    margin: 0;
     text-transform: uppercase;
   }
 
-  .transmission-type {
-    font-size: 16px;
-    color: #2b6eff;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
   .transmission-models {
-    font-size: 18px;
-    color: #666;
+    font-size: 16px;
+    color: #444;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin: 0;
   }
 
   .transmission-description {
     font-size: 18px;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 24px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
   }
 
-  .transmission-btn {
-    padding: 16px 48px;
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .hero-price {
+    background: #262626;
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-price-label {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-price-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .hero-btn {
+    padding: 16px 40px;
     background: black;
     color: white;
     border: none;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
 
-  .transmission-btn:hover {
+  .hero-btn:hover {
     background: #2b6eff;
   }
 
+  .transmission-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
+  }
+
+  /* SPECS BAR */
+  .specs-bar {
+    background: #262626;
+    padding: 24px 20px;
+  }
+
+  .specs-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .spec-item {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .spec-item:last-child {
+    border-right: none;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .spec-value {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+  }
+
+  /* CONTENT */
   .transmission-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px;
   }
 
+  /* HIGHLIGHTS */
   .highlights-section {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
   }
 
   .highlights-section h2 {
@@ -303,14 +482,14 @@ const description = `${transmission.description}`;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     text-align: center;
   }
 
   .highlights-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 
   .highlight-item {
@@ -318,14 +497,14 @@ const description = `${transmission.description}`;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding: 24px;
-    background: rgb(245, 245, 245);
+    padding: 24px 16px;
+    background: #f5f5f5;
     text-align: center;
     transition: all 0.3s;
   }
 
   .highlight-item:hover {
-    background: rgb(235, 235, 235);
+    background: #ebebeb;
     transform: translateY(-4px);
   }
 
@@ -339,69 +518,267 @@ const description = `${transmission.description}`;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
+    flex-shrink: 0;
   }
 
   .highlight-item p {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     color: #262626;
-    line-height: 1.6;
+    font-weight: 500;
   }
 
-  .problems-section {
+  /* ISSUES SECTION */
+  .issues-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 400px;
     gap: 60px;
     align-items: flex-start;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     padding: 60px 40px;
     background: white;
     border: 1px solid #e0e0e0;
   }
 
-  .problems-left h2 {
+  .issues-left h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 8px;
+  }
+
+  .issues-subtitle {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .issues-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .issue-item {
+    border-left: 3px solid #d0d0d0;
+    padding: 16px 16px 16px 20px;
+    background: #fafafa;
+  }
+
+  .issue-item.issue-high {
+    border-left-color: #e53e3e;
+  }
+
+  .issue-item.issue-medium {
+    border-left-color: #ed8936;
+  }
+
+  .issue-item.issue-low {
+    border-left-color: #48bb78;
+  }
+
+  .issue-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .issue-severity {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+  }
+
+  .severity-high {
+    background: #fff5f5;
+    color: #e53e3e;
+  }
+
+  .severity-medium {
+    background: #fffaf0;
+    color: #dd6b20;
+  }
+
+  .severity-low {
+    background: #f0fff4;
+    color: #276749;
+  }
+
+  .issue-header h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  .issue-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+  }
+
+  .issue-solution {
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .solution-label {
+    color: #2b6eff;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .solution-text {
+    color: #444;
+  }
+
+  .issues-right img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .issues-cta-block {
+    background: #262626;
+    padding: 24px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .issues-cta-block p {
+    color: white;
+    font-size: 15px;
+    margin: 0 0 16px 0;
+  }
+
+  .issues-cta-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+
+  .issues-cta-btn:hover {
+    background: #1a55ee;
+  }
+
+  /* REPAIR SECTION */
+  .repair-section {
+    margin-bottom: 80px;
+  }
+
+  .repair-section h2 {
     font-family: 'Helvetica', sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 32px;
+    margin-bottom: 8px;
   }
 
-  .problems-list {
+  .section-subtitle {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+
+  .repair-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .repair-card {
+    border: 1px solid #e0e0e0;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 10px;
+    transition: all 0.3s;
   }
 
-  .problem-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .repair-card:hover {
+    border-color: #2b6eff;
+    box-shadow: 0 4px 20px rgba(43,110,255,0.1);
   }
 
-  .problem-item h4 {
+  .repair-card-accent {
+    background: #262626;
+    border-color: #262626;
+  }
+
+  .repair-card-accent h3,
+  .repair-card-accent p,
+  .repair-card-accent .repair-number {
+    color: white;
+  }
+
+  .repair-card-accent .repair-price {
+    color: #2b6eff;
+  }
+
+  .repair-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #e0e0e0;
+    font-family: 'Russo One', sans-serif;
+    line-height: 1;
+  }
+
+  .repair-card h3 {
     font-size: 16px;
     font-weight: 700;
-    font-family: 'Helvetica', sans-serif;
     color: #262626;
     margin: 0;
   }
 
-  .problem-item p {
+  .repair-card p {
     font-size: 14px;
     color: #666;
-    line-height: 1.6;
     margin: 0;
+    line-height: 1.5;
+    flex: 1;
   }
 
-  .problems-right img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0;
+  .repair-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #262626;
   }
 
+  .repair-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .repair-btn:hover {
+    background: #1a55ee;
+  }
+
+  .repair-card-accent .repair-btn {
+    background: #2b6eff;
+  }
+
+  /* SERVICES GRID */
   .services-grid-section {
     margin-bottom: 0;
   }
@@ -411,7 +788,7 @@ const description = `${transmission.description}`;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     text-align: center;
   }
 
@@ -425,65 +802,240 @@ const description = `${transmission.description}`;
     display: flex;
     flex-direction: column;
     border: 2px solid #e0e0e0;
-    transition: all 0.3s;
     overflow: hidden;
+    transition: all 0.3s;
   }
 
   .service-card:hover {
     border-color: #2b6eff;
-    box-shadow: 0 8px 24px rgba(43, 110, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(43,110,255,0.15);
     transform: translateY(-4px);
   }
 
   .service-card-image {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
   }
 
   .service-card h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    font-family: 'Helvetica', sans-serif;
     color: #262626;
-    margin: 16px 16px 8px 16px;
+    margin: 16px 16px 8px;
   }
 
   .service-card p {
-    font-size: 16px;
-    color: #000;
-    line-height: 120%;
-    margin: 0 16px 16px 16px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0 16px 16px;
   }
 
+  /* GUARANTEE BLOCK */
+  .guarantee-block {
+    background: #262626;
+    padding: 40px 20px;
+  }
+
+  .guarantee-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .guarantee-item:last-child {
+    border-right: none;
+  }
+
+  .guarantee-icon {
+    font-size: 20px;
+    font-weight: 900;
+    color: #2b6eff;
+    font-family: 'Russo One', sans-serif;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .guarantee-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .guarantee-text strong {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .guarantee-text span {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+
+  /* FAQ SECTION */
+  .faq-section {
+    background: #f5f5f5;
+    padding: 80px 20px;
+  }
+
+  .faq-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .faq-subtitle {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid #e8e8e8;
+  }
+
+  .faq-question {
+    padding: 20px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #262626;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 20px;
+    color: #2b6eff;
+    font-weight: 400;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-item[open] .faq-question {
+    color: #2b6eff;
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .faq-cta {
+    margin-top: 48px;
+    background: #262626;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .faq-cta p {
+    color: white;
+    font-size: 18px;
+    margin: 0 0 20px 0;
+  }
+
+  .faq-cta-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .faq-cta-btn:hover {
+    background: #1a55ee;
+  }
+
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .highlights-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .transmission-hero-content {
+      grid-template-columns: 1fr !important;
+      gap: 40px;
     }
 
+    .highlights-grid,
+    .repair-grid,
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .problems-section {
+    .guarantee-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .guarantee-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .guarantee-item:nth-child(2n) {
+      border-right: none;
+    }
+
+    .issues-section {
       grid-template-columns: 1fr;
       gap: 40px;
+    }
+
+    .specs-bar-inner {
+      gap: 0;
+    }
+
+    .spec-item {
+      min-width: 120px;
     }
   }
 
   @media (max-width: 768px) {
     .transmission-hero {
       padding: 60px 20px 40px;
-    }
-
-    .transmission-hero-content {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    .transmission-image-placeholder {
-      min-height: 250px;
     }
 
     .transmission-hero h1 {
@@ -494,65 +1046,70 @@ const description = `${transmission.description}`;
       font-size: 16px;
     }
 
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-price {
+      width: 100%;
+    }
+
+    .hero-btn {
+      width: 100%;
+      text-align: center;
+    }
+
     .transmission-content {
-      padding: 60px 20px;
+      padding: 50px 20px;
     }
 
     .highlights-section h2,
-    .services-grid-section h2 {
+    .repair-section h2,
+    .services-grid-section h2,
+    .faq-inner h2 {
       font-size: 24px;
-      margin-bottom: 32px;
     }
 
-    .highlights-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .highlight-item {
-      padding: 16px 12px;
-    }
-
-    .highlight-item p {
-      font-size: 14px;
-    }
-
+    .highlights-grid,
+    .repair-grid,
     .services-grid {
       grid-template-columns: 1fr;
     }
 
-    .service-card-image {
-      height: 150px;
+    .guarantee-inner {
+      grid-template-columns: 1fr;
     }
 
-    .service-card h3 {
-      font-size: 16px;
-      margin: 12px 12px 6px 12px;
+    .issues-section {
+      padding: 32px 20px;
     }
 
-    .service-card p {
-      font-size: 16px;
-      margin: 0 12px 12px 12px;
+    .issues-left h2 {
+      font-size: 22px;
     }
 
-    .problems-section {
-      padding: 40px 20px;
+    .spec-item {
+      min-width: 100px;
+      padding: 8px 12px;
     }
 
-    .problems-right img {
-      height: 300px;
-    }
-
-    .problems-left h2 {
-      font-size: 24px;
-    }
-
-    .problem-item h4 {
-      font-size: 15px;
-    }
-
-    .problem-item p {
+    .spec-value {
       font-size: 13px;
+    }
+
+    .faq-section {
+      padding: 50px 20px;
+    }
+
+    .faq-question {
+      font-size: 14px;
+      padding: 16px 20px;
+    }
+
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 14px;
     }
   }
 
@@ -565,44 +1122,31 @@ const description = `${transmission.description}`;
       font-size: 24px;
     }
 
-    .transmission-type {
-      font-size: 14px;
+    .specs-bar-inner {
+      flex-direction: column;
     }
 
-    .transmission-models {
-      font-size: 14px;
-    }
-
-    .transmission-description {
-      font-size: 14px;
-    }
-
-    .highlights-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .highlight-item {
-      padding: 12px 10px;
-    }
-
-    .transmission-content {
-      padding: 40px 16px;
-    }
-
-    .problem-item h4 {
-      font-size: 14px;
-    }
-
-    .service-card {
-      border: 1px solid #e0e0e0;
+    .spec-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 16px;
     }
 
     .service-card-image {
-      height: 120px;
+      height: 140px;
     }
 
-    .service-card h3 {
-      font-size: 14px;
+    .faq-cta {
+      padding: 24px 20px;
+    }
+
+    .faq-cta p {
+      font-size: 16px;
+    }
+
+    .faq-cta-btn {
+      width: 100%;
+      padding: 14px 24px;
     }
   }
 </style>

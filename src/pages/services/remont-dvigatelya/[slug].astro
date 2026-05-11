@@ -4,6 +4,7 @@ import NumbersWrapper from '../../../components/NumbersWrapper.astro';
 import AdvantagesWrapper from '../../../components/AdvantagesWrapper.astro';
 import DiscountsWrapper from '../../../components/DiscountsWrapper.astro';
 import ServicingWrapper from '../../../components/ServicingWrapper.astro';
+import WhyUsWrapper from '../../../components/WhyUsWrapper.astro';
 import { engines, getEngineById } from '../../../assets/engineData';
 
 export async function getStaticPaths() {
@@ -19,66 +20,129 @@ if (!engine) {
   return Astro.redirect('/404');
 }
 
-const title = `Ремонт ${engine.name} BMW - YanisGrek`;
-const description = `${engine.description}`;
+const typeLabel = engine.type === 'benzine'
+  ? 'Бензиновый двигатель'
+  : engine.type === 'diesel'
+  ? 'Дизельный двигатель'
+  : 'Гибридный / Электрический';
 
-// Динамические проблемы по типу двигателя
-const problems = {
-  benzine: [
-    { title: 'Прогорание клапанов', description: 'Клапаны изнашиваются и теряют герметичность при высоких температурах, что приводит к потере компрессии и снижению мощности. Требуется замена клапанов и притирка седел.' },
-    { title: 'Неисправность свечей зажигания', description: 'Загрязнение или износ свечей приводит к нестабильной работе двигателя, проблемам с пуском и повышенному расходу топлива. Требуется замена свечей и проверка системы зажигания.' },
-    { title: 'Течь масла из сальников', description: 'Сальники теряют эластичность, что приводит к утечкам масла. При недостаточной смазке возрастает износ компонентов. Требуется замена сальников и уплотнений.' },
-    { title: 'Проблемы с турбокомпрессором', description: 'Турбо может загрязняться углеродом или иметь механические повреждения. Это приводит к потере мощности и черному дыму из выхлопа. Требуется чистка или замена турбины.' },
-    { title: 'Перегрев двигателя', description: 'Перегрев вызывается проблемами с системой охлаждения, засорением радиатора или неисправностью термостата. Это может привести к серьезным повреждениям ДВС. Требуется диагностика и замена компонентов охлаждения.' }
-  ],
-  diesel: [
-    { title: 'Загрязнение форсунок', description: 'Дизельные форсунки засоряются топливными отложениями, что приводит к неровной работе, дымности и потере мощности. Требуется промывка или замена форсунок.' },
-    { title: 'Проблемы с ТНВД', description: 'Топливный насос высокого давления критичен для дизелей. При его износе падает давление топлива и двигатель работает нестабильно. Требуется профессиональная диагностика и ремонт.' },
-    { title: 'Жесткая работа двигателя', description: 'Жесткость может быть вызвана неправильным топливом, неисправностью распределителя или проблемами с топливной системой. Требуется комплексная диагностика.' },
-    { title: 'Повышенный расход масла', description: 'В дизельных двигателях расход масла может быть выше из-за конструктивных особенностей. Если расход критичен, может быть изношены кольца или клапаны. Требуется диагностика.' },
-    { title: 'Проблемы с системой SCR', description: 'SCR система уменьшает вредные выбросы. При ее неисправности горит лампа и двигатель может перейти в аварийный режим. Требуется очистка или замена катализатора.' }
-  ],
-  hybrid: [
-    { title: 'Проблемы с аккумулятором', description: 'Высоковольтный аккумулятор гибридов имеет ограниченный ресурс. При деградации снижается запас хода и гибридная система работает неправильно. Требуется замена батареи.' },
-    { title: 'Неисправность электромотора', description: 'Электромотор может иметь неисправность в обмотке или подшипниках. Это приводит к потере мощности и невозможности переключения между режимами. Требуется ремонт или замена.' },
-    { title: 'Сбои в системе управления', description: 'Гибридная система имеет сложную электронику. Ошибки в работе приводят к нестабильности и переходу в аварийный режим. Требуется компьютерная диагностика.' },
-    { title: 'Перегрев системы охлаждения', description: 'В гибридах система охлаждения более сложная. Перегрев может быть вызван проблемами с электровентилятором или забитым радиатором. Требуется проверка всей системы.' },
-    { title: 'Неисправность генератора', description: 'Генератор отвечает за зарядку батареи. При его поломке гибридная система не может нормально работать. Требуется диагностика и замена генератора.' }
-  ]
-};
-
-const engineProblems = problems[engine.type] || problems.benzine;
-
-const services = [
-  { title: 'Компьютерная диагностика', description: 'Полная диагностика всех систем двигателя на профессиональном оборудовании', image: 'https://s3.regru.cloud/yanis-grek/transmission/service1.png?w=400&h=300&fit=crop' },
-  { title: 'Капитальный ремонт', description: 'Полная разборка, проверка и восстановление компонентов двигателя', image: 'https://s3.regru.cloud/yanis-grek/engine/service2.png?w=400&h=300&fit=crop' },
-  { title: 'Замена деталей', description: 'Замена износившихся компонентов оригинальными запчастями', image: 'https://s3.regru.cloud/yanis-grek/engine/service3.png?w=400&h=300&fit=crop' },
-  { title: 'Промывка и очистка', description: 'Профилактическая промывка системы для улучшения производительности', image: 'https://s3.regru.cloud/yanis-grek/transmission/service4.png?w=400&h=300&fit=crop' }
+const repairOptions = [
+  { name: 'Диагностика двигателя', desc: 'Компьютерная диагностика на BMW ICOM, проверка компрессии', price: 'от 1 500 руб.' },
+  { name: 'Замена масла и ТО', desc: 'Оригинальное масло BMW, замена фильтра и свечей', price: 'от 9 000 руб.' },
+  {
+    name: engine.type === 'benzine' ? 'Замена цепи / ремня ГРМ' : engine.type === 'diesel' ? 'Ремонт топливной системы' : 'Диагностика гибридной системы',
+    desc: engine.type === 'benzine' ? 'Замена цепи ГРМ с натяжителями и направляющими' : engine.type === 'diesel' ? 'Замена форсунок, очистка ТНВД, DPF' : 'Диагностика батареи, электромоторов, управления',
+    price: 'от 20 000 руб.',
+  },
+  { name: 'Капитальный ремонт', desc: 'Полная разборка, замена поршневой группы и вкладышей', price: engine.priceRange ?? 'от 30 000 руб.' },
 ];
+
+const faqItems = engine.type === 'benzine' ? [
+  { q: `Как понять, что цепь ГРМ ${engine.name} требует замены?`, a: 'Основные признаки: характерный металлический звон или треск в первые 5–10 секунд после запуска двигателя (до прогрева масла), ошибки P0016/P0017 по рассогласованию фаз, рывки при разгоне, нестабильный холостой ход. При появлении звона — немедленно записывайтесь на диагностику, не затягивайте!' },
+  { q: 'Как часто нужно менять масло в BMW?', a: 'BMW допускает интервал 15 000–25 000 км по бортовому компьютеру, однако специалисты рекомендуют 7 000–10 000 км для максимального ресурса двигателя. Частая замена масла — лучшая профилактика. Используйте только масло с допуском BMW LL-01 или LL-04.' },
+  { q: 'Что делать при повышенном расходе масла?', a: 'Расход до 0.3–0.5 л/10 000 км считается нормой для многих BMW. Если расход выше — требуется диагностика. Возможные причины: изношенные маслосъёмные колпачки, маслосъёмные кольца, сальники клапанов. Диагностика позволяет определить точную причину.' },
+  { q: 'Опасно ли продолжать езду при лампе Check Engine?', a: 'Зависит от характера ошибки. При мигающей лампе Check Engine — немедленно прекратите езду и вызовите эвакуатор, это признак серьёзной проблемы. При постоянно горящей лампе — запишитесь на диагностику в ближайшие 1–2 дня.' },
+  { q: 'Есть ли гарантия на ремонт двигателя?', a: 'Да, мы предоставляем гарантию 12 месяцев на все выполненные работы и установленные запчасти. На замену масла и ТО — 6 месяцев.' },
+  { q: `Используете ли оригинальные запчасти для ${engine.name}?`, a: 'Только оригинальные запчасти BMW или сертифицированные OEM-аналоги производителей первой комплектации: Mahle, Elring, INA, Bosch. Оригинальные масла с допусками BMW LL-01/LL-04.' },
+] : engine.type === 'diesel' ? [
+  { q: 'Насколько опасна проблема с цепью ГРМ N47/B47?', a: 'Для N47D20 — это критически опасная проблема! Цепь ГРМ может оборваться без предупреждения, что приводит к полному разрушению двигателя. Стоимость замены двигателя после обрыва — 200 000–500 000 руб. Профилактическая замена цепи стоит 20 000–40 000 руб. Выводы очевидны.' },
+  { q: 'Как часто нужно менять масло в дизельном BMW?', a: 'Рекомендуем каждые 10 000–15 000 км вне зависимости от показаний бортового компьютера. Дизельные двигатели работают с большим количеством сажи, которая загрязняет масло быстрее. Используйте масло с допуском BMW LL-04 для дизелей.' },
+  { q: 'Как часто нужно обслуживать DPF (сажевый фильтр)?', a: 'При преимущественно городской езде сажевый фильтр забивается быстрее. Рекомендуем 1–2 раза в месяц выезжать на трассу и проехать 20–30 км на скорости 80–100 км/ч для принудительной регенерации. Если фильтр полностью забит — принудительная регенерация в сервисе или замена.' },
+  { q: 'Что означает потеря мощности у дизельного BMW?', a: 'Потеря мощности у дизеля — признак засорения форсунок, неисправности турбины, забитого DPF или проблем с ТНВД. Требуется диагностика для определения точной причины.' },
+  { q: 'Есть ли гарантия на ремонт?', a: 'Да, 12 месяцев на все работы и запасные части.' },
+  { q: 'Можно ли удалить DPF/EGR?', a: 'Технически возможно. Мы выполняем программное и физическое удаление DPF, EGR, AdBlue. Однако это влечёт юридические ограничения для эксплуатации на дорогах общего пользования в ряде регионов. Консультируйтесь с нашими специалистами.' },
+] : [
+  { q: 'Как понять, что высоковольтная батарея деградировала?', a: 'Признаки деградации: значительное сокращение запаса хода на электродвигателе (по сравнению с новым состоянием), медленная зарядка до 100%, быстрый разряд при низких температурах. Диагностика ёмкости батареи позволяет точно оценить состояние.' },
+  { q: 'Можно ли ездить при неработающем гибридном режиме?', a: 'Да, автомобиль будет работать в режиме обычного ДВС. Однако расход топлива значительно возрастёт, а неисправность гибридной системы может прогрессировать. Рекомендуем диагностику при первых признаках неисправности.' },
+  { q: 'Сколько служит высоковольтная батарея гибрида BMW?', a: 'При правильном обслуживании (зарядка до 80%, не разряжать ниже 20%, избегать экстремальных температур) батарея служит 150 000–200 000 км. BMW даёт заводскую гарантию на батарею 8 лет / 160 000 км.' },
+  { q: 'Требуется ли специальное оборудование для гибридов BMW?', a: 'Да. Работа с высоковольтными системами требует: сертифицированного персонала с допуском HV, специального защитного снаряжения, изолирующих инструментов и BMW ICOM Next с модулем HV-диагностики. Наши специалисты имеют все необходимые сертификаты.' },
+  { q: 'Есть ли гарантия на ремонт гибридных систем?', a: 'Да, 12 месяцев на все выполненные работы. На замену батарейного модуля — индивидуальная гарантия в зависимости от объёма работ.' },
+  { q: 'Можно ли отремонтировать отдельные ячейки батареи?', a: 'Да, в ряде случаев возможна замена только повреждённых ячеек или модулей батарейного блока, что значительно дешевле полной замены батареи. Это определяется по результатам диагностики.' },
+];
+
+const title = `Ремонт ${engine.name} BMW - YanisGrek`;
+const description = engine.description;
 ---
 
 <Layout {title} {description}>
   <div class="engine-page" data-type={engine.type}>
+
+    <!-- HERO -->
     <div class="engine-hero">
       <div class="engine-hero-content">
         <div class="engine-hero-left">
+          <span class="engine-type-badge">{typeLabel}</span>
           <h1>{engine.name}</h1>
-          <p class="engine-type">Тип: {engine.type === 'benzine' ? 'Бензиновый двигатель' : engine.type === 'diesel' ? 'Дизельный двигатель' : 'Гибридный/Электрический'}</p>
           <p class="engine-models">{engine.models}</p>
           <p class="engine-description">{engine.description}</p>
-          <button class="engine-btn" onclick="openQuickRequest()" style="cursor: pointer;">Записаться на диагностику</button>
+          <div class="hero-actions">
+            {engine.priceRange && (
+              <div class="hero-price">
+                <span class="hero-price-label">Ремонт</span>
+                <span class="hero-price-value">{engine.priceRange}</span>
+              </div>
+            )}
+            <button class="hero-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
+          </div>
         </div>
         <div class="engine-hero-right">
           {engine.type !== 'hybrid' && (
-            <div class="engine-image-placeholder" style={`background-image: url('https://images.unsplash.com/photo-1486262715933-57adde3d5f4e?w=600&h=400&fit=crop'); background-size: cover; background-position: center;`}></div>
+            <div
+              class="engine-image"
+              style={`background-image: url('https://s3.regru.cloud/yanis-grek/engine/engine-main.jpg'); background-size: cover; background-position: center;`}
+            ></div>
           )}
         </div>
       </div>
     </div>
 
+    <!-- SPECS BAR -->
+    {engine.specs && (
+      <div class="specs-bar">
+        <div class="specs-bar-inner">
+          <div class="spec-item">
+            <span class="spec-label">Цилиндры</span>
+            <span class="spec-value">{engine.specs.cylinders}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Объём</span>
+            <span class="spec-value">{engine.specs.displacement}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Мощность</span>
+            <span class="spec-value">{engine.specs.power}</span>
+          </div>
+          {engine.specs.torque && (
+            <div class="spec-item">
+              <span class="spec-label">Момент</span>
+              <span class="spec-value">{engine.specs.torque}</span>
+            </div>
+          )}
+          <div class="spec-item">
+            <span class="spec-label">Топливо</span>
+            <span class="spec-value">{engine.specs.fuelType}</span>
+          </div>
+          {engine.specs.turbo && (
+            <div class="spec-item">
+              <span class="spec-label">Наддув</span>
+              <span class="spec-value">{engine.specs.turbo}</span>
+            </div>
+          )}
+          {engine.specs.compression && (
+            <div class="spec-item">
+              <span class="spec-label">Степень сжатия</span>
+              <span class="spec-value">{engine.specs.compression}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+
     <div class="engine-content">
+
+      <!-- HIGHLIGHTS -->
       <div class="highlights-section">
-        <h2>Характеристики</h2>
+        <h2>Ключевые характеристики</h2>
         <div class="highlights-grid">
           {engine.highlights.map(highlight => (
             <div class="highlight-item">
@@ -89,40 +153,144 @@ const services = [
         </div>
       </div>
 
-      <div class="problems-section">
-        <div class="problems-left">
-          <h2>Частые проблемы</h2>
-          <div class="problems-list">
-            {engineProblems.map((problem) => (
-              <div class="problem-item">
-                <h4>{problem.title}</h4>
-                <p>{problem.description}</p>
-              </div>
-            ))}
+      <!-- SPECIFIC ISSUES (from data) -->
+      {engine.issues && engine.issues.length > 0 && (
+        <div class="issues-section">
+          <div class="issues-left">
+            <h2>Известные проблемы {engine.name}</h2>
+            <p class="issues-subtitle">Специфические неисправности данной модели двигателя, о которых должен знать каждый владелец BMW</p>
+            <div class="issues-list">
+              {engine.issues.map(issue => (
+                <div class={`issue-item issue-${issue.severity}`}>
+                  <div class="issue-header">
+                    <span class={`issue-severity severity-${issue.severity}`}>
+                      {issue.severity === 'high' ? 'Важно' : issue.severity === 'medium' ? 'Умеренно' : 'Незначительно'}
+                    </span>
+                    <h4>{issue.title}</h4>
+                  </div>
+                  <p class="issue-desc">{issue.description}</p>
+                  <div class="issue-solution">
+                    <span class="solution-label">Решение:</span>
+                    <span class="solution-text">{issue.solution}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="issues-right">
+            <img src="https://s3.regru.cloud/yanis-grek/engine/oftenproblems.png" alt={`Диагностика двигателя ${engine.name}`} />
+            <div class="issues-cta-block">
+              <p>Заметили симптомы? Записывайтесь на диагностику</p>
+              <button class="issues-cta-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
+            </div>
           </div>
         </div>
-        <div class="problems-right">
-          <img src="https://s3.regru.cloud/yanis-grek/engine/oftenproblems.png" alt="Диагностика двигателя" />
+      )}
+
+      <!-- REPAIR OPTIONS / PRICES -->
+      <div class="repair-section">
+        <h2>Услуги по ремонту двигателя {engine.name}</h2>
+        <p class="section-subtitle">Стоимость работ — точная цена определяется после диагностики</p>
+        <div class="repair-grid">
+          {repairOptions.map((option, idx) => (
+            <div class={`repair-card ${idx === repairOptions.length - 1 ? '' : ''}`}>
+              <div class="repair-number">{(idx + 1).toString().padStart(2, '0')}</div>
+              <h3>{option.name}</h3>
+              <p>{option.desc}</p>
+              <div class="repair-price">{option.price}</div>
+              <button class="repair-btn" onclick="openQuickRequest()">Записаться</button>
+            </div>
+          ))}
         </div>
       </div>
 
+      <!-- SERVICES GRID -->
       <div class="services-grid-section">
-        <h2>Услуги ремонта {engine.name}</h2>
+        <h2>Полный спектр работ с двигателем {engine.name}</h2>
         <div class="services-grid">
-          {services.map((service) => (
-            <div class="service-card">
-              <img src={service.image} alt={service.title} class="service-card-image" />
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-            </div>
-          ))}
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service1.png" alt="Компьютерная диагностика двигателя" class="service-card-image" />
+            <h3>Компьютерная диагностика</h3>
+            <p>Полная диагностика на BMW ICOM A2+C, проверка компрессии, измерение давления масла</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/engine/service2.png" alt="Капитальный ремонт двигателя" class="service-card-image" />
+            <h3>Капитальный ремонт</h3>
+            <p>Полная разборка, замена поршневых колец, вкладышей, восстановление геометрии</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/engine/service3.png" alt="Замена деталей двигателя" class="service-card-image" />
+            <h3>Замена деталей</h3>
+            <p>Цепи ГРМ, прокладок, сальников, форсунок, маслосъёмных колпачков</p>
+          </div>
+          <div class="service-card">
+            <img src="https://s3.regru.cloud/yanis-grek/transmission/service4.png" alt="Промывка двигателя" class="service-card-image" />
+            <h3>Промывка и очистка</h3>
+            <p>Промывка масляных каналов, чистка клапанов, впускного коллектора, форсунок</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUARANTEE BLOCK -->
+    <div class="guarantee-block">
+      <div class="guarantee-inner">
+        <div class="guarantee-item">
+          <div class="guarantee-icon">12</div>
+          <div class="guarantee-text">
+            <strong>Гарантия 12 месяцев</strong>
+            <span>на все виды работ и запчасти</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">OEM</div>
+          <div class="guarantee-text">
+            <strong>Оригинальные запчасти BMW</strong>
+            <span>или сертифицированные OEM</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">BMW</div>
+          <div class="guarantee-text">
+            <strong>Специалисты по BMW</strong>
+            <span>10+ лет опыта с двигателями BMW</span>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">0₽</div>
+          <div class="guarantee-text">
+            <strong>Без скрытых доплат</strong>
+            <span>итоговая цена = цена в договоре</span>
+          </div>
         </div>
       </div>
     </div>
 
     <DiscountsWrapper />
+    <WhyUsWrapper />
     <ServicingWrapper />
     <NumbersWrapper />
+
+    <!-- FAQ SECTION -->
+    <div class="faq-section">
+      <div class="faq-inner">
+        <h2>Часто задаваемые вопросы</h2>
+        <p class="faq-subtitle">Ответы на популярные вопросы о ремонте двигателя {engine.name}</p>
+        <div class="faq-list">
+          {faqItems.map((item, idx) => (
+            <details class="faq-item" open={idx === 0}>
+              <summary class="faq-question">{item.q}</summary>
+              <p class="faq-answer">{item.a}</p>
+            </details>
+          ))}
+        </div>
+        <div class="faq-cta">
+          <p>Нужна консультация по двигателю {engine.name}? Позвоните или запишитесь онлайн</p>
+          <button class="faq-cta-btn" onclick="openQuickRequest()">Получить консультацию</button>
+        </div>
+      </div>
+    </div>
+
     <AdvantagesWrapper />
   </div>
 </Layout>
@@ -133,6 +301,7 @@ const services = [
     margin-top: 90px;
   }
 
+  /* HERO */
   .engine-hero {
     background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
     padding: 80px 20px 60px;
@@ -147,76 +316,152 @@ const services = [
     align-items: center;
   }
 
+  .engine-page[data-type='hybrid'] .engine-hero-content {
+    grid-template-columns: 1fr;
+  }
+
   .engine-hero-left {
-    flex: 1;
-  }
-
-  .engine-hero-right {
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .engine-image-placeholder {
-    width: 100%;
-    aspect-ratio: 1;
-    background: white;
-    border-radius: 0;
+  .engine-type-badge {
+    display: inline-block;
+    background: #2b6eff;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content;
   }
 
   .engine-hero h1 {
     font-family: 'Russo One', sans-serif;
     font-size: 48px;
     color: #262626;
-    margin-bottom: 12px;
+    margin: 0;
     text-transform: uppercase;
   }
 
-  .engine-type {
-    font-size: 16px;
-    color: #2b6eff;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
   .engine-models {
-    font-size: 18px;
-    color: #666;
+    font-size: 16px;
+    color: #444;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin: 0;
   }
 
   .engine-description {
     font-size: 18px;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 24px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
   }
 
-  .engine-btn {
-    padding: 16px 48px;
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .hero-price {
+    background: #262626;
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-price-label {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-price-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .hero-btn {
+    padding: 16px 40px;
     background: black;
     color: white;
     border: none;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
 
-  .engine-btn:hover {
+  .hero-btn:hover {
     background: #2b6eff;
   }
 
+  .engine-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
+  }
+
+  /* SPECS BAR */
+  .specs-bar {
+    background: #262626;
+    padding: 24px 20px;
+  }
+
+  .specs-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .spec-item {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .spec-item:last-child {
+    border-right: none;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .spec-value {
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+  }
+
+  /* CONTENT */
   .engine-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px;
   }
 
+  /* HIGHLIGHTS */
   .highlights-section {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
   }
 
   .highlights-section h2 {
@@ -224,14 +469,14 @@ const services = [
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     text-align: center;
   }
 
   .highlights-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 
   .highlight-item {
@@ -239,14 +484,14 @@ const services = [
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding: 24px;
-    background: rgb(245, 245, 245);
+    padding: 24px 16px;
+    background: #f5f5f5;
     text-align: center;
     transition: all 0.3s;
   }
 
   .highlight-item:hover {
-    background: rgb(235, 235, 235);
+    background: #ebebeb;
     transform: translateY(-4px);
   }
 
@@ -260,79 +505,241 @@ const services = [
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
+    flex-shrink: 0;
   }
 
   .highlight-item p {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     color: #262626;
-    line-height: 1.6;
+    font-weight: 500;
   }
 
-  .problems-section {
+  /* ISSUES */
+  .issues-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 400px;
     gap: 60px;
     align-items: flex-start;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     padding: 60px 40px;
     background: white;
     border: 1px solid #e0e0e0;
   }
 
-  .problems-left h2 {
+  .issues-left h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 8px;
+  }
+
+  .issues-subtitle {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .issues-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .issue-item {
+    border-left: 3px solid #d0d0d0;
+    padding: 16px 16px 16px 20px;
+    background: #fafafa;
+  }
+
+  .issue-item.issue-high { border-left-color: #e53e3e; }
+  .issue-item.issue-medium { border-left-color: #ed8936; }
+  .issue-item.issue-low { border-left-color: #48bb78; }
+
+  .issue-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .issue-severity {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+
+  .severity-high { background: #fff5f5; color: #e53e3e; }
+  .severity-medium { background: #fffaf0; color: #dd6b20; }
+  .severity-low { background: #f0fff4; color: #276749; }
+
+  .issue-header h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  .issue-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+  }
+
+  .issue-solution {
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .solution-label {
+    color: #2b6eff;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .solution-text { color: #444; }
+
+  .issues-right img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .issues-cta-block {
+    background: #262626;
+    padding: 24px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .issues-cta-block p {
+    color: white;
+    font-size: 15px;
+    margin: 0 0 16px 0;
+  }
+
+  .issues-cta-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+
+  .issues-cta-btn:hover { background: #1a55ee; }
+
+  /* REPAIR */
+  .repair-section { margin-bottom: 80px; }
+
+  .repair-section h2 {
     font-family: 'Helvetica', sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 32px;
+    margin-bottom: 8px;
   }
 
-  .problems-list {
+  .section-subtitle {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+
+  .repair-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .repair-card {
+    border: 1px solid #e0e0e0;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 10px;
+    transition: all 0.3s;
   }
 
-  .problem-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .repair-card:hover {
+    border-color: #2b6eff;
+    box-shadow: 0 4px 20px rgba(43,110,255,0.1);
   }
 
-  .problem-item h4 {
+  .repair-card-accent {
+    background: #262626;
+    border-color: #262626;
+  }
+
+  .repair-card-accent h3,
+  .repair-card-accent p,
+  .repair-card-accent .repair-number { color: white; }
+
+  .repair-card-accent .repair-price { color: #2b6eff; }
+
+  .repair-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #e0e0e0;
+    font-family: 'Russo One', sans-serif;
+    line-height: 1;
+  }
+
+  .repair-card h3 {
     font-size: 16px;
     font-weight: 700;
-    font-family: 'Helvetica', sans-serif;
     color: #262626;
     margin: 0;
   }
 
-  .problem-item p {
+  .repair-card p {
     font-size: 14px;
     color: #666;
-    line-height: 1.6;
     margin: 0;
+    line-height: 1.5;
+    flex: 1;
   }
 
-  .problems-right img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0;
+  .repair-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #262626;
   }
 
-  .services-grid-section {
-    margin-bottom: 0;
+  .repair-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
   }
+
+  .repair-btn:hover { background: #1a55ee; }
+
+  /* SERVICES GRID */
+  .services-grid-section { margin-bottom: 0; }
 
   .services-grid-section h2 {
     font-family: 'Helvetica', sans-serif;
     font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     text-align: center;
   }
 
@@ -346,52 +753,208 @@ const services = [
     display: flex;
     flex-direction: column;
     border: 2px solid #e0e0e0;
-    transition: all 0.3s;
     overflow: hidden;
+    transition: all 0.3s;
   }
 
   .service-card:hover {
     border-color: #2b6eff;
-    box-shadow: 0 8px 24px rgba(43, 110, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(43,110,255,0.15);
     transform: translateY(-4px);
   }
 
   .service-card-image {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
   }
 
   .service-card h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    font-family: 'Helvetica', sans-serif;
     color: #262626;
-    margin: 16px 16px 8px 16px;
+    margin: 16px 16px 8px;
   }
 
   .service-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0 16px 16px;
+  }
+
+  /* GUARANTEE */
+  .guarantee-block {
+    background: #262626;
+    padding: 40px 20px;
+  }
+
+  .guarantee-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .guarantee-item:last-child { border-right: none; }
+
+  .guarantee-icon {
+    font-size: 20px;
+    font-weight: 900;
+    color: #2b6eff;
+    font-family: 'Russo One', sans-serif;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .guarantee-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .guarantee-text strong {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .guarantee-text span {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+
+  /* FAQ */
+  .faq-section {
+    background: #f5f5f5;
+    padding: 80px 20px;
+  }
+
+  .faq-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .faq-subtitle {
     font-size: 16px;
-    color: #000;
-    line-height: 120%;
-    margin: 0 16px 16px 16px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 48px;
   }
 
-  .engine-page[data-type='hybrid'] .engine-hero-content {
-    grid-template-columns: 1fr;
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
+  .faq-item {
+    background: white;
+    border: 1px solid #e8e8e8;
+  }
+
+  .faq-question {
+    padding: 20px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #262626;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 20px;
+    color: #2b6eff;
+    font-weight: 400;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-item[open] .faq-question { color: #2b6eff; }
+
+  .faq-answer {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .faq-cta {
+    margin-top: 48px;
+    background: #262626;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .faq-cta p {
+    color: white;
+    font-size: 18px;
+    margin: 0 0 20px 0;
+  }
+
+  .faq-cta-btn {
+    background: #2b6eff;
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .faq-cta-btn:hover { background: #1a55ee; }
+
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .highlights-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .engine-hero-content {
+      grid-template-columns: 1fr !important;
+      gap: 40px;
     }
 
+    .highlights-grid,
+    .repair-grid,
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .problems-section {
+    .guarantee-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .guarantee-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .issues-section {
       grid-template-columns: 1fr;
       gap: 40px;
     }
@@ -402,133 +965,69 @@ const services = [
       padding: 60px 20px 40px;
     }
 
-    .engine-hero-content {
-      grid-template-columns: 1fr;
-      gap: 40px;
+    .engine-hero h1 { font-size: 32px; }
+    .engine-description { font-size: 16px; }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .engine-image-placeholder {
-      min-height: 250px;
-    }
+    .hero-price { width: 100%; }
+    .hero-btn { width: 100%; }
 
-    .engine-hero h1 {
-      font-size: 32px;
-    }
-
-    .engine-description {
-      font-size: 16px;
-    }
-
-    .engine-content {
-      padding: 60px 20px;
-    }
+    .engine-content { padding: 50px 20px; }
 
     .highlights-section h2,
-    .services-grid-section h2 {
-      font-size: 24px;
-      margin-bottom: 32px;
+    .repair-section h2,
+    .services-grid-section h2,
+    .faq-inner h2 { font-size: 24px; }
+
+    .highlights-grid,
+    .repair-grid,
+    .services-grid { grid-template-columns: 1fr; }
+
+    .guarantee-inner { grid-template-columns: 1fr; }
+
+    .issues-section { padding: 32px 20px; }
+    .issues-left h2 { font-size: 22px; }
+
+    .spec-item {
+      min-width: 100px;
+      padding: 8px 12px;
     }
 
-    .highlights-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+    .spec-value { font-size: 13px; }
+    .faq-section { padding: 50px 20px; }
 
-    .highlight-item {
-      padding: 16px 12px;
-    }
-
-    .highlight-item p {
+    .faq-question {
       font-size: 14px;
+      padding: 16px 20px;
     }
 
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .service-card-image {
-      height: 150px;
-    }
-
-    .service-card h3 {
-      font-size: 16px;
-      margin: 12px 12px 6px 12px;
-    }
-
-    .service-card p {
-      font-size: 13px;
-      margin: 0 12px 12px 12px;
-    }
-
-    .problems-section {
-      padding: 40px 20px;
-    }
-
-    .problems-right img {
-      height: 300px;
-    }
-
-    .problems-left h2 {
-      font-size: 24px;
-    }
-
-    .problem-item h4 {
-      font-size: 15px;
-    }
-
-    .problem-item p {
-      font-size: 13px;
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 14px;
     }
   }
 
   @media (max-width: 480px) {
-    .engine-page {
-      margin-top: 70px;
+    .engine-page { margin-top: 70px; }
+    .engine-hero h1 { font-size: 24px; }
+
+    .specs-bar-inner { flex-direction: column; }
+
+    .spec-item {
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 16px;
     }
 
-    .engine-hero h1 {
-      font-size: 24px;
-    }
+    .service-card-image { height: 140px; }
 
-    .engine-type {
-      font-size: 14px;
-    }
-
-    .engine-models {
-      font-size: 14px;
-    }
-
-    .engine-description {
-      font-size: 14px;
-    }
-
-    .highlights-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .highlight-item {
-      padding: 12px 10px;
-    }
-
-    .engine-content {
-      padding: 40px 16px;
-    }
-
-    .problem-item h4 {
-      font-size: 14px;
-    }
-
-    .service-card {
-      border: 1px solid #e0e0e0;
-    }
-
-    .service-card-image {
-      height: 120px;
-    }
-
-    .service-card h3 {
-      font-size: 14px;
-    }
+    .faq-cta { padding: 24px 20px; }
+    .faq-cta p { font-size: 16px; }
+    .faq-cta-btn { width: 100%; padding: 14px 24px; }
   }
 </style>
 
