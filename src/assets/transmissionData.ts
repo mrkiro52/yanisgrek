@@ -22,6 +22,11 @@ export interface TransmissionModel {
   description: string;
   highlights: string[];
   imageUrl?: string;
+  // Доля квадрата плитки, которую должно занимать изображение по ширине (1 = 100%).
+  // Используется, чтобы визуально выровнять коробки, у которых в PNG разные поля.
+  imageScale?: number;
+  // Фоновое изображение для hero отдельной страницы коробки.
+  backgroundImage?: string;
   specs?: TransmissionSpecs;
   issues?: TransmissionIssue[];
   priceRange?: string;
@@ -37,7 +42,9 @@ export const transmissions: TransmissionModel[] = [
     models: 'F20, F21, F22, F30, F31 (1, 2, 3 серии)',
     description: 'Надёжная 6-ступенчатая механическая коробка для компактных BMW 1–3 серии. Отличается простотой конструкции и хорошей ремонтопригодностью. Рассчитана на крутящий момент до 240 Нм — оптимальный вариант для четырёхцилиндровых двигателей серий N13, N20, B38, B48.',
     highlights: ['6 передач', 'Надёжность', 'Спортивный характер', 'Простота в ремонте'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/getrag-gs6-17bg.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_17bg_n.png?v=2',
+    imageScale: 0.85,
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/bg/getrag_17bg_bg.png',
     specs: {
       gears: '6',
       maxTorque: '240 Нм',
@@ -81,7 +88,9 @@ export const transmissions: TransmissionModel[] = [
     models: 'F30, F32, F36 (3, 4 серии)',
     description: 'Улучшенная 6-ступенчатая механическая коробка с оптимизированной синхронизацией для BMW 3 и 4 серии. Рассчитана на момент до 450 Нм — устанавливается с двигателями N55, B58. Характеризуется спортивным характером и точным переключением, но требует регулярного обслуживания.',
     highlights: ['6 передач', 'Улучшенная синхронизация', 'Спортивный режим', 'Долговечность'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/getrag-gs6-45bz.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_45bz_n.png?v=2',
+    imageScale: 1.15,
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/bg/getrag_45bz_bg.png',
     specs: {
       gears: '6',
       maxTorque: '450 Нм',
@@ -125,7 +134,9 @@ export const transmissions: TransmissionModel[] = [
     models: 'F80 M3, F82 M4',
     description: 'Спортивная 6-ступенчатая механическая коробка специально разработана для М-моделей BMW M3 и M4. Выдерживает экстремальные нагрузки от S55 (431–460 л.с.). Обеспечивает молниеносное переключение и прямую связь с дорогой. Требовательна к качеству масла и обслуживанию.',
     highlights: ['6 передач', 'Спортивная синхронизация', 'Высокая мощность', 'М-характер'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/zf-gs6-53dz.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_53dz_n.png?v=2',
+    imageScale: 1.15,
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/bg/zf_53dz_bg.png',
     specs: {
       gears: '6',
       maxTorque: '600 Нм',
@@ -169,7 +180,9 @@ export const transmissions: TransmissionModel[] = [
     models: 'G20, G21, G42, G87 (M2, 3 серии)',
     description: 'Современная 6-ступенчатая механическая коробка нового поколения с облегчённой конструкцией и оптимизированными передаточными числами. Устанавливается на BMW 3 серии G20 и M2 G87. Обеспечивает экономию топлива и точное переключение, однако ранние партии имели производственный дефект.',
     highlights: ['6 передач', 'Облегчённая конструкция', 'Оптимизированные передаточные числа', 'Экономия топлива'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/zf-gs6-45dz.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_45dz_n.png?v=2',
+    imageScale: 1.15,
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/bg/zf_45dz_bg.png',
     specs: {
       gears: '6',
       maxTorque: '450 Нм',

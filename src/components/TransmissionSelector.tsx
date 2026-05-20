@@ -49,7 +49,7 @@ export default function TransmissionSelector() {
               </div>
               {transmission.type !== 'elektro' && transmission.type !== 'akpp' && (
                 <div className="card-right">
-                  <div className="card-image-placeholder" style={{backgroundImage: transmission.imageUrl ? `url('${transmission.imageUrl}')` : 'none', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
+                  <div className="card-image-placeholder" style={{backgroundImage: transmission.imageUrl ? `url('${transmission.imageUrl}')` : 'none', backgroundSize: `${(transmission.imageScale ?? 1) * 100}% auto`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>
                 </div>
               )}
             </a>
@@ -176,8 +176,15 @@ export default function TransmissionSelector() {
         .card-image-placeholder {
           width: 100%;
           aspect-ratio: 1;
-          background: white;
+          background: transparent;
           border-radius: 0;
+          box-sizing: border-box;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+
+        .transmission-card:hover .card-image-placeholder {
+          transform: scale(1.04);
         }
 
         .card-header {

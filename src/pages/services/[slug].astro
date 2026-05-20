@@ -101,7 +101,7 @@ const allServices: Record<string, {
     content: 'Ремонт коробки передач BMW — одна из наиболее сложных и ответственных операций в автосервисе. Трансмиссия BMW — высокотехнологичный агрегат, объединяющий десятки точных механических компонентов, гидравлическую систему управления и сложную электронику мехатроника. Ошибка при диагностике или ремонте обходится очень дорого: переборка АКПП после неправильно определённой причины неисправности стоит в два-три раза дороже первичного ремонта.\n\nВ техническом центре YanisGrek мы специализируемся на восстановлении всех типов трансмиссий BMW: АКПП серии ZF 8HP (8-ступенчатые автоматы, установленные на большинстве современных BMW), МКПП Getrag и ZF, роботизированные коробки DCT (7DCT300, 7DCT500), а также электрические трансмиссии для iX, i4 и i7. Каждый тип трансмиссии требует своего подхода и специального инструмента.\n\nДиагностика выполняется на профессиональном оборудовании BMW ICOM A2+C — том же, что применяется в официальных дилерских центрах. Это позволяет читать параметры давления в гидравлической системе, анализировать данные мехатроника и контролировать адаптации в режиме реального времени. Только после точной диагностики определяется объём необходимых работ и фиксируется стоимость.',
     price: 'от 5000 руб.',
     category: 'transmission',
-    backgroundImage: '',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/tr_main.png',
     mainphoto: 'https://s3.regru.cloud/yanis-grek/services/remontAkpp%201.png',
     images: [],
     features: [
@@ -1167,7 +1167,9 @@ const faqItems = serviceData.category === 'transmission' ? [
 
 <Layout {title} {description}>
   <div class="service-page">
-    <div class="service-hero">
+    <div class={`service-hero ${serviceData.backgroundImage ? 'service-hero--with-bg' : ''}`}
+      style={serviceData.backgroundImage ? `background-image: url('${serviceData.backgroundImage}')` : ''}
+    >
       <div class="service-hero-content">
         <div class="service-hero-left">
           <h1>{serviceData.title}</h1>
@@ -1180,14 +1182,23 @@ const faqItems = serviceData.category === 'transmission' ? [
             <button class="service-btn-booking" onclick="openQuickRequest()">Записаться</button>
           </div>
         </div>
-        <div 
-          class="service-hero-image-placeholder"
-          style={serviceData.mainphoto ? `background-image: url('${serviceData.mainphoto}'); background-size: cover; background-position: center;` : ''}
-        ></div>
+        {!serviceData.backgroundImage && (
+          <div
+            class="service-hero-image-placeholder"
+            style={serviceData.mainphoto ? `background-image: url('${serviceData.mainphoto}'); background-size: cover; background-position: center;` : ''}
+          ></div>
+        )}
       </div>
+      {serviceData.backgroundImage && (
+        <a class="service-hero-arrow" href="#service-content" aria-label="Прокрутить вниз">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+      )}
     </div>
 
-    <div class="service-content">
+    <div id="service-content" class="service-content">
       <div class="service-about">
         <h2>Об услуге</h2>
         <p>{serviceData.content}</p>
@@ -1372,10 +1383,88 @@ const faqItems = serviceData.category === 'transmission' ? [
 }
 
 
+/* ── Hero в стиле страниц моделей BMW ── */
+.service-hero--with-bg {
+  background: #1a1a1a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 210px 20px 80px;
+}
+
+.service-hero--with-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.service-hero--with-bg .service-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-height: 60vh;
+}
+
+.service-hero--with-bg .service-hero-left {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 560px;
+}
+
+.service-hero--with-bg h1 {
+  color: #fff;
+}
+
+.service-hero--with-bg .service-description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.service-hero--with-bg .service-btn-booking {
+  background: #fff;
+  color: #000;
+}
+
+.service-hero--with-bg .service-btn-booking:hover {
+  background: #2b6eff;
+  color: #fff;
+}
+
+.service-hero-arrow {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounceArrow 2s ease-in-out infinite;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.service-hero-arrow:hover {
+  opacity: 1;
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
 .service-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0px 0px 40px 0px;
+}
+
+/* На страницах с фоновым hero «Об услуге» отступает ниже */
+.service-hero--with-bg + .service-content {
+  padding-top: 80px;
 }
 
 .service-about {
