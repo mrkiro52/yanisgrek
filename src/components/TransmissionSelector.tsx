@@ -35,7 +35,7 @@ export default function TransmissionSelector() {
               href={`/services/remont-korobki-peredach/${transmission.id}`}
               className="transmission-card"
             >
-              {transmission.type !== 'elektro' && transmission.type !== 'akpp' && transmission.imageUrl && (
+              {transmission.type !== 'akpp' && transmission.imageUrl && (
                 <div className="card-image-top" style={{backgroundImage: `url('${transmission.imageUrl}')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>
               )}
               <div className="card-content">

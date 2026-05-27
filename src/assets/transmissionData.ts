@@ -228,6 +228,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'F30, F32, F36, F10, F11 (3, 4, 5 серии)',
     description: 'Надёжная 8-ступенчатая автоматическая коробка для среднеразмерных BMW 3, 4 и 5 серии. Рассчитана на крутящий момент до 450 Нм, устанавливается с двигателями N20, N55, B48. Характеризуется плавным переключением и хорошей экономичностью. Требует регулярной замены масла каждые 40–60 тыс. км.',
     highlights: ['8 передач', 'Плавное переключение', 'Экономичность', 'Надёжность'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '450 Нм',
@@ -271,6 +272,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'G20, G30, G11 (3, 5, 7 серии)',
     description: 'Улучшенная 8-ступенчатая АКПП для современных премиум-моделей BMW 3, 5 и 7 серии нового поколения. Рассчитана на 500 Нм, имеет интеллектуальную адаптацию режимов переключения. Обеспечивает как высокий комфорт, так и спортивность. Требует масла BMW ATF 9 и регулярного обслуживания.',
     highlights: ['8 передач', 'Умная адаптация', 'Спортивный режим', 'Комфортность'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '500 Нм',
@@ -314,6 +316,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'G01, G02, G05 (X3, X4, X5)',
     description: 'Прочная 8-ступенчатая АКПП, специально адаптированная для кроссоверов и внедорожников BMW X3, X4, X5. Рассчитана на 510 Нм, поддерживает полноприводные трансмиссии xDrive и режимы внедорожного вождения. Требует более тщательного обслуживания при буксировке и поездках по бездорожью.',
     highlights: ['8 передач', 'Полный привод', 'Внедорожный режим', 'Прочность'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '510 Нм',
@@ -357,6 +360,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'F15, F16, F01, F02 (X5, X6, 7 серия)',
     description: 'Мощная 8-ступенчатая АКПП для люксовых и спортивных BMW X5, X6 и 7 серии с двигателями V8 (N63, S63). Рассчитана на 700 Нм крутящего момента. Выдерживает высокие нагрузки, но при интенсивной эксплуатации требует более частого обслуживания.',
     highlights: ['8 передач', 'Совместимость с V8', 'Плавность хода', 'Долговечность'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '700 Нм',
@@ -400,6 +404,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'G11, G12, G30 (7, 5 серии)',
     description: 'Флагманская 8-ступенчатая АКПП нового поколения для BMW 7 и 5 серии G-кузова. Интегрирует все необходимые вспомогательные системы. Обеспечивает исключительный комфорт и плавность хода. Из-за сложности конструкции требует специализированной диагностики и обслуживания.',
     highlights: ['8 передач', 'Флагманский уровень', 'Экономичный режим', 'Максимальный комфорт'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '750 Нм',
@@ -443,6 +448,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'G05, G06, G07 (X5, X6, X7)',
     description: 'Современная 8-ступенчатая АКПП для нового поколения больших кроссоверов BMW X5, X6, X7. Рассчитана на 760 Нм, имеет интеллектуальное управление и режим внедорожного вождения. Обладает повышенной надёжностью и адаптивностью по сравнению с предшественниками.',
     highlights: ['8 передач', 'Интеллектуальный контроль', 'Внедорожный режим', 'Надёжность'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '760 Нм',
@@ -486,6 +492,7 @@ export const transmissions: TransmissionModel[] = [
     models: 'F90 M5, F92 M8, G80 M3, G82 M4',
     description: 'Спортивная 8-ступенчатая АКПП специально для М-моделей BMW M5, M8, M3, M4. Рассчитана на 900+ Нм — работает в связке с самыми мощными двигателями S55, S58, S63. Обеспечивает молниеносное переключение за 200 мс. Требует специального М-масла и частого обслуживания.',
     highlights: ['8 передач', 'М-производительность', 'Молниеносное переключение', 'Экстремальные нагрузки'],
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/zf_8hp45_n.png',
     specs: {
       gears: '8',
       maxTorque: '900+ Нм',
@@ -531,7 +538,8 @@ export const transmissions: TransmissionModel[] = [
     models: 'F39, F44, F48 (X2, 2 серии Gran Coupe)',
     description: '7-ступенчатая коробка с двойным сцеплением (DCT) для компактных BMW X2 и 2 серии Gran Coupe. Обеспечивает быстрые спортивные переключения при экономичном расходе топлива. Мокрое сцепление делает её пригодной для городского использования, однако требует правильного стиля вождения.',
     highlights: ['7 передач', 'Двойное сцепление', 'Спортивный характер', 'Экономичность'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/getrag-7dct300.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_7dct300_n.png?v=2',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_7dct300_n.png',
     specs: {
       gears: '7',
       maxTorque: '300 Нм',
@@ -575,7 +583,8 @@ export const transmissions: TransmissionModel[] = [
     models: 'F87 M2 Competition',
     description: 'Спортивная 7-ступенчатая коробка с двойным сцеплением, разработанная специально для BMW M2 Competition. Рассчитана на 500 Нм. Обеспечивает молниеносные переключения за 100 мс, прямую передачу мощности от двигателя S55. Ориентирована на трековое использование — требует соответствующего обслуживания.',
     highlights: ['7 передач', 'Молниеносное переключение', 'М-характер', 'Трековые возможности'],
-    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmission/getrag-7dct500.png',
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_7dct500_n.png?v=2',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/getrag_7dct500_n.png',
     specs: {
       gears: '7',
       maxTorque: '500 Нм',
@@ -621,6 +630,8 @@ export const transmissions: TransmissionModel[] = [
     models: 'iX, iX3',
     description: 'Односкоростной редуктор для электрических кроссоверов BMW iX и iX3 с полным приводом и высокой мощностью. Передаёт крутящий момент от электромоторов на оси. Конструктивно отличается от обычных АКПП — не имеет сцепления, гидротрансформатора и многоступенчатой механики.',
     highlights: ['1 скорость', 'Полный привод', 'Электрическая мощь', 'Экологичность'],
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/1x_at.png?v=2',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/1x_at.png',
     specs: {
       gears: '1 (одноступенчатый)',
       maxTorque: '630+ Нм',
@@ -664,6 +675,8 @@ export const transmissions: TransmissionModel[] = [
     models: 'i4',
     description: 'Односкоростной редуктор для электрического спортивного седана BMW i4. Обеспечивает передачу крутящего момента от электромотора на задние или все колёса. Конструкция оптимизирована для спортивного характера i4 — высокой динамики разгона при тишине работы.',
     highlights: ['1 скорость', 'Спортивное ускорение', 'Электрическая динамика', 'Бесшумность'],
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/i4_1at.png?v=3',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/i4_1at.png?v=3',
     specs: {
       gears: '1 (одноступенчатый)',
       maxTorque: '430–795 Нм',
@@ -707,6 +720,8 @@ export const transmissions: TransmissionModel[] = [
     models: 'i7',
     description: 'Односкоростной редуктор для электрического премиум-седана BMW i7. Обеспечивает бесшумную и плавную передачу крутящего момента на колёса. Разработан с акцентом на комфорт и тишину, характерные для флагманского седана BMW. Требует специализированного обслуживания.',
     highlights: ['1 скорость', 'Люксовый уровень', 'Максимальный комфорт', 'Тишина'],
+    imageUrl: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/i7_1at.png?v=2',
+    backgroundImage: 'https://s3.regru.cloud/yanis-grek/transmision/no-bg/i7_1at.png',
     specs: {
       gears: '1 (одноступенчатый)',
       maxTorque: '700–1015 Нм',
