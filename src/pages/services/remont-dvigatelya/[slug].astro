@@ -68,7 +68,10 @@ const description = engine.description;
   <div class="engine-page" data-type={engine.type}>
 
     <!-- HERO -->
-    <div class="engine-hero">
+    <div
+      class="engine-hero engine-hero--with-bg"
+      style={engine.backgroundImage ? `background-image: url('${engine.backgroundImage}')` : ''}
+    >
       <div class="engine-hero-content">
         <div class="engine-hero-left">
           <span class="engine-type-badge">{typeLabel}</span>
@@ -85,20 +88,17 @@ const description = engine.description;
             <button class="hero-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
           </div>
         </div>
-        <div class="engine-hero-right">
-          {engine.type !== 'hybrid' && (
-            <div
-              class="engine-image"
-              style={`background-image: url('https://s3.regru.cloud/yanis-grek/engine/engine-main.jpg'); background-size: cover; background-position: center;`}
-            ></div>
-          )}
-        </div>
       </div>
+      <a class="engine-hero-arrow" href="#engine-specs" aria-label="Прокрутить вниз">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
     </div>
 
     <!-- SPECS BAR -->
     {engine.specs && (
-      <div class="specs-bar">
+      <div id="engine-specs" class="specs-bar">
         <div class="specs-bar-inner">
           <div class="spec-item">
             <span class="spec-label">Цилиндры</span>
@@ -303,21 +303,67 @@ const description = engine.description;
 
   /* HERO */
   .engine-hero {
-    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    background: #000;
     padding: 80px 20px 60px;
   }
 
   .engine-hero-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
   }
 
-  .engine-page[data-type='hybrid'] .engine-hero-content {
-    grid-template-columns: 1fr;
+  .engine-hero--with-bg {
+    background: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 120px 20px 80px;
+  }
+
+  .engine-hero--with-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .engine-hero--with-bg .engine-hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-height: 60vh;
+  }
+
+  .engine-hero--with-bg .engine-hero-left {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 24px;
+    border-radius: 12px;
+    max-width: 560px;
+  }
+
+  .engine-hero-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: bounceArrow 2s ease-in-out infinite;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+  .engine-hero-arrow:hover {
+    opacity: 1;
+  }
+
+  @keyframes bounceArrow {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
   }
 
   .engine-hero-left {
@@ -344,6 +390,29 @@ const description = engine.description;
     color: #262626;
     margin: 0;
     text-transform: uppercase;
+  }
+
+  .engine-hero--with-bg h1,
+  .engine-hero--with-bg .engine-type-badge {
+    color: #fff;
+  }
+
+  .engine-hero--with-bg .engine-models {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .engine-hero--with-bg .engine-description {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .engine-hero--with-bg .hero-btn {
+    background: #fff;
+    color: #000;
+  }
+
+  .engine-hero--with-bg .hero-btn:hover {
+    background: #2b6eff;
+    color: #fff;
   }
 
   .engine-models {
@@ -934,11 +1003,6 @@ const description = engine.description;
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .engine-hero-content {
-      grid-template-columns: 1fr !important;
-      gap: 40px;
-    }
-
     .highlights-grid,
     .repair-grid,
     .services-grid {
@@ -961,8 +1025,8 @@ const description = engine.description;
   }
 
   @media (max-width: 768px) {
-    .engine-hero {
-      padding: 60px 20px 40px;
+    .engine-hero--with-bg {
+      padding: 80px 20px 60px;
     }
 
     .engine-hero h1 { font-size: 32px; }
@@ -1013,6 +1077,7 @@ const description = engine.description;
 
   @media (max-width: 480px) {
     .engine-page { margin-top: 70px; }
+    .engine-hero--with-bg { padding: 60px 16px 40px; }
     .engine-hero h1 { font-size: 24px; }
 
     .specs-bar-inner { flex-direction: column; }

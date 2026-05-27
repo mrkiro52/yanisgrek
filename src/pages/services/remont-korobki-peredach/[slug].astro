@@ -89,7 +89,7 @@ const description = transmission.description;
 
     <!-- HERO -->
     <div
-      class={`transmission-hero ${transmission.backgroundImage ? 'transmission-hero--with-bg' : ''}`}
+      class="transmission-hero transmission-hero--with-bg"
       style={transmission.backgroundImage ? `background-image: url('${transmission.backgroundImage}')` : ''}
     >
       <div class="transmission-hero-content">
@@ -108,24 +108,12 @@ const description = transmission.description;
             <button class="hero-btn" onclick="openQuickRequest()">Записаться на диагностику</button>
           </div>
         </div>
-        {!transmission.backgroundImage && (
-          <div class="transmission-hero-right">
-            {(transmission.type === 'mkpp' || transmission.type === 'dct') && transmission.imageUrl && (
-              <div
-                class="transmission-image"
-                style={`background-image: url('${transmission.imageUrl}'); background-size: cover; background-position: center;`}
-              ></div>
-            )}
-          </div>
-        )}
       </div>
-      {transmission.backgroundImage && (
-        <a class="transmission-hero-arrow" href="#transmission-specs" aria-label="Прокрутить вниз">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </a>
-      )}
+      <a class="transmission-hero-arrow" href="#transmission-specs" aria-label="Прокрутить вниз">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
     </div>
 
     <!-- SPECS BAR -->
@@ -315,22 +303,13 @@ const description = transmission.description;
 
   /* HERO */
   .transmission-hero {
-    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    background: #000;
     padding: 80px 20px 60px;
   }
 
   .transmission-hero-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .transmission-page[data-type='akpp'] .transmission-hero-content,
-  .transmission-page[data-type='elektro'] .transmission-hero-content {
-    grid-template-columns: 1fr;
   }
 
   .transmission-hero-left {
@@ -424,9 +403,9 @@ const description = transmission.description;
     background: white;
   }
 
-  /* HERO с фоновым изображением (в стиле страниц моделей BMW) */
+  /* HERO с фоновым изображением или чёрным фоном */
   .transmission-hero--with-bg {
-    background: #1a1a1a;
+    background: #000;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

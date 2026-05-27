@@ -22,6 +22,7 @@ export interface EngineModel {
   models: string;
   description: string;
   highlights: string[];
+  backgroundImage?: string;
   specs?: EngineSpecs;
   issues?: EngineIssue[];
   priceRange?: string;

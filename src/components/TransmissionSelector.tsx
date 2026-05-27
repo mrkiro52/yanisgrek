@@ -35,7 +35,10 @@ export default function TransmissionSelector() {
               href={`/services/remont-korobki-peredach/${transmission.id}`}
               className="transmission-card"
             >
-              <div className="card-left">
+              {transmission.type !== 'elektro' && transmission.type !== 'akpp' && transmission.imageUrl && (
+                <div className="card-image-top" style={{backgroundImage: `url('${transmission.imageUrl}')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>
+              )}
+              <div className="card-content">
                 <div className="card-header">
                   <h3>{transmission.name}</h3>
                 </div>
@@ -47,11 +50,6 @@ export default function TransmissionSelector() {
                   <span className="card-link">Подробнее →</span>
                 </div>
               </div>
-              {transmission.type !== 'elektro' && transmission.type !== 'akpp' && (
-                <div className="card-right">
-                  <div className="card-image-placeholder" style={{backgroundImage: transmission.imageUrl ? `url('${transmission.imageUrl}')` : 'none', backgroundSize: `${(transmission.imageScale ?? 1) * 100}% auto`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>
-                </div>
-              )}
             </a>
           ))}
         </div>
@@ -137,22 +135,13 @@ export default function TransmissionSelector() {
 
         .transmission-card {
           display: flex;
-          gap: 24px;
-          padding: 32px;
+          flex-direction: column;
           background: rgb(208, 208, 208);
           text-decoration: none;
           color: inherit;
           transition: all 0.3s;
           cursor: pointer;
-          align-items: stretch;
-        }
-
-        .transmission-card:has(.card-right) {
-          flex-direction: row;
-        }
-
-        .transmission-card:not(:has(.card-right)) {
-          flex-direction: column;
+          overflow: hidden;
         }
 
         .transmission-card:hover {
@@ -160,31 +149,22 @@ export default function TransmissionSelector() {
           color: white;
         }
 
-        .card-left {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .card-right {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .card-image-placeholder {
+        .card-image-top {
           width: 100%;
-          aspect-ratio: 1;
-          background: transparent;
-          border-radius: 0;
-          box-sizing: border-box;
-          overflow: hidden;
+          height: 220px;
+          flex-shrink: 0;
           transition: transform 0.3s ease;
         }
 
-        .transmission-card:hover .card-image-placeholder {
+        .transmission-card:hover .card-image-top {
           transform: scale(1.04);
+        }
+
+        .card-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: 28px 32px 32px;
         }
 
         .card-header {
@@ -241,7 +221,7 @@ export default function TransmissionSelector() {
         }
 
         .transmission-card:hover .card-footer {
-          border-top-color: #ccc;
+          border-top-color: #555;
         }
 
         .card-link {
@@ -332,12 +312,15 @@ export default function TransmissionSelector() {
           }
 
           .transmission-card {
-            padding: 24px;
             flex-direction: column;
           }
 
-          .card-right {
-            min-height: 300px;
+          .card-image-top {
+            height: 180px;
+          }
+
+          .card-content {
+            padding: 20px 24px 24px;
           }
 
           .card-header h3 {
@@ -381,8 +364,12 @@ export default function TransmissionSelector() {
             margin-bottom: 32px;
           }
 
-          .transmission-card {
-            padding: 20px;
+          .card-image-top {
+            height: 160px;
+          }
+
+          .card-content {
+            padding: 16px 20px 20px;
           }
 
           .card-header h3 {

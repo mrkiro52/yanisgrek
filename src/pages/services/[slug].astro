@@ -1112,6 +1112,7 @@ if (!serviceData) {
 
 const title = `${serviceData.title} - YanisGrek`;
 const description = serviceData.description;
+const isDarkHero = !!serviceData.backgroundImage || slug === 'remont-dvigatelya';
 
 const faqItems = serviceData.category === 'transmission' ? [
   { q: 'Как понять, что коробка передач требует ремонта?', a: 'Основные признаки: рывки при переключении, задержки при включении передач, посторонние звуки (гул, вой, стук), пробуксовка, течь масла, загорание индикатора коробки передач. При появлении любого из этих симптомов рекомендуется немедленно провести диагностику.' },
@@ -1167,7 +1168,7 @@ const faqItems = serviceData.category === 'transmission' ? [
 
 <Layout {title} {description}>
   <div class="service-page">
-    <div class={`service-hero ${serviceData.backgroundImage ? 'service-hero--with-bg' : ''}`}
+    <div class={`service-hero ${isDarkHero ? 'service-hero--with-bg' : ''}`}
       style={serviceData.backgroundImage ? `background-image: url('${serviceData.backgroundImage}')` : ''}
     >
       <div class="service-hero-content">
@@ -1182,14 +1183,14 @@ const faqItems = serviceData.category === 'transmission' ? [
             <button class="service-btn-booking" onclick="openQuickRequest()">Записаться</button>
           </div>
         </div>
-        {!serviceData.backgroundImage && (
+        {!isDarkHero && (
           <div
             class="service-hero-image-placeholder"
             style={serviceData.mainphoto ? `background-image: url('${serviceData.mainphoto}'); background-size: cover; background-position: center;` : ''}
           ></div>
         )}
       </div>
-      {serviceData.backgroundImage && (
+      {isDarkHero && (
         <a class="service-hero-arrow" href="#service-content" aria-label="Прокрутить вниз">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
@@ -1383,9 +1384,9 @@ const faqItems = serviceData.category === 'transmission' ? [
 }
 
 
-/* ── Hero в стиле страниц моделей BMW ── */
+/* ── Hero в стиле страниц моделей BMW или чёрный фон ── */
 .service-hero--with-bg {
-  background: #1a1a1a;
+  background: #000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
