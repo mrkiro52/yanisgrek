@@ -26,6 +26,13 @@ const typeLabel = engine.type === 'benzine'
   ? 'Дизельный двигатель'
   : 'Гибридный / Электрический';
 
+const heroBackground = engine.backgroundImage
+  ?? (engine.type === 'benzine'
+    ? 'https://s3.regru.cloud/yanis-grek/engine/benz.png?v=2'
+    : engine.type === 'diesel'
+    ? 'https://s3.regru.cloud/yanis-grek/engine/dis.png?v=2'
+    : 'https://s3.regru.cloud/yanis-grek/engine/electro.png?v=2');
+
 const repairOptions = [
   { name: 'Диагностика двигателя', desc: 'Компьютерная диагностика на BMW ICOM, проверка компрессии', price: 'от 1 500 руб.' },
   { name: 'Замена масла и ТО', desc: 'Оригинальное масло BMW, замена фильтра и свечей', price: 'от 9 000 руб.' },
@@ -70,7 +77,7 @@ const description = engine.description;
     <!-- HERO -->
     <div
       class="engine-hero engine-hero--with-bg"
-      style={engine.backgroundImage ? `background-image: url('${engine.backgroundImage}')` : ''}
+      style={`background-color: #000; background-image: url('${heroBackground}')`}
     >
       <div class="engine-hero-content">
         <div class="engine-hero-left">
@@ -236,32 +243,20 @@ const description = engine.description;
     <div class="guarantee-block">
       <div class="guarantee-inner">
         <div class="guarantee-item">
-          <div class="guarantee-icon">12</div>
-          <div class="guarantee-text">
-            <strong>Гарантия 12 месяцев</strong>
-            <span>на все виды работ и запчасти</span>
-          </div>
+          <span class="guarantee-icon">до 12</span>
+          <span class="guarantee-text">месяцев гарантии на все работы и запчасти</span>
         </div>
         <div class="guarantee-item">
-          <div class="guarantee-icon">OEM</div>
-          <div class="guarantee-text">
-            <strong>Оригинальные запчасти BMW</strong>
-            <span>или сертифицированные OEM</span>
-          </div>
+          <span class="guarantee-icon">OEM</span>
+          <span class="guarantee-text">оригинальные запчасти BMW или сертифицированные OEM</span>
         </div>
         <div class="guarantee-item">
-          <div class="guarantee-icon">BMW</div>
-          <div class="guarantee-text">
-            <strong>Специалисты по BMW</strong>
-            <span>10+ лет опыта с двигателями BMW</span>
-          </div>
+          <span class="guarantee-icon">BMW</span>
+          <span class="guarantee-text">специалисты с 10+ лет опыта работы с BMW</span>
         </div>
         <div class="guarantee-item">
-          <div class="guarantee-icon">0₽</div>
-          <div class="guarantee-text">
-            <strong>Без скрытых доплат</strong>
-            <span>итоговая цена = цена в договоре</span>
-          </div>
+          <span class="guarantee-icon">0</span>
+          <span class="guarantee-text">скрытых доплат — итоговая цена = цена в договоре</span>
         </div>
       </div>
     </div>
@@ -303,7 +298,7 @@ const description = engine.description;
 
   /* HERO */
   .engine-hero {
-    background: #000;
+    background-color: #000;
     padding: 80px 20px 60px;
   }
 
@@ -313,7 +308,7 @@ const description = engine.description;
   }
 
   .engine-hero--with-bg {
-    background: #000;
+    background-color: #000;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -483,7 +478,7 @@ const description = engine.description;
   /* SPECS BAR */
   .specs-bar {
     background: #262626;
-    padding: 24px 20px;
+    padding: 48px 20px;
   }
 
   .specs-bar-inner {
@@ -496,12 +491,12 @@ const description = engine.description;
 
   .spec-item {
     flex: 1;
-    min-width: 120px;
+    min-width: 170px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 12px 20px;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    gap: 10px;
+    padding: 4px 28px;
+    border-right: 1px solid rgba(255,255,255,0.12);
   }
 
   .spec-item:last-child {
@@ -509,16 +504,19 @@ const description = engine.description;
   }
 
   .spec-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    font-weight: 600;
   }
 
   .spec-value {
-    font-size: 14px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
     color: white;
-    font-weight: 600;
+    font-weight: 400;
+    line-height: 1.2;
   }
 
   /* CONTENT */
@@ -550,39 +548,32 @@ const description = engine.description;
 
   .highlight-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 24px 16px;
-    background: #f5f5f5;
-    text-align: center;
-    transition: all 0.3s;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgb(208, 208, 208);
+    text-align: left;
+    transition: background 0.3s;
   }
 
   .highlight-item:hover {
-    background: #ebebeb;
-    transform: translateY(-4px);
+    background: #bdbdbd;
   }
 
   .highlight-icon {
-    width: 40px;
-    height: 40px;
-    background: #2b6eff;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #262626;
+    font-size: 20px;
     font-weight: 700;
-    font-size: 18px;
+    line-height: 1;
     flex-shrink: 0;
   }
 
   .highlight-item p {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     color: #262626;
     font-weight: 500;
+    line-height: 1.4;
   }
 
   /* ISSUES */
@@ -592,22 +583,19 @@ const description = engine.description;
     gap: 60px;
     align-items: flex-start;
     margin-bottom: 80px;
-    padding: 60px 40px;
-    background: white;
-    border: 1px solid #e0e0e0;
   }
 
   .issues-left h2 {
     font-family: 'Helvetica', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
     color: #262626;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .issues-subtitle {
-    font-size: 15px;
-    color: #888;
+    font-size: 16px;
+    color: #666;
     margin-bottom: 32px;
     line-height: 1.5;
   }
@@ -615,67 +603,71 @@ const description = engine.description;
   .issues-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
   .issue-item {
-    border-left: 3px solid #d0d0d0;
-    padding: 16px 16px 16px 20px;
-    background: #fafafa;
+    padding: 24px;
+    background: rgb(208, 208, 208);
   }
-
-  .issue-item.issue-high { border-left-color: #e53e3e; }
-  .issue-item.issue-medium { border-left-color: #ed8936; }
-  .issue-item.issue-low { border-left-color: #48bb78; }
 
   .issue-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 10px;
   }
 
   .issue-severity {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 3px 8px;
-    flex-shrink: 0;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    background: #262626;
+    color: white;
   }
 
-  .severity-high { background: #fff5f5; color: #e53e3e; }
-  .severity-medium { background: #fffaf0; color: #dd6b20; }
-  .severity-low { background: #f0fff4; color: #276749; }
+  .severity-high,
+  .severity-medium,
+  .severity-low {
+    background: #262626;
+    color: white;
+  }
 
   .issue-header h4 {
-    font-size: 15px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
     font-weight: 700;
     color: #262626;
     margin: 0;
   }
 
   .issue-desc {
-    font-size: 14px;
-    color: #555;
+    font-size: 15px;
+    color: #444;
     line-height: 1.6;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
   }
 
   .issue-solution {
     display: flex;
-    gap: 6px;
-    font-size: 13px;
+    gap: 8px;
+    font-size: 14px;
     line-height: 1.5;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .solution-label {
-    color: #2b6eff;
+    color: #262626;
     font-weight: 700;
     flex-shrink: 0;
   }
 
-  .solution-text { color: #444; }
+  .solution-text {
+    color: #444;
+  }
 
   .issues-right img {
     width: 100%;
@@ -685,30 +677,34 @@ const description = engine.description;
 
   .issues-cta-block {
     background: #262626;
-    padding: 24px;
+    padding: 32px 24px;
     margin-top: 16px;
     text-align: center;
   }
 
   .issues-cta-block p {
     color: white;
-    font-size: 15px;
-    margin: 0 0 16px 0;
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
   }
 
   .issues-cta-btn {
-    background: #2b6eff;
-    color: white;
+    background: white;
+    color: #000;
     border: none;
-    padding: 12px 24px;
-    font-size: 14px;
+    padding: 16px 24px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
-    transition: background 0.3s;
+    transition: all 0.3s;
   }
 
-  .issues-cta-btn:hover { background: #1a55ee; }
+  .issues-cta-btn:hover {
+    background: #2b6eff;
+    color: white;
+  }
 
   /* REPAIR */
   .repair-section { margin-bottom: 80px; }
@@ -852,10 +848,10 @@ const description = engine.description;
     margin: 0 16px 16px;
   }
 
-  /* GUARANTEE */
+  /* GUARANTEE BLOCK — единый стиль проекта */
   .guarantee-block {
     background: #262626;
-    padding: 40px 20px;
+    padding: 48px 20px;
   }
 
   .guarantee-inner {
@@ -863,42 +859,28 @@ const description = engine.description;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
   }
 
   .guarantee-item {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 24px;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
-  .guarantee-item:last-child { border-right: none; }
-
   .guarantee-icon {
-    font-size: 20px;
-    font-weight: 900;
-    color: #2b6eff;
     font-family: 'Russo One', sans-serif;
-    min-width: 48px;
-    text-align: center;
+    font-size: 32px;
+    color: #2b6eff;
+    font-weight: 400;
+    line-height: 1;
   }
 
   .guarantee-text {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .guarantee-text strong {
-    color: white;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .guarantee-text span {
-    color: rgba(255,255,255,0.5);
-    font-size: 12px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
   }
 
   /* FAQ */
